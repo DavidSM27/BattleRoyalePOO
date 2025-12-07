@@ -2,6 +2,6 @@ package defaultPackage;
 
 public class Holas {
 	public static void main(String[] args) {
-		System.out.println("yhtyufjmal");
+		System.out.println("asda");
 	}
 }
