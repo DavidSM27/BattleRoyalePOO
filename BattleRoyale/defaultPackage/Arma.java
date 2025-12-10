@@ -25,9 +25,11 @@ public class Arma implements Modificaciones{
 	}
 	//Constructor con 3 parametros (no se si hara falta)
 	public Arma(String nombre, Double ataque, Double mejora) {
+		if(mejora>2 || mejora<1)
+			mejora=MEJORA_DEFAULT;
 		this.nombre = nombre;
-		this.ataque = ((double)(Math.round(ataque * mejora * 100)) / 100);
 		this.mejora = mejora;
+		this.ataque = ((double)(Math.round(ataque * this.mejora * 100)) / 100);
 		this.ataqueSinMejora = ataque;
 	}
 
@@ -54,7 +56,8 @@ public class Arma implements Modificaciones{
 	
 	@Override
 	public String toString() {
-		return "Arma: \n\t nombre: " + nombre + "\n\t ataque: " + ataque + "\n\t ataqueSinMejora: " + ataqueSinMejora + "\n\t mejora: " + mejora;
+		return "Arma: \n\t nombre: " + nombre + "\n\t ataque: " + ataque + 
+				"\n\t ataqueSinMejora: " + ataqueSinMejora + "\n\t mejora: " + mejora;
 	}
 	
 	public void modificacion(Double mejora) {
