@@ -2,88 +2,82 @@ package defaultPackage;
 
 public abstract class Personaje {
 
-    private static final int VIDA_DEFAULT = 100;
+    protected static final int ENERGIA_MAX = 100;
+    protected static final int COSTE_HABILIDAD = 50;
 
-    private String nombre;
-    private int vida;
-    private int vidaMax;
-    private Estadisticas estadisticas;
-    private Arma arma;
-    private boolean enCombate;
-    private boolean estaVivo;
+    protected String nombre;
+    protected int vida;
+    protected int vidaMax;
+    protected int energia;
+    protected boolean estaVivo;
 
     public Personaje() {
-        this("jugador", VIDA_DEFAULT, null, null);
+        this("Jugador", 100);
     }
 
     public Personaje(String nombre) {
-        this(nombre, VIDA_DEFAULT, null, null);
+        this(nombre, 100);
     }
 
     public Personaje(String nombre, int vidaMax) {
-        this(nombre, vidaMax, null, null);
-    }
-
-    public Personaje(String nombre, int vidaMax, Estadisticas estadisticas) {
-        this(nombre, vidaMax, estadisticas, null);
-    }
-
-    public Personaje(String nombre, int vidaMax, Estadisticas estadisticas, Arma arma) {
         this.nombre = nombre;
         this.vidaMax = vidaMax;
         this.vida = vidaMax;
-        this.estadisticas = estadisticas;
-        this.arma = arma;
-        this.enCombate = false;
+        this.energia = ENERGIA_MAX;
         this.estaVivo = true;
     }
 
-    public abstract String getElemento();
-
-    public abstract void habilidadElemental();
-
-    public abstract void recibirAtaque(int cantidad);
-
-    public void atacar() {
-        if (estaVivo && arma != null) {
-            System.out.println(this.nombre + " ataca con " + arma.getNombre() + "!");
+    protected boolean intentarGastarEnergia(String nombreEnergia) {
+        if (this.energia >= COSTE_HABILIDAD) {
+            this.energia -= COSTE_HABILIDAD;
+            return true;
         } else {
-            System.out.println(this.nombre + " no puede atacar.");
+            System.out
+                    .println(">> " + this.nombre + " intenta atacar pero está AGOTADO (Energía: " + this.energia + ")");
+            return false;
         }
     }
 
-    public void cambiarVida(int cantidad) {
-        this.vida += cantidad;
-        if (this.vida > vidaMax)
-            this.vida = vidaMax;
+    public void recuperarEnergia(int cantidad) {
+        this.energia += cantidad;
+        if (this.energia > ENERGIA_MAX) {
+            this.energia = ENERGIA_MAX;
+        }
+        System.out.println(
+                this.nombre + " recupera " + cantidad + " de energía. Total: " + this.energia + "/" + ENERGIA_MAX);
+    }
+
+    public void recibirDanio(int cantidad) {
+        if (!estaVivo) {
+            System.out.println(this.nombre + " ya está muerto, déjalo en paz.");
+            return;
+        }
+
+        this.vida -= cantidad;
+        System.out.println(
+                this.nombre + " recibe " + cantidad + " de daño! (Vida: " + this.vida + "/" + this.vidaMax + ")");
+
         if (this.vida <= 0) {
             this.vida = 0;
             this.estaVivo = false;
-            System.out.println(this.nombre + " ha caído en combate.");
+            System.out.println(this.nombre + " ha sido DERROTADO.");
         }
     }
 
-    public Estadisticas getEstadisticas() {
-        return estadisticas;
-    }
-
-    public Arma getArma() {
-        return arma;
-    }
-
-    public void setArma(Arma arma) {
-        this.arma = arma;
-    }
-
-    public boolean isEstaVivo() {
-        return estaVivo;
-    }
-
-    public void setEstaVivo(boolean estaVivo) {
-        this.estaVivo = estaVivo;
+    public void curarVida(int cantidad) {
+        if (estaVivo) {
+            this.vida += cantidad;
+            if (this.vida > vidaMax)
+                this.vida = vidaMax;
+            System.out.println(this.nombre + " se cura " + cantidad + " HP. (Vida: " + this.vida + ")");
+        }
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public boolean isVivo() {
+        return estaVivo;
     }
 }
