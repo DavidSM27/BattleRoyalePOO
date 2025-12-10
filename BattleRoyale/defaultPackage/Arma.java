@@ -55,6 +55,10 @@ public class Arma implements Modificaciones{
 		return this.ataqueSinMejora;
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+
 	@Override
 	public String toString() {
 		return "Arma: \n\t nombre: " + nombre + "\n\t ataque: " + ataque + 
