@@ -3,7 +3,7 @@ package defaultPackage;
 public abstract class Personaje {
 
     private static final int VIDA_DEFAULT = 100;
-    
+
     private String nombre;
     private int vida;
     private int vidaMax;
@@ -12,17 +12,22 @@ public abstract class Personaje {
     private boolean enCombate;
     private boolean estaVivo;
 
-    public Personaje(){
-        this.nombre = "jugador";
-        this.vida = VIDA_DEFAULT;
-        this.vidaMax = VIDA_DEFAULT;
-        this.estadisticas = null;
-        this.arma = arma.ARMA_DEFAULT;
-        this.enCombate = false;
-        this.estaVivo = true;
+    public Personaje() {
+        this("jugador", VIDA_DEFAULT, null, null);
     }
 
-    
+    public Personaje(String nombre) {
+        this(nombre, VIDA_DEFAULT, null, null);
+    }
+
+    public Personaje(String nombre, int vidaMax) {
+        this(nombre, vidaMax, null, null);
+    }
+
+    public Personaje(String nombre, int vidaMax, Estadisticas estadisticas) {
+        this(nombre, vidaMax, estadisticas, null);
+    }
+
     public Personaje(String nombre, int vidaMax, Estadisticas estadisticas, Arma arma) {
         this.nombre = nombre;
         this.vidaMax = vidaMax;
@@ -33,14 +38,12 @@ public abstract class Personaje {
         this.estaVivo = true;
     }
 
-    
     public abstract String getElemento();
 
     public abstract void habilidadElemental();
 
-    public abstract void recibirAtaque(int cantidad); 
+    public abstract void recibirAtaque(int cantidad);
 
-    
     public void atacar() {
         if (estaVivo && arma != null) {
             System.out.println(this.nombre + " ataca con " + arma.getNombre() + "!");
@@ -60,7 +63,6 @@ public abstract class Personaje {
         }
     }
 
-    
     public Estadisticas getEstadisticas() {
         return estadisticas;
     }
