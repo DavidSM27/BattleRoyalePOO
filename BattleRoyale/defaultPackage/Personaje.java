@@ -1,7 +1,9 @@
 package defaultPackage;
 
 public abstract class Personaje {
-    // Atributos (privados según el guion '-' del diagrama)
+
+    private static final int VIDA_DEFAULT = 100;
+    
     private String nombre;
     private int vida;
     private int vidaMax;
@@ -10,26 +12,35 @@ public abstract class Personaje {
     private boolean enCombate;
     private boolean estaVivo;
 
-    // Constructor
+    public Personaje(){
+        this.nombre = "jugador";
+        this.vida = VIDA_DEFAULT;
+        this.vidaMax = VIDA_DEFAULT;
+        this.estadisticas = null;
+        this.arma = arma.ARMA_DEFAULT;
+        this.enCombate = false;
+        this.estaVivo = true;
+    }
+
+    
     public Personaje(String nombre, int vidaMax, Estadisticas estadisticas, Arma arma) {
         this.nombre = nombre;
         this.vidaMax = vidaMax;
-        this.vida = vidaMax; // Al inicio la vida está al máximo
+        this.vida = vidaMax;
         this.estadisticas = estadisticas;
         this.arma = arma;
         this.enCombate = false;
         this.estaVivo = true;
     }
 
-    // --- Métodos Abstractos (abs) ---
-    // Deben ser implementados por las clases hijas
+    
     public abstract String getElemento();
 
     public abstract void habilidadElemental();
 
-    public abstract void recibirAtaque(int cantidad); // Asumo un int para el daño
+    public abstract void recibirAtaque(int cantidad); 
 
-    // --- Métodos Concretos ---
+    
     public void atacar() {
         if (estaVivo && arma != null) {
             System.out.println(this.nombre + " ataca con " + arma.getNombre() + "!");
@@ -49,7 +60,7 @@ public abstract class Personaje {
         }
     }
 
-    // Getters y Setters necesarios según diagrama
+    
     public Estadisticas getEstadisticas() {
         return estadisticas;
     }
@@ -70,7 +81,6 @@ public abstract class Personaje {
         this.estaVivo = estaVivo;
     }
 
-    // Getter para nombre (útil para logs)
     public String getNombre() {
         return nombre;
     }
