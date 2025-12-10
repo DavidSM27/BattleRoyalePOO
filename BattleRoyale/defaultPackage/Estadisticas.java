@@ -1,5 +1,5 @@
 package defaultPackage;
 
-public class Personajes {
+public class Estadisticas {
 
 }
