@@ -25,8 +25,9 @@ public class Arma implements Modificaciones{
 	}
 	//Constructor con 3 parametros (no se si hara falta)
 	public Arma(String nombre, Double ataque, Double mejora) {
-		if(mejora>2 || mejora<1)
+		if(mejora>2 || mejora<1) {
 			mejora=MEJORA_DEFAULT;
+		}
 		this.nombre = nombre;
 		this.mejora = mejora;
 		this.ataque = ((double)(Math.round(ataque * this.mejora * 100)) / 100);
