@@ -2,7 +2,7 @@ package defaultPackage;
 
 public class Arma implements Modificaciones{
 	//Constantes
-	public static final String ARMA_DEFAULT = "PICO";
+	public static final String ARMA_DEFAULT = "Pico";
 	public static final Double ATAQUE_DEFAULT = 20.0; //daño default del pico
 	public static final Double MEJORA_DEFAULT = 1.0;
 	
