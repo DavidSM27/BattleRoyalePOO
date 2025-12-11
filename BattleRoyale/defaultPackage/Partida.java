@@ -8,32 +8,18 @@ public class Partida {
 	Scanner sc = new Scanner(System.in);
 	
 	protected String modoJuego;
-	private String respuesta;
 	private Integer modo;
 	private Integer nJugadores;
 	private Integer nNPCs;
 	
-	public static void main(String[] args) {
-		Partida partida = new Partida();
-		partida.iniciarJuego();
-	}
-	
 	public void iniciarJuego(){
-		System.out.println("¡BIENVENIDO AL BATTLE ROYALE!");
 		establecerReglas();
 		System.out.println(modoJuego);
 	
 	}
 	
 	public void establecerReglas() {
-		do {
-	        System.out.println("¿Quieres escuchar una explicación de las reglas del juego? (S/N)");
-	        respuesta = sc.nextLine().toUpperCase();
-	    } while(!respuesta.equals("S") && !respuesta.equals("N"));
 		
-	    if(respuesta.equals("S")) {
-	        mostrarReglas();
-	    }
 		
 	    seleccionarModo();
 	    nJugadores = numeroJugadores();
@@ -101,7 +87,7 @@ public class Partida {
     		System.out.println();
         
         return jugadores;
-    }
+    } 
     
     public int numeroNPCs() {
         int npcs = 0;
