@@ -1,15 +1,20 @@
 package defaultPackage;
 
-public abstract class Personaje {
+import java.util.Scanner;
+
+public class Personaje {
 
     protected static final int ENERGIA_MAX = 100;
     protected static final int COSTE_HABILIDAD = 50;
+    protected static final int ORO_DEFAULT = 0;
 
     protected String nombre;
     protected int vida;
     protected int vidaMax;
     protected int energia;
     protected boolean estaVivo;
+    protected int oro;
+    protected Arma arma;
 
     public Personaje() {
         this("Jugador", 100);
@@ -25,9 +30,20 @@ public abstract class Personaje {
         this.vida = vidaMax;
         this.energia = ENERGIA_MAX;
         this.estaVivo = true;
+        this.oro = ORO_DEFAULT;
+        this.arma = new Arma(); // Pico por defecto
+        
     }
+    
+    public Arma getArma() {
+		return arma;
+	}
 
-    protected boolean intentarGastarEnergia(String nombreEnergia) {
+	public void setArma(Arma arma) {
+		this.arma = arma;
+	}
+
+	protected boolean intentarGastarEnergia(String nombreEnergia) {
         if (this.energia >= COSTE_HABILIDAD) {
             this.energia -= COSTE_HABILIDAD;
             return true;
@@ -72,12 +88,42 @@ public abstract class Personaje {
             System.out.println(this.nombre + " se cura " + cantidad + " HP. (Vida: " + this.vida + ")");
         }
     }
+    
+    //****NUEVO*****
+    
+    //equipa al jugador el nuevo arma que se encuentra en el cofre
+    public void equiparArma(Arma nuevaArma) {
+    	Scanner sc = new Scanner(System.in);
+    	String respuesta;
+    	
+    	do {
+    		System.out.println("¿Quiere cambiar de arma a " + nuevaArma.getNombre() + "? (S/N)");
+    		respuesta = sc.nextLine().toUpperCase();
+    		
+    		if(respuesta.equals("S")) {
+    			this.arma = nuevaArma;
+    	    	System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+    		}else if(respuesta.equals("N")){
+    			System.out.println(this.nombre + "mantiene su arma actual" + this.arma.getNombre());
+    		}else {
+    			System.out.println("Respuesta no valida. Escribe S o N");
+    		}
+    	}while(!respuesta.equals("S") && !respuesta.equals("N"));
+    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public boolean isVivo() {
+    public int getOro() {
+		return oro;
+	}
+
+	public void setOro(int oro) {
+		this.oro = oro;
+	}
+
+	public boolean isVivo() {
         return estaVivo;
     }
 }
