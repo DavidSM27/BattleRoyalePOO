@@ -6,49 +6,85 @@ public class EmpezarPartida {
 	
 	Scanner sc = new Scanner(System.in);
 	
-	private Boolean equipos;
-	private String respuesta;
 	private String modoJuego;
 	private Integer modo;
 	
-	
-	public static void main(String[] args) {
-		System.out.println("¡BIENVENIDO AL BATTLE ROYALE!");
-		EmpezarPartida config = new EmpezarPartida();	
-		
-	}
-	
-	
 	public EmpezarPartida() {
-		Partida partida = establecerModo();
-		partida.iniciarJuego();
+		establecerModo();
 	}
 
-
-
-	public Partida establecerModo() {
-		do {
-	        System.out.println("¿Quieres escuchar una explicación de las reglas del juego? (S/N)");
-	        respuesta = sc.nextLine().toUpperCase();
-	    } while(!respuesta.equals("S") && !respuesta.equals("N"));
-		
-	    if(respuesta.equals("S")) {
-	        mostrarReglas();
-	    }
-		
+	public void establecerModo() {
+		preguntarReglas();
 	    seleccionarModo();  	
-	    
-	    if(modo.equals(1)) {
-    			return new Partida();
-	    } else if(modo.equals(2)) {
-	    		return new PartidaPorEquipos();
-	    } else {
-	    		return new PartidaPorEquipos();
-	    }
+	    iniciarPartida();
 	}
 	
-	private void mostrarReglas(){
-		System.out.println("REGLAS");
+	
+	private void preguntarReglas() {
+		String respuesta;
+		
+		do {
+			System.out.println("¿Quieres escuchar una explicación de las reglas del juego? (S/N)");
+			respuesta = sc.nextLine().toUpperCase();
+		} while(!respuesta.equals("S") && !respuesta.equals("N"));
+		
+		if(respuesta.equals("S")) {
+			mostrarReglas();
+		}
+	}
+	
+	private void mostrarReglas() {
+	    System.out.println("\n=== REGLAS DEL BATTLE ROYALE ELEMENTAL ===\n");
+	    
+	    System.out.println("🎮 OBJETIVO:");
+	    System.out.println("   • Ser el último jugador o equipo en pie");
+	    System.out.println("   • Los equipos pierden cuando todos sus integrantes caen\n");
+	    
+	    System.out.println("👥 MODOS DE JUEGO:");
+	    System.out.println("   1. SOLITARIO - Cada jugador por su cuenta");
+	    System.out.println("   2. DUOS - Equipos de 2 jugadores (número par de jugadores)");
+	    System.out.println("   3. ESCUADRONES - Equipos de 4 jugadores (múltiplo de 4)\n");
+	    
+	    System.out.println("⚔️ SISTEMA DE PERSONAJES:");
+	    System.out.println("   • 6 clases elementales: FUEGO, AGUA, TIERRA, AIRE, MAGIA, VIDA");
+	    System.out.println("   • Cada elemento tiene ventajas/desventajas contra otros");
+	    System.out.println("   • Estadísticas iniciales: Fuerza, Defensa, Velocidad, Suerte, Precisión");
+	    System.out.println("   • Todos empiezan con el arma base 'Pico'");
+	    System.out.println("   • Jugadores reales: Eligen nombre, elemento y distribuyen puntos");
+	    System.out.println("   • NPCs: Se generan aleatoriamente\n");
+	    
+	    System.out.println("🎲 SISTEMA DE TURNOS Y EVENTOS:");
+	    System.out.println("   • Cada turno puede ocurrir un evento:");
+	    System.out.println("     🎁 COFRE - Encuentra armas mejoradas con rareza (afectada por Suerte)");
+	    System.out.println("                Jugadores ganan oro, NPCs obtienen mejor arma disponible");
+	    System.out.println("     🛒 TIENDA - Compra pociones de vida/poder o mejora tu arma");
+	    System.out.println("                 Solo jugadores reales pueden acceder");
+	    System.out.println("     ⚔️ ENEMIGO - Batalla contra otro jugador o equipo\n");
+	    
+	    System.out.println("⚡ SISTEMA DE COMBATE:");
+	    System.out.println("   • Ataque básico: Depende del arma equipada");
+	    System.out.println("   • Habilidades elementales: 2-3 por clase, consumen poder elemental");
+	    System.out.println("   • Turnos individuales con menú de opciones");
+	    System.out.println("   • En equipos: Elegir enemigo objetivo antes de atacar");
+	    System.out.println("   • NPCs atacan aleatoriamente\n");
+	    
+	    System.out.println("📈 PROGRESIÓN:");
+	    System.out.println("   • Victoria en batalla = Oro + Experiencia");
+	    System.out.println("   • Subir de nivel mejora estadísticas");
+	    System.out.println("   • Probabilidades de eventos cambian por ronda");
+	    System.out.println("   • Al principio: Más cofres, menos batallas");
+	    System.out.println("   • Final: Más batallas, menos cofres\n");
+	    
+	    System.out.println("🏃‍♂️ OPCIONES ESPECIALES:");
+	    System.out.println("   • Buscar cofre, buscar enemigo o buscar tienda (con riesgo de fallo)");
+	    System.out.println("   • Huir de batalla (jugadores reales)\n");
+	    
+	    System.out.println("🏆 FINAL DE LA PARTIDA:");
+	    System.out.println("   • Victoria anunciada para el ganador/equipo");
+	    System.out.println("   • Opción de guardar partida completa en archivo");
+	    System.out.println("   • Si no quedan jugadores reales, gana NPC/equipo aleatorio\n");
+	    
+	    System.out.println("==============================================\n");
 	}
 	
 	private void seleccionarModo() {
@@ -75,16 +111,21 @@ public class EmpezarPartida {
 	    } while(modo < 1 || modo > 3);
 	    System.out.println();
 	    
+	    
 	    if(modo.equals(1)) {
 	    		modoJuego = "SOLITARIO";
-	    		equipos = false;
 	    } else if(modo.equals(2)) {
 	    		modoJuego = "DUOS";
-	    		equipos = true;
 	    } else {
 	    		modoJuego = "ESCUADRONES";
-	    		equipos = true;
 	    }
 	}
 	
+	private void iniciarPartida() {
+		if(modo == 1) {
+			new Partida(modoJuego);
+		} else {
+    			new PartidaPorEquipos(modoJuego);
+		}
+	}	
 }
