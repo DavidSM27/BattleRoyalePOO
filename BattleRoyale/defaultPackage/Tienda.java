@@ -3,9 +3,6 @@ package defaultPackage;
 import java.util.Scanner;
 
 public class Tienda {
-	// poner un atributo Personaje jugador, y que todos los metodos devuelvan Personaje
-	// porque no se aplican los cambios a los jugadores porque es una copia del personaje
-	
 	// en el constructor poner persona y quitar el parametro de Scaner en el constructor
 	// dentro del costructor pon asi: this.sc=new Scanner(system.in);
 	
