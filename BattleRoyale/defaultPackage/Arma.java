@@ -61,8 +61,8 @@ public class Arma implements Modificaciones{
 
 	@Override
 	public String toString() {
-		return "Arma: \n\t nombre: " + nombre + "\n\t ataque: " + ataque + 
-				"\n\t ataqueSinMejora: " + ataqueSinMejora + "\n\t mejora: " + mejora;
+		return "Arma:\n\t  Nombre: " + nombre + "\n\t  Ataque: " + ataque + 
+				"\n\t  AtaqueSinMejora: " + ataqueSinMejora + "\n\t  Mejora: " + mejora;
 	}
 	
 	public void modificacion(Double mejora) {
