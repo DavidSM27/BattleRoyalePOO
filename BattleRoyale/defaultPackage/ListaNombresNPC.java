@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ListaNombresNPC {
 	
@@ -36,7 +37,10 @@ public class ListaNombresNPC {
 		bf.readLine();
 		
 		while((linea=bf.readLine())!=null) {
-			this.nombres.add(linea);
+			Scanner sc=new Scanner(linea);
+			sc.useDelimiter(";");
+			this.nombres.add(sc.next());
+			sc.close();
 		}
 		
 		bf.close();
@@ -49,5 +53,16 @@ public class ListaNombresNPC {
 		// y luego hago modulo 40 para que del 39.5 a 40 se redondea a 40 y el modulo de 40 es 0
 		// igualando las probabilidades
 		return this.nombres.get((int) (Math.round(Math.random()*this.nombres.size()) %this.nombres.size()) );
+	}
+	
+	@Override
+	public String toString() {
+		return "ListaNombresNPC [nombres=" + nombres + "]";
+	}
+
+	public static void main(String[] args) {
+		ListaNombresNPC armas=new ListaNombresNPC();
+		
+		System.out.println(armas);
 	}
 }

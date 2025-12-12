@@ -13,7 +13,7 @@ public class ListaArmas {
 	
 	public static final String RUTA_FICHERO="\\files\\Armas.csv";
 	
-	private List<Arma> armas;
+	protected List<Arma> armas;
 	
 	public ListaArmas() {
 		this.armas=new ArrayList<Arma>();
@@ -34,7 +34,8 @@ public class ListaArmas {
 	
 	private void leerFichero() throws FileNotFoundException, IOException {
 		File archivo=new File(System.getProperty("user.dir")+ListaArmas.RUTA_FICHERO);
-		String linea;
+		String linea, nombre;
+		Double daño;
 		
 		BufferedReader bf=new BufferedReader(new FileReader(archivo));
 		bf.readLine();
@@ -43,13 +44,16 @@ public class ListaArmas {
 			Scanner sc=new Scanner(linea);
 			sc.useDelimiter(";");
 			
-			this.armas.add(new Arma(sc.next(), Double.valueOf(sc.next()), Math.random()+1));
+			nombre=sc.next();
+			daño=Double.valueOf(sc.next());
 			sc.close();
+			
+			this.armas.add(new Arma(nombre, daño));
 		}
 		
 		bf.close();
 	}
-
+	
 	public Arma getRandomArma() {
 		// En este caso hay 5 nombres, pero si no fueran 40 tambien funcionaria
 		// El numero seria del 0 al 5
@@ -57,5 +61,19 @@ public class ListaArmas {
 		// y luego hago modulo 5 para que del 5.5 a 5 se redondea a 5 y el modulo de 5 es 0
 		// igualando las probabilidades
 		return this.armas.get((int) (Math.round(Math.random()*this.armas.size()) %this.armas.size()) );
+	}
+	
+	@Override
+	public String toString() {
+		for (int i = 0; i < this.armas.size(); i++) {
+			System.out.println(this.armas.get(i));
+		}
+		return "";
+	}
+
+	public static void main(String[] args) {
+		ListaArmas armas=new ListaArmas();
+		
+		System.out.println(armas);
 	}
 }
