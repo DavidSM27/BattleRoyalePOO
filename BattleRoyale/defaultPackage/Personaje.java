@@ -1,6 +1,5 @@
 package defaultPackage;
 
-<<<<<<< Updated upstream
 import java.util.Scanner;
 
 public class Personaje {
@@ -8,15 +7,9 @@ public class Personaje {
     protected static final int ENERGIA_MAX = 100;
     protected static final int COSTE_HABILIDAD = 50;
     protected static final int ORO_DEFAULT = 0;
-=======
-public abstract class Personaje {
     protected static int contador = 1;
-
-    protected static final int ENERGIA_MAX = 100;
-    protected static final int COSTE_HABILIDAD = 50;
     protected static final int VIDAMAX_DEF = 100;
     protected static final String NOMBRE_DEF = "jugador " + contador++;
->>>>>>> Stashed changes
 
     protected String nombre;
     protected int vida;
