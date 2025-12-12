@@ -43,6 +43,14 @@ public class Personaje {
 		this.arma = arma;
 	}
 
+	public int getVida() {
+		return vida;
+	}
+
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+
 	protected boolean intentarGastarEnergia(String nombreEnergia) {
         if (this.energia >= COSTE_HABILIDAD) {
             this.energia -= COSTE_HABILIDAD;

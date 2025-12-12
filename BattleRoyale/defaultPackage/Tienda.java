@@ -37,7 +37,7 @@ public class Tienda {
                     menuMejorarArma(p);
                     break;
                 case 2:
-                    //menuPociones(p); // si la haces luego
+                    menuPociones(p); 
                     break;
                 case 0:
                     System.out.println("Vendedor: \"Vuelve pronto, viajero.\"");
@@ -58,7 +58,7 @@ public class Tienda {
 		System.out.println("Tu oro: " + p.getOro() + "\n");
 		System.out.println("Elige un arma para mejorar: \n");
 		
-		System.out.println("[1] " + p.getArma().getNombre() + "- Coste: 20 oro");
+		System.out.println("[1] " + p.getArma().getNombre() + " Coste: 20 oro");
 		System.out.println("[2] Volver");
 		
 		int opcion;
@@ -108,6 +108,45 @@ public class Tienda {
 		}
 		
 		
+	}
+	
+	public void menuPociones(Personaje p) {
+		
+		String respuesta;
+		
+		do {
+			System.out.println("Vendedor: \"Ah, las mejores pociones curativas de la región. \r\n"
+				+ "Siempre conviene tener algunas encima...\"\n");
+		
+			System.out.println("===== COMPRAR POCIONES =====");
+			System.out.println("Tu oro: " + p.getOro() + " 🪙");
+			System.out.println("Precio por pocion: 15 de oro \n");
+			
+			System.out.println("¿Quiere comprar una pocion? (S/N)");
+			
+			respuesta = sc.nextLine().toUpperCase();
+			
+			switch(respuesta) {
+				case "S":
+					p.setOro(p.getOro() - 15);
+					
+					System.out.println("Vendedor: \"Ya puedes disfrutar de las pociones viajero\"\n");
+					
+					p.setVida(p.getVida() + 30);//por ejemplo luego definimos cuanto curan
+					
+					System.out.println("El jugador " + p.getNombre() + " se ha curado: " + p.getVida() +" ps\n");
+					
+					break;
+				case "N":
+					System.out.println("Vendedor: \"Vuelve pronto, viajero.\"\n");
+					break;
+				default:
+					System.out.println("Opcion no valida\n");
+					break;
+			}
+			
+			
+		}while(!respuesta.equals("S") && !respuesta.equals("N"));
 	}
 	
 	public static void main(String[] args) {
