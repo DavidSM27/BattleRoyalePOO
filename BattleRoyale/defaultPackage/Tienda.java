@@ -165,7 +165,7 @@ public class Tienda {
 
         // Crear un personaje para probar
         Personaje jugador = new Personaje("Jugador de prueba");
-        jugador.setOro(50); // darle algo de oro para probar mejoras
+        jugador.setOro(50); //darle algo de oro para probar mejoras
 
         // Crear la tienda
         Tienda tienda = new Tienda(sc);
