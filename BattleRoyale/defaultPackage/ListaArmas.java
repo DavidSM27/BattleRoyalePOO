@@ -26,6 +26,9 @@ public class ListaArmas {
 		} catch (IOException e) {
 			System.out.println("\tError, con los permisos del fichero o algo relacionado con el fichero.\n");
 			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("\tHay un Error.\n");
+			e.printStackTrace();
 		}
 	}
 	
@@ -41,6 +44,7 @@ public class ListaArmas {
 			sc.useDelimiter(";");
 			
 			this.armas.add(new Arma(sc.next(), Double.valueOf(sc.next()), Math.random()+1));
+			sc.close();
 		}
 		
 		bf.close();
