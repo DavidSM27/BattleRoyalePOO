@@ -17,16 +17,17 @@ public class Personaje {
     protected boolean estaVivo;
     protected int oro;
     protected Arma arma;
+    protected boolean NPC;
 
     public Personaje() {
-        this(("Jugador " + contador++), VIDAMAX_DEF);
+        this(("Jugador " + contador++), VIDAMAX_DEF, false);
     }
 
     public Personaje(String nombre) {
-        this(nombre, 100);
+        this(nombre, 100, false);
     }
 
-    public Personaje(String nombre, int vidaMax) {
+    public Personaje(String nombre, int vidaMax, boolean NPC) {
         this.nombre = nombre;
         this.vidaMax = vidaMax;
         this.vida = vidaMax;
@@ -34,37 +35,38 @@ public class Personaje {
         this.estaVivo = true;
         this.oro = ORO_DEFAULT;
         this.arma = new Arma(); // Pico por defecto
-        
+        this.NPC = NPC;
+
     }
-    
+
     public Arma getArma() {
-		return arma;
-	}
+        return arma;
+    }
 
-	public void setArma(Arma arma) {
-		this.arma = arma;
-	}
+    public void setArma(Arma arma) {
+        this.arma = arma;
+    }
 
-	public int getVida() {
-		return vida;
-	}
+    public int getVida() {
+        return vida;
+    }
 
-	public void setVida(int vida) {
-		this.vida = vida;
-	}
-	
-	@Override
-	public String toString() {
-		return "Nombre: " + nombre +
-				"\n\t Vida: " + vida +
-				"\n\t VidaMax: " + vidaMax +
-				"\n\t Energia: " + energia +
-				"\n\t EstaVivo: " + estaVivo +
-				"\n\t Oro: " + oro +
-				"\n\t " + arma;
-	}
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
 
-	protected boolean intentarGastarEnergia(String nombreEnergia) {
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre +
+                "\n\t Vida: " + vida +
+                "\n\t VidaMax: " + vidaMax +
+                "\n\t Energia: " + energia +
+                "\n\t EstaVivo: " + estaVivo +
+                "\n\t Oro: " + oro +
+                "\n\t " + arma;
+    }
+
+    protected boolean intentarGastarEnergia(String nombreEnergia) {
         if (this.energia >= COSTE_HABILIDAD) {
             this.energia -= COSTE_HABILIDAD;
             return true;
@@ -109,27 +111,27 @@ public class Personaje {
             System.out.println(this.nombre + " se cura " + cantidad + " HP. (Vida: " + this.vida + ")");
         }
     }
-    
-    //****NUEVO*****
-    
-    //equipa al jugador el nuevo arma que se encuentra en el cofre
+
+    // ****NUEVO*****
+
+    // equipa al jugador el nuevo arma que se encuentra en el cofre
     public void equiparArma(Arma nuevaArma) {
-    	Scanner sc = new Scanner(System.in);
-    	String respuesta;
-    	
-    	do {
-    		System.out.println("¿Quiere cambiar de arma a " + nuevaArma.getNombre() + "? (S/N)");
-    		respuesta = sc.nextLine().toUpperCase();
-    		
-    		if(respuesta.equals("S")) {
-    			this.arma = nuevaArma;
-    	    	System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-    		}else if(respuesta.equals("N")){
-    			System.out.println(this.nombre + "mantiene su arma actual" + this.arma.getNombre());
-    		}else {
-    			System.out.println("Respuesta no valida. Escribe S o N");
-    		}
-    	}while(!respuesta.equals("S") && !respuesta.equals("N"));
+        Scanner sc = new Scanner(System.in);
+        String respuesta;
+
+        do {
+            System.out.println("¿Quiere cambiar de arma a " + nuevaArma.getNombre() + "? (S/N)");
+            respuesta = sc.nextLine().toUpperCase();
+
+            if (respuesta.equals("S")) {
+                this.arma = nuevaArma;
+                System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+            } else if (respuesta.equals("N")) {
+                System.out.println(this.nombre + "mantiene su arma actual" + this.arma.getNombre());
+            } else {
+                System.out.println("Respuesta no valida. Escribe S o N");
+            }
+        } while (!respuesta.equals("S") && !respuesta.equals("N"));
     }
 
     public String getNombre() {
@@ -137,14 +139,18 @@ public class Personaje {
     }
 
     public int getOro() {
-		return oro;
-	}
+        return oro;
+    }
 
-	public void setOro(int oro) {
-		this.oro = oro;
-	}
+    public void setOro(int oro) {
+        this.oro = oro;
+    }
 
-	public boolean isVivo() {
+    public boolean isVivo() {
         return estaVivo;
+    }
+
+    public boolean isNPC() {
+        return this.NPC;
     }
 }
