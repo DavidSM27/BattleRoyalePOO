@@ -62,7 +62,7 @@ public class Personaje {
 				"\n Energia:" + energia +
 				"\n EstaVivo:" + estaVivo +
 				"\n Oro:" + oro +
-				"\n Arma:" + arma;
+				"\n" + arma;
 	}
 
 	protected boolean intentarGastarEnergia(String nombreEnergia) {
