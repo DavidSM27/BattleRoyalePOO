@@ -132,6 +132,8 @@ public class Personaje {
                 System.out.println("Respuesta no valida. Escribe S o N");
             }
         } while (!respuesta.equals("S") && !respuesta.equals("N"));
+
+        sc.close();
     }
 
     public String getNombre() {
