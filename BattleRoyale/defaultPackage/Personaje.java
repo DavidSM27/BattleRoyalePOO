@@ -9,7 +9,7 @@ public class Personaje {
     protected static final int ORO_DEFAULT = 0;
     protected static int contador = 1;
     protected static final int VIDAMAX_DEF = 100;
-    protected static final String NOMBRE_DEF = "Jugador " + contador++;
+    protected static final String NOMBRE_DEF = "Jugador ";
 
     protected String nombre;
     protected int vida;
@@ -20,7 +20,7 @@ public class Personaje {
     protected Arma arma;
 
     public Personaje() {
-        this(NOMBRE_DEF, VIDAMAX_DEF);
+        this((NOMBRE_DEF + contador++), VIDAMAX_DEF);
     }
 
     public Personaje(String nombre) {

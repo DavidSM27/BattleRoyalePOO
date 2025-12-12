@@ -11,7 +11,8 @@ public class Evento extends ListaArmas {
 	public Evento(List<Personaje> jugadores) {
 		super();
 		this.jugadores=jugadores;
-		this.jugadores.get(0).setOro(100);
+		this.jugadores.set(0, null)
+		this.jugadores.get(0).setOro((int)100);
 	}
 	
 	
@@ -25,6 +26,7 @@ public class Evento extends ListaArmas {
 		jugadores.add(new Personaje());
 		
 		System.out.println(jugadores.get(0));
+		System.out.println(jugadores.get(1));
 		
 		Evento evento=new Evento(jugadores);
 		
