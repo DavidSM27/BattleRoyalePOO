@@ -53,6 +53,17 @@ public class Personaje {
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
+	
+	@Override
+	public String toString() {
+		return "Nombre:" + nombre +
+				"\n Vida:" + vida +
+				"\n VidaMax:" + vidaMax +
+				"\n Energia:" + energia +
+				"\n EstaVivo:" + estaVivo +
+				"\n Oro:" + oro +
+				"\n Arma:" + arma;
+	}
 
 	protected boolean intentarGastarEnergia(String nombreEnergia) {
         if (this.energia >= COSTE_HABILIDAD) {
