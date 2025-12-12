@@ -39,5 +39,6 @@ public class NombresNPC {
 			this.nombres.add(linea);
 		}
 		
+		bf.close();
 	}
 }
