@@ -13,8 +13,13 @@ public class Evento extends ListaArmas {
 	}
 	
 	public void rondas() {
-		for (int i = 0; i < jugadores.size(); i++) {
-			if()
+		for (int i=0, j=-1; i < jugadores.size(); i++) {
+			if(jugadores.get(i).isVivo()) {
+				
+			}else {
+				jugadores.remove(i--);
+				
+			}
 			
 			
 			
