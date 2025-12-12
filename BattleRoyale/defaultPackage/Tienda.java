@@ -3,6 +3,17 @@ package defaultPackage;
 import java.util.Scanner;
 
 public class Tienda {
+	// poner un atributo Personaje jugador, y que todos los metodos devuelvan Personaje
+	// porque no se aplican los cambios a los jugadores porque es una copia del personaje
+	
+	// en el constructor poner persona y quitar el parametro de Scaner en el constructor
+	// dentro del costructor pon asi: this.sc=new Scanner(system.in);
+	
+	// no pongas elige un arma porque solo tiene un arma cada uno
+	// en vez de eso alli imprime el toString() del arma para que vea sus estadisticas
+	// mira si el arma no se puede mejorar, si es 2 imprime que tu arma esta al maximo
+	
+	// haz un while en el mejorar arma
 	
 	 private Scanner sc;
 
