@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NombresNPC {
+public class ListaNombresNPC {
 	
 	public static final String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
 	
 	private List<String> nombres;
 	
-	public NombresNPC() {
+	public ListaNombresNPC() {
 		this.nombres=new ArrayList<String>();
 		
 		try {
@@ -29,7 +29,7 @@ public class NombresNPC {
 	}
 	
 	private void leerFichero() throws FileNotFoundException, IOException {
-		File archivo=new File(System.getProperty("user.dir")+NombresNPC.RUTA_FICHERO);
+		File archivo=new File(System.getProperty("user.dir")+ListaNombresNPC.RUTA_FICHERO);
 		String linea;
 		
 		BufferedReader bf=new BufferedReader(new FileReader(archivo));
@@ -43,10 +43,11 @@ public class NombresNPC {
 	}
 
 	public String getRandomNombres() {
+		// En este caso hay 40 nombres, pero si no fueran 40 tambien funcionaria
 		// El numero seria del 0 al 40
 		// porque si es 0,5 lo redondea a 1 y no tendria la misma probabilidad
 		// y luego hago modulo 40 para que del 39.5 a 40 se redondea a 40 y el modulo de 40 es 0
 		// igualando las probabilidades
-		return this.nombres.get((int) (Math.round(Math.random()*this.nombres.size()) %40) );
+		return this.nombres.get((int) (Math.round(Math.random()*this.nombres.size()) %this.nombres.size()) );
 	}
 }
