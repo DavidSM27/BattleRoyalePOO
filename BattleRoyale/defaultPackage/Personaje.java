@@ -57,12 +57,12 @@ public class Personaje {
 	@Override
 	public String toString() {
 		return "Nombre:" + nombre +
-				"\n Vida:" + vida +
-				"\n VidaMax:" + vidaMax +
-				"\n Energia:" + energia +
-				"\n EstaVivo:" + estaVivo +
-				"\n Oro:" + oro +
-				"\n" + arma;
+				"\n\t Vida:" + vida +
+				"\n\t VidaMax:" + vidaMax +
+				"\n\t Energia:" + energia +
+				"\n\t EstaVivo:" + estaVivo +
+				"\n\t Oro:" + oro +
+				"\n\t" + arma;
 	}
 
 	protected boolean intentarGastarEnergia(String nombreEnergia) {
