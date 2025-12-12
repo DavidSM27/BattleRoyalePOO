@@ -9,7 +9,7 @@ public class Personaje {
     protected static final int ORO_DEFAULT = 0;
     protected static int contador = 1;
     protected static final int VIDAMAX_DEF = 100;
-    protected static final String NOMBRE_DEF = "jugador " + contador++;
+    protected static final String NOMBRE_DEF = "Jugador " + contador++;
 
     protected String nombre;
     protected int vida;
@@ -56,12 +56,12 @@ public class Personaje {
 	
 	@Override
 	public String toString() {
-		return "Nombre:" + nombre +
-				"\n\t Vida:" + vida +
-				"\n\t VidaMax:" + vidaMax +
-				"\n\t Energia:" + energia +
-				"\n\t EstaVivo:" + estaVivo +
-				"\n\t Oro:" + oro +
+		return "Nombre: " + nombre +
+				"\n\t Vida: " + vida +
+				"\n\t VidaMax: " + vidaMax +
+				"\n\t Energia: " + energia +
+				"\n\t EstaVivo: " + estaVivo +
+				"\n\t Oro: " + oro +
 				"\n\t" + arma;
 	}
 

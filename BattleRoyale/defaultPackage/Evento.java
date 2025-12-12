@@ -24,6 +24,12 @@ public class Evento extends ListaArmas {
 		jugadores.add(new Personaje());
 		jugadores.add(new Personaje());
 		
-		System.out.println(jugadores);
+		System.out.println(jugadores.get(0));
+		
+		Evento evento=new Evento(jugadores);
+		
+		System.out.println(evento.jugadores.get(0));
+		System.out.println(jugadores.get(0).toString());
+		
 	}
 }
