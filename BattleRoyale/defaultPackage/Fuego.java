@@ -6,6 +6,7 @@ public class Fuego extends Personaje {
 
     public Fuego(String nombre, int nivel, boolean esNPC) {
         super(nombre, esNPC);
+        this.setElemento(Elemento.FUEGO);
 
         if (nivel < 1)
             this.nivel = 1;

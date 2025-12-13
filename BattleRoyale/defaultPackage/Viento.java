@@ -3,10 +3,11 @@ package defaultPackage;
 public class Viento extends Personaje {
 
     private int nivel;
-   
+
     public Viento(String nombre, int nivel, boolean esNPC) {
         super(nombre, esNPC);
-        
+        this.setElemento(Elemento.VIENTO);
+
         if (nivel < 1) {
             this.nivel = 1;
         } else if (nivel > 5) {

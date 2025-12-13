@@ -28,15 +28,18 @@ public class Personaje {
     protected int defensa;
     protected int suerte;
     protected int puntosDeNivel;
+    protected Elemento elemento;
 
     // Constructor por defecto
     public Personaje() {
         this("Jugador " + contadorPersonajes++, false);
+        this.elemento = Elemento.NEUTRO;
     }
 
     // Constructor con nombre propio
     public Personaje(String nombre) {
         this(nombre, false);
+        this.elemento = Elemento.NEUTRO;
     }
 
     // Constructor completo
@@ -53,6 +56,7 @@ public class Personaje {
         this.defensa = NIVEL_ESTADISTICAS_INCIALES;
         this.suerte = NIVEL_ESTADISTICAS_INCIALES;
         this.puntosDeNivel = PUNTOS_DE_NIVEL;
+        this.elemento = Elemento.NEUTRO;
     }
 
     // Getters y setters
@@ -95,6 +99,14 @@ public class Personaje {
 
     public int getSuerte() {
         return suerte;
+    }
+
+    public Elemento getElemento() {
+        return this.elemento;
+    }
+
+    protected void setElemento(Elemento elemento) {
+        this.elemento = elemento;
     }
 
     public void setOro(int oro) {
