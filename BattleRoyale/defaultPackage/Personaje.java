@@ -11,7 +11,7 @@ public class Personaje {
     protected static final int ORO_INICIAL = 0;
     protected static final int VIDA_MAX_DEFECTO = 100;
     protected static final int PUNTOS_DE_NIVEL = 20;
-    protected static final int NIVEL_ESTADISTICAS_INCIALES = 0;
+    protected static final int NIVEL_ESTADISTICAS_INCIALES = 1;
     protected static final int SUBIDA_NIVEL = 100;
     private static int contadorPersonajes = 1;
 
@@ -218,10 +218,12 @@ public class Personaje {
             log="\n";
         }
         
-        else if (esNPC && this.arma.compareTo(nuevaArma)==1) {
-            this.arma = nuevaArma;
-            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-            log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+        else if (esNPC) {
+        	if(this.arma.compareTo(nuevaArma)==1) {
+	            this.arma = nuevaArma;
+	            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+	            log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+        	}
         }
         
         else {
@@ -229,10 +231,10 @@ public class Personaje {
 	        // Preguntar a los jugadores si quieren cambiar el arma
 	        String respuesta;
 	        do {
-	            System.out.println("\n¿Quieres cambiar tu arma?");
-	            
 	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
 	            System.out.println("\nTu "+this.arma.toString());
+	            
+	            System.out.println("\n¿Quieres cambiar tu arma?");
 	            
 	            respuesta = sc.nextLine().toUpperCase();
 	

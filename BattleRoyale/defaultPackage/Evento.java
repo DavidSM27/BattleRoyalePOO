@@ -57,8 +57,9 @@ public class Evento extends ListaArmas {
 			opcion=0;
 			
 			if(!jugadores.get(I).isVivo()) {
-				jugadores.remove(I--);
+				jugadores.remove((int)I--);
 				JUGADORES_VIVOS--;
+				continue;
 			}
 			
 			if(!jugadores.get(I).isNPC()) {
@@ -84,13 +85,14 @@ public class Evento extends ListaArmas {
 			}else {
 				// El NPC nunca campea
 				if(RONDA>2) {
-					opcion=(int)Math.round(Math.random()*3)%3;
-				}else if(RONDA.equals(1)) {
+					opcion=(int)Math.round(Math.random()*2)%2;
+				}else if(RONDA<=2) {
 					opcion=0;
-				}else {
-					opcion=(int)Math.round((Math.random()*2)%2);
 				}
 				opcion++;
+				if (opcion==2) {
+					opcion=3;
+				}
 				System.out.println(jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1));
 			}
 			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
@@ -99,7 +101,7 @@ public class Evento extends ListaArmas {
 			System.out.println("\n");
 		}
 		System.out.print(Evento.LOG);
-		System.out.print("La "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
+		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
 	}
 	
@@ -122,7 +124,7 @@ public class Evento extends ListaArmas {
 			prob_tienda=0.2;
 		}
 		
-		Double suerte=( ((double)jugadores.get(I).getSuerte())*5. /100.);
+		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.);
 		
 		prob_cofre+=prob_cofre*suerte;
 		prob_batalla+=prob_batalla*suerte;
@@ -137,10 +139,18 @@ public class Evento extends ListaArmas {
 					this.cofre();
 				}else if(1-random<(1.-prob_cofre)*0.5) {
 					// Tienda
-					this.tienda();
+					if(!jugadores.get(I).isNPC()) {
+						this.tienda();
+					}else {
+						System.out.println("Mala suerte no encontrado nada.");
+					}
 				}else if(1-random<(1.-prob_cofre)*0.75) {
 					// Battala
-					this.batalla();
+					if(RONDA>2) {
+						this.batalla();
+					}else {
+						System.out.println("Mala suerte no encontrado nada.");
+					}
 				}else {
 					System.out.println("Mala suerte no encontrado nada.");
 				}
@@ -155,7 +165,11 @@ public class Evento extends ListaArmas {
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.75) {
 					// Battala
-					this.batalla();
+					if(RONDA>2) {
+						this.batalla();
+					}else {
+						System.out.println("Mala suerte no encontrado nada.");
+					}
 				}else {
 					System.out.println("Mala suerte no encontrado nada.");
 				}
@@ -170,7 +184,11 @@ public class Evento extends ListaArmas {
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.5) {
 					// Tienda
-					this.tienda();
+					if(!jugadores.get(I).isNPC()) {
+						this.tienda();
+					}else {
+						System.out.println("Mala suerte no encontrado nada.");
+					}
 				}else {
 					System.out.println("Mala suerte no encontrado nada.");
 				}
@@ -190,7 +208,7 @@ public class Evento extends ListaArmas {
 	private void cofre() {
 		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a abierto un cofre\n";
 		
-		Double suerte=( ((double)jugadores.get(I).getSuerte())*5. /100.);
+		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.);
 		Double random=Math.random();
 		Integer aux=0;
 		if(random<0.05*suerte) {
