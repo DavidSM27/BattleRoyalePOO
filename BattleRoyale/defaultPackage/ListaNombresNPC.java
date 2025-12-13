@@ -52,7 +52,11 @@ public class ListaNombresNPC {
 		// porque si es 0,5 lo redondea a 1 y no tendria la misma probabilidad
 		// y luego hago modulo 40 para que del 39.5 a 40 se redondea a 40 y el modulo de 40 es 0
 		// igualando las probabilidades
-		return this.nombres.get((int) (Math.round(Math.random()*this.nombres.size()) %this.nombres.size()) );
+		
+		Integer random=(int) (Math.round(Math.random()*this.nombres.size()) %this.nombres.size());
+		String nombre=this.nombres.get(random);
+		this.nombres.remove(random);
+		return nombre;
 	}
 	
 	@Override

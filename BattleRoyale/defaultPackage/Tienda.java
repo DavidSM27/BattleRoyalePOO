@@ -14,7 +14,7 @@ public class Tienda {
 	
 	private Scanner sc;
 
-    public Tienda(Personaje p) {
+    public Tienda() {
         this.sc = new Scanner(System.in);
     }
 	
@@ -165,7 +165,7 @@ public class Tienda {
         
 
         // Crear la tienda
-        Tienda tienda = new Tienda(jugador);
+        Tienda tienda = new Tienda();
 
         // Mostrar menú de tienda
         tienda.menuTienda(jugador);
