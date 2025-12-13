@@ -2,10 +2,13 @@ package defaultPackage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Evento extends ListaArmas {
+	private static Scanner sc=new Scanner(System.in);
+	
 	private static Integer RONDA=0;
 	private static Integer ORO_TOTAL_COFRE=100;
 	private static Integer COFRES_TOTALES=0;
@@ -30,65 +33,68 @@ public class Evento extends ListaArmas {
 		Evento.JUGADORES_TOTALES=this.jugadores.size();
 		Evento.JUGADORES_VIVOS=this.jugadores.size();
 		
-		OPCIONES.add("buscar un Cofre");
-		OPCIONES.add("buscar una Tienda");
-		OPCIONES.add("buscar una Batalla");
-		OPCIONES.add("Campear");
+		Evento.OPCIONES.add("buscar un Cofre");
+		Evento.OPCIONES.add("buscar una Tienda");
+		Evento.OPCIONES.add("buscar una Batalla");
+		Evento.OPCIONES.add("Campear");
 	}
 	
 	public static Integer getRonda() {
 		return RONDA;
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	public void rondas() {
-		if(JUGADORES_VIVOS>1) {
-			RONDA++;
-			LOG="Ronda "+RONDA+"\n";
-			System.out.println("Ronda "+RONDA+"\n");
+		Integer opcion;
+		RONDA++;
+		Evento.LOG="Ronda "+RONDA+"\n";
+		System.out.println("Ronda "+RONDA+"\n");
+		
+		for (I=0; I < jugadores.size(); I++) {
+			opcion=0;
 			
-			for (I=0; I < jugadores.size(); I++) {
-				Integer opcion=0;
-				
-				if(!jugadores.get(I).isVivo()) {
-					jugadores.remove(I--);
-					JUGADORES_VIVOS--;
-				}
-				
-				if(!jugadores.get(I).isNPC()) {
-					Scanner sc=new Scanner(System.in);
-					
-					System.out.println("¿"+jugadores.get(I).getNombre()+" que quieres hacer?");
-		            System.out.println("\t[0] Buscar un Cofre");
-		            System.out.println("\t[1] Buscar una Tienda");
-		            System.out.println("\t[2] Buscar una Batalla");
-		            System.out.println("\t[3] Campear\n");
-		            
-		            do {
-		            	System.out.print("Elige una opcion:");
-						opcion=sc.nextInt();
-					} while (opcion<0 && opcion>3);
-		            sc.close();
-		            
-				}else {
-					// El NPC nunca campea
-					if(RONDA>2) {
-						opcion=(int)Math.round(Math.random()*3)%3;
-					}else if(RONDA.equals(1)) {
-						opcion=0;
-					}else {
-						opcion=(int)Math.round((Math.random()*2)%2);
-					}
-					System.out.println(jugadores.get(I).getNombre()+" intenta "+OPCIONES.get(opcion));
-				}
-				LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+OPCIONES.get(opcion)+"\n";
-				this.opciones(opcion);
-				LOG+="\n\n";
-				System.out.println("\n\n");
+			if(!jugadores.get(I).isVivo()) {
+				jugadores.remove(I--);
+				JUGADORES_VIVOS--;
 			}
-			System.out.println(LOG);
-		}else {
-			System.out.println("Ha ganado "+jugadores.getFirst().getNombre());
+			
+			if(!jugadores.get(I).isNPC()) {
+				
+				
+				System.out.println("¿"+jugadores.get(I).getNombre()+" que quieres hacer?");
+	            System.out.println("\t[1] Buscar un Cofre");
+	            System.out.println("\t[2] Buscar una Tienda");
+	            System.out.println("\t[3] Buscar una Batalla");
+	            System.out.println("\t[4] Campear\n");
+	            
+	            do {
+	            	System.out.print("Elige una opcion:");
+	            	try{
+	            		opcion=sc.nextInt();
+	            	}catch(InputMismatchException e) {
+	            		opcion=0;
+	            	}
+	            	sc.nextLine();
+				} while (opcion<1 || opcion>4);
+	            
+			}else {
+				// El NPC nunca campea
+				if(RONDA>2) {
+					opcion=(int)Math.round(Math.random()*3)%3;
+				}else if(RONDA.equals(1)) {
+					opcion=0;
+				}else {
+					opcion=(int)Math.round((Math.random()*2)%2);
+				}
+				opcion++;
+				System.out.println(jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1));
+			}
+			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
+			this.opciones(opcion);
+			Evento.LOG+="\n\n";
+			System.out.println("\n\n");
 		}
+		System.out.println(Evento.LOG);
 	}
 	
 	private void opciones(Integer opcion) {
@@ -167,7 +173,7 @@ public class Evento extends ListaArmas {
 	}
 	
 	private void cofre() {
-		LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a abierto un cofre\n";
+		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a abierto un cofre\n";
 		
 		Integer random=(int)Math.round(Math.random()*super.armas.size())%super.armas.size();
 		Double mejora=((double)Math.round(Math.random()*10))/10+1;
@@ -176,13 +182,13 @@ public class Evento extends ListaArmas {
 						   super.armas.get(random).getAtaqueSinMejora(),
 						   mejora);
 		
-		this.jugadores.get(I).equiparArma(arma);
+		//this.jugadores.get(I).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
 		this.jugadores.get(I).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
 	}
 	
 	private void tienda() {
-		LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda\n";
+		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda\n";
 		
 	}
 	
@@ -191,8 +197,8 @@ public class Evento extends ListaArmas {
 		if(random.equals(I)) {
 			random=this.jugadores.size()-1;
 		}
-		//LOG+="\t-"+this.jugadores.get(I).batalla(this.jugadores.get(random));
-		LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
+		//Evento.LOG+="\t-"+this.jugadores.get(I).batalla(this.jugadores.get(random));
+		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
 		this.jugadores.get(random).recibirDanio(1000);
 	}
 	
@@ -202,7 +208,7 @@ public class Evento extends ListaArmas {
 
         // 2. Generar 50 personas
         for (int i = 1; i <= 21; i++) {
-            listaJugadores.add(new Personaje("Jugador "+i, i<11));
+            listaJugadores.add(new Personaje());
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
