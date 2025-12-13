@@ -160,22 +160,22 @@ public class Partida {
         return npc;
     }
     
-    private Personaje crearPersonajePorElemento(String nombre, int elemento) {
+    private Personaje crearPersonajePorElemento(String nombre, int elemento, boolean esNPC) {
         switch(elemento) {
-            //case 1: // FUEGO
-                //return new Fuego(nombre, 1);  // nivel 1
+            case 1: // FUEGO
+                return new Fuego(nombre, 1, esNPC);  // hay que
             case 2: // AGUA
-                return new Agua(nombre, 1);
+                return new Agua(nombre, 1, esNPC);
             case 3: // TIERRA
-                return new Tierra(nombre, 1);
+                return new Tierra(nombre, 1, esNPC);
             case 4: // VIENTO
-                return new Viento(nombre, 1);
+                return new Viento(nombre, 1, esNPC);
             case 5: // MAGIA
-                return new Magia(nombre, 1);
+                return new Magia(nombre, 1, esNPC);
             case 6: // VIDA
-                return new Vida(nombre, 1);
+                return new Vida(nombre, 1, esNPC);
             default:
-                return new Vida(nombre, 1);
+                return new Fuego(nombre, 1, esNPC);
         }
     }
     

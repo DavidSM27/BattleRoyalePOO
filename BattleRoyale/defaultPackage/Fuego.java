@@ -4,8 +4,8 @@ public class Fuego extends Personaje {
 
     private int nivel;
 
-    public Fuego(String nombre, int nivel) {
-        super(nombre, false);
+    public Fuego(String nombre, int nivel, boolean esNPC) {
+        super(nombre, esNPC);
 
         if (nivel < 1)
             this.nivel = 1;

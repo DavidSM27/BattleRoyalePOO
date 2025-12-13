@@ -4,8 +4,8 @@ public class Tierra extends Personaje {
 
     private int nivel;
 
-    public Tierra(String nombre, int nivel) {
-        super(nombre, 100, false);
+    public Tierra(String nombre, int nivel, boolean esNPC) {
+        super(nombre, esNPC);
 
         if (nivel < 1)
             this.nivel = 1;

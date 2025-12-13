@@ -4,8 +4,8 @@ public class Viento extends Personaje {
 
     private int nivel;
 
-    public Viento(String nombre, int nivel) {
-        super(nombre, 100, false);
+    public Viento(String nombre, int nivel, boolean esNPC) {
+        super(nombre, esNPC);
         if (nivel < 1) {
             this.nivel = 1;
         } else if (nivel > 5) {
