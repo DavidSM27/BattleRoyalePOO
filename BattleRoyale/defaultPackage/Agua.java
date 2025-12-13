@@ -5,7 +5,7 @@ public class Agua extends Personaje {
     private int nivel;
 
     public Agua(String nombre, int nivel) {
-        super(nombre, 100, false);
+        super(nombre, false);
         if (nivel < 1) {
             this.nivel = 1;
         } else if (nivel > 5) {
