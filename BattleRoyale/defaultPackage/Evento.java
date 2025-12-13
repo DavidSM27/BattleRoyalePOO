@@ -98,7 +98,9 @@ public class Evento extends ListaArmas {
 			Evento.LOG+="\n\n";
 			System.out.println("\n");
 		}
-		System.out.println(Evento.LOG);
+		System.out.print(Evento.LOG);
+		System.out.print("La "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
+		sc.nextLine();
 	}
 	
 	private void opciones(Integer opcion) {
