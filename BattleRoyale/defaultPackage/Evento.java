@@ -1,6 +1,7 @@
 package defaultPackage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,6 +24,8 @@ public class Evento extends ListaArmas {
 	public Evento(List<Personaje> jugadores){
 		super();
 		this.jugadores=jugadores;
+		Collections.shuffle(jugadores);
+		
 		Evento.COFRES_TOTALES=this.jugadores.size()*4;
 		Evento.JUGADORES_TOTALES=this.jugadores.size();
 		Evento.JUGADORES_VIVOS=this.jugadores.size();
@@ -31,6 +34,10 @@ public class Evento extends ListaArmas {
 		OPCIONES.add("buscar una Tienda");
 		OPCIONES.add("buscar una Batalla");
 		OPCIONES.add("Campear");
+	}
+	
+	public static Integer getRonda() {
+		return RONDA;
 	}
 	
 	public void rondas() {
@@ -47,7 +54,7 @@ public class Evento extends ListaArmas {
 					JUGADORES_VIVOS--;
 				}
 				
-				if(/*jugadores.get(I).isNPC()*/Math.random()<0.5) {
+				if(!jugadores.get(I).isNPC()) {
 					Scanner sc=new Scanner(System.in);
 					
 					System.out.println("¿"+jugadores.get(I).getNombre()+" que quieres hacer?");
@@ -71,6 +78,7 @@ public class Evento extends ListaArmas {
 					}else {
 						opcion=(int)Math.round((Math.random()*2)%2);
 					}
+					System.out.println(jugadores.get(I).getNombre()+" intenta "+OPCIONES.get(opcion));
 				}
 				LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+OPCIONES.get(opcion)+"\n";
 				this.opciones(opcion);
@@ -193,13 +201,13 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         // 2. Generar 50 personas
-        for (int i = 1; i <= 50; i++) {
-            listaJugadores.add(new Personaje());
+        for (int i = 1; i <= 21; i++) {
+            listaJugadores.add(new Personaje("Jugador "+i, i<11));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
 
-        // 3. Instanciar el Evento
+        // 3. Insanciar el Evento
         Evento evento = new Evento(listaJugadores);
 
         // 4. Bucle del juego (Mientras quede más de 1 vivo)
