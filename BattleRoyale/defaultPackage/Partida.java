@@ -26,7 +26,8 @@ public class Partida {
 	  
 	public void iniciarJuego(){
 		establecerReglas();
-	
+		crearPersonajes();
+		mostrarResumenPersonajes();
 	}
 	
 	public void establecerReglas() {
@@ -147,6 +148,18 @@ public class Partida {
         return crearPersonajePorElemento(nombre, elemento);
     }
     
+    private Personaje crearNPC(int numero) {
+        String[] nombresNPC = {"Thor", "Luna", "Kai", "Zara", "Rex", "Nova"};
+        String nombre = nombresNPC[(numero-1) % nombresNPC.length] + "_" + numero;
+        
+        // Elemento aleatorio 1-6
+        int elemento = (int)(Math.random() * 6) + 1;
+        
+        Personaje npc = crearPersonajePorElemento(nombre, elemento);
+        
+        return npc;
+    }
+    
     private Personaje crearPersonajePorElemento(String nombre, int elemento) {
         switch(elemento) {
             //case 1: // FUEGO
@@ -163,6 +176,15 @@ public class Partida {
                 return new Vida(nombre, 1);
             default:
                 return new Vida(nombre, 1);
+        }
+    }
+    
+    private void mostrarResumenPersonajes() {
+        System.out.println("\n=== LISTA DE PERSONAJES ===");
+        for(int i = 0; i < personajes.size(); i++) {
+            Personaje p = personajes.get(i);
+            String tipo = jugadoresHumanos.contains(p) ? "[Humano]" : "[NPC]";
+            System.out.println((i+1) + ". " + p.getNombre() + " " + tipo);
         }
     }
     
