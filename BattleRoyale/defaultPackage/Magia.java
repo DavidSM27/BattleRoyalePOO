@@ -3,9 +3,10 @@ package defaultPackage;
 public class Magia extends Personaje {
 
     private int nivel;
-    
+
     public Magia(String nombre, int nivel, boolean esNPC) {
         super(nombre, esNPC);
+        this.setElemento(Elemento.MAGIA);
 
         if (nivel < 1)
             this.nivel = 1;
