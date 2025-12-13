@@ -40,14 +40,14 @@ public class Evento extends ListaArmas {
 		Evento.OPCIONES.add("buscar una Tienda");
 		Evento.OPCIONES.add("buscar una Batalla");
 		Evento.OPCIONES.add("Campear");
-	}
-	
-	public static Integer getVivos() {
-		return JUGADORES_VIVOS;
+		
+		while(JUGADORES_VIVOS!=1) {
+			this.rondas();
+		}
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
-	public void rondas() {
+	private void rondas() {
 		Integer opcion;
 		RONDA++;
 		Evento.LOG="Ronda "+RONDA+"\n";
