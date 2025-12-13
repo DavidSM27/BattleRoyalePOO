@@ -166,9 +166,7 @@ public class Personaje {
         }
     }
 
-    /**
-     * Cura la vida del personaje
-     */
+    //
     public void curarVida(int cantidad) {
         if (!estaVivo) {
             System.out.println(this.nombre + " está muerto y no puede curarse.");
