@@ -69,6 +69,9 @@ public class Evento extends ListaArmas {
 	            
 	            do {
 	            	System.out.print("Elige una opcion:");
+	            	while(!sc.hasNext()) {
+	            		sc.next();
+	            	}
 	            	try{
 	            		opcion=sc.nextInt();
 	            	}catch(InputMismatchException e) {
@@ -182,7 +185,7 @@ public class Evento extends ListaArmas {
 						   super.armas.get(random).getAtaqueSinMejora(),
 						   mejora);
 		
-		//this.jugadores.get(I).equiparArma(arma);
+		this.jugadores.get(I).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
 		this.jugadores.get(I).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
 	}
