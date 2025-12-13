@@ -5,7 +5,7 @@ public class Magia extends Personaje {
     private int nivel;
 
     public Magia(String nombre, int nivel) {
-        super(nombre, 100, false);
+        super(nombre, 100);
 
         if (nivel < 1)
             this.nivel = 1;

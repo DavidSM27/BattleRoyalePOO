@@ -27,6 +27,7 @@ public class Personaje {
     protected int velocidad;
     protected int defensa;
     protected int suerte;
+    protected int puntosDeNivel;
 
     // Constructor por defecto
     public Personaje() {
@@ -51,6 +52,7 @@ public class Personaje {
         this.velocidad = NIVEL_ESTADISTICAS_INCIALES;
         this.defensa = NIVEL_ESTADISTICAS_INCIALES;
         this.suerte = NIVEL_ESTADISTICAS_INCIALES;
+        this.puntosDeNivel = PUNTOS_DE_NIVEL;
     }
 
     // Getters y setters
@@ -77,6 +79,22 @@ public class Personaje {
 
     public int getOro() {
         return oro;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
+
+    public int getSuerte() {
+        return suerte;
     }
 
     public void setOro(int oro) {
@@ -140,11 +158,11 @@ public class Personaje {
             this.vida = 0;
             this.estaVivo = false;
             System.out.println(this.nombre + " recibe " + cantidad +
-                    " de daño! (Vida: 0/" + this.vidaMax + ")");
+                    " de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
             System.out.println(this.nombre + " ha sido DERROTADO.");
         } else {
             System.out.println(this.nombre + " recibe " + cantidad +
-                    " de daño! (Vida: " + this.vida + "/" + this.vidaMax + ")");
+                    " de daño! (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
         }
     }
 
@@ -161,11 +179,11 @@ public class Personaje {
             return;
 
         int vidaAnterior = this.vida;
-        this.vida = Math.min(this.vida + cantidad, vidaMax);
+        this.vida = Math.min(this.vida + cantidad, VIDA_MAX_DEFECTO);
         int vidaCurada = this.vida - vidaAnterior;
 
         System.out.println(this.nombre + " se cura " + vidaCurada +
-                " HP. (Vida: " + this.vida + "/" + this.vidaMax + ")");
+                " HP. (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
     }
 
     // Permite equipar armas desde cofres
@@ -185,8 +203,8 @@ public class Personaje {
         String respuesta;
         do {
             System.out.println("\n¿Quieres cambiar tu arma actual (" +
-                    this.arma.getNombre() + ") por " + nuevaArma.getNombre() + "? (S/N)");
-            respuesta = sc.nextLine().trim().toUpperCase();
+                    this.arma.getNombre() + ") por " + nuevaArma.getNombre() + "? (Escribe S o N)");
+            respuesta = sc.nextLine().toUpperCase();
 
             switch (respuesta) {
                 case "S":
@@ -204,7 +222,7 @@ public class Personaje {
     }
 
     // Agrega oro a el inventario del jugador
-    public void añadirOro(int cantidad) {
+    public void anadirOro(int cantidad) {
         if (cantidad > 0) {
             this.oro += cantidad;
             System.out.println(this.nombre + " obtiene " + cantidad +
@@ -222,7 +240,7 @@ public class Personaje {
                         "  Oro: %d%n" +
                         "  Arma: %s%n" +
                         "  Tipo: %s",
-                nombre, vida, vidaMax, energia, ENERGIA_MAX,
+                nombre, vida, VIDA_MAX_DEFECTO, energia, ENERGIA_MAX,
                 estaVivo ? "Vivo" : "Muerto", oro, arma.getNombre(),
                 esNPC ? "NPC" : "Jugador");
     }
@@ -232,5 +250,124 @@ public class Personaje {
         if (sc != null) {
             sc.close();
         }
+    }
+
+    public void establecerEstadisticas() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\n=== ESTABLECER ESTADÍSTICAS ===");
+        System.out.println("Tienes " + this.puntosDeNivel + " puntos para distribuir");
+        System.out.println("Estadísticas actuales:");
+        System.out.println("  1. Fuerza: " + this.fuerza);
+        System.out.println("  2. Velocidad: " + this.velocidad);
+        System.out.println("  3. Defensa: " + this.defensa);
+        System.out.println("  4. Suerte: " + this.suerte);
+        System.out.println();
+
+        while (this.puntosDeNivel > 0) {
+            System.out.println("Puntos restantes: " + this.puntosDeNivel);
+            System.out.println("\n¿Qué estadística deseas mejorar?");
+            System.out.println("1. Fuerza (actual: " + this.fuerza + ")");
+            System.out.println("2. Velocidad (actual: " + this.velocidad + ")");
+            System.out.println("3. Defensa (actual: " + this.defensa + ")");
+            System.out.println("4. Suerte (actual: " + this.suerte + ")");
+            System.out.println("5. Finalizar distribución");
+
+            int opcion = 0;
+            boolean entradaValida = false;
+
+            while (!entradaValida) {
+                System.out.print("Elige una opción: ");
+                if (sc.hasNextInt()) {
+                    opcion = sc.nextInt();
+                    if (opcion >= 0 && opcion <= 4) {
+                        entradaValida = true;
+                    } else {
+                        System.out.println("Opción no válida. Elige entre 0 y 4.");
+                    }
+                } else {
+                    System.out.println("Por favor, introduce un número.");
+                    sc.next();
+                }
+            }
+
+            if (opcion == 0) {
+                if (this.puntosDeNivel > 0) {
+                    System.out.println();
+                    System.out.println("Aún te quedan " + this.puntosDeNivel + " puntos sin asignar.");
+                    System.out.print("¿Estás seguro de que quieres finalizar? (S/N): ");
+                    String confirmacion = sc.next().toUpperCase();
+                    if (confirmacion.equals("S")) {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+                continue;
+            }
+
+            // Pedir cantidad de puntos
+            System.out.print("¿Cuántos puntos quieres asignar? (máximo " + this.puntosDeNivel + "): ");
+            int puntosAsignados = 0;
+            boolean cantidadValida = false;
+
+            while (!cantidadValida) {
+                if (sc.hasNextInt()) {
+                    puntosAsignados = sc.nextInt();
+                    if (puntosAsignados > 0 && puntosAsignados <= this.puntosDeNivel) {
+                        cantidadValida = true;
+                    } else if (puntosAsignados <= 0) {
+                        System.out.println("Debes asignar al menos 1 punto.");
+                        System.out.print("Intenta de nuevo: ");
+                    } else {
+                        System.out.println(
+                                "No tienes tantos puntos. Solo tienes " + this.puntosDeNivel + " disponibles.");
+                        System.out.print("Intenta de nuevo: ");
+                    }
+                } else {
+                    System.out.println("Por favor, introduce un número válido.");
+                    System.out.print("Intenta de nuevo: ");
+                    sc.next();
+                }
+            }
+
+            // Asignar puntos a la estadística elegida
+            switch (opcion) {
+                case 1:
+                    this.fuerza += puntosAsignados;
+                    this.puntosDeNivel -= puntosAsignados;
+                    System.out.println("Fuerza aumentada a " + this.fuerza);
+                    break;
+                case 2:
+                    this.velocidad += puntosAsignados;
+                    this.puntosDeNivel -= puntosAsignados;
+                    System.out.println("Velocidad aumentada a " + this.velocidad);
+                    break;
+                case 3:
+                    this.defensa += puntosAsignados;
+                    this.puntosDeNivel -= puntosAsignados;
+                    System.out.println("Defensa aumentada a " + this.defensa);
+                    break;
+                case 4:
+                    this.suerte += puntosAsignados;
+                    this.puntosDeNivel -= puntosAsignados;
+                    System.out.println("Suerte aumentada a " + this.suerte);
+                    break;
+            }
+        }
+
+        mostrarEstadisticas();
+        sc.close();
+    }
+
+    public void mostrarEstadisticas() {
+
+        System.out.println("\n=== ESTADÍSTICAS FINALES ===");
+        System.out.println("  Fuerza: " + this.fuerza);
+        System.out.println("  Velocidad: " + this.velocidad);
+        System.out.println("  Defensa: " + this.defensa);
+        System.out.println("  Suerte: " + this.suerte);
+        System.out.println("  Puntos sobrantes: " + this.puntosDeNivel);
+        System.out.println("============================\n");
     }
 }
