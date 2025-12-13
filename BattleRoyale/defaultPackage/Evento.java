@@ -72,15 +72,13 @@ public class Evento extends ListaArmas {
 	            
 	            do {
 	            	System.out.print("Elige una opcion:");
-	            	while(!sc.hasNext()) {
-	            		sc.next();
-	            	}
 	            	try{
 	            		opcion=sc.nextInt();
 	            	}catch(InputMismatchException e) {
 	            		opcion=0;
+	            		sc.nextLine();
 	            	}
-	            	sc.nextLine();
+	            	
 				} while (opcion<1 || opcion>4);
 	            
 			}else {
