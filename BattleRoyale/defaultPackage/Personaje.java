@@ -1,5 +1,6 @@
 package defaultPackage;
 
+import java.security.ProtectionDomain;
 import java.util.Scanner;
 
 public class Personaje {
@@ -12,7 +13,7 @@ public class Personaje {
     protected static final int VIDA_MAX_DEFECTO = 100;
     protected static final int PUNTOS_DE_NIVEL = 20;
     protected static final int NIVEL_ESTADISTICAS_INCIALES = 1;
-
+    protected static final int SUBIDA_NIVEL = 100;
     private static int contadorPersonajes = 1;
 
     // Atributos
@@ -29,21 +30,23 @@ public class Personaje {
     protected int suerte;
     protected int puntosDeNivel;
     protected Elemento elemento;
+    protected int xp;
+    protected int nivel;
 
     // Constructor por defecto
     public Personaje() {
-        this("Jugador " + contadorPersonajes++, false);
-        this.elemento = Elemento.NEUTRO;
+        this("Jugador " + contadorPersonajes++, 1, false);
+        this.elemento = Elemento.FUEGO;
     }
 
     // Constructor con nombre propio
     public Personaje(String nombre) {
-        this(nombre, false);
-        this.elemento = Elemento.NEUTRO;
+        this(nombre, 1, false);
+        this.elemento = Elemento.FUEGO;
     }
 
     // Constructor completo
-    public Personaje(String nombre, boolean esNPC) {
+    public Personaje(String nombre, int nivel, boolean esNPC) {
         this.nombre = nombre;
         this.vida = VIDA_MAX_DEFECTO;
         this.energia = ENERGIA_MAX;
@@ -56,7 +59,9 @@ public class Personaje {
         this.defensa = NIVEL_ESTADISTICAS_INCIALES;
         this.suerte = NIVEL_ESTADISTICAS_INCIALES;
         this.puntosDeNivel = PUNTOS_DE_NIVEL;
-        this.elemento = Elemento.NEUTRO;
+        this.elemento = Elemento.FUEGO; // Por defecto el personaje es tipo fuego
+        this.nivel = nivel;
+        this.xp = 0;
     }
 
     // Getters y setters
@@ -242,6 +247,21 @@ public class Personaje {
 
     @Override
     public String toString() {
+
+        String estado;
+        if (estaVivo) {
+            estado = "Vivo";
+        } else {
+            estado = "Muerto";
+        }
+
+        String textoTipo;
+        if (esNPC) {
+            textoTipo = "NPC";
+        } else {
+            textoTipo = "Jugador";
+        }
+
         return String.format(
                 "=== %s ===%n" +
                         "  Vida: %d/%d%n" +
@@ -250,9 +270,15 @@ public class Personaje {
                         "  Oro: %d%n" +
                         "  Arma: %s%n" +
                         "  Tipo: %s",
-                nombre, vida, VIDA_MAX_DEFECTO, energia, ENERGIA_MAX,
-                estaVivo ? "Vivo" : "Muerto", oro, arma.getNombre(),
-                esNPC ? "NPC" : "Jugador");
+                nombre,
+                vida,
+                VIDA_MAX_DEFECTO,
+                energia,
+                ENERGIA_MAX,
+                estado,
+                oro,
+                arma.getNombre(),
+                textoTipo);
     }
 
     // Funcion para cerrar el scanner
@@ -370,6 +396,43 @@ public class Personaje {
         sc.close();
     }
 
+    public void distribuirPuntosAleatorio() {
+        if (this.puntosDeNivel <= 0) {
+            return;
+        }
+
+        System.out.println(this.nombre + " (NPC) distribuye sus " + this.puntosDeNivel + " puntos...");
+
+        int puntosRestantes = this.puntosDeNivel;
+
+        // Distribuir puntos uno a uno de forma aleatoria
+        while (puntosRestantes > 0) {
+            int estatistica = (int) (Math.random() * 4);
+
+            switch (estatistica) {
+                case 0:
+                    this.fuerza++;
+                    break;
+                case 1:
+                    this.velocidad++;
+                    break;
+                case 2:
+                    this.defensa++;
+                    break;
+                case 3:
+                    this.suerte++;
+                    break;
+            }
+
+            puntosRestantes--;
+        }
+
+        // Resetear puntos de nivel
+        this.puntosDeNivel = 0;
+
+        mostrarEstadisticas();
+    }
+
     public void mostrarEstadisticas() {
 
         System.out.println("\n=== ESTADÍSTICAS FINALES ===");
@@ -379,5 +442,17 @@ public class Personaje {
         System.out.println("  Suerte: " + this.suerte);
         System.out.println("  Puntos sobrantes: " + this.puntosDeNivel);
         System.out.println("============================\n");
+    }
+
+    public void ganarXP(int cantidad) {
+        if (cantidad > 0) {
+            xp += cantidad;
+            System.out.println(nombre + " gana " + cantidad + " XP. Total: " + xp + "/" + SUBIDA_NIVEL);
+
+            // Verificar si puede subir de nivel
+            if (xp >= SUBIDA_NIVEL) {
+                System.out.println("¡Puedes subir de nivel!");
+            }
+        }
     }
 }

@@ -2,24 +2,15 @@ package defaultPackage;
 
 public class Magia extends Personaje {
 
-    private int nivel;
-
     public Magia(String nombre, int nivel, boolean esNPC) {
-        super(nombre, esNPC);
+        super(nombre, nivel, esNPC);
         this.setElemento(Elemento.MAGIA);
-
-        if (nivel < 1)
-            this.nivel = 1;
-        else if (nivel > 5)
-            this.nivel = 5;
-        else
-            this.nivel = nivel;
     }
 
     private int calcularDanoPorNivel(int danoBase) {
         int danoFinal = 0;
 
-        switch (this.nivel) {
+        switch (nivel) {
             case 1:
 
                 danoFinal = danoBase;
