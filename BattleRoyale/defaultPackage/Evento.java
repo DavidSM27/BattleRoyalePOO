@@ -244,7 +244,7 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         // 2. Generar 50 personas
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 2; i++) {
             listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 
