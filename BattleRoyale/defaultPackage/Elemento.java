@@ -7,6 +7,4 @@ public enum Elemento {
     VIENTO,
     VIDA,
     MAGIA,
-    NEUTRO;
 }
-
