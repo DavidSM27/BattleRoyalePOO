@@ -114,6 +114,7 @@ public class Partida {
     
     private Personaje crearJugador(int numero) {
         int elemento;
+        boolean esNpc = true;
     		
     		System.out.println("\n--- Jugador " + numero + " ---");
         
@@ -145,17 +146,18 @@ public class Partida {
         System.out.println();
         
         // 3. CREAR OBJETO SEGÚN ELEMENTO
-        return crearPersonajePorElemento(nombre, elemento);
+        return crearPersonajePorElemento(nombre, elemento, esNpc);
     }
     
     private Personaje crearNPC(int numero) {
+    	boolean esNpc = true;
         String[] nombresNPC = {"Thor", "Luna", "Kai", "Zara", "Rex", "Nova"};
         String nombre = nombresNPC[(numero-1) % nombresNPC.length] + "_" + numero;
         
         // Elemento aleatorio 1-6
         int elemento = (int)(Math.random() * 6) + 1;
         
-        Personaje npc = crearPersonajePorElemento(nombre, elemento);
+        Personaje npc = crearPersonajePorElemento(nombre, elemento, esNpc);
         
         return npc;
     }
