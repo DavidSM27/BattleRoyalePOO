@@ -11,7 +11,7 @@ public class Personaje {
     protected static final int ORO_INICIAL = 0;
     protected static final int VIDA_MAX_DEFECTO = 100;
     protected static final int PUNTOS_DE_NIVEL = 20;
-    protected static final int NIVEL_ESTADISTICAS_INCIALES = 1;
+    protected static final int NIVEL_ESTADISTICAS_INCIALES = 0;
     protected static final int SUBIDA_NIVEL = 100;
     private static int contadorPersonajes = 1;
 
@@ -325,7 +325,7 @@ public class Personaje {
             System.out.println("2. Velocidad (actual: " + this.velocidad + ")");
             System.out.println("3. Defensa (actual: " + this.defensa + ")");
             System.out.println("4. Suerte (actual: " + this.suerte + ")");
-            System.out.println("5. Finalizar distribución");
+            System.out.println("0. Finalizar distribución");
 
             int opcion = 0;
             boolean entradaValida = false;
