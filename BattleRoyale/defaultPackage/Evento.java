@@ -42,8 +42,8 @@ public class Evento extends ListaArmas {
 		Evento.OPCIONES.add("Campear");
 	}
 	
-	public static Integer getRonda() {
-		return RONDA;
+	public static Integer getVivos() {
+		return JUGADORES_VIVOS;
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
@@ -231,12 +231,11 @@ public class Evento extends ListaArmas {
 		
 		this.jugadores.get(random).recibirDanio(1000);
 		
-		if(!this.jugadores.get(random).estaVivo) {
+		if(this.jugadores.get(I).estaVivo) {
 			Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
-		}else if(!this.jugadores.get(I).estaVivo) {
+		}else{
 			Evento.LOG+="\t\t-"+this.jugadores.get(random).getNombre()+" a matado a "+this.jugadores.get(I).getNombre();
 		}
-		
 		
 	}
 	
