@@ -14,8 +14,8 @@ public class Tienda {
 	
 	 private Scanner sc;
 
-    public Tienda(Scanner sc) {
-        this.sc = sc;
+    public Tienda() {
+        this.sc = new Scanner(System.in);
     }
 	
 	public void menuTienda(Personaje p) {
@@ -158,14 +158,14 @@ public class Tienda {
 	}
 	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		
 
         // Crear un personaje para probar
         Personaje jugador = new Personaje("Jugador de prueba");
         jugador.setOro(50); //darle algo de oro para probar mejoras
 
         // Crear la tienda
-        Tienda tienda = new Tienda(sc);
+        Tienda tienda = new Tienda();
 
         // Mostrar menú de tienda
         tienda.menuTienda(jugador);
@@ -174,8 +174,6 @@ public class Tienda {
         System.out.println("Arma equipada: " + jugador.getArma().getNombre());
         System.out.println("Ataque: " + jugador.getArma().getAtaque());
         System.out.println("Oro restante: " + jugador.getOro());
-
-        sc.close();
     }
 	
 	
