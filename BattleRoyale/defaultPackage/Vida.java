@@ -5,7 +5,7 @@ public class Vida extends Personaje {
     private int nivel;
 
     public Vida(String nombre, int nivel, boolean esNPC) {
-        super(nombre, esNPC);
+        super(nombre, nivel, esNPC);
         this.setElemento(Elemento.VIDA);
         if (nivel < 1) {
             this.nivel = 1;

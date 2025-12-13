@@ -5,7 +5,7 @@ public class Agua extends Personaje {
     private int nivel;
 
     public Agua(String nombre, int nivel, boolean esNPC) {
-        super(nombre, esNPC);
+        super(nombre, nivel, esNPC);
         this.setElemento(Elemento.AGUA);
         if (nivel < 1) {
             this.nivel = 1;

@@ -5,7 +5,7 @@ public class Viento extends Personaje {
     private int nivel;
 
     public Viento(String nombre, int nivel, boolean esNPC) {
-        super(nombre, esNPC);
+        super(nombre, nivel, esNPC);
         this.setElemento(Elemento.VIENTO);
 
         if (nivel < 1) {

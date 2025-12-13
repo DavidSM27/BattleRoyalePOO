@@ -5,7 +5,7 @@ public class Tierra extends Personaje {
     private int nivel;
 
     public Tierra(String nombre, int nivel, boolean esNPC) {
-        super(nombre, esNPC);
+        super(nombre, nivel, esNPC);
         this.setElemento(Elemento.TIERRA);
         if (nivel < 1)
             this.nivel = 1;
