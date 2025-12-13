@@ -3,6 +3,7 @@ package defaultPackage;
 import java.util.Scanner;
 
 public class Personaje {
+	private static Scanner sc = new Scanner(System.in);
 
     protected static final int ENERGIA_MAX = 100;
     protected static final int COSTE_HABILIDAD = 50;
@@ -116,7 +117,7 @@ public class Personaje {
 
     // equipa al jugador el nuevo arma que se encuentra en el cofre
     public void equiparArma(Arma nuevaArma) {
-        Scanner sc = new Scanner(System.in);
+        
         String respuesta;
 
         do {
@@ -133,7 +134,7 @@ public class Personaje {
             }
         } while (!respuesta.equals("S") && !respuesta.equals("N"));
 
-        sc.close();
+        
     }
 
     public String getNombre() {

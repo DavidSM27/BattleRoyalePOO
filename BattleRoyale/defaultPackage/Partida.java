@@ -1,5 +1,7 @@
 package defaultPackage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -8,30 +10,22 @@ public class Partida {
 	Scanner sc = new Scanner(System.in);
 	
 	protected String modoJuego;
-	private Integer nJugadores;
-	private Integer nNPCs;
+	protected Integer nJugadores;
+	protected Integer nNPCs;
+	
+	protected List<Personaje> personajes = new ArrayList<>();
+	protected List<Personaje> personajesVivos = new ArrayList<>();
+	protected List<Personaje> jugadoresHumanos = new ArrayList<>();
+	protected List<Personaje> jugadoresNPCs = new ArrayList<>();
 	
 	Partida(String modoJuego){
 		this.modoJuego = modoJuego;
-		System.out.println("Estamos en solitario");
+		iniciarJuego();
 		
 	}	
-	
-	private Boolean equipos;
-	private String respuesta;
-	//private String modoJuego;
-	private Integer modo;
-	
-	
-	public static void main(String[] args) {
-		System.out.println("¡BIENVENIDO AL BATTLE ROYALE!");
-		EmpezarPartida config = new EmpezarPartida();	
-		
-	}
-	
+	  
 	public void iniciarJuego(){
 		establecerReglas();
-		System.out.println(modoJuego);
 	
 	}
 	
@@ -47,7 +41,6 @@ public class Partida {
         System.out.println("Total de jugadores: " + (nJugadores + nNPCs));    	
 	}
 	
-
 	
 	public int numeroJugadores() {
         int jugadores = 0;
@@ -63,6 +56,9 @@ public class Partida {
     			
     			jugadores = sc.nextInt();
         		sc.nextLine();
+        		if(jugadores < 1) {
+        			System.out.println("Debe haber al menos 1 jugador");
+        		}
         } while(jugadores < 1);
     		System.out.println();
         
@@ -83,10 +79,91 @@ public class Partida {
     			
     			npcs = sc.nextInt();
         		sc.nextLine();
+        		
+        		if(npcs < 1) {
+        			System.out.println("Debe haber al menos 1 bot");
+        		}
         } while(npcs < 1);
     		System.out.println();
         
         return npcs;
     }	
 	
+    public void crearPersonajes() {
+        System.out.println("\n=== CREACIÓN DE PERSONAJES ===");
+        
+        // 1. CREAR JUGADORES HUMANOS
+        for(int i = 1; i <= nJugadores; i++) {
+            Personaje jugador = crearJugador(i);
+            jugadoresHumanos.add(jugador);
+            personajes.add(jugador);
+            personajesVivos.add(jugador);
+        }
+        
+        // 2. CREAR NPCs
+        for(int i = 1; i <= nNPCs; i++) {
+            Personaje npc = crearNPC(i);
+            jugadoresNPCs.add(npc);
+            personajes.add(npc);
+            personajesVivos.add(npc);
+        }
+        
+        System.out.println("✅ " + personajes.size() + " personajes creados.");
+    }
+    
+    private Personaje crearJugador(int numero) {
+        int elemento;
+    		
+    		System.out.println("\n--- Jugador " + numero + " ---");
+        
+        // 1. PEDIR NOMBRE
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+        
+        // 2. ELEGIR ELEMENTO
+        System.out.println("\nElige elemento:");
+        System.out.println("1. FUEGO   2. AGUA   3. TIERRA");
+        System.out.println("4. VIENTO  5. MAGIA  6. VIDA");
+        
+        do {
+    		System.out.print("Elemento: ");
+    		while(!sc.hasNextInt()) {
+                System.out.println("Por favor, ingresa un número válido.");
+                System.out.print("Elemento: ");
+                sc.next();
+        }
+    		elemento = sc.nextInt();
+    		sc.nextLine();
+    		
+    		if(elemento < 1 || elemento > 6) {
+    				System.out.println("Por favor, ingresa un número válido");
+    				System.out.println("1. FUEGO   2. AGUA   3. TIERRA");
+    		        System.out.println("4. VIENTO  5. MAGIA  6. VIDA");
+    			}   		
+        } while(elemento < 1 || elemento > 6);
+        System.out.println();
+        
+        // 3. CREAR OBJETO SEGÚN ELEMENTO
+        return crearPersonajePorElemento(nombre, elemento);
+    }
+    
+    private Personaje crearPersonajePorElemento(String nombre, int elemento) {
+        switch(elemento) {
+            //case 1: // FUEGO
+                //return new Fuego(nombre, 1);  // nivel 1
+            case 2: // AGUA
+                return new Agua(nombre, 1);
+            case 3: // TIERRA
+                return new Tierra(nombre, 1);
+            case 4: // VIENTO
+                return new Viento(nombre, 1);
+            case 5: // MAGIA
+                return new Magia(nombre, 1);
+            case 6: // VIDA
+                return new Vida(nombre, 1);
+            default:
+                return new Vida(nombre, 1);
+        }
+    }
+    
 }	

@@ -47,7 +47,7 @@ public class Arma implements Modificaciones{
 		return this.mejora;
 	}
 
-	private void setMejora(Double mejora) {
+	public void setMejora(Double mejora) {
 		this.mejora = mejora;
 	}
 	

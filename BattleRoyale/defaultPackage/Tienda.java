@@ -12,10 +12,10 @@ public class Tienda {
 	
 	// haz un while en el mejorar arma
 	
-	 private Scanner sc;
+	private Scanner sc;
 
-    public Tienda(Scanner sc) {
-        this.sc = sc;
+    public Tienda(Personaje p) {
+        this.sc = new Scanner(System.in);
     }
 	
 	public void menuTienda(Personaje p) {
@@ -60,37 +60,33 @@ public class Tienda {
 	
 	public void menuMejorarArma(Personaje p) {
 		
-		System.out.println("Vendedor: \"Ahh… ¿Quieres fortalecer tu acero? Puedo mejorar cualquiera\r\n"
-				+ "de tus armas, por el precio adecuado, claro...\"\n");
-		System.out.println("===== MEJORAR ARMAS =====");
-		System.out.println("Tu oro: " + p.getOro() + "\n");
-		System.out.println("Elige un arma para mejorar: \n");
+		String opcion;
 		
-		System.out.println("[1] " + p.getArma().getNombre() + " Coste: 20 oro");
-		System.out.println("[2] Volver");
-		
-		int opcion;
-		System.out.println("> ");
-		
-		//compruba si es un numero, sino lo es te lo pide de nuevo
-		while(!sc.hasNextInt()) {
-			System.out.println("Por favor, igresa un numero valido");
-			sc.next();
-			System.out.println("> ");
-		}
-		
-		opcion = sc.nextInt();
-		
-		switch(opcion) {
-			case 1:
-				if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
+		do {
+			
+			System.out.println("Vendedor: \"Ahh… ¿Quieres fortalecer tu acero? Puedo mejorar cualquiera\r\n"
+					+ "de tus armas, por el precio adecuado, claro...\"\n");
+			System.out.println("===== MEJORAR ARMAS =====");
+			System.out.println("Tu oro: " + p.getOro() + "\n");
+			
+			System.out.println("Tu arma: " + p.getArma().toString());
+			System.out.println("Coste de la mejora: 20 oro\n");
+			
+			System.out.println("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "? Puedo hacerla brillar de nuevo…\r\n"
+					+ "pero te costará 20 de oro.\" (S/N)\n");
+			
+			System.out.print("> ");
+			
+			opcion = sc.nextLine().toUpperCase();
+			
+			switch(opcion) {
+			case "S":
+				if(p.getArma().getMejora() >= 2.0) {
+					System.out.println("Tu arma esta al maximo\n");
 					
-					System.out.println("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "? Puedo hacerla brillar de nuevo…\r\n"
-							+ "pero te costará 20 de oro.\"\n");
-				
+				}else if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
 					if(p.getOro() >= 20){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
-						
-						
+					
 						p.setOro(p.getOro() - 20);
 						p.getArma().modificacion(1.2); // ya veremos como metemos las mejoras
 						
@@ -100,22 +96,23 @@ public class Tienda {
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}
-					
-				}else {
+				}
+				else {
 					System.out.println("No puedes mejorar el pico ⛏️\n");
 				}
 				
-				
 				break;
-			case 2:
-				System.out.println("Volviendo al menu de la tienda🛒");
+			case "N":
+				System.out.println("Volviendo al menu de la tienda🛒\n");
 				break;
 			default:
 				System.out.println("Opcion no valida\n");
 				break;
 		}
-		
-		
+			
+			
+		}while(!opcion.equals("S") && !opcion.equals("N"));
+
 	}
 	
 	public void menuPociones(Personaje p) {
@@ -131,6 +128,8 @@ public class Tienda {
 			System.out.println("Precio por pocion: 15 de oro \n");
 			
 			System.out.println("¿Quiere comprar una pocion? (S/N)");
+			
+			System.out.println("> ");
 			
 			respuesta = sc.nextLine().toUpperCase();
 			
@@ -158,14 +157,15 @@ public class Tienda {
 	}
 	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-
+	
         // Crear un personaje para probar
         Personaje jugador = new Personaje("Jugador de prueba");
         jugador.setOro(50); //darle algo de oro para probar mejoras
+        jugador.getArma().setMejora(2.0);
+        
 
         // Crear la tienda
-        Tienda tienda = new Tienda(sc);
+        Tienda tienda = new Tienda(jugador);
 
         // Mostrar menú de tienda
         tienda.menuTienda(jugador);
@@ -174,8 +174,6 @@ public class Tienda {
         System.out.println("Arma equipada: " + jugador.getArma().getNombre());
         System.out.println("Ataque: " + jugador.getArma().getAtaque());
         System.out.println("Oro restante: " + jugador.getOro());
-
-        sc.close();
     }
 	
 	
