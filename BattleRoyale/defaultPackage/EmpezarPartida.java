@@ -9,6 +9,10 @@ public class EmpezarPartida {
 	private String modoJuego;
 	private Integer modo;
 	
+	public static void main(String[] args) {
+		new EmpezarPartida();
+	}
+	
 	public EmpezarPartida() {
 		establecerModo();
 	}
@@ -103,7 +107,7 @@ public class EmpezarPartida {
 	    		sc.nextLine();
 	    		
 	    		if(modo < 1 || modo > 3) {
-	    			System.out.println("Opcion invalida, intentelo de nuevo");
+	    			System.out.println("Por favor, ingresa un número válido");
 	    			System.out.println("\n(1) SOLITARIO");
 	    		    System.out.println("(2) DUOS");
 	    		    System.out.println("(3) ESCUADRONES");

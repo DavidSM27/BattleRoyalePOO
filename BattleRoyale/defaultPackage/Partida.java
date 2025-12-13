@@ -8,30 +8,17 @@ public class Partida {
 	Scanner sc = new Scanner(System.in);
 	
 	protected String modoJuego;
-	private Integer nJugadores;
-	private Integer nNPCs;
+	protected Integer nJugadores;
+	protected Integer nNPCs;
 	
 	Partida(String modoJuego){
 		this.modoJuego = modoJuego;
-		System.out.println("Estamos en solitario");
+		iniciarJuego();
 		
 	}	
-	
-	private Boolean equipos;
-	private String respuesta;
-	//private String modoJuego;
-	private Integer modo;
-	
-	
-	public static void main(String[] args) {
-		System.out.println("¡BIENVENIDO AL BATTLE ROYALE!");
-		EmpezarPartida config = new EmpezarPartida();	
-		
-	}
-	
+	  
 	public void iniciarJuego(){
 		establecerReglas();
-		System.out.println(modoJuego);
 	
 	}
 	
@@ -47,7 +34,6 @@ public class Partida {
         System.out.println("Total de jugadores: " + (nJugadores + nNPCs));    	
 	}
 	
-
 	
 	public int numeroJugadores() {
         int jugadores = 0;
@@ -63,6 +49,9 @@ public class Partida {
     			
     			jugadores = sc.nextInt();
         		sc.nextLine();
+        		if(jugadores < 1) {
+        			System.out.println("Debe haber al menos 1 jugador");
+        		}
         } while(jugadores < 1);
     		System.out.println();
         
@@ -83,6 +72,10 @@ public class Partida {
     			
     			npcs = sc.nextInt();
         		sc.nextLine();
+        		
+        		if(npcs < 1) {
+        			System.out.println("Debe haber al menos 1 bot");
+        		}
         } while(npcs < 1);
     		System.out.println();
         
