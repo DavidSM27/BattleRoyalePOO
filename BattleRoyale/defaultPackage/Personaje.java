@@ -1,6 +1,5 @@
 package defaultPackage;
 
-import java.security.ProtectionDomain;
 import java.util.Scanner;
 
 public class Personaje {
@@ -62,6 +61,11 @@ public class Personaje {
         this.elemento = Elemento.FUEGO; // Por defecto el personaje es tipo fuego
         this.nivel = nivel;
         this.xp = 0;
+        if (esNPC) {
+            distribuirPuntosAleatorio();
+        } else {
+            establecerEstadisticas();
+        }
     }
 
     // Getters y setters
@@ -452,7 +456,9 @@ public class Personaje {
             // Verificar si puede subir de nivel
             if (xp >= SUBIDA_NIVEL) {
                 System.out.println("¡Puedes subir de nivel!");
+                nivel++;
             }
         }
+
     }
 }
