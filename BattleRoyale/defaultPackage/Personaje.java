@@ -231,7 +231,7 @@ public class Personaje {
 	        do {
 	            System.out.println("\n¿Quieres cambiar tu arma?");
 	            
-	            System.out.println("Te ha tocado esta "+this.arma.toString());
+	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
 	            System.out.println("\nTu "+this.arma.toString());
 	            
 	            respuesta = sc.nextLine().toUpperCase();

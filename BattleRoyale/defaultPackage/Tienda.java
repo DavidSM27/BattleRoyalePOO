@@ -79,14 +79,16 @@ public class Tienda {
 					System.out.println("Tu arma esta al maximo\n");
 					
 				}else if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
-					if(p.getOro() >= COSTO_MEJORA){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
+					if(p.getOro() >= COSTO_MEJORA && p.getArma().getMejora()<2){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
 					
 						p.setOro(p.getOro() - COSTO_MEJORA);
-						p.getArma().modificacion(1.2); // ya veremos como metemos las mejoras
+						p.getArma().modificacion(p.getArma().getMejora()+0.1); // ya veremos como metemos las mejoras
 						
 						System.out.println("Has mejorado tu " + p.getArma().getNombre() + " 🗡️");
 						System.out.println("Nuevo ataque: " + p.getArma().getAtaque() + "\n");
 						
+					}else if(p.getArma().getMejora()==2){
+						System.out.println("Tu arma no se puede mejorar más.");
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}
@@ -121,7 +123,7 @@ public class Tienda {
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
 			System.out.println("Precio por pocion de curacion (+30 PS): " + COSTO_POCIONES + " de oro\n");
 			
-			System.out.println("Tu vida actual:" + p.getVida());
+			System.out.println("Tu vida actual: " + p.getVida() + " ps\n");
 			
 			System.out.println("¿Quiere comprar una pocion? (S/N)");
 			
@@ -160,6 +162,7 @@ public class Tienda {
 	
         // Crear un personaje para probar
         Personaje jugador = new Personaje("Jugador de prueba");
+        jugador.equiparArma(new Arma("Fusil", 30., 1.9));
         jugador.setOro(20000); //darle algo de oro para probar mejoras
         jugador.getArma().setMejora(1.9);
         
