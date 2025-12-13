@@ -96,7 +96,7 @@ public class Evento extends ListaArmas {
 			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
 			Evento.LOG+="\n\n";
-			System.out.println("\n\n");
+			System.out.println("\n");
 		}
 		System.out.println(Evento.LOG);
 	}
@@ -213,7 +213,7 @@ public class Evento extends ListaArmas {
 
         // 2. Generar 50 personas
         for (int i = 1; i <= 21; i++) {
-            listaJugadores.add(new Personaje());
+            listaJugadores.add(new Personaje(("Jugador "+i), true));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
