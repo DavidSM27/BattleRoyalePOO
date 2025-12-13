@@ -4,8 +4,13 @@ public class Vida extends Personaje {
 
     private int nivel;
 
+<<<<<<< HEAD
     public Vida(String nombre, int nivel, boolean esNPC) {
         super(nombre, esNPC);
+=======
+    public Vida(String nombre, int nivel) {
+        super(nombre, false);
+>>>>>>> 577781a85e2c6c2e163a4e7d38d919409124b560
         if (nivel < 1) {
             this.nivel = 1;
         } else if (nivel > 5) {
