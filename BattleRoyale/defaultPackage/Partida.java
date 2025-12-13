@@ -114,7 +114,7 @@ public class Partida {
     
     private Personaje crearJugador(int numero) {
         int elemento;
-        boolean esNpc = true;
+        boolean esNpc = false;
     		
     	System.out.println("\n--- Jugador " + numero + " ---");
         
