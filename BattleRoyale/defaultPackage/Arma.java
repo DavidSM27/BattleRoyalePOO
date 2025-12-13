@@ -1,6 +1,6 @@
 package defaultPackage;
 
-public class Arma implements Modificaciones{
+public class Arma implements Modificaciones, Comparable<Arma>{
 	//Constantes
 	public static final String ARMA_DEFAULT = "Pico";
 	public static final Double ATAQUE_DEFAULT = 20.0; //daño default del pico
@@ -69,6 +69,20 @@ public class Arma implements Modificaciones{
 		this.setMejora(mejora);
 		this.setAtaque(((double)(Math.round((this.ataqueSinMejora * this.mejora) * 100)) / 100));
 	}
+	
+	public int compareTo(Arma otro) {
+		Integer resultado;
+		if(this.ataque>otro.ataque) {
+			resultado=1;
+		}else if(this.ataque<otro.ataque) {
+			resultado=-1;
+		}else {
+			resultado=0;
+		}
+		
+		return resultado;
+	}
+	
 	
 	//main de pruebas
 	public static void main(String[] args) {
