@@ -113,10 +113,19 @@ public class Evento extends ListaArmas {
 			prob_batalla=0.4;
 		}
 		
-		//prob_cofre+=prob_cofre*( ((Double)jugadores.get(I).getSuerte()) /100.);
-		//prob_batalla+=prob_batalla*( ((Double)jugadores.get(I).getSuerte()) /100.);
-		//prob_tienda+=prob_tienda*( ((Double)jugadores.get(I).getSuerte()) /100.);
-		//prob_camp+=prob_camp*( ((Double)jugadores.get(I).getSuerte()) /100.);
+		if(prob_batalla<0.5) {
+			prob_batalla=0.5;
+		}
+		if(JUGADORES_VIVOS<7) {
+			prob_tienda=0.2;
+		}
+		
+		Double suerte=( ((double)jugadores.get(I).getSuerte())*5. /100.);
+		
+		prob_cofre+=prob_cofre*suerte;
+		prob_batalla+=prob_batalla*suerte;
+		prob_tienda+=prob_tienda*suerte;
+		prob_camp+=prob_camp*suerte;
 		
 		random=Math.random();
 		switch (opcion) {
@@ -179,11 +188,25 @@ public class Evento extends ListaArmas {
 	private void cofre() {
 		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a abierto un cofre\n";
 		
-		Integer random=(int)Math.round(Math.random()*super.armas.size())%super.armas.size();
+		Double suerte=( ((double)jugadores.get(I).getSuerte())*5. /100.);
+		Double random=Math.random();
+		Integer aux=0;
+		if(random<0.05*suerte) {
+			aux=0;
+		}else if(random<0.2*suerte) {
+			aux=1;
+		}else if(random<0.4*suerte) {
+			aux=2;
+		}else if(random<0.65*suerte) {
+			aux=3;
+		}else {
+			aux=4;
+		}
+		
 		Double mejora=((double)Math.round(Math.random()*10))/10+1;
 		
-		Arma arma=new Arma(super.armas.get(random).getNombre(),
-						   super.armas.get(random).getAtaqueSinMejora(),
+		Arma arma=new Arma(super.armas.get(aux).getNombre(),
+						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
 		this.jugadores.get(I).equiparArma(arma);
@@ -192,7 +215,7 @@ public class Evento extends ListaArmas {
 	}
 	
 	private void tienda() {
-		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda\n";
+		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda";
 		
 		tienda.menuTienda(this.jugadores.get(I));
 	}
@@ -202,9 +225,19 @@ public class Evento extends ListaArmas {
 		if(random.equals(I)) {
 			random=this.jugadores.size()-1;
 		}
-		//Evento.LOG+="\t-"+this.jugadores.get(I).batalla(this.jugadores.get(random));
-		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
+		
+		//Batalla jugador=new Batalla(this.jugadores.get(I));
+		//Evento.LOG+=jugador.batalla(this.jugadores.get(random));
+		
 		this.jugadores.get(random).recibirDanio(1000);
+		
+		if(!this.jugadores.get(random).estaVivo) {
+			Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
+		}else if(!this.jugadores.get(I).estaVivo) {
+			Evento.LOG+="\t\t-"+this.jugadores.get(random).getNombre()+" a matado a "+this.jugadores.get(I).getNombre();
+		}
+		
+		
 	}
 	
 	public static void main(String[] args) {
@@ -212,7 +245,7 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         // 2. Generar 50 personas
-        for (int i = 1; i <= 21; i++) {
+        for (int i = 1; i <= 5; i++) {
             listaJugadores.add(new Personaje(("Jugador "+i), true));
         }
 
