@@ -1,16 +1,11 @@
 package defaultPackage;
 
 public class Tierra extends Personaje {
-
-    private int nivel;
-
-<<<<<<< HEAD
-    public Tierra(String nombre, int nivel, boolean esNPC) {
-        super(nombre, esNPC);
-=======
-    public Tierra(String nombre, int nivel) {
-        super(nombre, false);
->>>>>>> 577781a85e2c6c2e163a4e7d38d919409124b560
+	
+	private int nivel;
+	
+	public Tierra(String nombre, int nivel, boolean esNPC) {
+    	 super(nombre, esNPC);
 
         if (nivel < 1)
             this.nivel = 1;

@@ -35,8 +35,8 @@ public class Personaje {
     }
 
     // Constructor con nombre propio
-    public Personaje(String nombre) {
-        this(nombre, false);
+    public Personaje(String nombre, boolean esNPC) {
+        this(nombre, esNPC);
     }
 
     // Constructor completo
