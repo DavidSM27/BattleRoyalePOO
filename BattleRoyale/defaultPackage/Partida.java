@@ -116,7 +116,7 @@ public class Partida {
         int elemento;
         boolean esNpc = true;
     		
-    		System.out.println("\n--- Jugador " + numero + " ---");
+    	System.out.println("\n--- Jugador " + numero + " ---");
         
         // 1. PEDIR NOMBRE
         System.out.print("Nombre: ");
@@ -186,7 +186,7 @@ public class Partida {
         for(int i = 0; i < personajes.size(); i++) {
             Personaje p = personajes.get(i);
             String tipo = jugadoresHumanos.contains(p) ? "[Humano]" : "[NPC]";
-            System.out.println((i+1) + ". " + p.getNombre() + " " + tipo);
+            System.out.println((i+1) + ". " + p.getNombre() + " " + tipo + " " + p.getElemento());
         }
     }
     
