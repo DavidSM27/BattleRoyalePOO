@@ -46,12 +46,12 @@ public class Magia extends Personaje {
         return danoFinal;
     }
 
-    public void lanzarBolaDeFuego(Personaje objetivo, Integer potenciador) {
-        if (intentarGastarEnergia("Maná")) {
+    public void lanzarBolaDeFuego(Personaje objetivo) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
 
             // Calculamos el daño base original
-            int danoBase = 40 * potenciador;
+            int danoBase = 40;
             // Aplicamos el switch según el nivel
             int danoReal = calcularDanoPorNivel(danoBase);
 
@@ -59,12 +59,12 @@ public class Magia extends Personaje {
         }
     }
 
-    public void congelarEnemigo(Personaje objetivo, Integer potenciador) {
-        if (intentarGastarEnergia("Maná")) {
+    public void congelarEnemigo(Personaje objetivo) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
 
             // Calculamos el daño base original
-            int danoBase = 20 * potenciador;
+            int danoBase = 20;
             // Aplicamos el switch según el nivel
             int danoReal = calcularDanoPorNivel(danoBase);
 
@@ -73,7 +73,7 @@ public class Magia extends Personaje {
     }
 
     public void curacionDivina() {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " usa magia sagrada.");
             this.curarVida(50);
         }

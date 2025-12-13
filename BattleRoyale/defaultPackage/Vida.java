@@ -41,7 +41,7 @@ public class Vida extends Personaje {
     }
 
     public void apretonDeCorazon(Personaje objetivo) {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " le para el corazon a " + objetivo.getNombre() + "!");
             int dano = calcularDanoNivel(40);
             objetivo.recibirDanio(dano);
@@ -49,7 +49,7 @@ public class Vida extends Personaje {
     }
 
     public void explotarSangre(Personaje objetivo) {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " saca toda la sangre del cuerpo de " + objetivo.getNombre() + "!");
             int dano = calcularDanoNivel(20);
             objetivo.recibirDanio(dano);
@@ -57,7 +57,7 @@ public class Vida extends Personaje {
     }
 
     public void curacionMedica() {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " es operado del corazon en un quirofano");
             this.curarVida(50);
         }

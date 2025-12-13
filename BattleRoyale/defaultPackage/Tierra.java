@@ -42,7 +42,7 @@ public class Tierra extends Personaje {
     }
 
     public void crearGrieta(Personaje objetivo) {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " tira por una grieta a " + objetivo.getNombre() + "!");
 
             int danoReal = calcularImpactoTerrestre(40);
@@ -52,7 +52,7 @@ public class Tierra extends Personaje {
     }
 
     public void lanzarRoca(Personaje objetivo) {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " aplasta con una roca a " + objetivo.getNombre() + "!");
 
             int danoReal = calcularImpactoTerrestre(20);
@@ -62,7 +62,7 @@ public class Tierra extends Personaje {
     }
 
     public void sanacionRocal() {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " se cura por el poder de las rocas.");
             this.curarVida(50);
         }

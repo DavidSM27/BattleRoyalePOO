@@ -5,7 +5,7 @@ public class Fuego extends Personaje {
     private int nivel;
 
     public Fuego(String nombre, int nivel) {
-        super(nombre, 100, false);
+        super(nombre, false);
 
         if (nivel < 1)
             this.nivel = 1;
@@ -47,7 +47,7 @@ public class Fuego extends Personaje {
     }
 
     public void lluviaInfernal(Personaje objetivo, Integer potenciador) {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
 
             // Calculamos el daño base original
@@ -60,7 +60,7 @@ public class Fuego extends Personaje {
     }
 
     public void marDeLava(Personaje objetivo, Integer potenciador) {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
 
             // Calculamos el daño base original
@@ -73,7 +73,7 @@ public class Fuego extends Personaje {
     }
 
     public void curacionDelInfierno() {
-        if (intentarGastarEnergia("Maná")) {
+        if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " usa magia sagrada.");
             this.curarVida(50);
         }
