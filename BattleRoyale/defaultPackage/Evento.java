@@ -23,11 +23,14 @@ public class Evento extends ListaArmas {
 	
 	
 	private List<Personaje> jugadores;
+	private Tienda tienda;
 	
 	public Evento(List<Personaje> jugadores){
 		super();
 		this.jugadores=jugadores;
 		Collections.shuffle(jugadores);
+		
+		this.tienda=new Tienda();
 		
 		Evento.COFRES_TOTALES=this.jugadores.size()*4;
 		Evento.JUGADORES_TOTALES=this.jugadores.size();
@@ -193,7 +196,6 @@ public class Evento extends ListaArmas {
 	private void tienda() {
 		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda\n";
 		
-		Tienda tienda=new Tienda();//a tienda hay  que pasarle un jugador para que abra su propia tienda
 		tienda.menuTienda(this.jugadores.get(I));
 	}
 	
