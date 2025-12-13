@@ -185,6 +185,10 @@ public class Personaje {
             System.out.println(this.nombre + " recibe " + cantidad +
                     " de daño! (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
         }
+        
+        if(this.vida<=0) {
+        	this.estaVivo=false;
+        }
     }
 
     //
@@ -208,19 +212,28 @@ public class Personaje {
     // Permite equipar armas desde cofres
     public String equiparArma(Arma nuevaArma) {
     	String log="";
+    	
         if (nuevaArma == null) {
             System.out.println("Error: El arma no es válida.");
             log="\n";
-        }else if (esNPC && this.arma.compareTo(nuevaArma)==1) {
+        }
+        
+        else if (esNPC && this.arma.compareTo(nuevaArma)==1) {
             this.arma = nuevaArma;
             System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
             log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
-        }else {
+        }
+        
+        else {
 	
 	        // Preguntar a los jugadores si quieren cambiar el arma
 	        String respuesta;
 	        do {
 	            System.out.println("\n¿Quieres cambiar tu arma?");
+	            
+	            System.out.println("Te ha tocado esta "+this.arma.toString());
+	            System.out.println("\nTu "+this.arma.toString());
+	            
 	            respuesta = sc.nextLine().toUpperCase();
 	
 	            switch (respuesta) {
