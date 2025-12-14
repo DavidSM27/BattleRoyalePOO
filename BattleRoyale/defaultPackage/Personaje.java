@@ -143,6 +143,24 @@ public class Personaje implements Comparable<Personaje> {
     	
     	return respuesta;
     }
+    
+    public double calcularPotenciador(Personaje otro) {
+    	int comparacion=compareTo(otro);
+    	double potenciador=1.;
+    	if(comparacion==1) {
+    		potenciador=1.2;
+    	}else if(comparacion==-1) {
+    		potenciador=0.8;
+    	}
+    	
+    	return potenciador;
+    }
+    
+    public int calcularDanoNivel(int danoBase) {
+        int danoFinal = 0;
+        danoFinal = danoBase+this.getNivel()-1;
+        return danoFinal;
+    }
 
     // Getters y setters
 

@@ -19,39 +19,12 @@ public class Tierra extends Personaje {
         super(personaje);
     }
 
-    private int calcularImpactoTerrestre(int danoBase) {
-        int danoFinal = 0;
-
-        switch (this.nivel) {
-            case 1:
-                danoFinal = danoBase;
-                break;
-            case 2:
-                danoFinal = danoBase + 5;
-                break;
-            case 3:
-                danoFinal = (int) (danoBase * 1.5);
-                break;
-            case 4:
-                danoFinal = danoBase * 2;
-                break;
-            case 5:
-                danoFinal = danoBase * 3;
-                break;
-            default:
-                danoFinal = danoBase;
-                break;
-        }
-        return danoFinal;
-    }
-
     public void terremoto(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " tira por una grieta a " + objetivo.getNombre() + "!");
 
-            int danoReal = calcularImpactoTerrestre(40);
-
-            objetivo.recibirDanio(danoReal);
+            int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
+            objetivo.recibirDanio(dano);
         }
     }
 
@@ -59,16 +32,15 @@ public class Tierra extends Personaje {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " aplasta con una roca a " + objetivo.getNombre() + "!");
 
-            int danoReal = calcularImpactoTerrestre(20);
-
-            objetivo.recibirDanio(danoReal);
+            int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
+            objetivo.recibirDanio(dano);
         }
     }
 
     public void sanacionRocal() {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " se cura por el poder de las rocas.");
-            this.curarVida(50);
+            this.curarVida(30);
         }
     }
 

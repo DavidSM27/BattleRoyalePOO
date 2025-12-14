@@ -20,35 +20,11 @@ public class Vida extends Personaje {
     	super(personaje);
     }
 
-    private int calcularDanoNivel(int danoBase) {
-        int danoFinal = 0;
-        switch (this.nivel) {
-            case 1:
-                danoFinal = danoBase;
-                break;
-            case 2:
-                danoFinal = danoBase + 10;
-                break;
-            case 3:
-                danoFinal = (int) (danoBase * 1.5);
-                break;
-            case 4:
-                danoFinal = danoBase * 2;
-                break;
-            case 5:
-                danoFinal = danoBase * 3;
-                break;
-            default:
-                danoFinal = danoBase;
-                break;
-        }
-        return danoFinal;
-    }
-
     public void apretonDeCorazon(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " le para el corazon a " + objetivo.getNombre() + "!");
-            int dano = calcularDanoNivel(40);
+            
+            int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }
@@ -56,7 +32,8 @@ public class Vida extends Personaje {
     public void explotarSangre(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " saca toda la sangre del cuerpo de " + objetivo.getNombre() + "!");
-            int dano = calcularDanoNivel(20);
+            
+            int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }
@@ -64,7 +41,7 @@ public class Vida extends Personaje {
     public void curacionMedica() {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " es operado del corazon en un quirofano");
-            this.curarVida(50);
+            this.curarVida(30);
         }
     }
 }

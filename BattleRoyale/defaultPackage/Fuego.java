@@ -20,67 +20,30 @@ public class Fuego extends Personaje {
     	super(personaje);
     }
 
-    private int calcularDanoPorNivel(int danoBase) {
-        int danoFinal = 0;
-
-        switch (this.nivel) {
-            case 1:
-
-                danoFinal = danoBase;
-                break;
-            case 2:
-
-                danoFinal = danoBase + 10;
-                break;
-            case 3:
-
-                danoFinal = (int) (danoBase * 1.5);
-                break;
-            case 4:
-
-                danoFinal = danoBase * 2;
-                break;
-            case 5:
-
-                danoFinal = danoBase * 3;
-                break;
-            default:
-                danoFinal = danoBase;
-                break;
-        }
-        return danoFinal;
-    }
-
     public void lluviaInfernal(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
 
-            // Calculamos el daño base original
-            int danoBase = 40;
             // Aplicamos el switch según el nivel
-            int danoReal = calcularDanoPorNivel(danoBase);
-
-            objetivo.recibirDanio(danoReal);
+            int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
+            objetivo.recibirDanio(dano);
         }
     }
 
     public void marDeLava(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
-
-            // Calculamos el daño base original
-            int danoBase = 20;
             // Aplicamos el switch según el nivel
-            int danoReal = calcularDanoPorNivel(danoBase);
+            int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
 
-            objetivo.recibirDanio(danoReal);
+            objetivo.recibirDanio(dano);
         }
     }
 
     public void curacionDelInfierno() {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " usa magia sagrada.");
-            this.curarVida(50);
+            this.curarVida(30);
         }
     }
 
