@@ -150,7 +150,7 @@ public class Tienda {
 						Integer vidaAnterior=p.getVida();
 						p.curarVida(p.getVida() + CURACION);//por ejemplo luego definimos cuanto curan
 						
-						LOG+="\t\t-"+p.getNombre()+" ";
+						LOG+="\t\t-"+p.getNombre()+" ha recuperado "+CURACION+" de salud.\n";
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}
@@ -189,6 +189,8 @@ public class Tienda {
 						
 						p.setOro(p.getOro() - COSTO_POCIONES);
 						p.recuperarEnergia(p.getEnergia() + MANA);
+						
+						LOG+="\t\t-"+p.getNombre()+" ha recuperado "+MANA+" de mana.\n";
 						
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
