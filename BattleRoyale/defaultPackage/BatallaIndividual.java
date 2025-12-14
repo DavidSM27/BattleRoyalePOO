@@ -22,9 +22,13 @@ public class BatallaIndividual extends Batalla {
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
-            LOG += "\t-Turno " + turno + "\n";
+            LOG += "\t-Turno " + turno++ + "\n";
             ejecutarTurno(jugador1, jugador2);
-            turno++;
+            try{
+				Thread.sleep(1000);
+			}catch (InterruptedException e) {
+				// Por si hay alguna interrupcion
+			}
         }
 
         if (jugador1.isVivo()) {

@@ -66,6 +66,10 @@ public class EventoEquipos extends ListaArmas {
 		for (I=0; I < equipos.size(); I++) {
 			opcion=0;
 			
+			if(equipos.size()==1) {
+				continue;
+			}
+			
 			if(!equipos.get(I).areVivos()) {
 				equipos.remove((int)I--);
 				continue;
