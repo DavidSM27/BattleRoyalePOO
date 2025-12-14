@@ -23,6 +23,7 @@ public class Evento extends ListaArmas {
 	
 	private List<Personaje> jugadores;
 	private Tienda tienda;
+	private ImprimirLOG imprimirLOG;
 	
 	public Evento(List<Personaje> jugadores){
 		super();
@@ -30,6 +31,7 @@ public class Evento extends ListaArmas {
 		Collections.shuffle(jugadores);
 		
 		this.tienda=new Tienda();
+		this.imprimirLOG=new imprimirLOG();
 		
 		Evento.COFRES_TOTALES=this.jugadores.size()*4;
 		Evento.COFRES_RESTANTES=COFRES_TOTALES;
@@ -43,6 +45,8 @@ public class Evento extends ListaArmas {
 		while(this.jugadores.size()!=1) {
 			this.rondas();
 		}
+		
+		this.imprimirLOG.imprimir("");
 	}
 	
 	private void rondas() {
@@ -96,7 +100,7 @@ public class Evento extends ListaArmas {
 			Evento.LOG+="\n\n";
 			System.out.println("\n");
 		}
-		System.out.print(Evento.LOG);
+		this.imprimirLOG.imprimir(Evento.LOG);
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
 		
@@ -274,7 +278,7 @@ public class Evento extends ListaArmas {
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
 
         // 3. Insanciar el Evento
-        Evento evento = new Evento(listaJugadores);
+        new Evento(listaJugadores);
 
         // 5. Anunciar ganador
         for(Personaje p : listaJugadores) {
