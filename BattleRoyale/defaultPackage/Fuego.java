@@ -47,12 +47,12 @@ public class Fuego extends Personaje {
         return danoFinal;
     }
 
-    public void lluviaInfernal(Personaje objetivo, Integer potenciador) {
+    public void lluviaInfernal(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
 
             // Calculamos el daño base original
-            int danoBase = 40 * potenciador;
+            int danoBase = 40;
             // Aplicamos el switch según el nivel
             int danoReal = calcularDanoPorNivel(danoBase);
 
@@ -60,12 +60,12 @@ public class Fuego extends Personaje {
         }
     }
 
-    public void marDeLava(Personaje objetivo, Integer potenciador) {
+    public void marDeLava(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
 
             // Calculamos el daño base original
-            int danoBase = 20 * potenciador;
+            int danoBase = 20;
             // Aplicamos el switch según el nivel
             int danoReal = calcularDanoPorNivel(danoBase);
 

@@ -41,10 +41,8 @@ public class Magia extends Personaje {
     public void lanzarBolaDeFuego(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
-
-            // Calculamos el daño base original
             int danoBase = 40;
-            // Aplicamos el switch según el nivel
+
             int danoReal = calcularDanoPorNivel(danoBase);
 
             objetivo.recibirDanio(danoReal);
@@ -55,9 +53,7 @@ public class Magia extends Personaje {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
 
-            // Calculamos el daño base original
             int danoBase = 20;
-            // Aplicamos el switch según el nivel
             int danoReal = calcularDanoPorNivel(danoBase);
 
             objetivo.recibirDanio(danoReal);
