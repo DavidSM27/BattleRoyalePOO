@@ -62,4 +62,13 @@ public class Equipo {
 		return sonNPCs;
 	}
 	
+	public int getMediaSuerte() {
+		Integer media=0;
+		for(int i=0; i<miembros.size(); i++) {
+			media+=miembros.get(i).getSuerte();
+		}
+		
+		return media/miembros.size();
+	}
+	
 }
