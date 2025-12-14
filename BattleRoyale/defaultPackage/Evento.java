@@ -127,12 +127,6 @@ public class Evento extends ListaArmas {
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
 		System.out.println("\n");
-		
-		for (int i = 0; i < this.jugadores.size(); i++) {
-			if(!jugadores.get(i).isVivo()) {
-				jugadores.remove((int)i);
-			}
-		}
 	}
 	
 	private void opciones(Integer opcion) {
@@ -277,6 +271,12 @@ public class Evento extends ListaArmas {
 		}
 		
 		Evento.LOG+=batallaIndividual.iniciarBatalla(this.jugadores.get(I), this.jugadores.get(random));
+		
+		if(!this.jugadores.get(I).isVivo()) {
+			this.jugadores.remove((int)I);
+		}if (!this.jugadores.get(random).isVivo()) {
+			this.jugadores.remove((int)random);
+		}
 	}
 	
 	public static void main(String[] args) {

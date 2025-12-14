@@ -127,11 +127,6 @@ public class EventoEquipos extends ListaArmas {
 		sc.nextLine();
 		System.out.println("\n");
 		
-		for (int i = 0; i < this.equipos.size(); i++) {
-			if(!equipos.get(i).areVivos()) {
-				equipos.remove((int)i);
-			}
-		}
 	}
 	
 	private void opciones(Integer opcion) {
@@ -295,23 +290,68 @@ public class EventoEquipos extends ListaArmas {
 			random=this.equipos.size()-1;
 		}
 		
-		//Batalla jugador=new Batalla();
-		//Evento.LOG+=jugador.batalla(this.jugadores.get(random));
+		Evento.LOG+=batallaequipos.iniciarBatalla(this.equipos.get(I), this.equipos.get(random));
+		
+		if(!this.equipos.get(I).areVivos()) {
+			this.equipos.remove((int)I);
+		}if (!this.equipos.get(random).areVivos()) {
+			this.equipos.remove((int)random);
+		}
 		
 	}
 	
 	public static void main(String[] args) {
-		// 1. Crear la lista
-        List<Personaje> listaJugadores = new ArrayList<>();
+		// 1. Preparamos la lista que contendrá a todos los equipos del torneo
+	    List<Equipo> listaDeEquiposParticipantes = new ArrayList<>();
 
-        // 2. Generar 50 personas
-        for (int i = 1; i <= 2; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
-        }
+	    // ----------------------------------------------------------------
+	    // EQUIPO 1: LOS JUGADORES (HUMANOS)
+	    // ----------------------------------------------------------------
+	    List<Personaje> miembrosHumanos = new ArrayList<>();
+	    
+	    // IMPORTANTE: Usamos 'new Fuego', 'new Agua', etc. NO 'new Personaje'
+	    // Ajusta los parámetros (Nombre, Nivel, esNPC) según tus constructores
+	    miembrosHumanos.add(new Fuego("Jugador Fuego", 1, false));
+	    miembrosHumanos.add(new Agua("Jugador Agua", 1, false));
+	    
+	    // Creamos el equipo y le metemos los miembros
+	    Equipo equipoHeroe = new Equipo("Los Héroes", miembrosHumanos);
+	    listaDeEquiposParticipantes.add(equipoHeroe);
 
-        System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
 
-        // 3. Insanciar el Evento
-        new EventoEquipos(listaJugadores);
+	    // ----------------------------------------------------------------
+	    // EQUIPO 2: RIVALES (NPCs) - La Horda
+	    // ----------------------------------------------------------------
+	    List<Personaje> miembrosOrcos = new ArrayList<>();
+	    miembrosOrcos.add(new Tierra("Orco Tanque", 2, true));
+	    miembrosOrcos.add(new Viento("Goblin Veloz", 2, true));
+	    
+	    Equipo equipoOrcos = new Equipo("La Horda", miembrosOrcos);
+	    listaDeEquiposParticipantes.add(equipoOrcos);
+
+
+	    // ----------------------------------------------------------------
+	    // EQUIPO 3: RIVALES (NPCs) - Los Magos Oscuros
+	    // ----------------------------------------------------------------
+	    List<Personaje> miembrosMagos = new ArrayList<>();
+	    miembrosMagos.add(new Magia("Brujo Oscuro", 3, true));
+	    miembrosMagos.add(new Vida("Clérigo Corrupto", 3, true));
+	    
+	    Equipo equipoMagos = new Equipo("La Secta", miembrosMagos, true);
+	    listaDeEquiposParticipantes.add(equipoMagos);
+
+
+	    // ----------------------------------------------------------------
+	    // 3. INICIAR EL EVENTO
+	    // ----------------------------------------------------------------
+	    System.out.println("Iniciando evento con " + listaDeEquiposParticipantes.size() + " equipos.");
+	    
+	    // Ahora sí pasamos una List<Equipo> al constructor, que es lo que pide
+	    try {
+	        new EventoEquipos(listaDeEquiposParticipantes);
+	    } catch (Exception e) {
+	        System.out.println("Ha ocurrido un error en el evento: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 }

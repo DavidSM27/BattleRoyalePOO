@@ -19,16 +19,6 @@ public class Equipo {
 	public void meterMiembro(Personaje p) {
 		miembros.add(p);
 	}
-	
-	public boolean estaVivo() {
-        for (Personaje p : miembros) {
-            if (p.isVivo()) {
-                return true;
-            }
-        }
-        estanVivos = true;
-        return false;
-    }
 
 	public String getNombre() {
 		return nombre;
@@ -53,7 +43,14 @@ public class Equipo {
 	}
 
 	public boolean areVivos() {
-		return estanVivos;
+		int vivos=0;
+		for(int i=0; i<miembros.size(); i++) {
+			if(miembros.get(i).isVivo()) {
+				vivos++;
+			}
+		}
+		
+		return vivos==miembros.size();
 	}
 	
 	public boolean areNPCs() {
