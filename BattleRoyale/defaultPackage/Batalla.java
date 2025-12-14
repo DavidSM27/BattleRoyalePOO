@@ -13,21 +13,6 @@ public abstract class Batalla {
 		System.out.println("\n ========== LA BATALLA HA COMENZADO ========== \n");
 	}
 
-	public void obtenerInfo() {
-		String estado;
-		if (enCurso == true) {
-			estado = "EN CURSO";
-		} else {
-			estado = "FINALIZADA";
-		}
-		
-		System.out.println("Estado de la batalla: " + estado);
-	}
-
-	public boolean estaEnCurso() {
-		return enCurso;
-	}
-
 	protected void terminar(Personaje ganador, Personaje perdedor) {
 		this.enCurso = false;
 		
