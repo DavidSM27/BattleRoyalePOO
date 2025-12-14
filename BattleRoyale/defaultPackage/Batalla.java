@@ -1,6 +1,6 @@
 package defaultPackage;
 
-public abstract class Batalla {
+public abstract class Batalla<T> {
 	
 	protected boolean enCurso;
 
@@ -13,37 +13,7 @@ public abstract class Batalla {
 		System.out.println("\n ========== LA BATALLA HA COMENZADO ========== \n");
 	}
 
-	protected void terminar(Personaje ganador, Personaje perdedor) {
-		this.enCurso = false;
-		
-		System.out.println("\n ========== BATALLA TERMINADA ==========");
-		System.out.println("Ganador: " + ganador.getNombre());
-		System.out.println("Perdedor: " + perdedor.getNombre());
-		System.out.println("==========================================\n");
-	}
+	protected abstract void terminar(T ganador, T perdedor);
 	
-	protected void terminarPorHuida(Personaje cagon) {
-		this.enCurso = false;
-
-		System.out.println("\n ========== BATALLA TERMINADA ==========");
-		System.out.println(cagon.getNombre()+" huyó de la batalla!");
-		System.out.println("==========================================\n");
-	}
-	
-	protected void terminar(Equipo ganador, Equipo perdedor) {
-		this.enCurso = false;
-
-		System.out.println("\n ========== BATALLA TERMINADA ==========");
-		System.out.println("Ganador: " + ganador.getNombre());
-		System.out.println("Perdedor: " + perdedor.getNombre());
-		System.out.println("==========================================\n");
-	}
-	
-	protected void terminarPorHuida(Equipo cagon) {
-		this.enCurso = false;
-
-		System.out.println("\n ========== BATALLA TERMINADA ==========");
-		System.out.println(cagon.getNombre()+" huyó de la batalla!");
-		System.out.println("==========================================\n");
-	}
+	protected abstract void terminarPorHuida(T cagon);
 }

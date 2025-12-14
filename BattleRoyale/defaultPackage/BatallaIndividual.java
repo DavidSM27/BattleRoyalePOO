@@ -2,7 +2,7 @@ package defaultPackage;
 
 import java.util.Scanner;
 
-public class BatallaIndividual extends Batalla {
+public class BatallaIndividual extends Batalla<Personaje> {
 
     private static Scanner sc = new Scanner(System.in);
     private static Integer turno;
@@ -372,4 +372,22 @@ public class BatallaIndividual extends Batalla {
     public String getLOG() {
         return LOG;
     }
+    
+    protected void terminar(Personaje ganador, Personaje perdedor) {
+		this.enCurso = false;
+		
+		System.out.println("\n ========== BATALLA TERMINADA ==========");
+		System.out.println("Ganador: " + ganador.getNombre());
+		System.out.println("Perdedor: " + perdedor.getNombre());
+		System.out.println("==========================================\n");
+	}
+    
+    protected void terminarPorHuida(Personaje cagon) {
+		this.enCurso = false;
+
+		System.out.println("\n ========== BATALLA TERMINADA ==========");
+		System.out.println(cagon.getNombre()+" huyó de la batalla!");
+		System.out.println("==========================================\n");
+	}
+    
 }
