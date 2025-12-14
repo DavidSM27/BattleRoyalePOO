@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Tienda {
 	
-	private static final Scanner sc=new Scanner(System.in);
+	private static final Scanner sc = new Scanner(System.in);
 	private static final Integer COSTO_MEJORA=50;
 	private static final Integer COSTO_POCIONES=50;
 	private static final Integer CURACION=30;
@@ -170,7 +170,7 @@ public class Tienda {
 			System.out.println("Maná actual: " + p.getEnergia() + "/100");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
 			System.out.println("Precio por pocion de maná (+" + MANA + " maná): " + COSTO_POCIONES + " de oro\n");
-			System.out.println("¿Quieres comprar una pocion de maná? (Si/No");
+			System.out.println("¿Quieres comprar una pocion de maná? (Si/No)");
 			
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
@@ -203,7 +203,7 @@ public class Tienda {
         Personaje jugador = new Personaje("Jugador de prueba");
         jugador.equiparArma(new Arma("Fusil", 30., 1.9));
         jugador.setOro(20000); //darle algo de oro para probar mejoras
-        jugador.getArma().setMejora(1.9);
+        //jugador.getArma().setMejora(1.9);
         jugador.setEnergia(80);
         
 
