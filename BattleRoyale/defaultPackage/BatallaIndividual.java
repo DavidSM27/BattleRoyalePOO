@@ -6,13 +6,13 @@ public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
     private Integer turno;
-    private String LOG = "hola";
+    private String LOG;
 
     public BatallaIndividual() {
         super();
     }
 
-    public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
+    public String iniciarBatalla(Personaje jugador1, Personaje jugador2) {
         turno = 1;
         LOG = "";
         iniciar();
@@ -33,6 +33,8 @@ public class BatallaIndividual extends Batalla {
             terminar(jugador2, jugador1);
             otorgarRecompensas(jugador2, jugador1);
         }
+        
+        return LOG;
     }
 
     private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
