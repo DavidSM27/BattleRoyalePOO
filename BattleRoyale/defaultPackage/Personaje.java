@@ -2,7 +2,7 @@ package defaultPackage;
 
 import java.util.Scanner;
 
-public class Personaje {
+public class Personaje implements Comparable<Personaje> {
     private static final Scanner sc = new Scanner(System.in);
 
     // Constantes
@@ -85,6 +85,63 @@ public class Personaje {
         this.nivel = jugador.getNivel();
         this.xp = 0;
     	
+    }
+    
+    public int compareTo(Personaje otro) {
+    	int respuesta=0;
+    	
+    	switch (this.getElemento()) {
+    	case FUEGO:
+    		if(otro.getElemento().equals(Elemento.VIDA)||otro.getElemento().equals(Elemento.VIENTO)) {
+    			respuesta=1;
+    		} else if(otro.getElemento().equals(Elemento.AGUA)||otro.getElemento().equals(Elemento.TIERRA)) {
+    			respuesta=-1;
+    		}else
+    			respuesta=0;
+            break;
+        case AGUA:
+        	if(otro.getElemento().equals(Elemento.TIERRA)||otro.getElemento().equals(Elemento.FUEGO)) {
+    			respuesta=1;
+    		} else if(otro.getElemento().equals(Elemento.VIDA)||otro.getElemento().equals(Elemento.VIENTO)) {
+    			respuesta=-1;
+    		}else
+    			respuesta=0;
+            break;
+        case TIERRA:
+        	if(otro.getElemento().equals(Elemento.VIDA)||otro.getElemento().equals(Elemento.FUEGO)) {
+    			respuesta=1;
+    		} else if(otro.getElemento().equals(Elemento.AGUA)||otro.getElemento().equals(Elemento.VIENTO)) {
+    			respuesta=-1;
+    		}else
+    			respuesta=0;
+            break;
+        case VIENTO:
+        	if(otro.getElemento().equals(Elemento.AGUA)||otro.getElemento().equals(Elemento.TIERRA)) {
+    			respuesta=1;
+    		} else if(otro.getElemento().equals(Elemento.VIENTO)||otro.getElemento().equals(Elemento.VIDA)) {
+    			respuesta=-1;
+    		}else
+    			respuesta=0;
+            break;
+        case MAGIA:
+        	if(otro.getElemento().equals(Elemento.VIENTO)) {
+    			respuesta=1;
+    		} else if(otro.getElemento().equals(Elemento.VIDA)) {
+    			respuesta=-1;
+    		}else
+    			respuesta=0;
+            break;
+        case VIDA:
+        	if(otro.getElemento().equals(Elemento.MAGIA)||otro.getElemento().equals(Elemento.AGUA)) {
+    			respuesta=1;
+    		} else if(otro.getElemento().equals(Elemento.FUEGO)||otro.getElemento().equals(Elemento.TIERRA)) {
+    			respuesta=-1;
+    		}else
+    			respuesta=0;
+            break;
+    	}
+    	
+    	return respuesta;
     }
 
     // Getters y setters

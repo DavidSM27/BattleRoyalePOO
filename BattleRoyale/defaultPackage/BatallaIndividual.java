@@ -139,20 +139,17 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
-        int vidaAnterior = objetivo.getVida();
         int decision = (int) (Math.random() * 100);
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
-            LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad contra " + objetivo.getNombre() +
-                    " y le ha infligido " + (vidaAnterior - objetivo.getVida()) + " de daño\n";
             usarHabilidad(atacante, objetivo);
         } else if (decision < 80) {
-            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
-                    " y le ha hecho " + (vidaAnterior - objetivo.getVida()) + "de daño\n";
             ataqueBasico(atacante, objetivo);
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
+                    " y le ha hecho " + atacante.getArma().getAtaque() + " de daño\n";
         } else {
-            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
             defender(atacante);
+            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
         }
     }
 
@@ -235,7 +232,13 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void usarHabilidadAleatoria(Personaje atacante, Personaje objetivo) {
-        int habilidad = (int) (Math.random() * 3) + 1;
+        int habilidad;
+        if(atacante.getVida()==atacante.getVidaMax()) {
+        	habilidad = (int) (Math.random() * 2)%2 + 1;
+        }else {
+        	habilidad = (int) (Math.random() * 3)%3 + 1;
+        }
+        
         ejecutarHabilidadEspecifica(atacante, objetivo, habilidad);
     }
 
