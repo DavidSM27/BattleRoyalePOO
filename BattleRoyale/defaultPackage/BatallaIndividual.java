@@ -5,22 +5,21 @@ import java.util.Scanner;
 public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
-    private Personaje jugador1;
-    private Personaje jugador2;
-    private int turno;
+    private static Integer turno;
 
     public BatallaIndividual() {
         super();
     }
 
     public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
+        turno = 1;
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo()) {
-            ejecutarTurno();
+            ejecutarTurno(jugador1, jugador2);
             turno++;
         }
 
@@ -33,18 +32,18 @@ public class BatallaIndividual extends Batalla {
         }
     }
 
-    private void ejecutarTurno() {
+    private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
         System.out.println("\n========== TURNO " + turno + " ==========");
 
         if (jugador1.isVivo()) {
             System.out.println("\n=== Turno de " + jugador1.getNombre() + " ===");
-            mostrarEstadoBatalla();
+            mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador1, jugador2);
         }
 
         if (jugador2.isVivo() && jugador1.isVivo()) {
             System.out.println("\n=== Turno de " + jugador2.getNombre() + " ===");
-            mostrarEstadoBatalla();
+            mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador2, jugador1);
         }
 
@@ -56,7 +55,7 @@ public class BatallaIndividual extends Batalla {
         }
     }
 
-    private void mostrarEstadoBatalla() {
+    private void mostrarEstadoBatalla(Personaje jugador1, Personaje jugador2) {
         System.out.println(jugador1.getNombre() + ": " +
                 jugador1.getVida() + "+vida!  " +
                 jugador1.getEnergia() + "+energia!");
