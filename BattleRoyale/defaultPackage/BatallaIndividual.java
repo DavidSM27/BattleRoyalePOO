@@ -233,7 +233,13 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void usarHabilidadAleatoria(Personaje atacante, Personaje objetivo) {
-        int habilidad = (int) (Math.random() * 3) + 1;
+        int habilidad;
+        if(atacante.getVida()<atacante.getVidaMax()) {
+        	habilidad = (int) (Math.random() * 3)%3 + 1;
+        }else {
+        	habilidad = (int) (Math.random() * 2)%2 + 1;
+        }
+        
         ejecutarHabilidadEspecifica(atacante, objetivo, habilidad);
     }
 

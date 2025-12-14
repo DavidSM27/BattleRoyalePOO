@@ -1,18 +1,18 @@
 Ronda 1
 	-Jugador 2 intenta buscar un Cofre
 		-Jugador 2 a abierto un cofre
-		-Jugador 2 ahora lleva Arco
+		-Jugador 2 ahora lleva Pistola
 
 
 	-Jugador 1 intenta buscar un Cofre
 		-Jugador 1 a abierto un cofre
-		-Jugador 1 ahora lleva Arco
+		-Jugador 1 ahora lleva Shuriken
 
 
 Ronda 2
 	-Jugador 2 intenta buscar un Cofre
 		-Jugador 2 a abierto un cofre
-		-Jugador 2 ahora lleva Shuriken
+		-Jugador 2 ahora lleva Arco
 
 
 	-Jugador 1 intenta buscar un Cofre
@@ -21,9 +21,19 @@ Ronda 2
 
 
 Ronda 3
-	-Jugador 2 intenta buscar un Cofre
-		-Jugador 2 a abierto un cofre
-		-Jugador 2 mantiene su arma actual: Shuriken
+	-Jugador 2 intenta buscar una Batalla
+	-Turno 1
+		-Jugador 2 ha usado una habilidad Curación del Infierno y se ha curado 0 de vida
+		-Jugador 1 ha usado una habilidad Curación del Infierno y se ha curado 0 de vida
+	-Turno 2
+		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 20 de daño
+		-Jugador 1 ha usado una habilidad Lluvia Infernal y ha infligido 40 de daño
+	-Turno 3
+		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 40 de daño
+		-Jugador 1 ha usado una habilidad Lluvia Infernal y ha infligido 40 de daño
+	-Turno 4
+		-Jugador 2 ha usado una habilidad Curación del Infierno y se ha curado 0 de vida
+		-Jugador 1 ha usado una habilidad Lluvia Infernal y ha infligido 20 de daño
 
 
 	-Jugador 1 intenta buscar un Cofre
@@ -31,67 +41,6 @@ Ronda 3
 		-Jugador 1 mantiene su arma actual: Shuriken
 
 
-Ronda 4
-	-Jugador 2 intenta buscar una Batalla
-	-Turno 1
-		-Jugador 2 ha usado una habilidad contra Jugador 1 y le ha infligido 0 de daño
-		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 40 de daño
-		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 0de daño
-	-Turno 2
-		-Jugador 2 ha usado su ataque normal a Jugador 1 y le ha hecho 0de daño
-		-Jugador 1 ha usado una habilidad contra Jugador 2 y le ha infligido 0 de daño
-		-Jugador 1 ha usado una habilidad Curación del Infierno y se ha curado 0 de vida
-	-Turno 3
-		-Jugador 2 se defiende y recupera energía
-		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 0de daño
-	-Turno 4
-		-Jugador 2 ha usado una habilidad contra Jugador 1 y le ha infligido 0 de daño
-		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 13 de daño
 
-
-
-El ganador es: Jugador 2
-
-Ronda 1
-Ronda 2
-Ronda 3
-Ronda 4
-Ronda 5
-Ronda 6
-Ronda 7
-Ronda 8
-Ronda 9
-Ronda 10
-Ronda 11
-Ronda 12
-Ronda 13
-Ronda 14
-Ronda 15
-Ronda 16
-Ronda 17
-Ronda 18
-Ronda 1
-Ronda 2
-Ronda 3
-Ronda 4
-Ronda 5
-Ronda 6
-Ronda 7
-Ronda 8
-Ronda 9
-Ronda 1
-	-Claudia intenta buscar un Cofre
-		-Claudia a abierto un cofre
-		-Claudia ahora lleva Pistola
-
-
-	-Maria intenta buscar un Cofre
-		-Maria a abierto un cofre
-		-Maria ahora lleva Shuriken
-
-
-	-Rod intenta buscar un Cofre
-		-Rod a abierto un cofre
-		-Rod ahora lleva Shuriken
-
+El ganador es: Jugador 1
 

@@ -67,6 +67,10 @@ public class Evento extends ListaArmas {
 		for (I=0; I < jugadores.size(); I++) {
 			opcion=0;
 			
+			if(jugadores.size()==1) {
+				continue;
+			}
+			
 			if(!jugadores.get(I).isVivo()) {
 				jugadores.remove((int)I--);
 				continue;
@@ -280,7 +284,7 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         for (int i = 1; i <= 2; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
+            listaJugadores.add(new Personaje(("Jugador "+i), 1, false));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
