@@ -125,9 +125,11 @@ public class EmpezarPartida {
 	
 	private void iniciarPartida() {
 		if(modo == 1) {
-			new Partida(modoJuego);
+			Partida partida = new Partida(modoJuego);
+			partida.iniciarJuego();
 		} else {
-    			new PartidaEquipos(modoJuego);
+    		PartidaEquipos partida = new PartidaEquipos(modoJuego);
+    		partida.iniciarJuego();
 		}
 	}	
 }
