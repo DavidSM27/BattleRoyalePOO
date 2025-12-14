@@ -11,29 +11,48 @@ import java.util.Scanner;
 
 public class ListaArmas {
 	
-	public static final String RUTA_FICHERO="\\files\\Armas.csv";
+	private static final Scanner sc=new Scanner(System.in);
+	private static final String RUTA_FICHERO="\\files\\Armas.csv";
 	
 	protected List<Arma> armas;
 	
 	public ListaArmas() {
 		this.armas=new ArrayList<Arma>();
 		
-		try {
-			this.leerFichero();
-		} catch (FileNotFoundException e) {
-			System.out.println("\tError, fichero no encontrado, cambia la variable global \"RUTA_FICHERO\".\n");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("\tError, con los permisos del fichero o algo relacionado con el fichero.\n");
-			e.printStackTrace();
-		} catch (Exception e) {
-			System.out.println("\tHay un Error.\n");
-			e.printStackTrace();
-		}
+		boolean errorRuta=false;
+		String ruta=RUTA_FICHERO;
+		do {
+			try {
+				this.leerFichero(ruta);
+				errorRuta=false;
+				
+			} catch (FileNotFoundException e) {
+				System.out.println("\tError, fichero \""+ruta+"\"no encontrado.");
+				System.out.println("\t"+e.getMessage());
+				
+				// La condición es que errorRuta==false para que se haga una vez solo
+				if(!errorRuta) {
+					errorRuta=true;
+					System.out.print("Completa la ruta del fichero:\n"+System.getProperty("user.dir"));
+					ruta=sc.next();
+					sc.nextLine();
+					System.out.println("Se va usar la ruta auxiliar: "+ruta+"\n\n");
+				}else {
+					errorRuta=false;
+				}
+				
+			} catch (IOException e) {
+				System.out.println("\tError, con los permisos del fichero o algo relacionado con el fichero.");
+				System.out.println("\t"+e.getMessage()+"\n");
+			} catch (Exception e) {
+				System.out.println("\tHay un Error.");
+				System.out.println("\t"+e.getMessage()+"\n");
+			}
+		}while(errorRuta);
 	}
 	
-	private void leerFichero() throws FileNotFoundException, IOException {
-		File archivo=new File(System.getProperty("user.dir")+ListaArmas.RUTA_FICHERO);
+	private void leerFichero(String ruta) throws FileNotFoundException, IOException, Exception {
+		File archivo=new File(System.getProperty("user.dir")+ruta);
 		String linea, nombre;
 		Double daño;
 		

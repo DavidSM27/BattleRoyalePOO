@@ -10,6 +10,7 @@ public class Tienda {
 	
 
     public Tienda() {
+    	sc=new Scanner(System.in);
     }
 	
 	public void menuTienda(Personaje p) {
@@ -37,7 +38,11 @@ public class Tienda {
 
             switch (opcion) {
                 case 1:
+                	if(p.getArma().getMejora() < 2.0) {
                     menuMejorarArma(p);
+                	}else {
+    					System.out.println("Tu arma esta al maximo\n");
+    				}
                     break;
                 case 2:
                     menuPociones(p); 
@@ -75,11 +80,8 @@ public class Tienda {
 			
 			switch(opcion) {
 			case "S":
-				if(p.getArma().getMejora() >= 2.0) {
-					System.out.println("Tu arma esta al maximo\n");
-					
-				}else if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
-					if(p.getOro() >= COSTO_MEJORA && p.getArma().getMejora()<2){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
+				if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
+					if(p.getOro() >= COSTO_MEJORA){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
 					
 						p.setOro(p.getOro() - COSTO_MEJORA);
 						p.getArma().modificacion(p.getArma().getMejora()+0.1); // ya veremos como metemos las mejoras
@@ -87,8 +89,6 @@ public class Tienda {
 						System.out.println("Has mejorado tu " + p.getArma().getNombre() + " 🗡️");
 						System.out.println("Nuevo ataque: " + p.getArma().getAtaque() + "\n");
 						
-					}else if(p.getArma().getMejora()==2){
-						System.out.println("Tu arma no se puede mejorar más.");
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}
