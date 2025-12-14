@@ -305,13 +305,6 @@ public class Personaje {
                 textoTipo);
     }
 
-    // Funcion para cerrar el scanner
-    public static void cerrarScanner() {
-        if (sc != null) {
-            sc.close();
-        }
-    }
-
     public void establecerEstadisticas() {
 
         System.out.println("\n=== ESTABLECER ESTADÍSTICAS ===");
