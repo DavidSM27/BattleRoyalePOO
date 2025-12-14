@@ -152,26 +152,26 @@ public class PartidaEquipos extends Partida{
 	 }
 	 
 	 private void mostrarResumenEquipos() {
-		    System.out.println("\n=== RESUMEN FINAL ===");
-		    
-		    for (Equipo equipo : equipos) {
-		        System.out.println("\n" + equipo.getNombre());
-		        System.out.print("Miembros: ");
-		        
-		        for (int i = 0; i < equipo.size(); i++) {
-		            System.out.print(equipo.get(i).getNombre());
-		            if (i < equipo.size() - 1) {
-		                System.out.print(", ");
-		            }
-		        }
-		    }
-		    
-		    System.out.println("\n\n=== TOTALES ===");
-		    System.out.println("Equipos: " + equipos.size());
-		    System.out.println("Equipos humanos: " + nEquiposHumanos);
-		    System.out.println("Equipos NPCs: " + nEquiposNPCs);
-		    System.out.println("Personajes totales: " + (nJugadores + nNPCs));
-		}
+	    System.out.println("\n=== RESUMEN FINAL ===");
+	    
+	    for (Equipo equipo : equipos) {
+	        System.out.println("\n" + equipo.getNombre());
+	        System.out.print("Miembros: ");
+	        
+	        for (int i = 0; i < equipo.size(); i++) {
+	            System.out.print(equipo.get(i).getNombre());
+	            if (i < equipo.size() - 1) {
+	                System.out.print(", ");
+	            }
+	        }
+	    }
+	    
+	    System.out.println("\n\n=== TOTALES ===");
+	    System.out.println("Equipos: " + equipos.size());
+	    System.out.println("Equipos humanos: " + nEquiposHumanos);
+	    System.out.println("Equipos NPCs: " + nEquiposNPCs);
+	    System.out.println("Personajes totales: " + (nJugadores + nNPCs));
+	}
 	
 }
 

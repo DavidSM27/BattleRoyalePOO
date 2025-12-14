@@ -3,7 +3,7 @@ package defaultPackage;
 import java.util.List;
 import java.util.Scanner;
 
-public class BatallaEquipo extends Batalla{
+public class BatallaEquipo extends Batalla<Equipo>{
 	private static Scanner sc = new Scanner(System.in);
     private static Integer turno;
     private static String LOG;
@@ -22,8 +22,9 @@ public class BatallaEquipo extends Batalla{
         System.out.println();
 
         while (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
-            LOG += "\t-Turno " + turno++ + "\n";
+            LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(equipo1, equipo2);
+            turno++;
             try{
 				Thread.sleep(1000);
 			}catch (InterruptedException e) {
@@ -45,18 +46,32 @@ public class BatallaEquipo extends Batalla{
 
         if (equipo1.areVivos()) {
         	for(int i=0; i < equipo1.size(); i++) {
-	            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
-	            mostrarEstadoBatalla(equipo1, equipo2);
-	            elegirOponente(equipo1.get(i), equipo2);
+        		if (equipo2.areVivos() && this.enCurso) {
+		            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
+		            mostrarEstadoBatalla(equipo1, equipo2);
+		            elegirOponente(equipo1.get(i), equipo2, equipo1);
+		            
+		            for (int j = 0; j < equipo2.size(); j++) {
+		            	if (!equipo2.get(j).isVivo())
+		            		equipo2.remove(j);
+					}
+        		}
         	}
             
         }
         
         if (equipo2.areVivos() && equipo1.areVivos() && this.enCurso) {
         	for(int i=0; i < equipo2.size(); i++) {
-	            System.out.println("\n=== Turno de " + equipo2.get(i).getNombre() + " ===");
-	            mostrarEstadoBatalla(equipo1, equipo2);
-	            elegirOponente(equipo2.get(i), equipo1);
+        		if (equipo1.areVivos() && this.enCurso) {
+		            System.out.println("\n=== Turno de " + equipo2.get(i).getNombre() + " ===");
+		            mostrarEstadoBatalla(equipo1, equipo2);
+		            elegirOponente(equipo2.get(i), equipo1, equipo2);
+		            
+		            for (int j = 0; j < equipo1.size(); j++) {
+		            	if (!equipo1.get(j).isVivo())
+		            		equipo1.remove(j);
+					}
+        		}
         	}
         }
     }
@@ -78,27 +93,39 @@ public class BatallaEquipo extends Batalla{
     	}
     }
     
-    private void elegirOponente(Personaje atacante, Equipo equipo) {
+    private void elegirOponente(Personaje atacante, Equipo equipo, Equipo equipoAtacante) {
+    	int opcion=0;
         if(!atacante.isNPC()) {
         	System.out.println("¿A quien quieres atacar?");
     		for (int i = 0; i < equipo.size(); i++) {
-    			System.out.println("["+ (i+1) +"] "+equipo.get(I).get(i).getNombre());
+    			System.out.println("["+ (i+1) +"] "+equipo.get(i).getNombre());
     		}
-        	
-        	
-        	
+    		do{
+    			while (!sc.hasNextInt()) {
+	                System.out.println("Opción no válida.");
+	                sc.next();
+	            }
+	
+	            opcion = sc.nextInt();
+	            sc.nextLine();
+    		}while(opcion<1 || opcion>equipo.size());
+    		opcion--;
+        }else {
+        	opcion=(int)Math.round((Math.random()*equipo.size())%equipo.size());
         }
+        
+        ejecutarAccion(atacante, equipo.get(opcion), equipoAtacante);
     }
 
-    private void ejecutarAccion(Personaje atacante, Personaje objetivo) {
+    private void ejecutarAccion(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
         if (atacante.isNPC()) {
             ejecutarAccionNPC(atacante, objetivo);
         } else {
-            ejecutarAccionJugador(atacante, objetivo);
+            ejecutarAccionJugador(atacante, objetivo, equipoAtacante);
         }
     }
 
-    private void ejecutarAccionJugador(Personaje atacante, Personaje objetivo) {
+    private void ejecutarAccionJugador(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
         int opcion = 0;
 
         do {
@@ -141,12 +168,12 @@ public class BatallaEquipo extends Batalla{
                 recuperarEnergia(atacante);
                 break;
             case 4:
-                if (intentarHuir(atacante)) {
-                    LOG += "\t\t-" + atacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
-                    terminarPorHuida(atacante);
+                if (intentarHuir(equipoAtacante)) {
+                    LOG += "\t\t-El equipo" + equipoAtacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
+                    terminarPorHuida(equipoAtacante);
                 } else {
-                    LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
-                    System.out.println(atacante.getNombre() + " no pudo escapar!");
+                    LOG += "\t\t-" + equipoAtacante.getNombre() + " intentó huir pero no lo consiguió\n";
+                    System.out.println(equipoAtacante.getNombre() + " no pudo escapar!");
                 }
                 break;
         }
@@ -393,8 +420,21 @@ public class BatallaEquipo extends Batalla{
         System.out.println("  +" + oroGanado + " oro ");
         System.out.println("  +" + xpGanado + " XP ");
     }
+    
+    protected void terminar(Equipo ganador, Equipo perdedor) {
+        this.enCurso = false;
+        
+        System.out.println("\n ========== BATALLA TERMINADA ==========");
+        System.out.println("Ganador: " + ganador.getNombre());
+        System.out.println("Perdedor: " + perdedor.getNombre());
+        System.out.println("==========================================\n");
+    }
+    
+    protected void terminarPorHuida(Equipo cagon) {
+        this.enCurso = false;
 
-    public String getLOG() {
-        return LOG;
+        System.out.println("\n ========== BATALLA TERMINADA ==========");
+        System.out.println(cagon.getNombre()+" huyó de la batalla!");
+        System.out.println("==========================================\n");
     }
 }
