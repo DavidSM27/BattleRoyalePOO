@@ -46,31 +46,29 @@ public class EmpezarPartida {
 	    
 	    System.out.println("👥 MODOS DE JUEGO:");
 	    System.out.println("   1. SOLITARIO - Cada jugador por su cuenta");
-	    System.out.println("   2. DUOS - Equipos de 2 jugadores (número par de jugadores)");
-	    System.out.println("   3. ESCUADRONES - Equipos de 4 jugadores (múltiplo de 4)\n");
+	    System.out.println("   2. DUOS - Equipos de 2 jugadores");
+	    System.out.println("   3. ESCUADRONES - Equipos de 4 jugadores\n");
 	    
 	    System.out.println("⚔️ SISTEMA DE PERSONAJES:");
 	    System.out.println("   • 6 clases elementales: FUEGO, AGUA, TIERRA, AIRE, MAGIA, VIDA");
 	    System.out.println("   • Cada elemento tiene ventajas/desventajas contra otros");
-	    System.out.println("   • Estadísticas iniciales: Fuerza, Defensa, Velocidad, Suerte, Precisión");
+	    System.out.println("   • Estadísticas iniciales: Fuerza, Defensa, Velocidad, Suerte");
 	    System.out.println("   • Todos empiezan con el arma base 'Pico'");
-	    System.out.println("   • Jugadores reales: Eligen nombre, elemento y distribuyen puntos");
+	    System.out.println("   • Jugadores reales: Eligen nombre, elemento y distribuyen puntos de nivel");
 	    System.out.println("   • NPCs: Se generan aleatoriamente\n");
 	    
 	    System.out.println("🎲 SISTEMA DE TURNOS Y EVENTOS:");
-	    System.out.println("   • Cada turno puede ocurrir un evento:");
+	    System.out.println("   • Cada turno se puede elegir un evento:");
 	    System.out.println("     🎁 COFRE - Encuentra armas mejoradas con rareza (afectada por Suerte)");
-	    System.out.println("                Jugadores ganan oro, NPCs obtienen mejor arma disponible");
-	    System.out.println("     🛒 TIENDA - Compra pociones de vida/poder o mejora tu arma");
-	    System.out.println("                 Solo jugadores reales pueden acceder");
+	    System.out.println("                Jugadores ganan oro");
+	    System.out.println("     🛒 TIENDA - Compra pociones de vida o mejora tu arma");
 	    System.out.println("     ⚔️ ENEMIGO - Batalla contra otro jugador o equipo\n");
 	    
 	    System.out.println("⚡ SISTEMA DE COMBATE:");
 	    System.out.println("   • Ataque básico: Depende del arma equipada");
-	    System.out.println("   • Habilidades elementales: 2-3 por clase, consumen poder elemental");
+	    System.out.println("   • Habilidades elementales: 3 por clase, consumen poder elemental");
 	    System.out.println("   • Turnos individuales con menú de opciones");
 	    System.out.println("   • En equipos: Elegir enemigo objetivo antes de atacar");
-	    System.out.println("   • NPCs atacan aleatoriamente\n");
 	    
 	    System.out.println("📈 PROGRESIÓN:");
 	    System.out.println("   • Victoria en batalla = Oro + Experiencia");
@@ -81,7 +79,6 @@ public class EmpezarPartida {
 	    
 	    System.out.println("🏃‍♂️ OPCIONES ESPECIALES:");
 	    System.out.println("   • Buscar cofre, buscar enemigo o buscar tienda (con riesgo de fallo)");
-	    System.out.println("   • Huir de batalla (jugadores reales)\n");
 	    
 	    System.out.println("🏆 FINAL DE LA PARTIDA:");
 	    System.out.println("   • Victoria anunciada para el ganador/equipo");
