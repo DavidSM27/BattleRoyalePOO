@@ -331,3 +331,46 @@ Ronda 3
 		-Jugador 1 ahora lleva Fusil
 
 
+Ronda 1
+Ronda 2
+Ronda 3
+Ronda 4
+Ronda 5
+Ronda 6
+Ronda 7
+Ronda 8
+Ronda 9
+Ronda 10
+Ronda 11
+Ronda 12
+Ronda 13
+Ronda 14
+Ronda 15
+Ronda 16
+Ronda 17
+Ronda 18
+Ronda 1
+Ronda 2
+Ronda 3
+Ronda 4
+Ronda 5
+Ronda 6
+Ronda 7
+Ronda 8
+Ronda 9
+Ronda 1
+	-Claudia intenta buscar un Cofre
+		-Claudia a abierto un cofre
+		-Claudia ahora lleva Pistola
+
+
+	-Maria intenta buscar un Cofre
+		-Maria a abierto un cofre
+		-Maria ahora lleva Shuriken
+
+
+	-Rod intenta buscar un Cofre
+		-Rod a abierto un cofre
+		-Rod ahora lleva Shuriken
+
+

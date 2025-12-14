@@ -24,11 +24,9 @@ public class Partida {
 		this.modoJuego = modoJuego;
 		
 		this.nombreNPC = new ListaNombresNPC();
-		
-		iniciarJuego();
 	}	
-	  
-	private void iniciarJuego(){
+	
+	protected void iniciarJuego(){
 		establecerReglas();
 		crearPersonajes();
 		mostrarResumenPersonajes();
