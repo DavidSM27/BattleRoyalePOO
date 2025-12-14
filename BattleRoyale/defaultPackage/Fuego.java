@@ -28,7 +28,7 @@ public class Fuego extends Personaje {
             
 
             // Aplicamos el switch según el nivel
-            int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
+            int dano = (int)Math.round(((double)calcularDanoNivel(Personaje.DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }
@@ -40,7 +40,7 @@ public class Fuego extends Personaje {
             this.energia-=Personaje.COSTE_HABILIDAD;
             
             // Aplicamos el switch según el nivel
-            int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
+            int dano = (int)Math.round(((double)calcularDanoNivel(Personaje.DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
 
             objetivo.recibirDanio(dano);
         }

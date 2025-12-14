@@ -27,7 +27,7 @@ public class Vida extends Personaje {
             this.energia-=Personaje.COSTE_HABILIDAD;
             
             
-            int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
+            int dano = (int)Math.round(((double)calcularDanoNivel(Personaje.DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }
@@ -39,7 +39,7 @@ public class Vida extends Personaje {
             this.energia-=Personaje.COSTE_HABILIDAD;
             
             
-            int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
+            int dano = (int)Math.round(((double)calcularDanoNivel(Personaje.DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }

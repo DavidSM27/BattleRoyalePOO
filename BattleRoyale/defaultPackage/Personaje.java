@@ -13,6 +13,8 @@ public class Personaje implements Comparable<Personaje> {
     protected static final int PUNTOS_DE_NIVEL = 20;
     protected static final int NIVEL_ESTADISTICAS_INCIALES = 1;
     protected static final int SUBIDA_NIVEL = 100;
+    protected static final int DAÑO_HABILIDAD1 = 20;
+    protected static final int DAÑO_HABILIDAD2 = 10;
     private static int contadorPersonajes = 1;
 
     // Atributos
