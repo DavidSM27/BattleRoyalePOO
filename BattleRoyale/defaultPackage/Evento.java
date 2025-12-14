@@ -49,7 +49,10 @@ public class Evento extends ListaArmas {
 		try{
 			this.imprimirLOG.imprimir("");
 		}catch (ErrorEscrituraException e) {
-			
+			System.out.println(e.getMessage());
+			if(e.getCause()!=null) {
+				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
+			}
 		}
 	}
 	
@@ -108,7 +111,10 @@ public class Evento extends ListaArmas {
 		try{
 			this.imprimirLOG.imprimir(LOG);
 		}catch (ErrorEscrituraException e) {
-			
+			System.out.println(e.getMessage());
+			if(e.getCause()!=null) {
+				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
+			}
 		}
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();

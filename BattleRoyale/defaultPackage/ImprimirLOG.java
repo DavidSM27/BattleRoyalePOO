@@ -34,19 +34,15 @@ public class ImprimirLOG {
 		}
 	}
 	
+	@SuppressWarnings("resource")
 	public void imprimir(String log) throws ErrorEscrituraException {
 		try {
 			FileWriter fileWriter=new FileWriter(this.fichero, true);
 			PrintWriter impresora=new PrintWriter(fileWriter);
 			
-			impresora.print(log);
-			
-			if(impresora.checkError()) {
-				throw new IOException("Fallo en el PrintWriter");
-			}
+			impresora.append(log);
 			
 			impresora.close();
-			
 		}catch (IOException e) {
 			throw new ErrorEscrituraException("Fallo al intentar guardar la partina en disco", e);
 		}
@@ -55,7 +51,7 @@ public class ImprimirLOG {
 	public static void main(String[] args) {
 		try {
 			ImprimirLOG imprimirLOG=new ImprimirLOG();
-			imprimirLOG.imprimir("asdasdjgnilwhjefj");
+			imprimirLOG.imprimir("asdasdjgnilwhjefj\n");
 		}catch (ErrorEscrituraException e) {
 			
 			System.out.println(e.getMessage());
