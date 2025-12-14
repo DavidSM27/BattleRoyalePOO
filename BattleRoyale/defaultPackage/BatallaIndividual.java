@@ -110,8 +110,10 @@ public class BatallaIndividual extends Batalla {
                 ataqueBasico(atacante, objetivo);
                 break;
             case 2:
-
+                int vidaAnterior = objetivo.getVida();
                 usarHabilidad(atacante, objetivo);
+                LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad especial y ha infligido " +
+                        (vidaAnterior - objetivo.getVida()) + "\n";
                 break;
             case 3:
                 LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
