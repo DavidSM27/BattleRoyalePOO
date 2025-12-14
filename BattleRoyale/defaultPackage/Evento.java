@@ -62,7 +62,7 @@ public class Evento extends ListaArmas {
 		Integer opcion;
 		RONDA++;
 		Evento.LOG="Ronda "+RONDA+"\n";
-		System.out.println("Ronda "+RONDA+"\n");
+		System.out.println("\nRonda "+RONDA+"\n");
 		
 		for (I=0; I < jugadores.size(); I++) {
 			opcion=0;
@@ -95,7 +95,7 @@ public class Evento extends ListaArmas {
 			}else {
 				// El NPC nunca campea, ni busca una tienda
 				if(RONDA>2) {
-					opcion=(int)Math.round(Math.random()*2)%2;
+					opcion=(int)Math.round(Math.random()*2);
 				}else {
 					opcion=0;
 				}
@@ -280,7 +280,7 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         // 2. Generar 50 personas
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 2; i++) {
             listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 
