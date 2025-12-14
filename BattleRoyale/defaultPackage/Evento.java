@@ -94,7 +94,7 @@ public class Evento extends ListaArmas {
 				// El NPC nunca campea, ni busca una tienda
 				if(RONDA>2) {
 					opcion=(int)Math.round(Math.random()*2)%2;
-				}else if(RONDA<=2) {
+				}else {
 					opcion=0;
 				}
 				opcion++;
