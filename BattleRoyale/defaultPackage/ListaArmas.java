@@ -45,14 +45,12 @@ public class ListaArmas {
 			} catch (IOException e) {
 				System.out.println("\tError, con los permisos del fichero o algo relacionado con el fichero.");
 				System.out.println("\t"+e.getMessage()+"\n");
-			} catch (Exception e) {
-				System.out.println("\tHay un Error.");
-				System.out.println("\t"+e.getMessage()+"\n");
+				errorRuta=false;
 			}
 		}while(errorRuta);
 	}
 	
-	private void leerFichero(String ruta) throws FileNotFoundException, IOException, Exception {
+	private void leerFichero(String ruta) throws IOException {
 		File archivo=new File(DIRECTORIO_ACTUAL+ruta);
 		String linea, nombre;
 		Double daño;
