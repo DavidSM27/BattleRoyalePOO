@@ -218,3 +218,116 @@ Ronda 3
 
 El ganador es: Jugador 2
 
+Ronda 1
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Arco
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Shuriken
+
+
+Ronda 1
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Pistola
+
+
+	-Jugador 4 intenta buscar un Cofre
+		-Jugador 4 a abierto un cofre
+		-Jugador 4 ahora lleva Fusil
+
+
+	-Jugador 3 intenta buscar un Cofre
+		-Jugador 3 a abierto un cofre
+		-Jugador 3 ahora lleva Pistola
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Fusil
+
+
+	-Jugador 5 intenta buscar un Cofre
+		-Jugador 5 a abierto un cofre
+		-Jugador 5 ahora lleva RPG
+
+
+Ronda 1
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Fusil
+
+
+	-Jugador 3 intenta buscar un Cofre
+		-Jugador 3 a abierto un cofre
+		-Jugador 3 ahora lleva Fusil
+
+
+	-Jugador 4 intenta buscar un Cofre
+		-Jugador 4 a abierto un cofre
+		-Jugador 4 ahora lleva Arco
+
+
+	-Jugador 5 intenta buscar un Cofre
+		-Jugador 5 a abierto un cofre
+		-Jugador 5 ahora lleva Fusil
+
+
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Shuriken
+
+
+Ronda 2
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 mantiene su arma actual: Fusil
+
+
+	-Jugador 3 intenta buscar un Cofre
+		-Jugador 3 a abierto un cofre
+		-Jugador 3 mantiene su arma actual: Fusil
+
+
+	-Jugador 4 intenta buscar un Cofre
+		-Jugador 4 a abierto un cofre
+		-Jugador 4 ahora lleva Arco
+
+
+	-Jugador 5 intenta buscar un Cofre
+		-Jugador 5 a abierto un cofre
+		-Jugador 5 ahora lleva Shuriken
+
+
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 mantiene su arma actual: Shuriken
+
+
+Ronda 3
+	-Jugador 2 intenta buscar una Batalla
+		-Jugador 2 a matado a Jugador 1
+
+	-Jugador 3 intenta buscar un Cofre
+		-Jugador 3 a abierto un cofre
+		-Jugador 3 mantiene su arma actual: Fusil
+
+
+	-Jugador 4 intenta buscar un Cofre
+		-Jugador 4 a abierto un cofre
+		-Jugador 4 ahora lleva Fusil
+
+
+	-Jugador 5 intenta buscar un Cofre
+		-Jugador 5 a abierto un cofre
+		-Jugador 5 ahora lleva Fusil
+
+
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Fusil
+
+

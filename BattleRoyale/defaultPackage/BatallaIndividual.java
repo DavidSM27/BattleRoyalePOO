@@ -5,25 +5,24 @@ import java.util.Scanner;
 public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
-    private Personaje jugador1;
-    private Personaje jugador2;
-    private int turno;
+    private static Integer turno;
+    private static String LOG;
 
-    public BatallaIndividual(Personaje p1, Personaje p2) {
+    public BatallaIndividual() {
         super();
-        this.jugador1 = p1;
-        this.jugador2 = p2;
-        this.turno = 1;
     }
 
-    public void iniciarBatalla() {
+    public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
+        turno = 1;
+        LOG="";
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo()) {
-            ejecutarTurno();
+        	LOG+="\t-Turno "+turno++;
+            ejecutarTurno(jugador1, jugador2);
             turno++;
         }
 
@@ -36,18 +35,18 @@ public class BatallaIndividual extends Batalla {
         }
     }
 
-    private void ejecutarTurno() {
+    private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
         System.out.println("\n========== TURNO " + turno + " ==========");
 
         if (jugador1.isVivo()) {
             System.out.println("\n=== Turno de " + jugador1.getNombre() + " ===");
-            mostrarEstadoBatalla();
+            mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador1, jugador2);
         }
 
         if (jugador2.isVivo() && jugador1.isVivo()) {
             System.out.println("\n=== Turno de " + jugador2.getNombre() + " ===");
-            mostrarEstadoBatalla();
+            mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador2, jugador1);
         }
 
@@ -59,7 +58,7 @@ public class BatallaIndividual extends Batalla {
         }
     }
 
-    private void mostrarEstadoBatalla() {
+    private void mostrarEstadoBatalla(Personaje jugador1, Personaje jugador2) {
         System.out.println(jugador1.getNombre() + ": " +
                 jugador1.getVida() + "+vida!  " +
                 jugador1.getEnergia() + "+energia!");
@@ -107,7 +106,9 @@ public class BatallaIndividual extends Batalla {
 
         switch (opcion) {
             case 1:
-                ataqueBasico(atacante, objetivo);
+            	LOG+="\t\t-"+atacante.getNombre()+" ha disparado a "+objetivo.getNombre()+" le ha hecho "+
+            		atacante.getArma().getAtaque()+" de daño\n";
+            	ataqueBasico(atacante, objetivo);
                 break;
             case 2:
                 usarHabilidad(atacante, objetivo);

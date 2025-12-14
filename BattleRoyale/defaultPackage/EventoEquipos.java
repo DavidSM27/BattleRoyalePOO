@@ -3,30 +3,30 @@ package defaultPackage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class EventoEquipos extends ListaArmas {
 	private static Scanner sc=new Scanner(System.in);
 	
-	private static Integer PARTIDA=1;
 	private static Integer RONDA=0;
 	private static Integer ORO_TOTAL_COFRE=100;
 	private static Integer COFRES_TOTALES=0;
 	private static Integer COFRES_RESTANTES=0;
 	private static final Double PROBABILIDAD_MAX_COFRES=0.9;
-	private static Integer JUGADORES_TOTALES=0;
+	private static Integer EQUIPOS_TOTALES=0;
 	private static final Double PROBABILIDAD_BATALLA=0.9;
 	private static String LOG="";
 	private static Integer I=0;
 	private static List<String> OPCIONES=new ArrayList<String>();
 	
 	
-	private List<List<Personaje>> equipos;
+	private List<Equipo> equipos;
 	private Tienda tienda;
 	private ImprimirLOG imprimirLOG;
 	
-	public EventoEquipos(List<List<Personaje>> equipos){
+	public EventoEquipos(List<Equipo> equipos){
 		super();
 		this.equipos=equipos;
 		Collections.shuffle(this.equipos);
@@ -34,20 +34,15 @@ public class EventoEquipos extends ListaArmas {
 		this.tienda=new Tienda();
 		this.imprimirLOG=new ImprimirLOG();
 		
-		EventoEquipos.COFRES_TOTALES=this.equipos.size()*4;
+		EventoEquipos.COFRES_TOTALES=this.equipos.size()*this.equipos.get(0).getMiembros().size()*4;
 		EventoEquipos.COFRES_RESTANTES=COFRES_TOTALES;
-		EventoEquipos.JUGADORES_TOTALES=this.equipos.size();
+		EventoEquipos.EQUIPOS_TOTALES=this.equipos.size();
 		
 		EventoEquipos.OPCIONES.add("buscar un Cofre");
 		EventoEquipos.OPCIONES.add("buscar una Tienda");
 		EventoEquipos.OPCIONES.add("buscar una Batalla");
 		EventoEquipos.OPCIONES.add("Campear");
 		
-		try{
-			this.imprimirLOG.imprimir("Partida "+PARTIDA++ +"\n");
-		}catch (ErrorEscrituraException e) {
-			System.out.println(e.getMessage());
-		}
 		
 		while(this.equipos.size()!=1) {
 			this.rondas();
@@ -79,18 +74,18 @@ public class EventoEquipos extends ListaArmas {
 			if(!equipos.get(I).areNPCs()) {
 				
 				
-				System.out.println("¿"+equipos.get(I).getNombres()+" que quereis hacer?");
+				System.out.println("¿"+equipos.get(I).getNombre()+" que quereis hacer?");
 	            System.out.println("\t[1] Buscar un Cofre");
 	            System.out.println("\t[2] Buscar una Tienda");
-	            System.out.println("\t[3] Buscar una Batalla");
-	            System.out.println("\t[4] Campear\n");
+		        System.out.println("\t[3] Buscar una Batalla");
+		        System.out.println("\t[4] Campear");
 	            
 	            do {
-	            	System.out.print("Elige una opcion: ");
+	            	System.out.print("\nEligir una opcion: ");
 	            	try{
 	            		opcion=sc.nextInt();
 	            	}catch(InputMismatchException e) {
-	            		System.out.println("\tError, escribe un número válido.");
+	            		System.out.println("\tError, escribir un número válido.");
 	            		opcion=0;
 	            	}
 	            	sc.nextLine();
@@ -98,19 +93,24 @@ public class EventoEquipos extends ListaArmas {
 	            
 			}else {
 				// El NPC nunca campea, ni busca una tienda
-				if(RONDA>2) {
+				if(RONDA>5) {
 					opcion=(int)Math.round(Math.random()*2)%2;
-				}else if(RONDA<=2) {
+				}else {
 					opcion=0;
 				}
 				opcion++;
 				if (opcion==2) {
 					opcion=3;
 				}
-				System.out.println("El NPC "+equipos.get(I).getNombres()+" intenta "+EventoEquipos.OPCIONES.get(opcion-1));
+				System.out.println("El equipo de NPCs "+equipos.get(I).getNombre()+" intentan "+EventoEquipos.OPCIONES.get(opcion-1));
 			}
-			EventoEquipos.LOG+="\t-"+equipos.get(I).getNombres()+" intenta "+EventoEquipos.OPCIONES.get(opcion-1)+"\n";
+			EventoEquipos.LOG+="\t-El equipo"+equipos.get(I).getNombre()+" han intentan "+EventoEquipos.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
+			try{
+				Thread.sleep(1000);
+			}catch (InterruptedException e) {
+				// Por si hay alguna interrupcion
+			}
 			EventoEquipos.LOG+="\n\n";
 			System.out.println("\n");
 		}
@@ -131,24 +131,24 @@ public class EventoEquipos extends ListaArmas {
 	
 	private void opciones(Integer opcion) {
 		Double prob_cofre=((double)COFRES_RESTANTES)*PROBABILIDAD_MAX_COFRES/((double)COFRES_TOTALES);
-		Double prob_batalla=((double)this.jugadores.size())*PROBABILIDAD_BATALLA/((double)JUGADORES_TOTALES);
+		Double prob_batalla=((double)this.equipos.size())*PROBABILIDAD_BATALLA/((double)EQUIPOS_TOTALES);
 		Double prob_tienda=0.6, prob_camp=0.9, random;
 		
-		if(RONDA==1) {
+		if(RONDA<5) {
 			prob_cofre=0.95;
 			prob_batalla=0.4;
-		}else if(RONDA==2){
+		}else if(RONDA==5){
 			prob_batalla=0.4;
 		}
 		
 		if(prob_batalla<0.5) {
 			prob_batalla=0.5;
 		}
-		if(this.jugadores.size()<7) {
+		if(this.equipos.size()<7) {
 			prob_tienda=0.2;
 		}
 		
-		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.);
+		Double suerte=( ((double)equipos.get(I).getMediaSuerte())*5. /100.)+1.;
 		
 		prob_cofre+=prob_cofre*suerte;
 		prob_batalla+=prob_batalla*suerte;
@@ -163,20 +163,16 @@ public class EventoEquipos extends ListaArmas {
 					this.cofre();
 				}else if(1-random<(1.-prob_cofre)*0.5) {
 					// Tienda
-					if(!jugadores.get(I).isNPC()) {
+					if(!equipos.get(I).areNPCs()) {
 						this.tienda();
 					}else {
-						System.out.println("Mala suerte no encontrado nada.");
+						System.out.println("Mala suerte no habeis encontrado nada.");
 					}
 				}else if(1-random<(1.-prob_cofre)*0.75) {
 					// Battala
-					if(RONDA>2) {
-						this.batalla();
-					}else {
-						System.out.println("Mala suerte no encontrado nada.");
-					}
+					this.batalla();
 				}else {
-					System.out.println("Mala suerte no encontrado nada.");
+					System.out.println("Mala suerte no habeis encontrado nada.");
 				}
 				break;
 				
@@ -189,13 +185,10 @@ public class EventoEquipos extends ListaArmas {
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.75) {
 					// Battala
-					if(RONDA>2) {
-						this.batalla();
-					}else {
-						System.out.println("Mala suerte no encontrado nada.");
-					}
+					this.batalla();
+					
 				}else {
-					System.out.println("Mala suerte no encontrado nada.");
+					System.out.println("Mala suerte no habeis encontrado nada.");
 				}
 				break;
 				
@@ -208,13 +201,13 @@ public class EventoEquipos extends ListaArmas {
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.5) {
 					// Tienda
-					if(!jugadores.get(I).isNPC()) {
+					if(!equipos.get(I).areNPCs()) {
 						this.tienda();
 					}else {
-						System.out.println("Mala suerte no encontrado nada.");
+						System.out.println("Mala suerte no habeis encontrado nada.");
 					}
 				}else {
-					System.out.println("Mala suerte no encontrado nada.");
+					System.out.println("Mala suerte no habeis encontrado nada.");
 				}
 				break;
 				
@@ -230,9 +223,27 @@ public class EventoEquipos extends ListaArmas {
 	}
 	
 	private void cofre() {
-		EventoEquipos.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a abierto un cofre\n";
+		Integer opcion=0;
 		
-		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.);
+		System.out.println("¿Quien quiere abrir el cofre?");
+		for (int i = 0; i < equipos.get(I).getMiembros().size(); i++) {
+			System.out.println("["+ (i+1) +"] "+equipos.get(I).getMiembros().get(i).getNombre());
+		}
+		do {
+        	System.out.print("Elegir a alguien: ");
+        	try{
+        		opcion=sc.nextInt();
+        	}catch(InputMismatchException e) {
+        		System.out.println("\tError, escribe un número válido.");
+        		opcion=0;
+        	}
+        	sc.nextLine();
+		} while (opcion<1 || opcion>this.equipos.get(I).getMiembros().size());
+		opcion-=1;
+		
+		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).getMiembros().get(opcion).getNombre()+" a abierto un cofre\n";
+		
+		Double suerte=( ((double)equipos.get(I).getMiembros().get(opcion).getSuerte()-1)*5. /100.)+1.;
 		Double random=Math.random();
 		Integer aux=0;
 		if(random<0.05*suerte) {
@@ -253,34 +264,34 @@ public class EventoEquipos extends ListaArmas {
 						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
-		EventoEquipos.LOG+=this.jugadores.get(I).equiparArma(arma);
+		EventoEquipos.LOG+=this.equipos.get(I).getMiembros().get(opcion).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
-		this.jugadores.get(I).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
+		this.equipos.get(I).getMiembros().get(opcion).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
 	}
 	
 	private void tienda() {
-		EventoEquipos.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda";
+		EventoEquipos.LOG+="\t\t-El equipo "+this.equipos.get(I).getNombre()+" a encontrado una tienda";
 		
-		tienda.menuTienda(this.jugadores.get(I));
+		for (int i = 0; i < equipos.get(I).getMiembros().size(); i++) {
+			System.out.println(this.equipos.get(I).getMiembros().get(i).getNombre()+" vas a usar la tienda:");
+			try{
+				Thread.sleep(1000);
+			}catch (InterruptedException e) {
+				// Por si hay alguna interrupcion
+			}
+			EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).getMiembros().get(i).getNombre()+" usa la tienda:";
+			EventoEquipos.LOG+=tienda.menuTienda(equipos.get(I).getMiembros().get(i));
+		}
 	}
 	
 	private void batalla() {
-		Integer random=(int)Math.round(Math.random()*(this.jugadores.size()-1))%(this.jugadores.size()-1);
+		Integer random=(int)Math.round(Math.random()*(this.equipos.size()-1))%(this.equipos.size()-1);
 		if(random.equals(I)) {
-			random=this.jugadores.size()-1;
+			random=this.equipos.size()-1;
 		}
 		
-		//Batalla jugador=new Batalla(this.jugadores.get(I));
+		//Batalla jugador=new Batalla();
 		//Evento.LOG+=jugador.batalla(this.jugadores.get(random));
-		
-		this.jugadores.get(random).recibirDanio(1000);
-		
-		if(this.jugadores.get(I).estaVivo) {
-			EventoEquipos.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
-			
-		}else{
-			EventoEquipos.LOG+="\t\t-"+this.jugadores.get(random).getNombre()+" a matado a "+this.jugadores.get(I).getNombre();
-		}
 		
 	}
 	
