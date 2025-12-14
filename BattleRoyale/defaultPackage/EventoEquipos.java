@@ -279,7 +279,8 @@ public class EventoEquipos extends ListaArmas {
 			}catch (InterruptedException e) {
 				// Por si hay alguna interrupcion
 			}
-			tienda.menuTienda(equipos.get(I).getMiembros().get(i));
+			EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).getMiembros().get(i).getNombre()+" usa la tienda:";
+			EventoEquipos.LOG+=tienda.menuTienda(equipos.get(I).getMiembros().get(i));
 		}
 	}
 	
