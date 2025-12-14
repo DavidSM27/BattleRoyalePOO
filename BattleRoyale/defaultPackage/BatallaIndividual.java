@@ -139,7 +139,6 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
-        int vidaAnterior = objetivo.getVida();
         int decision = (int) (Math.random() * 100);
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
@@ -234,10 +233,10 @@ public class BatallaIndividual extends Batalla {
 
     private void usarHabilidadAleatoria(Personaje atacante, Personaje objetivo) {
         int habilidad;
-        if(atacante.getVida()<atacante.getVidaMax()) {
-        	habilidad = (int) (Math.random() * 3)%3 + 1;
-        }else {
+        if(atacante.getVida()==atacante.getVidaMax()) {
         	habilidad = (int) (Math.random() * 2)%2 + 1;
+        }else {
+        	habilidad = (int) (Math.random() * 3)%3 + 1;
         }
         
         ejecutarHabilidadEspecifica(atacante, objetivo, habilidad);
