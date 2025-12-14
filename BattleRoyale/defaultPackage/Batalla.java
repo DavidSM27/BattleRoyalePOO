@@ -1,8 +1,5 @@
 package defaultPackage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Batalla {
 
 	protected Object ganador;
@@ -22,7 +19,7 @@ public abstract class Batalla {
 		System.out.println("\n ========== LA BATALLA HA COMENZADO ========== \n");
 	}
 
-	public String obtenerInfo() {
+	public void obtenerInfo() {
 		String estado;
 		if (enCurso == true) {
 			estado = "EN CURSO";
@@ -39,15 +36,10 @@ public abstract class Batalla {
 			frasePerdedor = "Aún no hay";
 		}
 
-		return "Estado de la batalla: " + estado + "\nGanador: " + fraseGanador + "\nPerdedor: " + frasePerdedor;
-	}
+		System.out.println("Estado de la batalla: " + estado);
+		System.out.println("Ganador: " + fraseGanador);
+		System.out.println("Perdededor" + frasePerdedor);
 
-	public List<String> obtenerAcciones() {
-		List<String> acciones = new ArrayList<>();
-		acciones.add("Atacar");
-		acciones.add("Defender");
-		acciones.add("Pasar turno");
-		return acciones;
 	}
 
 	public Object obtenerResultado() {
