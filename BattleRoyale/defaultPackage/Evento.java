@@ -261,7 +261,7 @@ public class Evento extends ListaArmas {
 	private void tienda() {
 		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a encontrado una tienda";
 		
-		tienda.menuTienda(this.jugadores.get(I));
+		Evento.LOG+=tienda.menuTienda(this.jugadores.get(I));
 	}
 	
 	private void batalla() {
