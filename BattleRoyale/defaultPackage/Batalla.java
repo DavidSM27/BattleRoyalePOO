@@ -65,4 +65,12 @@ public abstract class Batalla {
 		System.out.println("Perdedor: " + perdedor.getNombre());
 		System.out.println("==========================================\n");
 	}
+	
+	protected void terminarPorHuida(Personaje cagon) {
+		this.enCurso = false;
+
+		System.out.println("\n ========== BATALLA TERMINADA ==========");
+		System.out.println(cagon.getNombre()+" huyó de la batalla!");
+		System.out.println("==========================================\n");
+	}
 }

@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
-    private Integer turno;
-    private String LOG;
+    private static Integer turno;
+    private static String LOG;
+    private static final Integer ENERGIA=50;
 
     public BatallaIndividual() {
         super();
@@ -20,7 +21,7 @@ public class BatallaIndividual extends Batalla {
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
         System.out.println();
 
-        while (jugador1.isVivo() && jugador2.isVivo()) {
+        while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
             LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(jugador1, jugador2);
             turno++;
@@ -28,10 +29,8 @@ public class BatallaIndividual extends Batalla {
 
         if (jugador1.isVivo()) {
             terminar(jugador1, jugador2);
-            otorgarRecompensas(jugador1, jugador2);
-        } else {
+        } else if (jugador2.isVivo()){
             terminar(jugador2, jugador1);
-            otorgarRecompensas(jugador2, jugador1);
         }
 
         return LOG;
@@ -46,17 +45,10 @@ public class BatallaIndividual extends Batalla {
             ejecutarAccion(jugador1, jugador2);
         }
 
-        if (jugador2.isVivo() && jugador1.isVivo()) {
+        if (jugador2.isVivo() && jugador1.isVivo() && this.enCurso) {
             System.out.println("\n=== Turno de " + jugador2.getNombre() + " ===");
             mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador2, jugador1);
-        }
-
-        if (jugador1.isVivo()) {
-            jugador1.recuperarEnergia(20);
-        }
-        if (jugador2.isVivo()) {
-            jugador2.recuperarEnergia(20);
         }
     }
 
@@ -84,12 +76,8 @@ public class BatallaIndividual extends Batalla {
             System.out.println("\n¿Qué quieres hacer?");
             System.out.println("1. Ataque básico (con arma)");
             System.out.println("2. Usar habilidad elemental");
-            System.out.println("3. Defender (reducir daño próximo turno)");
-            System.out.println("4. Pasar turno (recuperar energía)");
-
-            if (!atacante.isNPC()) {
-                System.out.println("5. Huir de la batalla");
-            }
+            System.out.println("3. Recuperar 50 de energia");
+            System.out.println("4. Huir de la batalla");
 
             while (!sc.hasNextInt()) {
                 System.out.println("Opción no válida.");
@@ -99,11 +87,15 @@ public class BatallaIndividual extends Batalla {
             opcion = sc.nextInt();
             sc.nextLine();
 
-            if (opcion < 1 || opcion > 5) {
+            if (opcion < 1 || opcion > 4) {
                 System.out.println("Opción no válida. Elige entre 1 y 5.");
             }
+            
+            if (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD) {
+                System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
+            }
 
-        } while (opcion < 1 || opcion > 5);
+        } while (opcion < 1 || opcion > 4 || (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD));
 
         switch (opcion) {
             case 1:
@@ -116,40 +108,47 @@ public class BatallaIndividual extends Batalla {
                 usarHabilidad(atacante, objetivo);
                 break;
             case 3:
-                LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
-                defender(atacante);
+                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ENERGIA+" de energía\n";
+                recuperarEnergia(atacante);
                 break;
             case 4:
-                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recuperar energía\n";
-                pasarTurno(atacante);
-                break;
-            case 5:
-                if (!atacante.isNPC()) {
-                    if (intentarHuir(atacante)) {
-                        LOG += "\t\t-" + atacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
-                        terminar(objetivo, atacante);
-                        System.out.println(atacante.getNombre() + " huyó de la batalla!");
-                    } else {
-                        LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
-                        System.out.println(atacante.getNombre() + " no pudo escapar!");
-                    }
+                if (intentarHuir(atacante)) {
+                    LOG += "\t\t-" + atacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
+                    terminarPorHuida(atacante);
+                } else {
+                    LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
+                    System.out.println(atacante.getNombre() + " no pudo escapar!");
                 }
                 break;
         }
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
-        int decision = (int) (Math.random() * 100);
+    	int decision = 0;
+    	
+    	if(atacante.getEnergia() == Personaje.ENERGIA_MAX) {
+    		decision=(int) (Math.random() * 79);
+    	}else {
+    		decision=(int) (Math.random() * 100);
+    	}
+    	
+        
 
-        if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
-            usarHabilidad(atacante, objetivo);
+        if (decision < 40) {
+        	if(atacante.getEnergia() >= Personaje.COSTE_HABILIDAD) {
+        		usarHabilidad(atacante, objetivo);
+        	}else {
+        		ataqueBasico(atacante, objetivo);
+                LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
+                        " y le ha hecho " + atacante.getArma().getAtaque() + " de daño\n";
+        	}
         } else if (decision < 80) {
             ataqueBasico(atacante, objetivo);
             LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
                     " y le ha hecho " + atacante.getArma().getAtaque() + " de daño\n";
         } else {
-            defender(atacante);
-            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
+        	recuperarEnergia(atacante);
+            LOG += "\t\t-" + atacante.getNombre() + " recupera "+ENERGIA+" de energia\n";
         }
     }
 
@@ -162,11 +161,6 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void usarHabilidad(Personaje atacante, Personaje objetivo) {
-        if (atacante.getEnergia() < Personaje.COSTE_HABILIDAD) {
-            System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
-            ataqueBasico(atacante, objetivo);
-            return;
-        }
 
         if (!atacante.isNPC()) {
             mostrarMenuHabilidades(atacante, objetivo);
@@ -347,18 +341,13 @@ public class BatallaIndividual extends Batalla {
         }
     }
 
-    private void defender(Personaje personaje) {
-        System.out.println(personaje.getNombre() + " adopta una postura defensiva.");
-        personaje.recuperarEnergia(30);
-    }
-
-    private void pasarTurno(Personaje personaje) {
+    private void recuperarEnergia(Personaje personaje) {
         System.out.println(personaje.getNombre() + " pasa su turno y recupera energía.");
-        personaje.recuperarEnergia(40);
+        personaje.recuperarEnergia(ENERGIA);
     }
 
     private boolean intentarHuir(Personaje personaje) {
-        double probabilidad = 0.3 + (personaje.getVelocidad() * 0.05);
+        double probabilidad = 0.3 + (personaje.getVelocidad() * 0.05) + (personaje.getSuerte() * 0.05);
         return Math.random() < probabilidad;
     }
 
