@@ -4,15 +4,10 @@ import java.util.Scanner;
 
 public class Tienda {
 	
-	private static Scanner sc=new Scanner(System.in);
+	private static final Scanner sc=new Scanner(System.in);
 	private static final Integer COSTO_MEJORA=50;
 	private static final Integer COSTO_POCIONES=50;
 	private static final Integer CURACION=30;
-	
-
-    public Tienda() {
-    	sc=new Scanner(System.in);
-    }
 	
 	public void menuTienda(Personaje p) {
 	
