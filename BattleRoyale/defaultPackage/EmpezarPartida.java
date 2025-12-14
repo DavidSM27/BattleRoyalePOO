@@ -126,7 +126,7 @@ public class EmpezarPartida {
 		if(modo == 1) {
 			new Partida(modoJuego);
 		} else {
-    			new PartidaPorEquipos(modoJuego);
+    			new PartidaEquipos(modoJuego);
 		}
 	}	
 }
