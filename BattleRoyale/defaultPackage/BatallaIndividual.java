@@ -33,7 +33,7 @@ public class BatallaIndividual extends Batalla {
             terminar(jugador2, jugador1);
             otorgarRecompensas(jugador2, jugador1);
         }
-        
+
         return LOG;
     }
 
@@ -214,6 +214,7 @@ public class BatallaIndividual extends Batalla {
         }
 
         do {
+            System.out.print("Introduce una opcion: ");
             while (!sc.hasNextInt()) {
                 System.out.println("<Opción no válida>");
                 sc.next();
