@@ -15,6 +15,10 @@ public class Vida extends Personaje {
             this.nivel = nivel;
         }
     }
+    
+    public Vida(Personaje personaje) {
+    	super(personaje);
+    }
 
     private int calcularDanoNivel(int danoBase) {
         int danoFinal = 0;

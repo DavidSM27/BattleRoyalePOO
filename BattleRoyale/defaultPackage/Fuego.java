@@ -15,6 +15,10 @@ public class Fuego extends Personaje {
         else
             this.nivel = nivel;
     }
+    
+    public Fuego(Personaje personaje) {
+    	super(personaje);
+    }
 
     private int calcularDanoPorNivel(int danoBase) {
         int danoFinal = 0;

@@ -14,6 +14,10 @@ public class Tierra extends Personaje {
         else
             this.nivel = nivel;
     }
+    
+    public Tierra(Personaje personaje) {
+    	super(personaje);
+    }
 
     private int calcularImpactoTerrestre(int danoBase) {
         int danoFinal = 0;

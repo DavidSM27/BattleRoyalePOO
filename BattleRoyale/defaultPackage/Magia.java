@@ -6,6 +6,10 @@ public class Magia extends Personaje {
         super(nombre, nivel, esNPC);
         this.setElemento(Elemento.MAGIA);
     }
+    
+    public Magia(Personaje personaje) {
+    	super(personaje);
+    }
 
     private int calcularDanoPorNivel(int danoBase) {
         int danoFinal = 0;

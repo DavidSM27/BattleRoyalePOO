@@ -16,6 +16,10 @@ public class Viento extends Personaje {
             this.nivel = nivel;
         }
     }
+    
+    public Viento(Personaje personaje) {
+    	super(personaje);
+    }
 
     private int calcularDanoNivel(int danoBase) {
         int danoFinal = 0;
