@@ -6,7 +6,7 @@ public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
     private Integer turno;
-    private String LOG;
+    private String LOG = "hola";
 
     public BatallaIndividual() {
         super();
