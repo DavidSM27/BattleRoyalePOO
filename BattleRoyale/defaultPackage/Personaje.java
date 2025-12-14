@@ -332,6 +332,7 @@ public class Personaje {
                 System.out.print("Elige una opción: ");
                 if (sc.hasNextInt()) {
                     opcion = sc.nextInt();
+                    sc.nextLine();
                     if (opcion >= 0 && opcion <= 4) {
                         entradaValida = true;
                     } else {
@@ -339,7 +340,7 @@ public class Personaje {
                     }
                 } else {
                     System.out.println("Por favor, introduce un número.");
-                    sc.next();
+                    sc.nextLine();
                 }
             }
 
@@ -349,6 +350,7 @@ public class Personaje {
                     System.out.println("Aún te quedan " + this.puntosDeNivel + " puntos sin asignar.");
                     System.out.print("¿Estás seguro de que quieres finalizar? (Si/No): ");
                     String confirmacion = sc.next().toUpperCase().substring(0, 1);
+                    sc.nextLine();
                     if (confirmacion.equals("S")) {
                         break;
                     }

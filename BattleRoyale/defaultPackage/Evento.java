@@ -77,6 +77,7 @@ public class Evento extends ListaArmas {
 	            	try{
 	            		opcion=sc.nextInt();
 	            	}catch(InputMismatchException e) {
+	            		System.out.println("\tError, escribe un número válido.");
 	            		opcion=0;
 	            	}
 	            	sc.nextLine();
