@@ -26,7 +26,7 @@ public class Tienda {
 
             while (!sc.hasNextInt()) {
                 System.out.println("Por favor, ingresa un número válido.");
-                sc.next();
+                sc.nextLine();
                 System.out.print("> ");
             }
             opcion = sc.nextInt();
@@ -70,7 +70,8 @@ public class Tienda {
 			
 			System.out.print("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "? (Si/No) ");
 			
-			opcion = sc.nextLine().toUpperCase().substring(0, 1);
+			opcion = sc.next().toUpperCase().substring(0, 1);
+			sc.nextLine();
 			
 			switch(opcion) {
 			case "S":
@@ -121,7 +122,8 @@ public class Tienda {
 			
 			System.out.print("¿Quiere comprar una pocion? (Si/No) ");
 			
-			respuesta = sc.nextLine().toUpperCase().substring(0, 1);
+			respuesta = sc.next().toUpperCase().substring(0, 1);
+			sc.nextLine();
 			
 			switch(respuesta) {
 				case "S":
