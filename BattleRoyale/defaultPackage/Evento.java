@@ -46,7 +46,11 @@ public class Evento extends ListaArmas {
 			this.rondas();
 		}
 		
-		this.imprimirLOG.imprimir("");
+		try{
+			this.imprimirLOG.imprimir("");
+		}catch (ErrorEscrituraException e) {
+			
+		}
 	}
 	
 	private void rondas() {
@@ -101,7 +105,11 @@ public class Evento extends ListaArmas {
 			Evento.LOG+="\n\n";
 			System.out.println("\n");
 		}
-		this.imprimirLOG.imprimir(Evento.LOG);
+		try{
+			this.imprimirLOG.imprimir(LOG);
+		}catch (ErrorEscrituraException e) {
+			
+		}
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
 		
