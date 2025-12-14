@@ -14,6 +14,7 @@ public class ListaNombresNPC {
 	private static final Scanner sc=new Scanner(System.in);
 	private static final String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
 	
+	
 	private List<String> nombres;
 	
 	public ListaNombresNPC() {
