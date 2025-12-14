@@ -22,8 +22,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
-            LOG += "\t-Turno " + turno++ + "\n";
+            LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(jugador1, jugador2);
+            turno++;
             try{
 				Thread.sleep(1000);
 			}catch (InterruptedException e) {
@@ -41,7 +42,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
     }
 
     private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
-        System.out.println("\n========== TURNO " + turno + " ==========");
+        System.out.println("\n========== TURNO " + turno  + " ==========");
 
         if (jugador1.isVivo()) {
             System.out.println("\n=== Turno de " + jugador1.getNombre() + " ===");
@@ -178,37 +179,37 @@ public class BatallaIndividual extends Batalla<Personaje> {
         int opcion = 0;
 
         System.out.println("\nElige una habilidad:");
-
+        
         switch (elemento) {
             case FUEGO:
-                System.out.println("1. Lluvia Infernal (Daño alto)");
-                System.out.println("2. Mar de Lava (Daño medio)");
-                System.out.println("3. Curación del Infierno");
+                System.out.println("1. Lluvia Infernal (" + Personaje.DAÑO_HABILIDAD1 + " de daño)");
+                System.out.println("2. Mar de Lava (" + Personaje.DAÑO_HABILIDAD2 + " de daño)");
+                System.out.println("3. Curación del Infierno (" + Personaje.CURACION_HABILIDAD + " de curacion)");
                 break;
             case AGUA:
-                System.out.println("1. Tsunami (Daño alto)");
-                System.out.println("2. Vorágine (Daño medio)");
-                System.out.println("3. Curación de Poseidón");
+                System.out.println("1. Tsunami (" + Personaje.DAÑO_HABILIDAD1 + " de daño)");
+                System.out.println("2. Vorágine (" + Personaje.DAÑO_HABILIDAD2 + " de daño)");
+                System.out.println("3. Curación de Poseidón (" + Personaje.CURACION_HABILIDAD + " de curacion)");
                 break;
             case TIERRA:
-                System.out.println("1. Crear Grieta (Daño alto)");
-                System.out.println("2. Lanzar Roca (Daño medio)");
-                System.out.println("3. Sanación Rocal");
+                System.out.println("1. Crear Grieta (" + Personaje.DAÑO_HABILIDAD1 + " de daño)");
+                System.out.println("2. Lanzar Roca (" + Personaje.DAÑO_HABILIDAD2 + " de daño)");
+                System.out.println("3. Sanación Rocal (" + Personaje.CURACION_HABILIDAD + " de curacion)");
                 break;
             case VIENTO:
-                System.out.println("1. Lanzar Torbellino (Daño alto)");
-                System.out.println("2. Soplido de Dios (Daño medio)");
-                System.out.println("3. Curación de Eolo");
+                System.out.println("1. Lanzar Torbellino (" + Personaje.DAÑO_HABILIDAD1 + " de daño)");
+                System.out.println("2. Soplido de Dios (" + Personaje.DAÑO_HABILIDAD2 + " de daño)");
+                System.out.println("3. Curación de Eolo (" + Personaje.CURACION_HABILIDAD + " de curacion)");
                 break;
             case MAGIA:
-                System.out.println("1. Bola de Fuego (Daño alto)");
-                System.out.println("2. Congelar Enemigo (Daño medio)");
-                System.out.println("3. Curación Divina");
+                System.out.println("1. Bola de Fuego (" + Personaje.DAÑO_HABILIDAD1 + " de curacion)");
+                System.out.println("2. Congelar Enemigo (" + Personaje.DAÑO_HABILIDAD2 + " de daño)");
+                System.out.println("3. Curación Divina (" + Personaje.CURACION_HABILIDAD + " de curacion)");
                 break;
             case VIDA:
-                System.out.println("1. Apretón de Corazón (Daño alto)");
-                System.out.println("2. Explotar Sangre (Daño medio)");
-                System.out.println("3. Curación Médica");
+                System.out.println("1. Apretón de Corazón (" + Personaje.DAÑO_HABILIDAD1 + " de curacion)");
+                System.out.println("2. Explotar Sangre (" + Personaje.DAÑO_HABILIDAD2 + " de daño)");
+                System.out.println("3. Curación Médica (" + Personaje.CURACION_HABILIDAD + " de curacion)");
                 break;
         }
 
