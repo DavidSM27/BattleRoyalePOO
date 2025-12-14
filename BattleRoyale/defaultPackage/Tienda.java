@@ -154,7 +154,6 @@ public class Tienda {
 					break;
 			}
 			
-			
 		}while(!respuesta.equals("S") && !respuesta.equals("N"));
 	}
 	
