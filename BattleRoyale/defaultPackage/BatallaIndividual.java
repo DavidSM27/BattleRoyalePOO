@@ -9,14 +9,11 @@ public class BatallaIndividual extends Batalla {
     private Personaje jugador2;
     private int turno;
 
-    public BatallaIndividual(Personaje p1, Personaje p2) {
+    public BatallaIndividual() {
         super();
-        this.jugador1 = p1;
-        this.jugador2 = p2;
-        this.turno = 1;
     }
 
-    public void iniciarBatalla() {
+    public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
