@@ -237,7 +237,7 @@ public class BatallaIndividual extends Batalla {
     private void ejecutarHabilidadEspecifica(Personaje atacante, Personaje objetivo, int habilidad) {
         switch (atacante.getElemento()) {
             case FUEGO:
-                Fuego fuego = (Fuego) atacante;
+                Fuego fuego = new Fuego(atacante);
                 if (habilidad == 1)
                     fuego.lluviaInfernal(objetivo);
                 else if (habilidad == 2)
@@ -246,7 +246,7 @@ public class BatallaIndividual extends Batalla {
                     fuego.curacionDelInfierno();
                 break;
             case AGUA:
-                Agua agua = (Agua) atacante;
+                Agua agua = new Agua(atacante);
                 if (habilidad == 1)
                     agua.tsunami(objetivo);
                 else if (habilidad == 2)
@@ -255,7 +255,7 @@ public class BatallaIndividual extends Batalla {
                     agua.curacionDePoseidon();
                 break;
             case TIERRA:
-                Tierra tierra = (Tierra) atacante;
+                Tierra tierra = new Tierra(atacante);
                 if (habilidad == 1)
                     tierra.crearGrieta(objetivo);
                 else if (habilidad == 2)
@@ -264,7 +264,7 @@ public class BatallaIndividual extends Batalla {
                     tierra.sanacionRocal();
                 break;
             case VIENTO:
-                Viento viento = (Viento) atacante;
+                Viento viento = new Viento(atacante);
                 if (habilidad == 1)
                     viento.LanzarTorbellino(objetivo);
                 else if (habilidad == 2)
@@ -273,7 +273,7 @@ public class BatallaIndividual extends Batalla {
                     viento.CuracionDeEolo();
                 break;
             case MAGIA:
-                Magia magia = (Magia) atacante;
+                Magia magia = new Magia(atacante);
                 if (habilidad == 1)
                     magia.lanzarBolaDeFuego(objetivo);
                 else if (habilidad == 2)
@@ -282,7 +282,7 @@ public class BatallaIndividual extends Batalla {
                     magia.curacionDivina();
                 break;
             case VIDA:
-                Vida vida = (Vida) atacante;
+                Vida vida = new Vida(atacante);
                 if (habilidad == 1)
                     vida.apretonDeCorazon(objetivo);
                 else if (habilidad == 2)
