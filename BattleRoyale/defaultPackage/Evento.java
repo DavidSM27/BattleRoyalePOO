@@ -15,7 +15,6 @@ public class Evento extends ListaArmas {
 	private static Integer COFRES_RESTANTES=0;
 	private static final Double PROBABILIDAD_MAX_COFRES=0.9;
 	private static Integer JUGADORES_TOTALES=0;
-	private static Integer JUGADORES_VIVOS=0;
 	private static final Double PROBABILIDAD_BATALLA=0.9;
 	private static String LOG="";
 	private static Integer I=0;
@@ -33,15 +32,15 @@ public class Evento extends ListaArmas {
 		this.tienda=new Tienda();
 		
 		Evento.COFRES_TOTALES=this.jugadores.size()*4;
+		Evento.COFRES_RESTANTES=COFRES_TOTALES;
 		Evento.JUGADORES_TOTALES=this.jugadores.size();
-		Evento.JUGADORES_VIVOS=this.jugadores.size();
 		
 		Evento.OPCIONES.add("buscar un Cofre");
 		Evento.OPCIONES.add("buscar una Tienda");
 		Evento.OPCIONES.add("buscar una Batalla");
 		Evento.OPCIONES.add("Campear");
 		
-		while(JUGADORES_VIVOS!=1) {
+		while(this.jugadores.size()!=1) {
 			this.rondas();
 		}
 	}
@@ -57,7 +56,6 @@ public class Evento extends ListaArmas {
 			
 			if(!jugadores.get(I).isVivo()) {
 				jugadores.remove((int)I--);
-				JUGADORES_VIVOS--;
 				continue;
 			}
 			
@@ -71,18 +69,17 @@ public class Evento extends ListaArmas {
 	            System.out.println("\t[4] Campear\n");
 	            
 	            do {
-	            	System.out.print("Elige una opcion:");
+	            	System.out.print("Elige una opcion: ");
 	            	try{
 	            		opcion=sc.nextInt();
 	            	}catch(InputMismatchException e) {
 	            		opcion=0;
-	            		sc.nextLine();
 	            	}
-	            	
+	            	sc.nextLine();
 				} while (opcion<1 || opcion>4);
 	            
 			}else {
-				// El NPC nunca campea
+				// El NPC nunca campea, ni busca una tienda
 				if(RONDA>2) {
 					opcion=(int)Math.round(Math.random()*2)%2;
 				}else if(RONDA<=2) {
@@ -92,7 +89,7 @@ public class Evento extends ListaArmas {
 				if (opcion==2) {
 					opcion=3;
 				}
-				System.out.println(jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1));
+				System.out.println("El NPC "+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1));
 			}
 			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
@@ -102,11 +99,17 @@ public class Evento extends ListaArmas {
 		System.out.print(Evento.LOG);
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
+		
+		for (int i = 0; i < this.jugadores.size(); i++) {
+			if(!jugadores.get(i).isVivo()) {
+				jugadores.remove((int)i);
+			}
+		}
 	}
 	
 	private void opciones(Integer opcion) {
 		Double prob_cofre=((double)COFRES_RESTANTES)*PROBABILIDAD_MAX_COFRES/((double)COFRES_TOTALES);
-		Double prob_batalla=((double)JUGADORES_VIVOS)*PROBABILIDAD_BATALLA/((double)JUGADORES_TOTALES);
+		Double prob_batalla=((double)this.jugadores.size())*PROBABILIDAD_BATALLA/((double)JUGADORES_TOTALES);
 		Double prob_tienda=0.6, prob_camp=0.9, random;
 		
 		if(RONDA==1) {
@@ -119,7 +122,7 @@ public class Evento extends ListaArmas {
 		if(prob_batalla<0.5) {
 			prob_batalla=0.5;
 		}
-		if(JUGADORES_VIVOS<7) {
+		if(this.jugadores.size()<7) {
 			prob_tienda=0.2;
 		}
 		
@@ -228,7 +231,7 @@ public class Evento extends ListaArmas {
 						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
-		this.jugadores.get(I).equiparArma(arma);
+		Evento.LOG+=this.jugadores.get(I).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
 		this.jugadores.get(I).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
 	}
@@ -252,6 +255,7 @@ public class Evento extends ListaArmas {
 		
 		if(this.jugadores.get(I).estaVivo) {
 			Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
+			
 		}else{
 			Evento.LOG+="\t\t-"+this.jugadores.get(random).getNombre()+" a matado a "+this.jugadores.get(I).getNombre();
 		}
@@ -264,18 +268,13 @@ public class Evento extends ListaArmas {
 
         // 2. Generar 50 personas
         for (int i = 1; i <= 2; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
+            listaJugadores.add(new Personaje(("Jugador "+i), 1, false));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
 
         // 3. Insanciar el Evento
         Evento evento = new Evento(listaJugadores);
-
-        // 4. Bucle del juego (Mientras quede más de 1 vivo)
-        while (Evento.JUGADORES_VIVOS > 1) {
-            evento.rondas();
-        }
 
         // 5. Anunciar ganador
         for(Personaje p : listaJugadores) {

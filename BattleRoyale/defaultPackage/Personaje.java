@@ -215,14 +215,16 @@ public class Personaje {
     	
         if (nuevaArma == null) {
             System.out.println("Error: El arma no es válida.");
-            log="\n";
+            log="\t\t-Ha habido un error.";
         }
         
         else if (esNPC) {
         	if(this.arma.compareTo(nuevaArma)==1) {
 	            this.arma = nuevaArma;
 	            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-	            log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+	            log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();
+        	} else {
+        		log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
         	}
         }
         
@@ -232,21 +234,22 @@ public class Personaje {
 	        String respuesta;
 	        do {
 	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
-	            System.out.println("\nTu "+this.arma.toString());
+	            System.out.println("\nTu actual "+this.arma.toString());
 	            
-	            System.out.println("\n¿Quieres cambiar tu arma?");
+	            System.out.print("\n¿Quieres cambiar tu arma? (S/N): ");
 	            
-	            respuesta = sc.nextLine().toUpperCase();
+	            respuesta = sc.next().toUpperCase();
+	            sc.nextLine();
 	
 	            switch (respuesta) {
 	                case "S":
 	                    this.arma = nuevaArma;
 	                    System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-	                    log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+	                    log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();
 	                    break;
 	                case "N":
 	                    System.out.println(this.nombre + " mantiene su arma actual: " + this.arma.getNombre());
-	                    log=this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
+	                    log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
 	                    break;
 	                default:
 	                    System.out.println("Respuesta no válida. Escribe S o N.");
@@ -254,7 +257,7 @@ public class Personaje {
 	        } while (!respuesta.equals("S") && !respuesta.equals("N"));
         }
         
-        return log;
+        return log+"\n";
     }
 
     // Agrega oro a el inventario del jugador
@@ -300,13 +303,6 @@ public class Personaje {
                 oro,
                 arma.getNombre(),
                 textoTipo);
-    }
-
-    // Funcion para cerrar el scanner
-    public static void cerrarScanner() {
-        if (sc != null) {
-            sc.close();
-        }
     }
 
     public void establecerEstadisticas() {
