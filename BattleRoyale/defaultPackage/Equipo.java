@@ -7,12 +7,15 @@ public class Equipo {
 	private int id;
 	private String nombre;
 	private List<Personaje> miembros = new ArrayList<>();
-	private boolean eliminado;
+	private boolean estanVivos;
+	private boolean sonNPCs;
 	
-	public Equipo(int id, String nombre) {
+	public Equipo(int id, String nombre, boolean sonNPCs) {
 		this.id = id;
 		this.nombre = nombre;
-		this.eliminado = false;
+		this.estanVivos = false;
+		this.miembros = new ArrayList<Personaje>();
+		this.sonNPCs=sonNPCs;
 	}
 	
 	public void meterMiembro(Personaje p) {
