@@ -18,10 +18,14 @@ public class Partida {
 	protected List<Personaje> jugadoresHumanos = new ArrayList<>();
 	protected List<Personaje> jugadoresNPCs = new ArrayList<>();
 	
+	private ListaNombresNPC nombreNPC;
+	
 	public Partida(String modoJuego){
 		this.modoJuego = modoJuego;
-		iniciarJuego();
 		
+		this.nombreNPC = new ListaNombresNPC();
+		
+		iniciarJuego();
 	}	
 	  
 	private void iniciarJuego(){
@@ -36,7 +40,7 @@ public class Partida {
 	    nJugadores = numeroJugadores();
 	    nNPCs = numeroNPCs();
 	    
-	    	System.out.println("\n=== CONFIGURACIÓN COMPLETA ===");
+	    System.out.println("\n=== CONFIGURACIÓN COMPLETA ===");
         System.out.println("Modo: " + modoJuego);
         System.out.println("Jugadores reales: " + nJugadores);
         System.out.println("NPCs: " + nNPCs);
@@ -104,10 +108,15 @@ public class Partida {
         
         // 2. CREAR NPCs
         for(int i = 1; i <= nNPCs; i++) {
-            Personaje npc = crearNPC(i);
-            jugadoresNPCs.add(npc);
-            personajes.add(npc);
-            personajesVivos.add(npc);
+        	try {
+        		Personaje npc = crearNPC(i);
+        		jugadoresNPCs.add(npc);
+        		personajes.add(npc);
+        		personajesVivos.add(npc);
+        	} catch (Exception e) {
+        		this.nNPCs = this.jugadoresNPCs.size();
+        		System.out.println("Numero de NPCs alcanzado, los NPCs creados an sido " + nNPCs);
+        	}
         }
         
         System.out.println("✅ " + personajes.size() + " personajes creados.");
@@ -152,14 +161,12 @@ public class Partida {
     
     private Personaje crearNPC(int numero) {
     	boolean esNpc = true;
-        String[] nombresNPC = {"Thor", "Luna", "Kai", "Zara", "Rex", "Nova"};
-        String nombre = nombresNPC[(numero-1) % nombresNPC.length] + "_" + numero;
-        
+    	
         // Elemento aleatorio 1-6
         int elemento = (int)(Math.random() * 6) + 1;
         
-        Personaje npc = crearPersonajePorElemento(nombre, elemento, esNpc);
-        
+        Personaje npc = crearPersonajePorElemento(this.nombreNPC.getRandomNombres(), elemento, esNpc);
+        	
         return npc;
     }
     
