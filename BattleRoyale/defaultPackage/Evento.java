@@ -50,9 +50,6 @@ public class Evento extends ListaArmas {
 			this.imprimirLOG.imprimir("");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
-			if(e.getCause()!=null) {
-				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
-			}
 		}
 	}
 	
@@ -112,9 +109,6 @@ public class Evento extends ListaArmas {
 			this.imprimirLOG.imprimir(LOG);
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
-			if(e.getCause()!=null) {
-				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
-			}
 		}
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
@@ -287,7 +281,7 @@ public class Evento extends ListaArmas {
 
         // 2. Generar 50 personas
         for (int i = 1; i <= 2; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, false));
+            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
