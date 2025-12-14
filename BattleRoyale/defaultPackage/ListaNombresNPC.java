@@ -13,6 +13,7 @@ public class ListaNombresNPC {
 	
 	private static final Scanner sc=new Scanner(System.in);
 	private static final String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
+	private static final String DIRECTORIO_ACTUAL=System.getProperty("user.dir");
 	
 	
 	private List<String> nombres;
@@ -34,7 +35,7 @@ public class ListaNombresNPC {
 				// La condición es que errorRuta==false para que se haga una vez solo
 				if(!errorRuta) {
 					errorRuta=true;
-					System.out.print("Completa la ruta del fichero:\n"+System.getProperty("user.dir"));
+					System.out.print("Completa la ruta del fichero:\n"+DIRECTORIO_ACTUAL);
 					ruta=sc.next();
 					sc.nextLine();
 					System.out.println("Se va usar la ruta auxiliar: "+ruta+"\n\n");
@@ -53,7 +54,7 @@ public class ListaNombresNPC {
 	}
 	
 	private void leerFichero(String ruta) throws FileNotFoundException, IOException, Exception {
-		File archivo=new File(System.getProperty("user.dir")+ruta);
+		File archivo=new File(DIRECTORIO_ACTUAL+ruta);
 		String linea;
 		
 		BufferedReader bf=new BufferedReader(new FileReader(archivo));
