@@ -125,8 +125,13 @@ public class Personaje {
     public Arma getArma() {
         return arma;
     }
+    
 
-    public void setArma(Arma arma) {
+    public void setEnergia(int energia) {
+		this.energia = energia;
+	}
+
+	public void setArma(Arma arma) {
         if (arma != null) {
             this.arma = arma;
         }
