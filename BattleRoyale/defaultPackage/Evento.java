@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Evento extends ListaArmas {
 	private static Scanner sc=new Scanner(System.in);
 	
-	private static Integer PARTIDA=1;
 	private static Integer RONDA=0;
 	private static Integer ORO_TOTAL_COFRE=100;
 	private static Integer COFRES_TOTALES=0;
@@ -43,11 +42,6 @@ public class Evento extends ListaArmas {
 		Evento.OPCIONES.add("buscar una Batalla");
 		Evento.OPCIONES.add("Campear");
 		
-		try{
-			this.imprimirLOG.imprimir("Partida "+PARTIDA++ +"\n");
-		}catch (ErrorEscrituraException e) {
-			System.out.println(e.getMessage());
-		}
 		
 		while(this.jugadores.size()!=1) {
 			this.rondas();
