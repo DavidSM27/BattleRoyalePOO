@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
-    private static Integer turno;
-    private static String LOG;
+    private Integer turno;
+    private String LOG;
 
     public BatallaIndividual() {
         super();
@@ -14,14 +14,14 @@ public class BatallaIndividual extends Batalla {
 
     public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
         turno = 1;
-        LOG="";
+        LOG = "";
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo()) {
-        	LOG+="\t-Turno "+turno++;
+            LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(jugador1, jugador2);
             turno++;
         }
@@ -60,18 +60,17 @@ public class BatallaIndividual extends Batalla {
 
     private void mostrarEstadoBatalla(Personaje jugador1, Personaje jugador2) {
         System.out.println(jugador1.getNombre() + ": " +
-                jugador1.getVida() + "+vida!  " +
-                jugador1.getEnergia() + "+energia!");
-        System.out.println(
-                jugador2.getNombre() + ": " + jugador2.getVida() + "+vida!  " + jugador2.getEnergia() + "+energia!");
+                jugador1.getVida() + " HP  " +
+                jugador1.getEnergia() + " Energía");
+        System.out.println(jugador2.getNombre() + ": " +
+                jugador2.getVida() + " HP  " +
+                jugador2.getEnergia() + " Energía");
     }
 
     private void ejecutarAccion(Personaje atacante, Personaje objetivo) {
         if (atacante.isNPC()) {
-
             ejecutarAccionNPC(atacante, objetivo);
         } else {
-
             ejecutarAccionJugador(atacante, objetivo);
         }
     }
@@ -106,24 +105,31 @@ public class BatallaIndividual extends Batalla {
 
         switch (opcion) {
             case 1:
-            	LOG+="\t\t-"+atacante.getNombre()+" ha disparado a "+objetivo.getNombre()+" le ha hecho "+
-            		atacante.getArma().getAtaque()+" de daño\n";
-            	ataqueBasico(atacante, objetivo);
+                LOG += "\t\t-" + atacante.getNombre() + " ha atacado a " + objetivo.getNombre() +
+                        " con " + atacante.getArma().getNombre() + "\n";
+                ataqueBasico(atacante, objetivo);
                 break;
             case 2:
+
                 usarHabilidad(atacante, objetivo);
                 break;
             case 3:
+                LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
                 defender(atacante);
                 break;
             case 4:
+                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recuperar energía\n";
                 pasarTurno(atacante);
                 break;
             case 5:
                 if (!atacante.isNPC()) {
                     if (intentarHuir(atacante)) {
+                        LOG += "\t\t-" + atacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
                         terminar(objetivo, atacante);
                         System.out.println(atacante.getNombre() + " huyó de la batalla!");
+                    } else {
+                        LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
+                        System.out.println(atacante.getNombre() + " no pudo escapar!");
                     }
                 }
                 break;
@@ -134,10 +140,8 @@ public class BatallaIndividual extends Batalla {
         int decision = (int) (Math.random() * 100);
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
-
             usarHabilidad(atacante, objetivo);
         } else if (decision < 80) {
-
             ataqueBasico(atacante, objetivo);
         } else {
             defender(atacante);
@@ -146,16 +150,13 @@ public class BatallaIndividual extends Batalla {
 
     private void ataqueBasico(Personaje atacante, Personaje objetivo) {
         int danoBase = (int) (atacante.getArma().getAtaque() + (atacante.getFuerza() * 2));
-
         int danoFinal = Math.max(1, danoBase - (objetivo.getDefensa() / 2));
 
         System.out.println(atacante.getNombre() + " ataca con " + atacante.getArma().getNombre() + "!");
         objetivo.recibirDanio(danoFinal);
-
     }
 
     private void usarHabilidad(Personaje atacante, Personaje objetivo) {
-
         if (atacante.getEnergia() < Personaje.COSTE_HABILIDAD) {
             System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
             ataqueBasico(atacante, objetivo);
@@ -165,7 +166,6 @@ public class BatallaIndividual extends Batalla {
         if (!atacante.isNPC()) {
             mostrarMenuHabilidades(atacante, objetivo);
         } else {
-
             usarHabilidadAleatoria(atacante, objetivo);
         }
     }
@@ -231,7 +231,6 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarHabilidadEspecifica(Personaje atacante, Personaje objetivo, int habilidad) {
-
         switch (atacante.getElemento()) {
             case FUEGO:
                 Fuego fuego = (Fuego) atacante;
@@ -316,5 +315,9 @@ public class BatallaIndividual extends Batalla {
         System.out.println("\n RECOMPENSAS:");
         System.out.println("  +" + oroGanado + " oro ");
         System.out.println("  +" + xpGanado + " XP ");
+    }
+
+    public String getLOG() {
+        return LOG;
     }
 }
