@@ -15,6 +15,10 @@ public class Agua extends Personaje {
             this.nivel = nivel;
         }
     }
+    
+    public Agua(Personaje personaje) {
+    	super(personaje);
+    }
 
     private int calcularDanoNivel(int danoBase) {
         int danoFinal = 0;

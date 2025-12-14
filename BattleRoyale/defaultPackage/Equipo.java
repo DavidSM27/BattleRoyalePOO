@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Equipo {
-	private int id;
 	private String nombre;
 	private List<Personaje> miembros = new ArrayList<>();
 	private boolean estanVivos;
 	private boolean sonNPCs;
 	
-	public Equipo(int id, String nombre, boolean sonNPCs) {
-		this.id = id;
+	public Equipo(String nombre, boolean sonNPCs) {
 		this.nombre = nombre;
 		this.estanVivos = false;
 		this.miembros = new ArrayList<Personaje>();
@@ -40,11 +38,11 @@ public class Equipo {
 		String nombres="";
 		for(int i=0; i<miembros.size(); i++) {
 			if(i < miembros.size()-2) {
-				nombres=miembros.get(i).getNombre()+", ";
+				nombres += miembros.get(i).getNombre()+", ";
 			}else if(i == miembros.size()-2) {
-				nombres=miembros.get(i).getNombre()+" y ";
+				nombres += miembros.get(i).getNombre()+" y ";
 			}else {
-				nombres=miembros.get(i).getNombre();
+				nombres += miembros.get(i).getNombre();
 			}
 		}
 		return nombres;

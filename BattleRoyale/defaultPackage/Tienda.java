@@ -9,8 +9,10 @@ public class Tienda {
 	private static final Integer COSTO_POCIONES=50;
 	private static final Integer CURACION=30;
 	private static final Integer MANA=30;
+	private static String LOG;
 	
-	public void menuTienda(Personaje p) {
+	public String menuTienda(Personaje p) {
+		LOG="";
 	
 		int opcion;
 		
@@ -60,7 +62,8 @@ public class Tienda {
             }
 
         } while (opcion != 0);
-
+        
+        return LOG;
 	}
 	
 	public void menuMejorarArma(Personaje p) {
@@ -92,6 +95,8 @@ public class Tienda {
 						
 						System.out.println("Has mejorado tu " + p.getArma().getNombre() + " 🗡️");
 						System.out.println("Nuevo ataque: " + p.getArma().getAtaque() + "\n");
+						LOG+="\t\t-"+p.getNombre()+" ha mejorado su "+p.getArma().getNombre()+
+								": Mejora="+p.getArma().getMejora()+"\n";
 						
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
@@ -142,8 +147,10 @@ public class Tienda {
 						
 						System.out.println("Vendedor: \"Ya puedes disfrutar de las pociones viajero\"\n");
 						
+						Integer vidaAnterior=p.getVida();
 						p.curarVida(p.getVida() + CURACION);//por ejemplo luego definimos cuanto curan
 						
+						LOG+="\t\t-"+p.getNombre()+" ";
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}

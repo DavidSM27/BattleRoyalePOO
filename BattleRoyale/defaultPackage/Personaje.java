@@ -67,6 +67,25 @@ public class Personaje {
             establecerEstadisticas();
         }
     }
+    
+    public Personaje(Personaje jugador) {
+    	this.nombre = jugador.getNombre();
+        this.vida = jugador.getVida();
+        this.energia = jugador.getEnergia();
+        this.estaVivo = jugador.isVivo();
+        this.oro = jugador.getOro();
+        this.arma = jugador.getArma();
+        this.esNPC = jugador.isNPC();
+        this.fuerza = jugador.getFuerza();
+        this.velocidad = jugador.getVelocidad();
+        this.defensa = jugador.getDefensa();
+        this.suerte = jugador.getSuerte();
+        this.puntosDeNivel = jugador.getPuntosDeNivel();
+        this.elemento = jugador.getElemento();
+        this.nivel = jugador.getNivel();
+        this.xp = 0;
+    	
+    }
 
     // Getters y setters
 
@@ -74,12 +93,20 @@ public class Personaje {
         return nombre;
     }
 
-    public int getVida() {
+    public int getPuntosDeNivel() {
+		return puntosDeNivel;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public int getVida() {
         return vida;
     }
 
     public void setVida(int vida) {
-        this.vida = VIDA_MAX_DEFECTO;
+        this.vida = vida;
     }
 
     public int getVidaMax() {
@@ -119,7 +146,7 @@ public class Personaje {
     }
 
     public void setOro(int oro) {
-        this.oro = Math.max(0, oro);
+        this.oro = oro;
     }
 
     public Arma getArma() {
