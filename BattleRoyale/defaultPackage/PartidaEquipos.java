@@ -120,7 +120,7 @@ public class PartidaEquipos extends Partida{
 			
 			for (int j = 0; j < tamEquipo; j++) {
 				Personaje p = jugadoresHumanos.get(jugador + j);
-				equipo.meterMiembro(p);
+				equipo.add(p);
 			}
 			
 			equipos.add(equipo);			
@@ -141,7 +141,7 @@ public class PartidaEquipos extends Partida{
 			
 			for (int j = 0; j < tamEquipo; j++) {
 				Personaje p = jugadoresNPCs.get(npc + j);
-				equipo.meterMiembro(p);
+				equipo.add(p);
 			}
 			
 			equipos.add(equipo);	
@@ -158,10 +158,9 @@ public class PartidaEquipos extends Partida{
 		        System.out.println("\n" + equipo.getNombre());
 		        System.out.print("Miembros: ");
 		        
-		        List<Personaje> miembros = equipo.getMiembros();
-		        for (int i = 0; i < miembros.size(); i++) {
-		            System.out.print(miembros.get(i).getNombre());
-		            if (i < miembros.size() - 1) {
+		        for (int i = 0; i < equipo.size(); i++) {
+		            System.out.print(equipo.get(i).getNombre());
+		            if (i < equipo.size() - 1) {
 		                System.out.print(", ");
 		            }
 		        }

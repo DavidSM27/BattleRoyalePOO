@@ -49,10 +49,10 @@ public class EventoEquipos extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("\nLos ganadores son: "+this.equipos.getFirst().getNombres());
+		System.out.println("\nEl equipo ganador es: "+this.equipos.getFirst().getNombre());
 		
 		try{
-			this.imprimirLOG.imprimir("\nLos ganadores son: "+this.equipos.getFirst().getNombres()+"\n\n");
+			this.imprimirLOG.imprimir("\nEl equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
@@ -315,8 +315,8 @@ public class EventoEquipos extends ListaArmas {
 	    
 	    // IMPORTANTE: Instanciamos las clases hijas (Fuego, Agua...) NO Personaje a secas
 	    // Ajusta los parámetros del constructor (Nombre, Nivel/Suerte, esNPC) según tus clases
-	    equipoHeroes.meterMiembro(new Fuego("Dr. Strange", 5, false));
-	    equipoHeroes.meterMiembro(new Tierra("Hulk", 5, false));
+	    equipoHeroes.add(new Fuego("Dr. Strange", 5, false));
+	    equipoHeroes.add(new Tierra("Hulk", 5, false));
 	    
 	    listaDeEquiposParticipantes.add(equipoHeroes);
 
@@ -327,8 +327,8 @@ public class EventoEquipos extends ListaArmas {
 	    // true indica que SÍ son NPCs
 	    Equipo equipoOrcos = new Equipo("La Horda", true);
 	    
-	    equipoOrcos.meterMiembro(new Vida("Chamán Orco", 3, true));
-	    equipoOrcos.meterMiembro(new Viento("Jinete de Lobo", 3, true));
+	    equipoOrcos.add(new Vida("Chamán Orco", 3, true));
+	    equipoOrcos.add(new Viento("Jinete de Lobo", 3, true));
 	    
 	    listaDeEquiposParticipantes.add(equipoOrcos);
 
@@ -338,8 +338,8 @@ public class EventoEquipos extends ListaArmas {
 	    // -----------------------------------------------------------
 	    Equipo equipoMagos = new Equipo("Los Nigromantes", true);
 	    
-	    equipoMagos.meterMiembro(new Magia("Hechicero Oscuro", 4, true));
-	    equipoMagos.meterMiembro(new Agua("Espíritu del Agua", 4, true));
+	    equipoMagos.add(new Magia("Hechicero Oscuro", 4, true));
+	    equipoMagos.add(new Agua("Espíritu del Agua", 4, true));
 	    
 	    listaDeEquiposParticipantes.add(equipoMagos);
 

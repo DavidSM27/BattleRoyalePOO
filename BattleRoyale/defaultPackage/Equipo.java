@@ -14,12 +14,8 @@ public class Equipo {
 		this.sonNPCs=sonNPCs;
 	}
 	
-	public void meterMiembro(Personaje p) {
-		miembros.add(p);
-	}
-	
 	public void add(Personaje p) {
-		meterMiembro(p);
+		miembros.add(p);
 	}
 	
 	public int size() {
@@ -50,10 +46,6 @@ public class Equipo {
 			}
 		}
 		return nombres;
-	}
-	
-	public List<Personaje> getMiembros() {
-		return miembros;
 	}
 	
 	public boolean areVivos() {
