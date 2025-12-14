@@ -285,7 +285,7 @@ public class Evento extends ListaArmas {
 		// 1. Crear la lista
         List<Personaje> listaJugadores = new ArrayList<>();
 
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 2; i++) {
             listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 

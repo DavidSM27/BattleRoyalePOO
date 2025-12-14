@@ -78,11 +78,11 @@ public class BatallaEquipo extends Batalla{
     	}
     }
     
-    private void elegirOponente(Personaje atacante, Equipo objetivo) {
+    private void elegirOponente(Personaje atacante, Equipo equipo) {
         if(!atacante.isNPC()) {
         	System.out.println("¿A quien quieres atacar?");
-    		for (int i = 0; i < equipos.get(I).getMiembros().size(); i++) {
-    			System.out.println("["+ (i+1) +"] "+equipos.get(I).getMiembros().get(i).getNombre());
+    		for (int i = 0; i < equipo.size(); i++) {
+    			System.out.println("["+ (i+1) +"] "+equipo.get(I).get(i).getNombre());
     		}
         	
         	
