@@ -193,7 +193,9 @@ public class Partida {
             Personaje p = personajes.get(i);
             String tipo = jugadoresHumanos.contains(p) ? "[Humano]" : "[NPC]";
             System.out.println((i+1) + ". " + p.getNombre() + " " + tipo + " " + p.getElemento());
+            
         }
+        System.out.println("\n");
     }
     
 }	
