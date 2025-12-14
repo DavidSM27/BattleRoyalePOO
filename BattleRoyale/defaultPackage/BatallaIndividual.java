@@ -6,6 +6,7 @@ public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
     private static Integer turno;
+    private static String LOG;
 
     public BatallaIndividual() {
         super();
@@ -13,12 +14,14 @@ public class BatallaIndividual extends Batalla {
 
     public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
         turno = 1;
+        LOG="";
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo()) {
+        	LOG+="\t-Turno "+turno++;
             ejecutarTurno(jugador1, jugador2);
             turno++;
         }
@@ -103,7 +106,9 @@ public class BatallaIndividual extends Batalla {
 
         switch (opcion) {
             case 1:
-                ataqueBasico(atacante, objetivo);
+            	LOG+="\t\t-"+atacante.getNombre()+" ha disparado a "+objetivo.getNombre()+" le ha hecho "+
+            		atacante.getArma().getAtaque()+" de daño\n";
+            	ataqueBasico(atacante, objetivo);
                 break;
             case 2:
                 usarHabilidad(atacante, objetivo);
