@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class Tienda {
 	
 	private static Scanner sc=new Scanner(System.in);
-	private static final Integer COSTO_MEJORA=20;
-	private static final Integer COSTO_POCIONES=15;
+	private static final Integer COSTO_MEJORA=50;
+	private static final Integer COSTO_POCIONES=50;
+	private static final Integer CURACION=30;
 	
 
     public Tienda() {
@@ -81,10 +82,10 @@ public class Tienda {
 			switch(opcion) {
 			case "S":
 				if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
-					if(p.getOro() >= COSTO_MEJORA){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
+					if(p.getOro() >= COSTO_MEJORA){
 					
 						p.setOro(p.getOro() - COSTO_MEJORA);
-						p.getArma().modificacion(p.getArma().getMejora()+0.1); // ya veremos como metemos las mejoras
+						p.getArma().modificacion(p.getArma().getMejora()+0.1);
 						
 						System.out.println("Has mejorado tu " + p.getArma().getNombre() + " 🗡️");
 						System.out.println("Nuevo ataque: " + p.getArma().getAtaque() + "\n");
@@ -121,7 +122,7 @@ public class Tienda {
 		
 			System.out.println("===== COMPRAR POCIONES =====");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
-			System.out.println("Precio por pocion de curacion (+30 PS): " + COSTO_POCIONES + " de oro\n");
+			System.out.println("Precio por pocion de curacion (+" + CURACION + " PS): " + COSTO_POCIONES + " de oro\n");
 			
 			System.out.println("Tu vida actual: " + p.getVida() + " ps\n");
 			
@@ -138,9 +139,9 @@ public class Tienda {
 						
 						System.out.println("Vendedor: \"Ya puedes disfrutar de las pociones viajero\"\n");
 						
-						p.setVida(p.getVida() + 30);//por ejemplo luego definimos cuanto curan
+						p.setVida(p.getVida() + CURACION);//por ejemplo luego definimos cuanto curan
 						
-						System.out.println("Te has curado 30 de vida, tu vida actual: " + p.getVida() +" ps\n");
+						System.out.println("Te has curado " + CURACION + " de vida, tu vida actual: " + p.getVida() +" ps\n");
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}

@@ -231,7 +231,7 @@ public class Evento extends ListaArmas {
 						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
-		this.jugadores.get(I).equiparArma(arma);
+		Evento.LOG+=this.jugadores.get(I).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
 		this.jugadores.get(I).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
 	}

@@ -234,7 +234,7 @@ public class Personaje {
 	        String respuesta;
 	        do {
 	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
-	            System.out.println("\nTu "+this.arma.toString());
+	            System.out.println("\nTu actual "+this.arma.toString());
 	            
 	            System.out.print("\n¿Quieres cambiar tu arma? (S/N): ");
 	            
