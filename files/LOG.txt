@@ -1,0 +1,39 @@
+Ronda 1
+	-Luis intenta buscar un Cofre
+		-Luis a abierto un cofre
+		-Luis mantiene su arma actual: Pico
+
+
+	-dasd intenta buscar un Cofre
+		-dasd a abierto un cofre
+		-dasd ahora lleva Pistola
+
+
+Ronda 2
+	-Luis intenta buscar un Cofre
+		-Luis a abierto un cofre
+		-Luis mantiene su arma actual: Pico
+
+
+	-dasd intenta buscar una Batalla
+		-dasd a encontrado una tienda
+
+Ronda 3
+	-Luis intenta buscar una Batalla
+		-Luis a matado a dasd
+
+Ronda 1
+	-qwdfqd intenta buscar un Cofre
+		-qwdfqd a abierto un cofre
+		-qwdfqd ahora lleva Pistola
+
+
+	-Sergio intenta buscar un Cofre
+		-Sergio a abierto un cofre
+		-Sergio mantiene su arma actual: Pico
+
+
+Ronda 2
+	-qwdfqd intenta buscar una Batalla
+		-qwdfqd a matado a Sergio
+
