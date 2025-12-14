@@ -28,7 +28,7 @@ public class Equipo {
                 return true;
             }
         }
-        eliminado = true;
+        estanVivos = true;
         return false;
     }
 
@@ -36,12 +36,30 @@ public class Equipo {
 		return nombre;
 	}
 	
+	public String getNombres() {
+		String nombres="";
+		for(int i=0; i<miembros.size(); i++) {
+			if(i < miembros.size()-2) {
+				nombres=miembros.get(i).getNombre()+", ";
+			}else if(i == miembros.size()-2) {
+				nombres=miembros.get(i).getNombre()+" y ";
+			}else {
+				nombres=miembros.get(i).getNombre();
+			}
+		}
+		return nombres;
+	}
+	
 	public List<Personaje> getMiembros() {
 		return miembros;
 	}
 
-	public boolean isEliminado() {
-		return eliminado;
+	public boolean areVivos() {
+		return estanVivos;
+	}
+	
+	public boolean areNPCs() {
+		return sonNPCs;
 	}
 	
 }
