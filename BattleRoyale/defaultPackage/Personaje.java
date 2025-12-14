@@ -238,7 +238,7 @@ public class Personaje {
 	            
 	            System.out.print("\n¿Quieres cambiar tu arma? (S/N): ");
 	            
-	            respuesta = sc.next().toUpperCase();
+	            respuesta = sc.next().toUpperCase().substring(0, 1);
 	            sc.nextLine();
 	
 	            switch (respuesta) {
@@ -348,7 +348,7 @@ public class Personaje {
                     System.out.println();
                     System.out.println("Aún te quedan " + this.puntosDeNivel + " puntos sin asignar.");
                     System.out.print("¿Estás seguro de que quieres finalizar? (S/N): ");
-                    String confirmacion = sc.next().toUpperCase();
+                    String confirmacion = sc.next().toUpperCase().substring(0, 1);
                     if (confirmacion.equals("S")) {
                         break;
                     }
