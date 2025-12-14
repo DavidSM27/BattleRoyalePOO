@@ -143,16 +143,14 @@ public class BatallaIndividual extends Batalla {
         int decision = (int) (Math.random() * 100);
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
-            LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad contra " + objetivo.getNombre() +
-                    " y le ha infligido " + (vidaAnterior - objetivo.getVida()) + " de daño\n";
             usarHabilidad(atacante, objetivo);
         } else if (decision < 80) {
-            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
-                    " y le ha hecho " + (vidaAnterior - objetivo.getVida()) + "de daño\n";
             ataqueBasico(atacante, objetivo);
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
+                    " y le ha hecho " + atacante.getArma().getAtaque() + " de daño\n";
         } else {
-            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
             defender(atacante);
+            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
         }
     }
 
