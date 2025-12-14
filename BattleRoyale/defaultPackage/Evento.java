@@ -31,7 +31,7 @@ public class Evento extends ListaArmas {
 		Collections.shuffle(jugadores);
 		
 		this.tienda=new Tienda();
-		this.imprimirLOG=new imprimirLOG();
+		this.imprimirLOG=new ImprimirLOG();
 		
 		Evento.COFRES_TOTALES=this.jugadores.size()*4;
 		Evento.COFRES_RESTANTES=COFRES_TOTALES;
