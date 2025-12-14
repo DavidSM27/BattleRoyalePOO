@@ -9,16 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListaNombresNPC {
+public class ListaNombres {
 	
 	private static final Scanner sc=new Scanner(System.in);
-	private static final String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
+	private static String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
 	private static final String DIRECTORIO_ACTUAL=System.getProperty("user.dir");
 	
 	
 	private List<String> nombres;
 	
-	public ListaNombresNPC() {
+	public ListaNombres(String nombre) {
+		RUTA_FICHERO="\\files\\"+nombre;
+		
 		this.nombres=new ArrayList<String>();
 		
 		boolean errorRuta=false;
@@ -83,11 +85,11 @@ public class ListaNombresNPC {
 	
 	@Override
 	public String toString() {
-		return "ListaNombresNPC [nombres=" + nombres + "]";
+		return "ListaNombres [nombres=" + nombres + "]";
 	}
 
 	public static void main(String[] args) {
-		ListaNombresNPC nombres=new ListaNombresNPC();
+		ListaNombres nombres=new ListaNombres();
 		
 		System.out.println(nombres);
 	}

@@ -123,8 +123,10 @@ public class EventoEquipos extends ListaArmas {
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
-		sc.nextLine();
+		if(equipos.size()!=1) {
+			System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
+			sc.nextLine();
+		}
 		System.out.println("\n");
 		
 	}
@@ -301,56 +303,60 @@ public class EventoEquipos extends ListaArmas {
 	}
 	
 	public static void main(String[] args) {
-		// 1. Preparamos la lista que contendrá a todos los equipos del torneo
+		// 1. Lista principal de equipos del torneo
 	    List<Equipo> listaDeEquiposParticipantes = new ArrayList<>();
 
-	    // ----------------------------------------------------------------
-	    // EQUIPO 1: LOS JUGADORES (HUMANOS)
-	    // ----------------------------------------------------------------
-	    List<Personaje> miembrosHumanos = new ArrayList<>();
+	    // -----------------------------------------------------------
+	    // EQUIPO 1: TUS HÉROES (Humanos)
+	    // -----------------------------------------------------------
+	    // false indica que NO son NPCs
+	    Equipo equipoHeroes = new Equipo("Los Vengadores", false);
 	    
-	    // IMPORTANTE: Usamos 'new Fuego', 'new Agua', etc. NO 'new Personaje'
-	    // Ajusta los parámetros (Nombre, Nivel, esNPC) según tus constructores
-	    miembrosHumanos.add(new Fuego("Jugador Fuego", 1, false));
-	    miembrosHumanos.add(new Agua("Jugador Agua", 1, false));
+	    // IMPORTANTE: Instanciamos las clases hijas (Fuego, Agua...) NO Personaje a secas
+	    // Ajusta los parámetros del constructor (Nombre, Nivel/Suerte, esNPC) según tus clases
+	    equipoHeroes.meterMiembro(new Fuego("Dr. Strange", 5, false));
+	    equipoHeroes.meterMiembro(new Tierra("Hulk", 5, false));
 	    
-	    // Creamos el equipo y le metemos los miembros
-	    Equipo equipoHeroe = new Equipo("Los Héroes", miembrosHumanos);
-	    listaDeEquiposParticipantes.add(equipoHeroe);
+	    listaDeEquiposParticipantes.add(equipoHeroes);
 
 
-	    // ----------------------------------------------------------------
-	    // EQUIPO 2: RIVALES (NPCs) - La Horda
-	    // ----------------------------------------------------------------
-	    List<Personaje> miembrosOrcos = new ArrayList<>();
-	    miembrosOrcos.add(new Tierra("Orco Tanque", 2, true));
-	    miembrosOrcos.add(new Viento("Goblin Veloz", 2, true));
+	    // -----------------------------------------------------------
+	    // EQUIPO 2: RIVALES (NPCs)
+	    // -----------------------------------------------------------
+	    // true indica que SÍ son NPCs
+	    Equipo equipoOrcos = new Equipo("La Horda", true);
 	    
-	    Equipo equipoOrcos = new Equipo("La Horda", miembrosOrcos);
+	    equipoOrcos.meterMiembro(new Vida("Chamán Orco", 3, true));
+	    equipoOrcos.meterMiembro(new Viento("Jinete de Lobo", 3, true));
+	    
 	    listaDeEquiposParticipantes.add(equipoOrcos);
 
 
-	    // ----------------------------------------------------------------
-	    // EQUIPO 3: RIVALES (NPCs) - Los Magos Oscuros
-	    // ----------------------------------------------------------------
-	    List<Personaje> miembrosMagos = new ArrayList<>();
-	    miembrosMagos.add(new Magia("Brujo Oscuro", 3, true));
-	    miembrosMagos.add(new Vida("Clérigo Corrupto", 3, true));
+	    // -----------------------------------------------------------
+	    // EQUIPO 3: RIVALES (NPCs)
+	    // -----------------------------------------------------------
+	    Equipo equipoMagos = new Equipo("Los Nigromantes", true);
 	    
-	    Equipo equipoMagos = new Equipo("La Secta", miembrosMagos, true);
+	    equipoMagos.meterMiembro(new Magia("Hechicero Oscuro", 4, true));
+	    equipoMagos.meterMiembro(new Agua("Espíritu del Agua", 4, true));
+	    
 	    listaDeEquiposParticipantes.add(equipoMagos);
 
 
-	    // ----------------------------------------------------------------
+	    // -----------------------------------------------------------
 	    // 3. INICIAR EL EVENTO
-	    // ----------------------------------------------------------------
-	    System.out.println("Iniciando evento con " + listaDeEquiposParticipantes.size() + " equipos.");
-	    
-	    // Ahora sí pasamos una List<Equipo> al constructor, que es lo que pide
+	    // -----------------------------------------------------------
+	    System.out.println("========================================");
+	    System.out.println("     INICIANDO TORNEO DE EQUIPOS");
+	    System.out.println("========================================");
+	    System.out.println("Equipos inscritos: " + listaDeEquiposParticipantes.size() + "\n");
+
 	    try {
+	        // Pasamos la lista de EQUIPOS, no de personajes
 	        new EventoEquipos(listaDeEquiposParticipantes);
+	        
 	    } catch (Exception e) {
-	        System.out.println("Ha ocurrido un error en el evento: " + e.getMessage());
+	        System.err.println("¡Error crítico en el evento!");
 	        e.printStackTrace();
 	    }
 	}

@@ -124,8 +124,10 @@ public class Evento extends ListaArmas {
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
-		sc.nextLine();
+		if(jugadores.size()!=1) {
+			System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
+			sc.nextLine();
+		}
 		System.out.println("\n");
 	}
 	
@@ -283,7 +285,7 @@ public class Evento extends ListaArmas {
 		// 1. Crear la lista
         List<Personaje> listaJugadores = new ArrayList<>();
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 10; i++) {
             listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 

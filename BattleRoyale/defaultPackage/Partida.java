@@ -18,12 +18,12 @@ public class Partida {
 	protected List<Personaje> jugadoresHumanos = new ArrayList<>();
 	protected List<Personaje> jugadoresNPCs = new ArrayList<>();
 	
-	private ListaNombresNPC nombreNPC;
+	private ListaNombres nombreNPC;
 	
 	public Partida(String modoJuego){
 		this.modoJuego = modoJuego;
 		
-		this.nombreNPC = new ListaNombresNPC();
+		this.nombreNPC = new ListaNombres("Nombres_Jugadores.csv");
 	}	
 	
 	protected void iniciarJuego(){
