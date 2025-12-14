@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Evento extends ListaArmas {
 	private static Scanner sc=new Scanner(System.in);
 	
+	private static Integer PARTIDA=1;
 	private static Integer RONDA=0;
 	private static Integer ORO_TOTAL_COFRE=100;
 	private static Integer COFRES_TOTALES=0;
@@ -42,17 +43,22 @@ public class Evento extends ListaArmas {
 		Evento.OPCIONES.add("buscar una Batalla");
 		Evento.OPCIONES.add("Campear");
 		
+		try{
+			this.imprimirLOG.imprimir("Partida "+PARTIDA++ +"\n");
+		}catch (ErrorEscrituraException e) {
+			System.out.println(e.getMessage());
+		}
+		
 		while(this.jugadores.size()!=1) {
 			this.rondas();
 		}
 		
+		System.out.println("\nEl ganador es: "+this.jugadores.getFirst().getNombre());
+		
 		try{
-			this.imprimirLOG.imprimir("");
+			this.imprimirLOG.imprimir("\nEl ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
-			if(e.getCause()!=null) {
-				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
-			}
 		}
 	}
 	
@@ -112,9 +118,6 @@ public class Evento extends ListaArmas {
 			this.imprimirLOG.imprimir(LOG);
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
-			if(e.getCause()!=null) {
-				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
-			}
 		}
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
@@ -287,20 +290,12 @@ public class Evento extends ListaArmas {
 
         // 2. Generar 50 personas
         for (int i = 1; i <= 2; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, false));
+            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
 
         // 3. Insanciar el Evento
         new Evento(listaJugadores);
-
-        // 5. Anunciar ganador
-        for(Personaje p : listaJugadores) {
-            if(p.isVivo()) {
-                System.out.println("\n¡¡EL GANADOR ES " + p.getNombre() + "!! 🎉");
-                break;
-            }
-        }
 	}
 }

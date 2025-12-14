@@ -219,7 +219,7 @@ public class Personaje {
         }
         
         else if (esNPC) {
-        	if(this.arma.compareTo(nuevaArma)==1) {
+        	if(this.arma.compareTo(nuevaArma)==-1) {
 	            this.arma = nuevaArma;
 	            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
 	            log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();

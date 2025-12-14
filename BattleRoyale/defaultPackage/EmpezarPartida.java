@@ -28,7 +28,7 @@ public class EmpezarPartida {
 		String respuesta;
 		
 		do {
-			System.out.println("¿Quieres escuchar una explicación de las reglas del juego? (Si/No)");
+			System.out.print("¿Quieres escuchar una explicación de las reglas del juego? (Si/No) ");
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
 		} while(!respuesta.equals("S") && !respuesta.equals("N"));

@@ -44,7 +44,7 @@ public class ImprimirLOG {
 			
 			impresora.close();
 		}catch (IOException e) {
-			throw new ErrorEscrituraException("Fallo al intentar guardar la partina en disco", e);
+			throw new ErrorEscrituraException("Fallo al intentar guardar la partina en disco");
 		}
 	}
 	
