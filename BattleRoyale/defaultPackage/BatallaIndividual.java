@@ -104,20 +104,20 @@ public class BatallaIndividual extends Batalla {
             }
 
         } while (opcion < 1 || opcion > 5);
-        
+
         int vidaAnterior = objetivo.getVida();
-        
+
         switch (opcion) {
             case 1:
                 ataqueBasico(atacante, objetivo);
                 LOG += "\t\t-" + atacante.getNombre() + " ha atacado a " + objetivo.getNombre() +
                         " con " + atacante.getArma().getNombre() + " y ha hecho " +
-                		(vidaAnterior - objetivo.getVida()) + " de daño\n";
+                        (vidaAnterior - objetivo.getVida()) + " de daño\n";
                 break;
             case 2:
                 usarHabilidad(atacante, objetivo);
                 LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad especial y ha infligido " +
-                        (vidaAnterior - objetivo.getVida()) + "\n";
+                        (vidaAnterior - objetivo.getVida()) + " de daño\n";
                 break;
             case 3:
                 LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
@@ -143,13 +143,19 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
+        int vidaAnterior = objetivo.getVida();
         int decision = (int) (Math.random() * 100);
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad contra " + objetivo.getNombre() +
+                    "y le ha infligido " + (vidaAnterior - objetivo.getVida()) + " de daño\n";
             usarHabilidad(atacante, objetivo);
         } else if (decision < 80) {
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a" + objetivo.getNombre() +
+                    "Y le ha hecho " + (vidaAnterior - objetivo.getVida()) + "de daño\n";
             ataqueBasico(atacante, objetivo);
         } else {
+            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
             defender(atacante);
         }
     }
@@ -313,7 +319,8 @@ public class BatallaIndividual extends Batalla {
 
     private void otorgarRecompensas(Personaje ganador, Personaje perdedor) {
         int oroGanado = perdedor.getOro();
-        int xpGanado = (int) Math.round((Math.random()*50.+100.) * (((double)(ganador.getSuerte()-1))*5./100.+1));
+        int xpGanado = (int) Math
+                .round((Math.random() * 50. + 100.) * (((double) (ganador.getSuerte() - 1)) * 5. / 100. + 1));
 
         ganador.anadirOro(oroGanado);
         ganador.ganarXP(xpGanado);
