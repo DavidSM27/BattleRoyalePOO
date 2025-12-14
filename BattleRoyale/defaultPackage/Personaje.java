@@ -156,10 +156,12 @@ public class Personaje {
     public void recuperarEnergia(int cantidad) {
         if (cantidad <= 0)
             return;
-
+        
+        int energiaAnterior = this.energia;
         this.energia = Math.min(this.energia + cantidad, ENERGIA_MAX);
+        int energiaRecuperada = this.energia - energiaAnterior;
 
-        System.out.println(this.nombre + " recupera " + cantidad +
+        System.out.println(this.nombre + " recupera " + energiaRecuperada +
                 " de energía. Total: " + this.energia + "/" + ENERGIA_MAX);
     }
 

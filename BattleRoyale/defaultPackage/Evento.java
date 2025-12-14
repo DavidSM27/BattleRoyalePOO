@@ -105,6 +105,11 @@ public class Evento extends ListaArmas {
 			}
 			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
+			try{
+				Thread.sleep(1000);
+			}catch (InterruptedException e) {
+				// Por si hay alguna interrupcion
+			}
 			Evento.LOG+="\n\n";
 			System.out.println("\n");
 		}
@@ -142,7 +147,7 @@ public class Evento extends ListaArmas {
 			prob_tienda=0.2;
 		}
 		
-		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.);
+		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.)+1.;
 		
 		prob_cofre+=prob_cofre*suerte;
 		prob_batalla+=prob_batalla*suerte;
@@ -226,7 +231,7 @@ public class Evento extends ListaArmas {
 	private void cofre() {
 		Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a abierto un cofre\n";
 		
-		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.);
+		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.)+1.;
 		Double random=Math.random();
 		Integer aux=0;
 		if(random<0.05*suerte) {
@@ -267,8 +272,6 @@ public class Evento extends ListaArmas {
 		//Batalla jugador=new Batalla(this.jugadores.get(I));
 		//Evento.LOG+=jugador.batalla(this.jugadores.get(random));
 		
-		this.jugadores.get(random).recibirDanio(1000);
-		
 		if(this.jugadores.get(I).estaVivo) {
 			Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
 			
@@ -283,7 +286,7 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         // 2. Generar 50 personas
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 5; i++) {
             listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
         }
 
