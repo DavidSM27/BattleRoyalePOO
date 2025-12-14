@@ -105,19 +105,15 @@ public class BatallaIndividual extends Batalla {
 
         } while (opcion < 1 || opcion > 5);
 
-        int vidaAnterior = objetivo.getVida();
-
         switch (opcion) {
             case 1:
                 ataqueBasico(atacante, objetivo);
                 LOG += "\t\t-" + atacante.getNombre() + " ha atacado a " + objetivo.getNombre() +
                         " con " + atacante.getArma().getNombre() + " y ha hecho " +
-                        (vidaAnterior - objetivo.getVida()) + " de daño\n";
+                        atacante.getArma().getAtaque() + " de daño\n";
                 break;
             case 2:
                 usarHabilidad(atacante, objetivo);
-                LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad especial y ha infligido " +
-                        (vidaAnterior - objetivo.getVida()) + " de daño\n";
                 break;
             case 3:
                 LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
@@ -148,11 +144,11 @@ public class BatallaIndividual extends Batalla {
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
             LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad contra " + objetivo.getNombre() +
-                    "y le ha infligido " + (vidaAnterior - objetivo.getVida()) + " de daño\n";
+                    " y le ha infligido " + (vidaAnterior - objetivo.getVida()) + " de daño\n";
             usarHabilidad(atacante, objetivo);
         } else if (decision < 80) {
-            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a" + objetivo.getNombre() +
-                    "Y le ha hecho " + (vidaAnterior - objetivo.getVida()) + "de daño\n";
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
+                    " y le ha hecho " + (vidaAnterior - objetivo.getVida()) + "de daño\n";
             ataqueBasico(atacante, objetivo);
         } else {
             LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
@@ -244,60 +240,106 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarHabilidadEspecifica(Personaje atacante, Personaje objetivo, int habilidad) {
+    	int vidaAnteriorOjetivo=objetivo.getVida();
+    	int vidaAnteriorAtacante=atacante.getVida();
+    	
         switch (atacante.getElemento()) {
             case FUEGO:
                 Fuego fuego = new Fuego(atacante);
-                if (habilidad == 1)
+                if (habilidad == 1) {
                     fuego.lluviaInfernal(objetivo);
-                else if (habilidad == 2)
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lluvia Infernal y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
                     fuego.marDeLava(objetivo);
-                else
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Mar de Lava y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
                     fuego.curacionDelInfierno();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación del Infierno y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
+                
                 break;
             case AGUA:
                 Agua agua = new Agua(atacante);
-                if (habilidad == 1)
-                    agua.tsunami(objetivo);
-                else if (habilidad == 2)
-                    agua.voragine(objetivo);
-                else
-                    agua.curacionDePoseidon();
+                if (habilidad == 1) {
+                	agua.tsunami(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Tsunami y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	agua.voragine(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Voragine y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	agua.curacionDePoseidon();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Poseidon y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case TIERRA:
                 Tierra tierra = new Tierra(atacante);
-                if (habilidad == 1)
-                    tierra.crearGrieta(objetivo);
-                else if (habilidad == 2)
-                    tierra.lanzarRoca(objetivo);
-                else
-                    tierra.sanacionRocal();
+                if (habilidad == 1) {
+                	tierra.terremoto(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Terremoto y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	tierra.lanzarRoca(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lanzar Roca y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	tierra.sanacionRocal();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Sanación Rocal y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case VIENTO:
                 Viento viento = new Viento(atacante);
-                if (habilidad == 1)
-                    viento.LanzarTorbellino(objetivo);
-                else if (habilidad == 2)
-                    viento.SoplidoDeDios(objetivo);
-                else
-                    viento.CuracionDeEolo();
+                if (habilidad == 1) {
+                	viento.LanzarTorbellino(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lanzar Torbellino y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	viento.SoplidoDeDios(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Soplido de Dios y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	viento.CuracionDeEolo();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Eolo y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case MAGIA:
                 Magia magia = new Magia(atacante);
-                if (habilidad == 1)
-                    magia.lanzarBolaDeFuego(objetivo);
-                else if (habilidad == 2)
-                    magia.congelarEnemigo(objetivo);
-                else
-                    magia.curacionDivina();
+                if (habilidad == 1) {
+                	magia.lanzarBolaDeFuego(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lanzar Bola de Fuego y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	magia.congelarEnemigo(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Congelar Enemigo y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	magia.curacionDivina();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Divina y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case VIDA:
                 Vida vida = new Vida(atacante);
-                if (habilidad == 1)
-                    vida.apretonDeCorazon(objetivo);
-                else if (habilidad == 2)
-                    vida.explotarSangre(objetivo);
-                else
-                    vida.curacionMedica();
+                if (habilidad == 1) {
+                	vida.apretonDeCorazon(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Apreton de Corazón y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	vida.explotarSangre(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Explotar Sangre y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	vida.curacionMedica();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Medica y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
         }
     }
