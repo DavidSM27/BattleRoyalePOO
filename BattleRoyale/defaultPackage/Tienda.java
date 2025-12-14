@@ -68,11 +68,9 @@ public class Tienda {
 			System.out.println("Tu arma: " + p.getArma().toString());
 			System.out.println("Coste de la mejora: " + COSTO_MEJORA + " oro\n");
 			
-			System.out.println("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "?");
+			System.out.print("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "? (Si/No) ");
 			
-			System.out.print("> ");
-			
-			opcion = sc.nextLine().toUpperCase();
+			opcion = sc.nextLine().toUpperCase().substring(0, 1);
 			
 			switch(opcion) {
 			case "S":
@@ -121,11 +119,9 @@ public class Tienda {
 			
 			System.out.println("Tu vida actual: " + p.getVida() + " ps\n");
 			
-			System.out.println("¿Quiere comprar una pocion? (S/N)");
+			System.out.print("¿Quiere comprar una pocion? (Si/No) ");
 			
-			System.out.print("> ");
-			
-			respuesta = sc.nextLine().toUpperCase();
+			respuesta = sc.nextLine().toUpperCase().substring(0, 1);
 			
 			switch(respuesta) {
 				case "S":
