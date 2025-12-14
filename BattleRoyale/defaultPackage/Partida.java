@@ -35,7 +35,7 @@ public class Partida {
 		new Evento(personajesVivos);
 	}
 	
-	private void establecerReglas() {
+	protected void establecerReglas() {
 		
 	    nJugadores = numeroJugadores();
 	    nNPCs = numeroNPCs();
@@ -48,7 +48,7 @@ public class Partida {
 	}
 	
 	
-	private int numeroJugadores() {
+	protected int numeroJugadores() {
         int jugadores = 0;
         
         System.out.println("¿Cuantos personas van a jugar?");
@@ -71,7 +71,7 @@ public class Partida {
         return jugadores;
     } 
     
-	private int numeroNPCs() {
+	protected int numeroNPCs() {
         int npcs = 0;
         
         System.out.println("¿Cuantos bots van a jugar?");
@@ -95,7 +95,7 @@ public class Partida {
         return npcs;
     }	
 	
-	private void crearPersonajes() {
+	protected void crearPersonajes() {
         System.out.println("\n=== CREACIÓN DE PERSONAJES ===");
         
         // 1. CREAR JUGADORES HUMANOS
