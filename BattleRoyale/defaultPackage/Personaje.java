@@ -15,6 +15,7 @@ public class Personaje implements Comparable<Personaje> {
     protected static final int SUBIDA_NIVEL = 100;
     protected static final int DAÑO_HABILIDAD1 = 20;
     protected static final int DAÑO_HABILIDAD2 = 10;
+    protected static final int CURACION_HABILIDAD = 30;
     private static int contadorPersonajes = 1;
 
     // Atributos

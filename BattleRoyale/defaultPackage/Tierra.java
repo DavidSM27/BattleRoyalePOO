@@ -23,10 +23,10 @@ public class Tierra extends Personaje {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " tira por una grieta a " + objetivo.getNombre() + "!");
             
-            this.energia-=Personaje.COSTE_HABILIDAD;
+            this.energia-=COSTE_HABILIDAD;
             
 
-            int dano = (int)Math.round(((double)calcularDanoNivel(Personaje.DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
+            int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }
@@ -35,10 +35,10 @@ public class Tierra extends Personaje {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " aplasta con una roca a " + objetivo.getNombre() + "!");
             
-            this.energia-=Personaje.COSTE_HABILIDAD;
+            this.energia-=COSTE_HABILIDAD;
             
 
-            int dano = (int)Math.round(((double)calcularDanoNivel(Personaje.DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
+            int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
     }
@@ -46,10 +46,10 @@ public class Tierra extends Personaje {
     public void sanacionRocal() {
         if (intentarGastarEnergia()) {
             
-            this.energia-=Personaje.COSTE_HABILIDAD;
+            this.energia-=COSTE_HABILIDAD;
         	
             System.out.println(this.nombre + " se cura por el poder de las rocas.");
-            this.curarVida(30);
+            this.curarVida(CURACION_HABILIDAD);
         }
     }
 
