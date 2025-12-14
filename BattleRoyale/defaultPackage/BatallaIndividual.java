@@ -312,8 +312,8 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void otorgarRecompensas(Personaje ganador, Personaje perdedor) {
-        int oroGanado = 50 + (int) (Math.random() * 50);
-        int xpGanado = 30 + (int) (Math.random() * 20);
+        int oroGanado = perdedor.getOro();
+        int xpGanado = (int) Math.round((Math.random()*50.+100.) * (((double)(ganador.getSuerte()-1))*5./100.+1));
 
         ganador.anadirOro(oroGanado);
         ganador.ganarXP(xpGanado);
