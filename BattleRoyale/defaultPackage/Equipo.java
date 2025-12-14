@@ -65,7 +65,7 @@ public class Equipo {
 	public int getMediaSuerte() {
 		Integer media=0;
 		for(int i=0; i<miembros.size(); i++) {
-			media+=miembros.get(i).getSuerte();
+			media+=miembros.get(i).getSuerte()-1;
 		}
 		
 		return media/miembros.size();
