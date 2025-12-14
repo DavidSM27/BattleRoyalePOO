@@ -236,7 +236,7 @@ public class Personaje {
 	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
 	            System.out.println("\nTu actual "+this.arma.toString());
 	            
-	            System.out.print("\n¿Quieres cambiar tu arma? (S/N): ");
+	            System.out.print("\n¿Quieres cambiar tu arma? (Si/No): ");
 	            
 	            respuesta = sc.next().toUpperCase().substring(0, 1);
 	            sc.nextLine();
@@ -252,7 +252,7 @@ public class Personaje {
 	                    log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
 	                    break;
 	                default:
-	                    System.out.println("Respuesta no válida. Escribe S o N.");
+	                    System.out.println("Respuesta no válida. Escribe Si o No.");
 	            }
 	        } while (!respuesta.equals("S") && !respuesta.equals("N"));
         }
@@ -347,7 +347,7 @@ public class Personaje {
                 if (this.puntosDeNivel > 0) {
                     System.out.println();
                     System.out.println("Aún te quedan " + this.puntosDeNivel + " puntos sin asignar.");
-                    System.out.print("¿Estás seguro de que quieres finalizar? (S/N): ");
+                    System.out.print("¿Estás seguro de que quieres finalizar? (Si/No): ");
                     String confirmacion = sc.next().toUpperCase().substring(0, 1);
                     if (confirmacion.equals("S")) {
                         break;
