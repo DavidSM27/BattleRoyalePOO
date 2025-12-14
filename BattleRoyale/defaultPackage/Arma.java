@@ -3,7 +3,7 @@ package defaultPackage;
 public class Arma implements Modificaciones, Comparable<Arma>{
 	//Constantes
 	public static final String ARMA_DEFAULT = "Pico";
-	public static final Double ATAQUE_DEFAULT = 20.0; //daño default del pico
+	public static final Double ATAQUE_DEFAULT = 5.0; //daño default del pico
 	public static final Double MEJORA_DEFAULT = 1.0;
 	
 	//Atributos

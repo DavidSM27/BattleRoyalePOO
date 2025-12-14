@@ -17,7 +17,7 @@ public class EmpezarPartida {
 		establecerModo();
 	}
 
-	public void establecerModo() {
+	private void establecerModo() {
 		preguntarReglas();
 	    seleccionarModo();  	
 	    iniciarPartida();

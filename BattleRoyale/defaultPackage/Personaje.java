@@ -185,6 +185,10 @@ public class Personaje {
             System.out.println(this.nombre + " recibe " + cantidad +
                     " de daño! (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
         }
+        
+        if(this.vida<=0) {
+        	this.estaVivo=false;
+        }
     }
 
     //
@@ -206,38 +210,51 @@ public class Personaje {
     }
 
     // Permite equipar armas desde cofres
-    public void equiparArma(Arma nuevaArma) {
+    public String equiparArma(Arma nuevaArma) {
+    	String log="";
+    	
         if (nuevaArma == null) {
             System.out.println("Error: El arma no es válida.");
-            return;
+            log="\n";
         }
-
-        if (esNPC) {
-            this.arma = nuevaArma;
-            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-            return;
+        
+        else if (esNPC) {
+        	if(this.arma.compareTo(nuevaArma)==1) {
+	            this.arma = nuevaArma;
+	            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+	            log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+        	}
         }
-
-        // Preguntar a los jugadores si quieren cambiar el arma
-        String respuesta;
-        do {
-            System.out.println("\n¿Quieres cambiar tu arma actual (" +
-                    this.arma.getNombre() + ") por " + nuevaArma.getNombre() + "? (Escribe S o N)");
-            respuesta = sc.nextLine().toUpperCase();
-
-            switch (respuesta) {
-                case "S":
-                    this.arma = nuevaArma;
-                    System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-                    break;
-                case "N":
-                    System.out.println(this.nombre + " mantiene su arma actual: " +
-                            this.arma.getNombre());
-                    break;
-                default:
-                    System.out.println("Respuesta no válida. Escribe S o N.");
-            }
-        } while (!respuesta.equals("S") && !respuesta.equals("N"));
+        
+        else {
+	
+	        // Preguntar a los jugadores si quieren cambiar el arma
+	        String respuesta;
+	        do {
+	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
+	            System.out.println("\nTu "+this.arma.toString());
+	            
+	            System.out.println("\n¿Quieres cambiar tu arma?");
+	            
+	            respuesta = sc.nextLine().toUpperCase();
+	
+	            switch (respuesta) {
+	                case "S":
+	                    this.arma = nuevaArma;
+	                    System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+	                    log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+	                    break;
+	                case "N":
+	                    System.out.println(this.nombre + " mantiene su arma actual: " + this.arma.getNombre());
+	                    log=this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
+	                    break;
+	                default:
+	                    System.out.println("Respuesta no válida. Escribe S o N.");
+	            }
+	        } while (!respuesta.equals("S") && !respuesta.equals("N"));
+        }
+        
+        return log;
     }
 
     // Agrega oro a el inventario del jugador
@@ -293,7 +310,6 @@ public class Personaje {
     }
 
     public void establecerEstadisticas() {
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("\n=== ESTABLECER ESTADÍSTICAS ===");
         System.out.println("Tienes " + this.puntosDeNivel + " puntos para distribuir");
@@ -311,7 +327,7 @@ public class Personaje {
             System.out.println("2. Velocidad (actual: " + this.velocidad + ")");
             System.out.println("3. Defensa (actual: " + this.defensa + ")");
             System.out.println("4. Suerte (actual: " + this.suerte + ")");
-            System.out.println("5. Finalizar distribución");
+            System.out.println("0. Finalizar distribución");
 
             int opcion = 0;
             boolean entradaValida = false;
@@ -397,7 +413,6 @@ public class Personaje {
         }
 
         mostrarEstadisticas();
-        sc.close();
     }
 
     public void distribuirPuntosAleatorio() {
