@@ -104,15 +104,17 @@ public class BatallaIndividual extends Batalla {
             }
 
         } while (opcion < 1 || opcion > 5);
-
+        
+        int vidaAnterior = objetivo.getVida();
+        
         switch (opcion) {
             case 1:
-                LOG += "\t\t-" + atacante.getNombre() + " ha atacado a " + objetivo.getNombre() +
-                        " con " + atacante.getArma().getNombre() + "\n";
                 ataqueBasico(atacante, objetivo);
+                LOG += "\t\t-" + atacante.getNombre() + " ha atacado a " + objetivo.getNombre() +
+                        " con " + atacante.getArma().getNombre() + " y ha hecho " +
+                		(vidaAnterior - objetivo.getVida()) + " de daño\n";
                 break;
             case 2:
-                int vidaAnterior = objetivo.getVida();
                 usarHabilidad(atacante, objetivo);
                 LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad especial y ha infligido " +
                         (vidaAnterior - objetivo.getVida()) + "\n";
