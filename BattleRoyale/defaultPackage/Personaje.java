@@ -215,14 +215,16 @@ public class Personaje {
     	
         if (nuevaArma == null) {
             System.out.println("Error: El arma no es válida.");
-            log="\n";
+            log="\t\t-Ha habido un error.";
         }
         
         else if (esNPC) {
         	if(this.arma.compareTo(nuevaArma)==1) {
 	            this.arma = nuevaArma;
 	            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-	            log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+	            log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();
+        	} else {
+        		log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
         	}
         }
         
@@ -232,29 +234,30 @@ public class Personaje {
 	        String respuesta;
 	        do {
 	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
-	            System.out.println("\nTu "+this.arma.toString());
+	            System.out.println("\nTu actual "+this.arma.toString());
 	            
-	            System.out.println("\n¿Quieres cambiar tu arma?");
+	            System.out.print("\n¿Quieres cambiar tu arma? (Si/No): ");
 	            
-	            respuesta = sc.nextLine().toUpperCase();
+	            respuesta = sc.next().toUpperCase().substring(0, 1);
+	            sc.nextLine();
 	
 	            switch (respuesta) {
 	                case "S":
 	                    this.arma = nuevaArma;
 	                    System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-	                    log=this.nombre + " ahora lleva " + nuevaArma.getNombre();
+	                    log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();
 	                    break;
 	                case "N":
 	                    System.out.println(this.nombre + " mantiene su arma actual: " + this.arma.getNombre());
-	                    log=this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
+	                    log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
 	                    break;
 	                default:
-	                    System.out.println("Respuesta no válida. Escribe S o N.");
+	                    System.out.println("Respuesta no válida. Escribe Si o No.");
 	            }
 	        } while (!respuesta.equals("S") && !respuesta.equals("N"));
         }
         
-        return log;
+        return log+"\n";
     }
 
     // Agrega oro a el inventario del jugador
@@ -302,13 +305,6 @@ public class Personaje {
                 textoTipo);
     }
 
-    // Funcion para cerrar el scanner
-    public static void cerrarScanner() {
-        if (sc != null) {
-            sc.close();
-        }
-    }
-
     public void establecerEstadisticas() {
 
         System.out.println("\n=== ESTABLECER ESTADÍSTICAS ===");
@@ -336,6 +332,7 @@ public class Personaje {
                 System.out.print("Elige una opción: ");
                 if (sc.hasNextInt()) {
                     opcion = sc.nextInt();
+                    sc.nextLine();
                     if (opcion >= 0 && opcion <= 4) {
                         entradaValida = true;
                     } else {
@@ -343,7 +340,7 @@ public class Personaje {
                     }
                 } else {
                     System.out.println("Por favor, introduce un número.");
-                    sc.next();
+                    sc.nextLine();
                 }
             }
 
@@ -351,8 +348,9 @@ public class Personaje {
                 if (this.puntosDeNivel > 0) {
                     System.out.println();
                     System.out.println("Aún te quedan " + this.puntosDeNivel + " puntos sin asignar.");
-                    System.out.print("¿Estás seguro de que quieres finalizar? (S/N): ");
-                    String confirmacion = sc.next().toUpperCase();
+                    System.out.print("¿Estás seguro de que quieres finalizar? (Si/No): ");
+                    String confirmacion = sc.next().toUpperCase().substring(0, 1);
+                    sc.nextLine();
                     if (confirmacion.equals("S")) {
                         break;
                     }

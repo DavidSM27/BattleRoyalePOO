@@ -4,13 +4,10 @@ import java.util.Scanner;
 
 public class Tienda {
 	
-	private static Scanner sc=new Scanner(System.in);
-	private static final Integer COSTO_MEJORA=20;
-	private static final Integer COSTO_POCIONES=15;
-	
-
-    public Tienda() {
-    }
+	private static final Scanner sc=new Scanner(System.in);
+	private static final Integer COSTO_MEJORA=50;
+	private static final Integer COSTO_POCIONES=50;
+	private static final Integer CURACION=30;
 	
 	public void menuTienda(Personaje p) {
 	
@@ -37,7 +34,11 @@ public class Tienda {
 
             switch (opcion) {
                 case 1:
+                	if(p.getArma().getMejora() < 2.0) {
                     menuMejorarArma(p);
+                	}else {
+    					System.out.println("Tu arma esta al maximo\n");
+    				}
                     break;
                 case 2:
                     menuPociones(p); 
@@ -67,28 +68,21 @@ public class Tienda {
 			System.out.println("Tu arma: " + p.getArma().toString());
 			System.out.println("Coste de la mejora: " + COSTO_MEJORA + " oro\n");
 			
-			System.out.println("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "?");
+			System.out.print("Vendedor: \"¿Quieres mejorar tu "+ p.getArma().getNombre() + "? (Si/No) ");
 			
-			System.out.print("> ");
-			
-			opcion = sc.nextLine().toUpperCase();
+			opcion = sc.nextLine().toUpperCase().substring(0, 1);
 			
 			switch(opcion) {
 			case "S":
-				if(p.getArma().getMejora() >= 2.0) {
-					System.out.println("Tu arma esta al maximo\n");
-					
-				}else if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
-					if(p.getOro() >= COSTO_MEJORA && p.getArma().getMejora()<2){//20 por ejemplo, hay que ver cuanto cuesta cada mejora
+				if(!p.getArma().getNombre().equals(Arma.ARMA_DEFAULT)) {
+					if(p.getOro() >= COSTO_MEJORA){
 					
 						p.setOro(p.getOro() - COSTO_MEJORA);
-						p.getArma().modificacion(p.getArma().getMejora()+0.1); // ya veremos como metemos las mejoras
+						p.getArma().modificacion(p.getArma().getMejora()+0.1);
 						
 						System.out.println("Has mejorado tu " + p.getArma().getNombre() + " 🗡️");
 						System.out.println("Nuevo ataque: " + p.getArma().getAtaque() + "\n");
 						
-					}else if(p.getArma().getMejora()==2){
-						System.out.println("Tu arma no se puede mejorar más.");
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}
@@ -121,15 +115,13 @@ public class Tienda {
 		
 			System.out.println("===== COMPRAR POCIONES =====");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
-			System.out.println("Precio por pocion de curacion (+30 PS): " + COSTO_POCIONES + " de oro\n");
+			System.out.println("Precio por pocion de curacion (+" + CURACION + " PS): " + COSTO_POCIONES + " de oro\n");
 			
 			System.out.println("Tu vida actual: " + p.getVida() + " ps\n");
 			
-			System.out.println("¿Quiere comprar una pocion? (S/N)");
+			System.out.print("¿Quiere comprar una pocion? (Si/No) ");
 			
-			System.out.print("> ");
-			
-			respuesta = sc.nextLine().toUpperCase();
+			respuesta = sc.nextLine().toUpperCase().substring(0, 1);
 			
 			switch(respuesta) {
 				case "S":
@@ -138,9 +130,9 @@ public class Tienda {
 						
 						System.out.println("Vendedor: \"Ya puedes disfrutar de las pociones viajero\"\n");
 						
-						p.setVida(p.getVida() + 30);//por ejemplo luego definimos cuanto curan
+						p.setVida(p.getVida() + CURACION);//por ejemplo luego definimos cuanto curan
 						
-						System.out.println("Te has curado 30 de vida, tu vida actual: " + p.getVida() +" ps\n");
+						System.out.println("Te has curado " + CURACION + " de vida, tu vida actual: " + p.getVida() +" ps\n");
 					}else {
 						System.out.println("No tienes suficiente oro 🪙");
 					}
@@ -153,7 +145,6 @@ public class Tienda {
 					System.out.println("Opcion no valida\n");
 					break;
 			}
-			
 			
 		}while(!respuesta.equals("S") && !respuesta.equals("N"));
 	}
