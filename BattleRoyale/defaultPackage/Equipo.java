@@ -6,18 +6,28 @@ import java.util.List;
 public class Equipo {
 	private String nombre;
 	private List<Personaje> miembros = new ArrayList<>();
-	private boolean estanVivos;
 	private boolean sonNPCs;
 	
 	public Equipo(String nombre, boolean sonNPCs) {
 		this.nombre = nombre;
-		this.estanVivos = false;
 		this.miembros = new ArrayList<Personaje>();
 		this.sonNPCs=sonNPCs;
 	}
 	
 	public void meterMiembro(Personaje p) {
 		miembros.add(p);
+	}
+	
+	public void add(Personaje p) {
+		meterMiembro(p);
+	}
+	
+	public int size() {
+		return miembros.size();
+	}
+	
+	public Personaje remove(int i) {
+		return miembros.remove(i);
 	}
 
 	public String getNombre() {
@@ -41,6 +51,10 @@ public class Equipo {
 	public List<Personaje> getMiembros() {
 		return miembros;
 	}
+	
+	public Personaje get(int i) {
+		return miembros.get(i);
+	}
 
 	public boolean areVivos() {
 		int vivos=0;
@@ -50,7 +64,7 @@ public class Equipo {
 			}
 		}
 		
-		return vivos==miembros.size();
+		return vivos==miembros.size() && miembros.size()>0;
 	}
 	
 	public boolean areNPCs() {
@@ -61,6 +75,15 @@ public class Equipo {
 		Integer media=0;
 		for(int i=0; i<miembros.size(); i++) {
 			media+=miembros.get(i).getSuerte()-1;
+		}
+		
+		return media/miembros.size();
+	}
+	
+	public int getMediaVelocidad() {
+		Integer media=0;
+		for(int i=0; i<miembros.size(); i++) {
+			media+=miembros.get(i).getVelocidad()-1;
 		}
 		
 		return media/miembros.size();

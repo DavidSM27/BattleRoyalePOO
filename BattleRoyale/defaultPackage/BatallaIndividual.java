@@ -351,7 +351,7 @@ public class BatallaIndividual extends Batalla {
     }
 
     private boolean intentarHuir(Personaje personaje) {
-        double probabilidad = 0.3 + (personaje.getVelocidad() * 0.05) + (personaje.getSuerte() * 0.05);
+        double probabilidad = 0.3 + ((personaje.getVelocidad()-1) * 0.05) + ((personaje.getSuerte()-1) * 0.05);
         return Math.random() < probabilidad;
     }
 

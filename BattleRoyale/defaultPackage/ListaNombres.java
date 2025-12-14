@@ -89,7 +89,7 @@ public class ListaNombres {
 	}
 
 	public static void main(String[] args) {
-		ListaNombres nombres=new ListaNombres();
+		ListaNombres nombres=new ListaNombres("Nombres_Jugadores.csv");
 		
 		System.out.println(nombres);
 	}

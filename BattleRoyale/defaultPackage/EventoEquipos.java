@@ -3,7 +3,6 @@ package defaultPackage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +24,7 @@ public class EventoEquipos extends ListaArmas {
 	private List<Equipo> equipos;
 	private Tienda tienda;
 	private ImprimirLOG imprimirLOG;
+	private BatallaEquipo batallaEquipo;
 	
 	public EventoEquipos(List<Equipo> equipos){
 		super();
@@ -33,6 +33,7 @@ public class EventoEquipos extends ListaArmas {
 		
 		this.tienda=new Tienda();
 		this.imprimirLOG=new ImprimirLOG();
+		this.batallaEquipo=new BatallaEquipo();
 		
 		EventoEquipos.COFRES_TOTALES=this.equipos.size()*this.equipos.get(0).getMiembros().size()*4;
 		EventoEquipos.COFRES_RESTANTES=COFRES_TOTALES;
@@ -228,7 +229,7 @@ public class EventoEquipos extends ListaArmas {
 		Integer opcion=0;
 		
 		System.out.println("¿Quien quiere abrir el cofre?");
-		for (int i = 0; i < equipos.get(I).getMiembros().size(); i++) {
+		for (int i = 0; i < equipos.get(I).size(); i++) {
 			System.out.println("["+ (i+1) +"] "+equipos.get(I).getMiembros().get(i).getNombre());
 		}
 		do {
@@ -292,7 +293,7 @@ public class EventoEquipos extends ListaArmas {
 			random=this.equipos.size()-1;
 		}
 		
-		Evento.LOG+=batallaequipos.iniciarBatalla(this.equipos.get(I), this.equipos.get(random));
+		EventoEquipos.LOG+=batallaEquipo.iniciarBatalla(this.equipos.get(I), this.equipos.get(random));
 		
 		if(!this.equipos.get(I).areVivos()) {
 			this.equipos.remove((int)I);
