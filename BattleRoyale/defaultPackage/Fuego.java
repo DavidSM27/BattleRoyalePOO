@@ -23,6 +23,9 @@ public class Fuego extends Personaje {
     public void lluviaInfernal(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
+            
+            this.energia-=Personaje.COSTE_HABILIDAD;
+            
 
             // Aplicamos el switch según el nivel
             int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
@@ -33,6 +36,9 @@ public class Fuego extends Personaje {
     public void marDeLava(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
+            
+            this.energia-=Personaje.COSTE_HABILIDAD;
+            
             // Aplicamos el switch según el nivel
             int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
 
@@ -42,6 +48,9 @@ public class Fuego extends Personaje {
 
     public void curacionDelInfierno() {
         if (intentarGastarEnergia()) {
+            
+            this.energia-=Personaje.COSTE_HABILIDAD;
+        	
             System.out.println(this.nombre + " usa magia sagrada.");
             this.curarVida(30);
         }

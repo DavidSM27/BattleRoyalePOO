@@ -15,6 +15,9 @@ public class Magia extends Personaje {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
             
+            this.energia-=Personaje.COSTE_HABILIDAD;
+            
+            
             int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
         }
@@ -23,6 +26,9 @@ public class Magia extends Personaje {
     public void congelarEnemigo(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " congela las piernas de " + objetivo.getNombre() + "!");
+            
+            this.energia-=Personaje.COSTE_HABILIDAD;
+            
 
             int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -31,6 +37,9 @@ public class Magia extends Personaje {
 
     public void curacionDivina() {
         if (intentarGastarEnergia()) {
+            
+            this.energia-=Personaje.COSTE_HABILIDAD;
+        	
             System.out.println(this.nombre + " usa magia sagrada.");
             this.curarVida(30);
         }

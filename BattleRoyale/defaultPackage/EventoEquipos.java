@@ -125,6 +125,7 @@ public class EventoEquipos extends ListaArmas {
 		}
 		System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 		sc.nextLine();
+		System.out.println("\n");
 		
 		for (int i = 0; i < this.equipos.size(); i++) {
 			if(!equipos.get(i).areVivos()) {
