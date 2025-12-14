@@ -24,6 +24,7 @@ public class Evento extends ListaArmas {
 	private List<Personaje> jugadores;
 	private Tienda tienda;
 	private ImprimirLOG imprimirLOG;
+	private BatallaIndividual batallaIndividual;
 	
 	public Evento(List<Personaje> jugadores){
 		super();
@@ -32,6 +33,7 @@ public class Evento extends ListaArmas {
 		
 		this.tienda=new Tienda();
 		this.imprimirLOG=new ImprimirLOG();
+		this.batallaIndividual=new BatallaIndividual();
 		
 		Evento.COFRES_TOTALES=this.jugadores.size()*4;
 		Evento.COFRES_RESTANTES=COFRES_TOTALES;
@@ -60,7 +62,7 @@ public class Evento extends ListaArmas {
 		Integer opcion;
 		RONDA++;
 		Evento.LOG="Ronda "+RONDA+"\n";
-		System.out.println("Ronda "+RONDA+"\n");
+		System.out.println("\nRonda "+RONDA+"\n");
 		
 		for (I=0; I < jugadores.size(); I++) {
 			opcion=0;
@@ -93,7 +95,7 @@ public class Evento extends ListaArmas {
 			}else {
 				// El NPC nunca campea, ni busca una tienda
 				if(RONDA>2) {
-					opcion=(int)Math.round(Math.random()*2)%2;
+					opcion=(int)Math.round(Math.random()*2);
 				}else {
 					opcion=0;
 				}
@@ -270,16 +272,7 @@ public class Evento extends ListaArmas {
 			random=this.jugadores.size()-1;
 		}
 		
-		//Batalla jugador=new Batalla(this.jugadores.get(I));
-		//Evento.LOG+=jugador.batalla(this.jugadores.get(random));
-		
-		if(this.jugadores.get(I).estaVivo) {
-			Evento.LOG+="\t\t-"+this.jugadores.get(I).getNombre()+" a matado a "+this.jugadores.get(random).getNombre();
-			
-		}else{
-			Evento.LOG+="\t\t-"+this.jugadores.get(random).getNombre()+" a matado a "+this.jugadores.get(I).getNombre();
-		}
-		
+		Evento.LOG+=batallaIndividual.iniciarBatalla(this.jugadores.get(I), this.jugadores.get(random));
 	}
 	
 	public static void main(String[] args) {
@@ -287,8 +280,8 @@ public class Evento extends ListaArmas {
         List<Personaje> listaJugadores = new ArrayList<>();
 
         // 2. Generar 50 personas
-        for (int i = 1; i <= 5; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
+        for (int i = 1; i <= 2; i++) {
+            listaJugadores.add(new Personaje(("Jugador "+i), 1, false));
         }
 
         System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");

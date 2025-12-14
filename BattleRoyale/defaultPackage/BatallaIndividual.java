@@ -5,23 +5,23 @@ import java.util.Scanner;
 public class BatallaIndividual extends Batalla {
 
     private static Scanner sc = new Scanner(System.in);
-    private static Integer turno;
-    private static String LOG;
+    private Integer turno;
+    private String LOG;
 
     public BatallaIndividual() {
         super();
     }
 
-    public void iniciarBatalla(Personaje jugador1, Personaje jugador2) {
+    public String iniciarBatalla(Personaje jugador1, Personaje jugador2) {
         turno = 1;
-        LOG="";
+        LOG = "";
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo()) {
-        	LOG+="\t-Turno "+turno++;
+            LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(jugador1, jugador2);
             turno++;
         }
@@ -33,6 +33,8 @@ public class BatallaIndividual extends Batalla {
             terminar(jugador2, jugador1);
             otorgarRecompensas(jugador2, jugador1);
         }
+
+        return LOG;
     }
 
     private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
@@ -60,18 +62,17 @@ public class BatallaIndividual extends Batalla {
 
     private void mostrarEstadoBatalla(Personaje jugador1, Personaje jugador2) {
         System.out.println(jugador1.getNombre() + ": " +
-                jugador1.getVida() + "+vida!  " +
-                jugador1.getEnergia() + "+energia!");
-        System.out.println(
-                jugador2.getNombre() + ": " + jugador2.getVida() + "+vida!  " + jugador2.getEnergia() + "+energia!");
+                jugador1.getVida() + " HP  " +
+                jugador1.getEnergia() + " Energía");
+        System.out.println(jugador2.getNombre() + ": " +
+                jugador2.getVida() + " HP  " +
+                jugador2.getEnergia() + " Energía");
     }
 
     private void ejecutarAccion(Personaje atacante, Personaje objetivo) {
         if (atacante.isNPC()) {
-
             ejecutarAccionNPC(atacante, objetivo);
         } else {
-
             ejecutarAccionJugador(atacante, objetivo);
         }
     }
@@ -106,24 +107,31 @@ public class BatallaIndividual extends Batalla {
 
         switch (opcion) {
             case 1:
-            	LOG+="\t\t-"+atacante.getNombre()+" ha disparado a "+objetivo.getNombre()+" le ha hecho "+
-            		atacante.getArma().getAtaque()+" de daño\n";
-            	ataqueBasico(atacante, objetivo);
+                ataqueBasico(atacante, objetivo);
+                LOG += "\t\t-" + atacante.getNombre() + " ha atacado a " + objetivo.getNombre() +
+                        " con " + atacante.getArma().getNombre() + " y ha hecho " +
+                        atacante.getArma().getAtaque() + " de daño\n";
                 break;
             case 2:
                 usarHabilidad(atacante, objetivo);
                 break;
             case 3:
+                LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
                 defender(atacante);
                 break;
             case 4:
+                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recuperar energía\n";
                 pasarTurno(atacante);
                 break;
             case 5:
                 if (!atacante.isNPC()) {
                     if (intentarHuir(atacante)) {
+                        LOG += "\t\t-" + atacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
                         terminar(objetivo, atacante);
                         System.out.println(atacante.getNombre() + " huyó de la batalla!");
+                    } else {
+                        LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
+                        System.out.println(atacante.getNombre() + " no pudo escapar!");
                     }
                 }
                 break;
@@ -131,31 +139,32 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
+        int vidaAnterior = objetivo.getVida();
         int decision = (int) (Math.random() * 100);
 
         if (atacante.getEnergia() >= Personaje.COSTE_HABILIDAD && decision < 40) {
-
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado una habilidad contra " + objetivo.getNombre() +
+                    " y le ha infligido " + (vidaAnterior - objetivo.getVida()) + " de daño\n";
             usarHabilidad(atacante, objetivo);
         } else if (decision < 80) {
-
+            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
+                    " y le ha hecho " + (vidaAnterior - objetivo.getVida()) + "de daño\n";
             ataqueBasico(atacante, objetivo);
         } else {
+            LOG += "\t\t-" + atacante.getNombre() + " se defiende y recupera energía\n";
             defender(atacante);
         }
     }
 
     private void ataqueBasico(Personaje atacante, Personaje objetivo) {
         int danoBase = (int) (atacante.getArma().getAtaque() + (atacante.getFuerza() * 2));
-
         int danoFinal = Math.max(1, danoBase - (objetivo.getDefensa() / 2));
 
         System.out.println(atacante.getNombre() + " ataca con " + atacante.getArma().getNombre() + "!");
         objetivo.recibirDanio(danoFinal);
-
     }
 
     private void usarHabilidad(Personaje atacante, Personaje objetivo) {
-
         if (atacante.getEnergia() < Personaje.COSTE_HABILIDAD) {
             System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
             ataqueBasico(atacante, objetivo);
@@ -165,7 +174,6 @@ public class BatallaIndividual extends Batalla {
         if (!atacante.isNPC()) {
             mostrarMenuHabilidades(atacante, objetivo);
         } else {
-
             usarHabilidadAleatoria(atacante, objetivo);
         }
     }
@@ -210,6 +218,7 @@ public class BatallaIndividual extends Batalla {
         }
 
         do {
+            System.out.print("Introduce una opcion: ");
             while (!sc.hasNextInt()) {
                 System.out.println("<Opción no válida>");
                 sc.next();
@@ -231,61 +240,106 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void ejecutarHabilidadEspecifica(Personaje atacante, Personaje objetivo, int habilidad) {
-
+    	int vidaAnteriorOjetivo=objetivo.getVida();
+    	int vidaAnteriorAtacante=atacante.getVida();
+    	
         switch (atacante.getElemento()) {
             case FUEGO:
-                Fuego fuego = (Fuego) atacante;
-                if (habilidad == 1)
+                Fuego fuego = new Fuego(atacante);
+                if (habilidad == 1) {
                     fuego.lluviaInfernal(objetivo);
-                else if (habilidad == 2)
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lluvia Infernal y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
                     fuego.marDeLava(objetivo);
-                else
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Mar de Lava y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
                     fuego.curacionDelInfierno();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación del Infierno y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
+                
                 break;
             case AGUA:
-                Agua agua = (Agua) atacante;
-                if (habilidad == 1)
-                    agua.tsunami(objetivo);
-                else if (habilidad == 2)
-                    agua.voragine(objetivo);
-                else
-                    agua.curacionDePoseidon();
+                Agua agua = new Agua(atacante);
+                if (habilidad == 1) {
+                	agua.tsunami(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Tsunami y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	agua.voragine(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Voragine y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	agua.curacionDePoseidon();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Poseidon y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case TIERRA:
-                Tierra tierra = (Tierra) atacante;
-                if (habilidad == 1)
-                    tierra.crearGrieta(objetivo);
-                else if (habilidad == 2)
-                    tierra.lanzarRoca(objetivo);
-                else
-                    tierra.sanacionRocal();
+                Tierra tierra = new Tierra(atacante);
+                if (habilidad == 1) {
+                	tierra.terremoto(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Terremoto y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	tierra.lanzarRoca(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lanzar Roca y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	tierra.sanacionRocal();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Sanación Rocal y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case VIENTO:
-                Viento viento = (Viento) atacante;
-                if (habilidad == 1)
-                    viento.LanzarTorbellino(objetivo);
-                else if (habilidad == 2)
-                    viento.SoplidoDeDios(objetivo);
-                else
-                    viento.CuracionDeEolo();
+                Viento viento = new Viento(atacante);
+                if (habilidad == 1) {
+                	viento.LanzarTorbellino(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lanzar Torbellino y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	viento.SoplidoDeDios(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Soplido de Dios y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	viento.CuracionDeEolo();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Eolo y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case MAGIA:
-                Magia magia = (Magia) atacante;
-                if (habilidad == 1)
-                    magia.lanzarBolaDeFuego(objetivo);
-                else if (habilidad == 2)
-                    magia.congelarEnemigo(objetivo);
-                else
-                    magia.curacionDivina();
+                Magia magia = new Magia(atacante);
+                if (habilidad == 1) {
+                	magia.lanzarBolaDeFuego(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Lanzar Bola de Fuego y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	magia.congelarEnemigo(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Congelar Enemigo y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	magia.curacionDivina();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Divina y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
             case VIDA:
-                Vida vida = (Vida) atacante;
-                if (habilidad == 1)
-                    vida.apretonDeCorazon(objetivo);
-                else if (habilidad == 2)
-                    vida.explotarSangre(objetivo);
-                else
-                    vida.curacionMedica();
+                Vida vida = new Vida(atacante);
+                if (habilidad == 1) {
+                	vida.apretonDeCorazon(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Apreton de Corazón y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else if (habilidad == 2) {
+                	vida.explotarSangre(objetivo);
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Explotar Sangre y ha infligido " +
+                            (vidaAnteriorOjetivo - objetivo.getVida()) + " de daño\n";
+                }else {
+                	vida.curacionMedica();
+                    LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Medica y se ha curado " +
+                            (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
+                }
                 break;
         }
     }
@@ -306,8 +360,9 @@ public class BatallaIndividual extends Batalla {
     }
 
     private void otorgarRecompensas(Personaje ganador, Personaje perdedor) {
-        int oroGanado = 50 + (int) (Math.random() * 50);
-        int xpGanado = 30 + (int) (Math.random() * 20);
+        int oroGanado = perdedor.getOro();
+        int xpGanado = (int) Math
+                .round((Math.random() * 50. + 100.) * (((double) (ganador.getSuerte() - 1)) * 5. / 100. + 1));
 
         ganador.anadirOro(oroGanado);
         ganador.ganarXP(xpGanado);
@@ -316,5 +371,9 @@ public class BatallaIndividual extends Batalla {
         System.out.println("\n RECOMPENSAS:");
         System.out.println("  +" + oroGanado + " oro ");
         System.out.println("  +" + xpGanado + " XP ");
+    }
+
+    public String getLOG() {
+        return LOG;
     }
 }

@@ -15,6 +15,10 @@ public class Tierra extends Personaje {
             this.nivel = nivel;
     }
 
+    public Tierra(Personaje personaje) {
+        super(personaje);
+    }
+
     private int calcularImpactoTerrestre(int danoBase) {
         int danoFinal = 0;
 
@@ -41,7 +45,7 @@ public class Tierra extends Personaje {
         return danoFinal;
     }
 
-    public void crearGrieta(Personaje objetivo) {
+    public void terremoto(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " tira por una grieta a " + objetivo.getNombre() + "!");
 
