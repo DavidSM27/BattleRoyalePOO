@@ -46,7 +46,6 @@ public class Evento extends ListaArmas {
 		}
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	private void rondas() {
 		Integer opcion;
 		RONDA++;
