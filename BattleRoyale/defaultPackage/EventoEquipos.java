@@ -35,7 +35,7 @@ public class EventoEquipos extends ListaArmas {
 		this.imprimirLOG=new ImprimirLOG();
 		this.batallaEquipo=new BatallaEquipo();
 		
-		EventoEquipos.COFRES_TOTALES=this.equipos.size()*this.equipos.get(0).getMiembros().size()*4;
+		EventoEquipos.COFRES_TOTALES=this.equipos.size()*this.equipos.get(0).size()*4;
 		EventoEquipos.COFRES_RESTANTES=COFRES_TOTALES;
 		EventoEquipos.EQUIPOS_TOTALES=this.equipos.size();
 		
@@ -49,10 +49,10 @@ public class EventoEquipos extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("\nEl ganador es: "+this.equipos.getFirst().getNombres());
+		System.out.println("\nLos ganadores son: "+this.equipos.getFirst().getNombres());
 		
 		try{
-			this.imprimirLOG.imprimir("\nEl ganador es: "+this.equipos.getFirst().getNombres()+"\n\n");
+			this.imprimirLOG.imprimir("\nLos ganadores son: "+this.equipos.getFirst().getNombres()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
@@ -230,7 +230,7 @@ public class EventoEquipos extends ListaArmas {
 		
 		System.out.println("¿Quien quiere abrir el cofre?");
 		for (int i = 0; i < equipos.get(I).size(); i++) {
-			System.out.println("["+ (i+1) +"] "+equipos.get(I).getMiembros().get(i).getNombre());
+			System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre());
 		}
 		do {
         	System.out.print("Elegir a alguien: ");
@@ -241,12 +241,12 @@ public class EventoEquipos extends ListaArmas {
         		opcion=0;
         	}
         	sc.nextLine();
-		} while (opcion<1 || opcion>this.equipos.get(I).getMiembros().size());
+		} while (opcion<1 || opcion>this.equipos.get(I).size());
 		opcion-=1;
 		
-		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).getMiembros().get(opcion).getNombre()+" a abierto un cofre\n";
+		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(opcion).getNombre()+" a abierto un cofre\n";
 		
-		Double suerte=( ((double)equipos.get(I).getMiembros().get(opcion).getSuerte()-1)*5. /100.)+1.;
+		Double suerte=( ((double)equipos.get(I).get(opcion).getSuerte()-1)*5. /100.)+1.;
 		Double random=Math.random();
 		Integer aux=0;
 		if(random<0.05*suerte) {
@@ -267,23 +267,23 @@ public class EventoEquipos extends ListaArmas {
 						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
-		EventoEquipos.LOG+=this.equipos.get(I).getMiembros().get(opcion).equiparArma(arma);
+		EventoEquipos.LOG+=this.equipos.get(I).get(opcion).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
-		this.equipos.get(I).getMiembros().get(opcion).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
+		this.equipos.get(I).get(opcion).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
 	}
 	
 	private void tienda() {
 		EventoEquipos.LOG+="\t\t-El equipo "+this.equipos.get(I).getNombre()+" a encontrado una tienda";
 		
-		for (int i = 0; i < equipos.get(I).getMiembros().size(); i++) {
-			System.out.println(this.equipos.get(I).getMiembros().get(i).getNombre()+" vas a usar la tienda:");
+		for (int i = 0; i < equipos.get(I).size(); i++) {
+			System.out.println(this.equipos.get(I).get(i).getNombre()+" vas a usar la tienda:");
 			try{
 				Thread.sleep(1000);
 			}catch (InterruptedException e) {
 				// Por si hay alguna interrupcion
 			}
-			EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).getMiembros().get(i).getNombre()+" usa la tienda:";
-			EventoEquipos.LOG+=tienda.menuTienda(equipos.get(I).getMiembros().get(i));
+			EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(i).getNombre()+" usa la tienda:";
+			EventoEquipos.LOG+=tienda.menuTienda(equipos.get(I).get(i));
 		}
 	}
 	

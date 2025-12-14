@@ -25,7 +25,11 @@ public class Equipo {
 	public int size() {
 		return miembros.size();
 	}
-	
+
+	public Personaje get(int i) {
+		return miembros.get(i);
+	}
+
 	public Personaje remove(int i) {
 		return miembros.remove(i);
 	}
@@ -52,10 +56,6 @@ public class Equipo {
 		return miembros;
 	}
 	
-	public Personaje get(int i) {
-		return miembros.get(i);
-	}
-
 	public boolean areVivos() {
 		int vivos=0;
 		for(int i=0; i<miembros.size(); i++) {
