@@ -64,10 +64,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
             turno++;
         }
 
-        if (equipo1.areVivos()) {
+        if (!equipo2.areVivos()) {
         	terminar(equipo1, equipo2);
         	otorgarRecompensas(equipo1, equipo2);
-        } else if (equipo2.areVivos()){
+        } else if (!equipo1.areVivos()){
         	terminar(equipo2, equipo1);
         	otorgarRecompensas(equipo2, equipo1);
         }
@@ -202,6 +202,13 @@ public class BatallaEquipo extends Batalla<Equipo>{
                 if (intentarHuir(equipoAtacante)) {
                     LOG += "\t\t-El equipo" + equipoAtacante.getNombre() + " ha huido\n";
                     terminarPorHuida(equipoAtacante);
+                    if(equipoAtacante.getNombre().equals(EQUIPO1_AUX.getNombre())) {
+                    	terminar(equipoAtacante, EQUIPO2_AUX);
+                    	otorgarRecompensas(equipoAtacante, EQUIPO2_AUX);
+                    }else {
+                    	terminar(equipoAtacante, EQUIPO1_AUX);
+                    	otorgarRecompensas(equipoAtacante, EQUIPO1_AUX);
+					}
                 } else {
                     LOG += "\t\t-" + equipoAtacante.getNombre() + " intentó huir pero no lo consiguió\n";
                     System.out.println(equipoAtacante.getNombre() + " no pudo escapar!");

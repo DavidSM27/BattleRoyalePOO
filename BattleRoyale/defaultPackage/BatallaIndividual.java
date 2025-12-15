@@ -40,10 +40,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
             turno++;
         }
 
-        if (jugador1.isVivo()) {
+        if (!jugador2.isVivo()) {
             terminar(jugador1, jugador2);
             otorgarRecompensas(jugador1, jugador2);
-        } else if (jugador2.isVivo()){
+        } else if (!jugador1.isVivo()){
             terminar(jugador2, jugador1);
             otorgarRecompensas(jugador2, jugador1);
         }
@@ -131,6 +131,8 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 if (intentarHuir(atacante)) {
                     LOG += "\t\t-" + atacante.getNombre() + " ha huido\n";
                     terminarPorHuida(atacante);
+                    terminar(atacante, objetivo);
+                    otorgarRecompensas(atacante, objetivo);
                 } else {
                     LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
                     System.out.println(atacante.getNombre() + " no pudo escapar!");
