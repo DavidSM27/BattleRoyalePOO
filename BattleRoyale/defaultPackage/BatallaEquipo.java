@@ -27,11 +27,6 @@ public class BatallaEquipo extends Batalla<Equipo>{
             LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(equipo1, equipo2);
             turno++;
-            try{
-				Thread.sleep(4000);
-			}catch (InterruptedException e) {
-				// Por si hay alguna interrupcion
-			}
         }
 
         if (equipo1.areVivos()) {
@@ -59,6 +54,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 		            	if (!equipo2.get(j).isVivo())
 		            		equipo2.remove(j);
 					}
+		            Utilidades.sleep(4000);
         		}
         	}
             
@@ -75,6 +71,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 		            	if (!equipo1.get(j).isVivo())
 		            		equipo1.remove(j);
 					}
+		            Utilidades.sleep(4000);
         		}
         	}
         }

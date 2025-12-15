@@ -165,3 +165,125 @@ Ronda 3
 
 El ganador es: Eruptor
 
+Ronda 1
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva RPG
+
+
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Fusil
+
+
+Ronda 2
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King mantiene su arma actual: RPG
+
+
+	-1 intenta buscar una Batalla
+	-Turno 1
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 2
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 3
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado su ataque normal a 1 y le ha hecho 72.0 de daño
+	-Turno 4
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Lluvia Infernal y ha infligido 6 de daño
+
+
+
+El ganador es: Krypt King
+
+Ronda 1
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva Shuriken
+
+
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Fusil
+
+
+Ronda 2
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva Arco
+
+
+	-1 intenta buscar una Batalla
+	-Turno 1
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Congelar Enemigo y ha infligido 14 de daño
+	-Turno 2
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado su ataque normal a 1 y le ha hecho 28.5 de daño
+	-Turno 3
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Lanzar Bola de Fuego y ha infligido 16 de daño
+	-Turno 4
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Congelar Enemigo y ha infligido 14 de daño
+	-Turno 5
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Lanzar Bola de Fuego y ha infligido 8 de daño
+
+
+
+El ganador es: Krypt King
+
+Ronda 1
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Shuriken
+
+
+	-Stealth Elf intenta buscar un Cofre
+		-Stealth Elf a abierto un cofre
+		-Stealth Elf ahora lleva Arco
+
+
+Ronda 2
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva RPG
+
+
+	-Stealth Elf intenta buscar un Cofre
+		-Stealth Elf a abierto un cofre
+		-Stealth Elf mantiene su arma actual: Arco
+
+
+Ronda 3
+	-1 intenta Campear
+
+
+	-Stealth Elf intenta buscar una Batalla
+	-Turno 1
+		-Stealth Elf ha usado su ataque normal a 1 y le ha hecho 16.5 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 2
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+		-1 ha atacado a Stealth Elf con RPG y ha hecho 72.0 de daño
+	-Turno 3
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 4
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 5
+		-Stealth Elf ha usado una habilidad Soplido de Dios y ha infligido 10 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 6
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 4 de daño
+
+
+
+El ganador es: Stealth Elf
+
