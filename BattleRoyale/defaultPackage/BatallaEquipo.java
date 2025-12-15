@@ -332,6 +332,8 @@ int decision = 0;
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
                 
+                atacante.setEnergia(fuego.getEnergia());
+                
                 break;
             case AGUA:
                 Agua agua = new Agua(atacante);
@@ -348,6 +350,9 @@ int decision = 0;
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Poseidon y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(agua.getEnergia());
+                
                 break;
             case TIERRA:
                 Tierra tierra = new Tierra(atacante);
@@ -364,6 +369,9 @@ int decision = 0;
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Sanación Rocal y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(tierra.getEnergia());
+                
                 break;
             case VIENTO:
                 Viento viento = new Viento(atacante);
@@ -380,6 +388,9 @@ int decision = 0;
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Eolo y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(viento.getEnergia());
+                
                 break;
             case MAGIA:
                 Magia magia = new Magia(atacante);
@@ -396,6 +407,9 @@ int decision = 0;
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Divina y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(magia.getEnergia());
+                
                 break;
             case VIDA:
                 Vida vida = new Vida(atacante);
@@ -412,10 +426,13 @@ int decision = 0;
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Medica y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(vida.getEnergia());
+                
                 break;
         }
     }
-
+    
     private void recuperarEnergia(Personaje personaje) {
         System.out.println(personaje.getNombre() + " pasa su turno y recupera energía.");
         personaje.recuperarEnergia(ENERGIA);

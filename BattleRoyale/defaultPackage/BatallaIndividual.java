@@ -279,6 +279,8 @@ public class BatallaIndividual extends Batalla<Personaje> {
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
                 
+                atacante.setEnergia(fuego.getEnergia());
+                
                 break;
             case AGUA:
                 Agua agua = new Agua(atacante);
@@ -295,6 +297,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Poseidon y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(agua.getEnergia());
+                
                 break;
             case TIERRA:
                 Tierra tierra = new Tierra(atacante);
@@ -311,6 +316,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Sanación Rocal y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(tierra.getEnergia());
+                
                 break;
             case VIENTO:
                 Viento viento = new Viento(atacante);
@@ -327,6 +335,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación de Eolo y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(viento.getEnergia());
+                
                 break;
             case MAGIA:
                 Magia magia = new Magia(atacante);
@@ -343,6 +354,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Divina y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(magia.getEnergia());
+                
                 break;
             case VIDA:
                 Vida vida = new Vida(atacante);
@@ -359,6 +373,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                     LOG+="\t\t-" + atacante.getNombre() + " ha usado una habilidad Curación Medica y se ha curado " +
                             (atacante.getVida() - vidaAnteriorAtacante) + " de vida\n";
                 }
+                
+                atacante.setEnergia(vida.getEnergia());
+                
                 break;
         }
     }
