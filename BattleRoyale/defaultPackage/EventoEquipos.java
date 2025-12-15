@@ -54,7 +54,7 @@ public class EventoEquipos extends ListaArmas {
 		System.out.println("El equipo ganador es: "+this.equipos.getFirst().getNombre());
 		
 		try{
-			this.guardarLOG.imprimir("\n\nEl equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
+			this.guardarLOG.imprimir("El equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
@@ -317,64 +317,5 @@ public class EventoEquipos extends ListaArmas {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
-	
-	public static void main(String[] args) {
-		// 1. Lista principal de equipos del torneo
-	    List<Equipo> listaDeEquiposParticipantes = new ArrayList<>();
-
-	    // -----------------------------------------------------------
-	    // EQUIPO 1: TUS HÉROES (Humanos)
-	    // -----------------------------------------------------------
-	    // false indica que NO son NPCs
-	    Equipo equipoHeroes = new Equipo("Los Vengadores", true);
-	    
-	    // IMPORTANTE: Instanciamos las clases hijas (Fuego, Agua...) NO Personaje a secas
-	    // Ajusta los parámetros del constructor (Nombre, Nivel/Suerte, esNPC) según tus clases
-	    equipoHeroes.add(new Fuego("Dr. Strange", 5, true));
-	    equipoHeroes.add(new Tierra("Hulk", 5, true));
-	    
-	    listaDeEquiposParticipantes.add(equipoHeroes);
-
-
-	    // -----------------------------------------------------------
-	    // EQUIPO 2: RIVALES (NPCs)
-	    // -----------------------------------------------------------
-	    // true indica que SÍ son NPCs
-	    Equipo equipoOrcos = new Equipo("La Horda", true);
-	    
-	    equipoOrcos.add(new Vida("Chamán Orco", 3, true));
-	    equipoOrcos.add(new Viento("Jinete de Lobo", 3, true));
-	    
-	    listaDeEquiposParticipantes.add(equipoOrcos);
-
-
-	    // -----------------------------------------------------------
-	    // EQUIPO 3: RIVALES (NPCs)
-	    // -----------------------------------------------------------
-	    Equipo equipoMagos = new Equipo("Los Nigromantes", true);
-	    
-	    equipoMagos.add(new Magia("Hechicero Oscuro", 4, true));
-	    equipoMagos.add(new Agua("Espíritu del Agua", 4, true));
-	    
-	    listaDeEquiposParticipantes.add(equipoMagos);
-
-
-	    // -----------------------------------------------------------
-	    // 3. INICIAR EL EVENTO
-	    // -----------------------------------------------------------
-	    System.out.println("========================================");
-	    System.out.println("     INICIANDO TORNEO DE EQUIPOS");
-	    System.out.println("========================================");
-	    System.out.println("Equipos inscritos: " + listaDeEquiposParticipantes.size() + "\n");
-
-	    try {
-	        // Pasamos la lista de EQUIPOS, no de personajes
-	        new EventoEquipos(listaDeEquiposParticipantes);
-	        
-	    } catch (Exception e) {
-	        System.err.println("¡Error crítico en el evento!");
-	        e.printStackTrace();
-	    }
 	}
 }

@@ -20,7 +20,7 @@ public class Tienda {
 		int opcion;
 		
 		Utilidades.imprimirConDelay("\nVendedor: \"¡Bienvenido, viajero! Tengo armas para mejorar\n"
-						+ " y pociones para mantenerte con vida. ¿Qué deseas hoy?\"\n", 20);
+						+ " y pociones para mantenerte con vida. ¿Qué deseas hoy?\"\n", 10);
         
         System.out.println("Tu oro: " + p.getOro() + " 🪙");
         System.out.println("Tu vida actual: " + p.getVida() + " HP ❤️");
@@ -58,7 +58,7 @@ public class Tienda {
             		menuRecuperarMana(p);
             		break;
                 case 0:
-            		Utilidades.imprimirConDelay("Vendedor: \"Vuelve pronto, viajero.\"\n", 20);
+            		Utilidades.imprimirConDelay("Vendedor: \"Vuelve pronto, viajero.\"\n", 10);
                     break;
                 default:
                     System.out.println("Opcion no valida.\n");
@@ -76,7 +76,7 @@ public class Tienda {
 		do {
 			
 			Utilidades.imprimirConDelay("\nVendedor: \"Ahh… ¿Quieres fortalecer tu acero? Puedo mejorar cualquiera\r\n"
-					+ "de tus armas, por el precio adecuado, claro...\"\n", 20);
+					+ "de tus armas, por el precio adecuado, claro...\"\n", 10);
 			
 			System.out.println("===== MEJORAR ARMAS =====");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙\n");
@@ -131,7 +131,7 @@ public class Tienda {
 		do {
 			
 			Utilidades.imprimirConDelay("\nVendedor: \"Ah, las mejores pociones curativas de la región. \r\n"
-				+ "Siempre conviene tener algunas encima...\"\n", 20);
+				+ "Siempre conviene tener algunas encima...\"\n", 10);
 		
 			System.out.println("===== COMPRAR POCIONES =====");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
@@ -200,7 +200,7 @@ public class Tienda {
 		
 		do {
 			
-			Utilidades.imprimirConDelay("Vendedor: \"Ah… maná puro. Esencia destilada de antiguos cristales.\"\n", 20);
+			Utilidades.imprimirConDelay("Vendedor: \"Ah… maná puro. Esencia destilada de antiguos cristales.\"\n", 10);
 			
 			System.out.println("===== COMPRAR MANÁ =====");
 			System.out.println("Maná actual: " + p.getEnergia() + "/100");

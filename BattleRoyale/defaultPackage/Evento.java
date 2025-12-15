@@ -52,7 +52,7 @@ public class Evento extends ListaArmas {
 		System.out.println("FELICIDADES " + this.jugadores.getFirst().getNombre() + " HAS GANADO");
 		
 		try{
-			this.guardarLOG.imprimir("\n\nEl ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
+			this.guardarLOG.imprimir("El ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
@@ -293,19 +293,5 @@ public class Evento extends ListaArmas {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
-	
-	public static void main(String[] args) {
-		// 1. Crear la lista
-        List<Personaje> listaJugadores = new ArrayList<>();
-
-        for (int i = 1; i <= 2; i++) {
-            listaJugadores.add(new Personaje(("Jugador "+i), 1, true));
-        }
-
-        System.out.println("Iniciando evento con " + listaJugadores.size() + " jugadores.");
-
-        // 3. Insanciar el Evento
-        new Evento(listaJugadores);
 	}
 }
