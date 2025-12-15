@@ -6,8 +6,8 @@ public class Tienda {
 	
 	private static final Scanner sc = new Scanner(System.in);
 	private static final Integer COSTO_MEJORA=50;
-	private static final Integer COSTO_CURACION_PEQUENA = 50;
-	private static final Integer COSTO_CURACION_GRANDE = 70;
+	private static final Integer COSTO_CURACION_PEQUENA = 70;
+	private static final Integer COSTO_CURACION_GRANDE = 120;
 	private static final Integer CURACION_PEQUENA=30;
 	private static final Integer CURACION_GRANDE = 60;
 	private static final Integer MANA=30;
