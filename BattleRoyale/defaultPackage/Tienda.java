@@ -160,7 +160,7 @@ public class Tienda {
 						System.out.println("Vendedor: \"Ya puedes disfrutar de las pociones viajero\"\n");
 						
 						Integer vidaAnterior=p.getVida();
-						p.curarVida(p.getVida() + CURACION_GRANDE);
+						p.curarVida(CURACION_GRANDE);
 						
 						LOG+="\t\t-"+p.getNombre()+" ha recuperado "+ (p.getVida()-vidaAnterior) +" de salud.\n";
 					}else {
@@ -175,7 +175,7 @@ public class Tienda {
 						System.out.println("Vendedor: \"Ya puedes disfrutar de las pociones viajero\"\n");
 						
 						Integer vidaAnterior=p.getVida();
-						p.curarVida(p.getVida() + CURACION_PEQUENA);
+						p.curarVida(CURACION_PEQUENA);
 						
 						LOG+="\t\t-"+p.getNombre()+" ha recuperado "+ (p.getVida()-vidaAnterior) +" de salud.\n";
 					}else {
@@ -221,7 +221,7 @@ public class Tienda {
 						p.setOro(p.getOro() - COSTO_MANA);
 						
 						Integer manaAnterior=p.getEnergia();
-						p.recuperarEnergia(p.getEnergia() + MANA);
+						p.recuperarEnergia(MANA);
 						
 						LOG+="\t\t-"+p.getNombre()+" ha recuperado "+ (p.getEnergia()-manaAnterior) +" de mana.\n";
 						
