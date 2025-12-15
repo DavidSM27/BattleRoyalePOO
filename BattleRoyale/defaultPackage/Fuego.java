@@ -1,19 +1,14 @@
 package defaultPackage;
 
 public class Fuego extends Personaje {
-
-    private int nivel;
+	
+	private static final int DAÑO_HABILIDAD1=24;
+	private static final int DAÑO_HABILIDAD2=6;
+	private static final int CURACION_HABILIDAD = 20;
 
     public Fuego(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);
         this.setElemento(Elemento.FUEGO);
-
-        if (nivel < 1)
-            this.nivel = 1;
-        else if (nivel > 5)
-            this.nivel = 5;
-        else
-            this.nivel = nivel;
     }
     
     public Fuego(Personaje personaje) {

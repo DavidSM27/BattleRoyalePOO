@@ -8,14 +8,13 @@ public class Personaje implements Comparable<Personaje> {
     // Constantes
     protected static final int ENERGIA_MAX = 100;
     protected static final int COSTE_HABILIDAD = 20;
+    protected static final int COSTE_HABILIDAD2 = 20;
+    protected static final int COSTE_HABILIDAD3 = 20;
     protected static final int ORO_INICIAL = 0;
     protected static final int VIDA_MAX_DEFECTO = 100;
     protected static final int PUNTOS_DE_NIVEL = 20;
     protected static final int NIVEL_ESTADISTICAS_INCIALES = 1;
     protected static final int SUBIDA_NIVEL = 100;
-    protected static final int DAÑO_HABILIDAD1 = 20;
-    protected static final int DAÑO_HABILIDAD2 = 10;
-    protected static final int CURACION_HABILIDAD = 30;
     private static int contadorPersonajes = 1;
 
     // Atributos
