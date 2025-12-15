@@ -137,15 +137,17 @@ public class Partida {
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
         
-        // 2. ELEGIR ELEMENTO
-        System.out.println("\nElige elemento:");
-        System.out.println("1. FUEGO   2. AGUA   3. TIERRA");
-        System.out.println("4. VIENTO  5. MAGIA  6. VIDA");
+        Personaje.imprimirDebilidades();
         
+        // 2. ELEGIR ELEMENTO
         do {
+	        System.out.println("\nElige elemento:");
+	        System.out.println("1. FUEGO   2. AGUA   3. TIERRA");
+	        System.out.println("4. VIENTO  5. MAGIA  6. VIDA");
+	        
     		System.out.print("Elemento: ");
     		while(!sc.hasNextInt()) {
-                System.out.println("Por favor, ingresa un número válido.");
+                System.out.println("Por favor, ingresa un número válido.\n");
                 System.out.print("Elemento: ");
                 sc.next();
         }
@@ -153,10 +155,9 @@ public class Partida {
     		sc.nextLine();
     		
     		if(elemento < 1 || elemento > 6) {
-    				System.out.println("Por favor, ingresa un número válido");
-    				System.out.println("1. FUEGO   2. AGUA   3. TIERRA");
-    		        System.out.println("4. VIENTO  5. MAGIA  6. VIDA");
-    			}   		
+				System.out.println("Por favor, ingresa un número válido");
+
+    		}   		
         } while(elemento < 1 || elemento > 6);
         System.out.println();
         

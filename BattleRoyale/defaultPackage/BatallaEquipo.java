@@ -97,7 +97,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 		            
 		            equipo2.quitarMuertos();
 		            
-		            Utilidades.sleep(3000);
+		            Utilidades.sleep(1500);
         		}
         	}
         }
