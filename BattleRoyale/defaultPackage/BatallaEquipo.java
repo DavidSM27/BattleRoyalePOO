@@ -1,5 +1,6 @@
 package defaultPackage;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class BatallaEquipo extends Batalla<Equipo>{
