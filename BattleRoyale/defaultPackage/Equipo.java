@@ -43,12 +43,16 @@ public class Equipo {
 			return miembros.get(i);
 		}else {
 			System.out.println("Pon un numero del 0 al " + (miembros.size()-1));
-			return null;
+			return miembros.get(miembros.size()-1);
 		}
 	}
 
-	public Personaje remove(int i) {
-		return miembros.remove(i);
+	public void quitarMuertos() {
+		for (int j = 0; j < miembros.size(); j++) {
+        	if (!miembros.get(j).isVivo()) {
+        		miembros.remove((int)j--);
+        	}
+		}
 	}
 
 	public String getNombre() {

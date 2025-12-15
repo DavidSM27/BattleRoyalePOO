@@ -111,7 +111,7 @@ public class EventoEquipos extends ListaArmas {
 			}
 			EventoEquipos.LOG+="\t-El equipo"+equipos.get(I).getNombre()+" han intentan "+EventoEquipos.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
-			Utilidades.sleep(2000);
+			Utilidades.sleep(1000);
 			EventoEquipos.LOG+="\n\n";
 			System.out.println("\n");
 		}

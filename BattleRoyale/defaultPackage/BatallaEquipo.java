@@ -7,6 +7,11 @@ public class BatallaEquipo extends Batalla<Equipo>{
     private static Integer turno;
     private static String LOG;
     private static final Integer ENERGIA=50;
+    private static Integer EQUIPO1_SIZE;
+    private static Integer EQUIPO_OBJETIVO_SIZE;
+    private static final BatallaIndividual batallaIndividual = new BatallaIndividual();
+    private static Equipo EQUIPO1_AUX;
+    private static Equipo EQUIPO2_AUX;
 
     public BatallaEquipo() {
         super();
@@ -25,8 +30,13 @@ public class BatallaEquipo extends Batalla<Equipo>{
 
         while (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
             LOG += "\t-Turno " + turno + "\n";
+            System.out.println("\n========== TURNO " + turno++ + " ==========");
+            
+            // Para que mostrarEstadoBatalla imprima los equipos siempre de la mismo orden
+            EQUIPO1_AUX=equipo1;
+            EQUIPO2_AUX=equipo2;
             ejecutarTurno(equipo1, equipo2);
-            turno++;
+            ejecutarTurno(equipo2, equipo1);
         }
 
         if (equipo1.areVivos()) {
@@ -41,45 +51,37 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void ejecutarTurno(Equipo equipo1, Equipo equipo2) {
-        System.out.println("\n========== TURNO " + turno + " ==========");
+        
         
         // Es por si acaso
         if (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
-        	for(int i=0; i < equipo1.size(); i++) {
+        	EQUIPO1_SIZE=equipo1.size();
+        	
+        	System.out.println("\n\n=== Turno de " + equipo1.getNombre() + " ===");
+        	
+        	for(int i=0; i < EQUIPO1_SIZE; i++) {
+            	
         		if (equipo2.areVivos() && this.enCurso) {
-		            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
-		            mostrarEstadoBatalla(equipo1, equipo2);
-		            elegirOponente(equipo1.get(i), equipo2, equipo1);
+		            if(EQUIPO1_SIZE!=1) {
+		            	System.out.println("\n\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
+		            }
 		            
-		            for (int j = 0; j < equipo2.size(); j++) {
-		            	if (!equipo2.get(j).isVivo())
-		            		equipo2.remove(j);
-					}
-		            Utilidades.sleep(4000);
-        		}
-        	}
-            
-        }
-        
-        if (equipo2.areVivos() && equipo1.areVivos() && this.enCurso) {
-        	for(int i=0; i < equipo2.size(); i++) {
-        		if (equipo1.areVivos() && this.enCurso) {
-		            System.out.println("\n=== Turno de " + equipo2.get(i).getNombre() + " ===");
-		            mostrarEstadoBatalla(equipo1, equipo2);
-		            elegirOponente(equipo2.get(i), equipo1, equipo2);
+		            if(EQUIPO1_SIZE!=1 || equipo2.size()!=1) {
+		            	// Si los un equipo tiene >1 miembros o los dos equipos tienen >1 miembros
+		            	elegirOponente(equipo1.get(i), equipo2, equipo1);
+		            }else {
+		            	LOG+=BatallaEquipo.batallaIndividual.iniciarBatalla(equipo1.get(0), equipo2.get(0));
+		            }
 		            
-		            for (int j = 0; j < equipo1.size(); j++) {
-		            	if (!equipo1.get(j).isVivo())
-		            		equipo1.remove(j);
-					}
-		            Utilidades.sleep(4000);
+		            equipo2.quitarMuertos();
+		            
+		            Utilidades.sleep(2000);
         		}
         	}
         }
     }
 
-    private void mostrarEstadoBatalla(Equipo equipo1, Equipo equipo2) {
-    	
+    private void mostrarEstadoBatalla(Equipo equipo1) {
     	System.out.println(equipo1.getNombre()+":");
     	for (int i = 0; i < equipo1.size(); i++) {
 	        System.out.println("\t"+equipo1.get(i).getNombre() + ": " +
@@ -89,43 +91,57 @@ public class BatallaEquipo extends Batalla<Equipo>{
 	        		equipo1.get(i).getVida() + " HP  " +
 	        		equipo1.get(i).getEnergia() + " Energía\n";
     	}
-        
-    	System.out.println(equipo2.getNombre()+":");
-    	for (int i = 0; i < equipo2.size(); i++) {
-	        System.out.println("\t"+equipo2.get(i).getNombre() + ": " +
-	        		equipo2.get(i).getVida() + " HP  " +
-	        		equipo2.get(i).getEnergia() + " Energía");
-	        LOG+="\t\t\t-" + equipo2.get(i).getNombre() + ": " +
-	        		equipo2.get(i).getVida() + " HP  " +
-	        		equipo2.get(i).getEnergia() + " Energía\n";
-    	}
     }
     
     private void elegirOponente(Personaje atacante, Equipo equipo, Equipo equipoAtacante) {
+    	EQUIPO_OBJETIVO_SIZE=equipo.size();
     	int opcion=0;
-        if(!atacante.isNPC()) {
-        	System.out.println("¿A quien quieres atacar?");
-    		for (int i = 0; i < equipo.size(); i++) {
-    			System.out.println("\t["+ (i+1) +"] "+equipo.get(i).getNombre());
-    		}
-    		do{
-    			while (!sc.hasNextInt()) {
-	                System.out.println("Opción no válida.");
-	                sc.next();
-	            }
-	
-	            opcion = sc.nextInt();
-	            sc.nextLine();
-    		}while(opcion<1 || opcion>equipo.size());
-    		opcion--;
-        }else {
-        	opcion=(int)Math.round((Math.random()*equipo.size())%equipo.size());
-        }
+    	if (equipo.size()!=1) {
+	        if(!atacante.isNPC()) {
+	        	System.out.println("¿A quien quieres atacar?");
+	    		for (int i = 0; i < EQUIPO_OBJETIVO_SIZE; i++) {
+	    			System.out.println("\t["+ (i+1) +"] "+equipo.get(i).getNombre());
+	    		}
+	    		do{
+	    			while (!sc.hasNextInt()) {
+		                System.out.println("Opción no válida.");
+		                sc.next();
+		            }
+		
+		            opcion = sc.nextInt();
+		            sc.nextLine();
+	    		}while(opcion<1 || opcion>EQUIPO_OBJETIVO_SIZE);
+	    		opcion--;
+	        }else {
+	        	opcion=(int)Math.round((Math.random()*EQUIPO_OBJETIVO_SIZE)%EQUIPO_OBJETIVO_SIZE);
+	        }
+	        
+	        if(EQUIPO1_SIZE!=1) {
+	        	// Los dos equipos tienen >1 miembros
+	        	mostrarEstadoBatalla(EQUIPO1_AUX);
+                mostrarEstadoBatalla(EQUIPO2_AUX);
+                ejecutarAccion(atacante, equipo.get(opcion), equipoAtacante);
+	        }else {
+	        	// El equipo2 tiene >1 miembro 
+	        	LOG+=BatallaEquipo.batallaIndividual.iniciarBatalla(atacante, equipo.get(0));
+	        }
+	        
+    	}else {
+    		// El equipo1 tiene >1 miembro
+    		opcion=0;
+    		mostrarEstadoBatalla(EQUIPO1_AUX);
+            mostrarEstadoBatalla(EQUIPO2_AUX);
+    		ejecutarAccion(atacante, equipo.get(opcion), equipoAtacante);
+    	}
         
-        ejecutarAccion(atacante, equipo.get(opcion), equipoAtacante);
+        
+        
     }
 
     private void ejecutarAccion(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
+    	// para que haga un enter
+    	System.out.println();
+    	
         if (atacante.isNPC()) {
             ejecutarAccionNPC(atacante, objetivo);
         } else {

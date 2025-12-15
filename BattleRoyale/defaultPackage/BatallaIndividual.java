@@ -22,9 +22,19 @@ public class BatallaIndividual extends Batalla<Personaje> {
         System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
-            LOG += "\t-Turno " + turno + "\n";
+        	LOG += "\t-Turno " + turno + "\n";
+            System.out.println("\n========== TURNO " + turno++ + " ==========");
+            
+            System.out.println();
+            mostrarEstadoBatalla(jugador1);
+            mostrarEstadoBatalla(jugador2);
             ejecutarTurno(jugador1, jugador2);
-            turno++;
+            
+        	System.out.println();
+            mostrarEstadoBatalla(jugador1);
+            mostrarEstadoBatalla(jugador2);
+            ejecutarTurno(jugador2, jugador1);
+            
         }
 
         if (jugador1.isVivo()) {
@@ -39,38 +49,23 @@ public class BatallaIndividual extends Batalla<Personaje> {
     }
 
     private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
-        System.out.println("\n========== TURNO " + turno  + " ==========");
+        System.out.println("\n\n========== TURNO " + turno  + " ==========");
 
         if (jugador1.isVivo() && this.enCurso) {
             System.out.println("\n=== Turno de " + jugador1.getNombre() + " ===");
-            mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador1, jugador2);
-        }
-        
-        Utilidades.sleep(3000);
-        
-        if (jugador2.isVivo() && jugador1.isVivo() && this.enCurso) {
-            System.out.println("\n=== Turno de " + jugador2.getNombre() + " ===");
-            mostrarEstadoBatalla(jugador1, jugador2);
-            ejecutarAccion(jugador2, jugador1);
         }
         
         Utilidades.sleep(3000);
     }
 
-    private void mostrarEstadoBatalla(Personaje jugador1, Personaje jugador2) {
+    private void mostrarEstadoBatalla(Personaje jugador1) {
         System.out.println(jugador1.getNombre() + ": " +
                 jugador1.getVida() + " HP  " +
                 jugador1.getEnergia() + " Energía");
         LOG+="\t\t\t-" + jugador1.getNombre() + ": " +
         		jugador1.getVida() + " HP  " +
         		jugador1.getEnergia() + " Energía\n";
-        System.out.println(jugador2.getNombre() + ": " +
-                jugador2.getVida() + " HP  " +
-                jugador2.getEnergia() + " Energía");
-        LOG+="\t\t\t-" + jugador2.getNombre() + ": " +
-        		jugador2.getVida() + " HP  " +
-        		jugador2.getEnergia() + " Energía\n";
     }
 
     private void ejecutarAccion(Personaje atacante, Personaje objetivo) {
