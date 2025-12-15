@@ -261,7 +261,7 @@ public class Personaje implements Comparable<Personaje> {
     // Intenta gastar energia si tiene, sino nos devuelve un mensaje de error
     protected boolean intentarGastarEnergia(int coste) {
         if (this.energia >= coste) {
-            this.energia -= coste;
+            this.setEnergia(this.getEnergia()-coste);
             return true;
         }
 

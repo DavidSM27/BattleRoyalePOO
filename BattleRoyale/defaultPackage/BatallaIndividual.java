@@ -26,7 +26,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
             ejecutarTurno(jugador1, jugador2);
             turno++;
             try{
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 			}catch (InterruptedException e) {
 				// Por si hay alguna interrupcion
 			}

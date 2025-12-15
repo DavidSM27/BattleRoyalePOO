@@ -28,7 +28,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
             ejecutarTurno(equipo1, equipo2);
             turno++;
             try{
-				Thread.sleep(1000);
+				Thread.sleep(4000);
 			}catch (InterruptedException e) {
 				// Por si hay alguna interrupcion
 			}
