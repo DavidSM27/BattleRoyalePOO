@@ -129,7 +129,7 @@ public class EmpezarPartida {
 	    System.out.println("==============================================");
 	    Utilidades.sleep(4000);
 	}
-
+	
 	private void seleccionarModo() {
 		System.out.println("\n¿A que modo de juego quieres jugar?");
 	    System.out.println("(1) SOLITARIO");
