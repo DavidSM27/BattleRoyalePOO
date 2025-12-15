@@ -1,0 +1,255 @@
+Ronda 1
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman ahora lleva Escopeta
+
+
+	-Terrafin intenta buscar un Cofre
+		-Terrafin a abierto un cofre
+		-Terrafin ahora lleva Escopeta
+
+
+	-Bash intenta buscar un Cofre
+		-Bash a abierto un cofre
+		-Bash ahora lleva Pistola
+
+
+	-Flameslinger intenta buscar un Cofre
+		-Flameslinger a abierto un cofre
+		-Flameslinger ahora lleva Pistola
+
+
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva Escopeta
+
+
+Ronda 2
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman ahora lleva Escopeta
+
+
+	-Terrafin intenta buscar un Cofre
+		-Terrafin a abierto un cofre
+		-Terrafin mantiene su arma actual: Escopeta
+
+
+	-Bash intenta buscar un Cofre
+		-Bash a abierto un cofre
+		-Bash mantiene su arma actual: Pistola
+
+
+	-Flameslinger intenta buscar un Cofre
+		-Flameslinger a abierto un cofre
+		-Flameslinger ahora lleva Fusil
+
+
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva Fusil
+
+
+Ronda 3
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman ahora lleva Fusil
+
+
+	-Terrafin intenta buscar una Batalla
+
+	-Turno 1
+			-Terrafin: 100 HP  100 Energía. [AGUA]
+			-Flameslinger: 100 HP  100 Energía. [VIDA]
+
+		-Terrafin ha usado una habilidad Voragine y ha infligido 16 de daño
+
+			-Terrafin: 100 HP  67 Energía. [AGUA]
+			-Flameslinger: 84 HP  100 Energía. [VIDA]
+
+		-Flameslinger ha usado su ataque normal a Terrafin y le ha hecho 40.0 de daño
+
+
+	-Turno 2
+			-Terrafin: 60 HP  67 Energía. [AGUA]
+			-Flameslinger: 84 HP  100 Energía. [VIDA]
+
+		-Terrafin ha usado su ataque normal a Flameslinger y le ha hecho 19.6 de daño
+
+			-Terrafin: 60 HP  67 Energía. [AGUA]
+			-Flameslinger: 64 HP  100 Energía. [VIDA]
+
+		-Flameslinger ha usado su ataque normal a Terrafin y le ha hecho 40.0 de daño
+
+
+	-Turno 3
+			-Terrafin: 20 HP  67 Energía. [AGUA]
+			-Flameslinger: 64 HP  100 Energía. [VIDA]
+
+		-Terrafin ha usado una habilidad Tsunami y ha infligido 26 de daño
+
+			-Terrafin: 20 HP  12 Energía. [AGUA]
+			-Flameslinger: 38 HP  100 Energía. [VIDA]
+
+		-Flameslinger ha usado una habilidad Explotar Sangre y ha infligido 16 de daño
+
+
+	-Turno 4
+			-Terrafin: 4 HP  12 Energía. [AGUA]
+			-Flameslinger: 38 HP  67 Energía. [VIDA]
+
+		-Terrafin pasa turno para recupera 50 de energía
+
+			-Terrafin: 4 HP  62 Energía. [AGUA]
+			-Flameslinger: 38 HP  67 Energía. [VIDA]
+
+		-Flameslinger ha usado su ataque normal a Terrafin y le ha hecho 40.0 de daño
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: Flameslinger
+Perdedor: Terrafin
+
+
+
+	-Flameslinger intenta buscar una Batalla
+
+	-Turno 1
+			-Flameslinger: 68 HP  87 Energía. [VIDA]
+			-Krypt King: 100 HP  100 Energía. [VIENTO]
+
+		-Flameslinger ha usado una habilidad Apreton de Corazón y ha infligido 21 de daño
+
+			-Flameslinger: 68 HP  32 Energía. [VIDA]
+			-Krypt King: 79 HP  100 Energía. [VIENTO]
+
+		-Krypt King ha usado una habilidad Soplido de Dios y ha infligido 10 de daño
+
+
+	-Turno 2
+			-Flameslinger: 58 HP  32 Energía. [VIDA]
+			-Krypt King: 79 HP  67 Energía. [VIENTO]
+
+		-Flameslinger pasa turno para recupera 50 de energía
+
+			-Flameslinger: 58 HP  82 Energía. [VIDA]
+			-Krypt King: 79 HP  67 Energía. [VIENTO]
+
+		-Krypt King ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+
+
+	-Turno 3
+			-Flameslinger: 38 HP  82 Energía. [VIDA]
+			-Krypt King: 79 HP  12 Energía. [VIENTO]
+
+		-Flameslinger ha usado una habilidad Explotar Sangre y ha infligido 14 de daño
+
+			-Flameslinger: 38 HP  49 Energía. [VIDA]
+			-Krypt King: 65 HP  12 Energía. [VIENTO]
+
+		-Krypt King pasa turno para recupera 50 de energía
+
+
+	-Turno 4
+			-Flameslinger: 38 HP  49 Energía. [VIDA]
+			-Krypt King: 65 HP  62 Energía. [VIENTO]
+
+		-Flameslinger ha usado su ataque normal a Krypt King y le ha hecho 40.0 de daño
+
+			-Flameslinger: 38 HP  49 Energía. [VIDA]
+			-Krypt King: 25 HP  62 Energía. [VIENTO]
+
+		-Krypt King ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+
+
+	-Turno 5
+			-Flameslinger: 18 HP  49 Energía. [VIDA]
+			-Krypt King: 25 HP  7 Energía. [VIENTO]
+
+		-Flameslinger ha usado su ataque normal a Krypt King y le ha hecho 40.0 de daño
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: Flameslinger
+Perdedor: Krypt King
+
+
+
+Ronda 4
+	-Kerman intenta buscar una Tienda
+		-Kerman a encontrado una tienda
+
+	-Bash intenta buscar una Batalla
+
+	-Turno 1
+			-Bash: 100 HP  100 Energía. [VIDA]
+			-Kerman: 100 HP  100 Energía. [FUEGO]
+
+		-Bash ha usado una habilidad Explotar Sangre y ha infligido 10 de daño
+
+			-Bash: 100 HP  67 Energía. [VIDA]
+			-Kerman: 90 HP  100 Energía. [FUEGO]
+
+		-Kerman ha atacado a Bash con Fusil y ha hecho 40.0 de daño
+
+
+	-Turno 2
+			-Bash: 60 HP  67 Energía. [VIDA]
+			-Kerman: 90 HP  100 Energía. [FUEGO]
+
+		-Bash ha usado una habilidad Explotar Sangre y ha infligido 10 de daño
+
+			-Bash: 60 HP  34 Energía. [VIDA]
+			-Kerman: 80 HP  100 Energía. [FUEGO]
+
+		-Kerman ha usado una habilidad Lluvia Infernal y ha infligido 46 de daño
+
+
+	-Turno 3
+			-Bash: 14 HP  34 Energía. [VIDA]
+			-Kerman: 80 HP  45 Energía. [FUEGO]
+
+		-Bash ha usado una habilidad Explotar Sangre y ha infligido 10 de daño
+
+			-Bash: 14 HP  1 Energía. [VIDA]
+			-Kerman: 70 HP  45 Energía. [FUEGO]
+
+		-Kerman ha atacado a Bash con Fusil y ha hecho 40.0 de daño
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: Kerman
+Perdedor: Bash
+
+
+
+Ronda 5
+	-Kerman intenta buscar una Batalla
+
+	-Turno 1
+			-Kerman: 100 HP  65 Energía. [FUEGO]
+			-Flameslinger: 48 HP  69 Energía. [VIDA]
+
+		-Kerman ha usado una habilidad Lluvia Infernal y ha infligido 47 de daño
+
+			-Kerman: 100 HP  10 Energía. [FUEGO]
+			-Flameslinger: 1 HP  69 Energía. [VIDA]
+
+		-Flameslinger ha usado una habilidad Explotar Sangre y ha infligido 12 de daño
+
+
+	-Turno 2
+			-Kerman: 88 HP  10 Energía. [FUEGO]
+			-Flameslinger: 1 HP  36 Energía. [VIDA]
+
+		-Kerman ha atacado a Flameslinger con Fusil y ha hecho 40.0 de daño
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: Kerman
+Perdedor: Flameslinger
+
+
+
+El ganador es: Kerman
+
