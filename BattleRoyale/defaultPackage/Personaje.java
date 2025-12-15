@@ -348,7 +348,7 @@ public class Personaje implements Comparable<Personaje> {
             }
         }
     }
-   
+    
     public void recibirDanioArma(int cantidad) {
         if (!estaVivo) {
             System.out.println(this.nombre + " ya está muerto, déjalo en paz.");
