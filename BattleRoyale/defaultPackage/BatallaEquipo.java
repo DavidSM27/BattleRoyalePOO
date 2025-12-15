@@ -174,7 +174,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
             sc.nextLine();
 
             if (opcion < 1 || opcion > 4) {
-                System.out.println("Opción no válida. Elige entre 1 y 5.");
+                System.out.println("Opción no válida. Elige entre 1 y 4.");
             }
             if (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
                 System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
