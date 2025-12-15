@@ -111,11 +111,7 @@ public class Evento extends ListaArmas {
 			}
 			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
-			try{
-				Thread.sleep(1000);
-			}catch (InterruptedException e) {
-				// Por si hay alguna interrupcion
-			}
+			Utilidades.sleep(1000);
 			Evento.LOG+="\n\n";
 			System.out.println("\n");
 		}
@@ -274,10 +270,17 @@ public class Evento extends ListaArmas {
 		
 		Evento.LOG+=batallaIndividual.iniciarBatalla(this.jugadores.get(I), this.jugadores.get(random));
 		
-		if(!this.jugadores.get(I).isVivo()) {
-			this.jugadores.remove((int)I);
-		}if (!this.jugadores.get(random).isVivo()) {
-			this.jugadores.remove((int)random);
+		try {
+			if(!this.jugadores.get(I).isVivo()) {
+				this.jugadores.remove((int)I);
+			}else if (!this.jugadores.get(random).isVivo()) {
+				if(random<I) {
+					I--;
+				}
+				this.jugadores.remove((int)random);
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

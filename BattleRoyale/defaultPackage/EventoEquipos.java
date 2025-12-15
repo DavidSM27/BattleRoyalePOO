@@ -111,11 +111,7 @@ public class EventoEquipos extends ListaArmas {
 			}
 			EventoEquipos.LOG+="\t-El equipo"+equipos.get(I).getNombre()+" han intentan "+EventoEquipos.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
-			try{
-				Thread.sleep(1000);
-			}catch (InterruptedException e) {
-				// Por si hay alguna interrupcion
-			}
+			Utilidades.sleep(1000);
 			EventoEquipos.LOG+="\n\n";
 			System.out.println("\n");
 		}
@@ -281,11 +277,7 @@ public class EventoEquipos extends ListaArmas {
 		
 		for (int i = 0; i < equipos.get(I).size(); i++) {
 			System.out.println(this.equipos.get(I).get(i).getNombre()+" vas a usar la tienda:");
-			try{
-				Thread.sleep(1000);
-			}catch (InterruptedException e) {
-				// Por si hay alguna interrupcion
-			}
+			Utilidades.sleep(1000);
 			EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(i).getNombre()+" usa la tienda:";
 			EventoEquipos.LOG+=tienda.menuTienda(equipos.get(I).get(i));
 		}
@@ -299,12 +291,18 @@ public class EventoEquipos extends ListaArmas {
 		
 		EventoEquipos.LOG+=batallaEquipo.iniciarBatalla(this.equipos.get(I), this.equipos.get(random));
 		
-		if(!this.equipos.get(I).areVivos()) {
-			this.equipos.remove((int)I);
-		}if (!this.equipos.get(random).areVivos()) {
-			this.equipos.remove((int)random);
+		try{
+			if(!this.equipos.get(I).areVivos()) {
+				this.equipos.remove((int)I);
+			}else if (!this.equipos.get(random).areVivos()) {
+				if(random<I) {
+					I--;
+				}
+				this.equipos.remove((int)random);
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
 	}
 	
 	public static void main(String[] args) {
