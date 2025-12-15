@@ -151,6 +151,8 @@ public class PartidaEquipos extends Partida{
 					equipos.add(equipo);
 					System.out.println(equipo.getNombre() + ": " + equipo.getNombres());
 				}catch (Exception e) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
 					nEquiposNPCs=equipos.size()-nEquiposHumanos;
 					System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos.");
 				}
