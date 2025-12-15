@@ -276,12 +276,17 @@ public class Evento extends ListaArmas {
 		
 		try {
 			if(!this.jugadores.get(I).isVivo()) {
+				System.out.println("hello");
 				this.jugadores.remove((int)I);
-			}if (!this.jugadores.get(random).isVivo()) {
-				this.jugadores.remove((int)random);
+				System.out.println("goodbye");
+			}else if (!this.jugadores.get(random).isVivo()) {
 				if(random<I) {
+					System.out.println("hola");
 					I--;
+					System.out.println("que tal");
 				}
+				this.jugadores.remove((int)random);
+				System.out.println("adios");
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());

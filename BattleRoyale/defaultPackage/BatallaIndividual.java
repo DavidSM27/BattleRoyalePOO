@@ -115,8 +115,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 usarHabilidad(atacante, objetivo);
                 break;
             case 3:
-                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ENERGIA+" de energía\n";
+            	int energiaAnterior=atacante.getEnergia();
                 recuperarEnergia(atacante);
+                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ (atacante.getEnergia()-energiaAnterior) +" de energía\n";
                 break;
             case 4:
                 if (intentarHuir(atacante)) {
