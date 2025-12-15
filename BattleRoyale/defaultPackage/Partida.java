@@ -18,7 +18,7 @@ public class Partida {
 	protected List<Personaje> jugadoresHumanos;
 	protected List<Personaje> jugadoresNPCs;
 	
-	private ListaNombres nombreNPC;
+	private ListaNombresNPC nombreNPC;
 	
 	public Partida(String modoJuego){
 		this.modoJuego = modoJuego;
@@ -28,7 +28,7 @@ public class Partida {
 		this.jugadoresHumanos = new ArrayList<Personaje>();
 		this.jugadoresNPCs = new ArrayList<Personaje>();
 		
-		this.nombreNPC = new ListaNombres("Nombres_Jugadores.csv");
+		this.nombreNPC = new ListaNombresNPC();
 	}	
 	
 	protected void iniciarJuego(){

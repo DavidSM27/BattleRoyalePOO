@@ -9,7 +9,7 @@ public class PartidaEquipos extends Partida{
 	private int tamEquipo;
 	private int nEquiposHumanos;
 	private int nEquiposNPCs;
-	private ListaNombres listaNombres;
+	private ListaNombresEquipos listaNombresEquipos;
 	
 	PartidaEquipos(String modoJuego) {
 		super(modoJuego);
@@ -21,7 +21,7 @@ public class PartidaEquipos extends Partida{
 		
 		this.equipos = new ArrayList<Equipo>();
 		
-		this.listaNombres = new ListaNombres("Nombres_Equipos.csv");
+		this.listaNombresEquipos = new ListaNombresEquipos();
 	}
 	
 	@Override
@@ -135,25 +135,25 @@ public class PartidaEquipos extends Partida{
 		 System.out.println("EQUIPOS DE NPCs\n");
 		 for (int i = 0; i < nEquiposNPCs; i++) {
 			if(jugadoresNPCs.size()<tamEquipo) {
-				nEquiposNPCs=equipos.size()-nJugadores;
+				nEquiposNPCs=equipos.size()-nEquiposHumanos;
 				System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de jugadores NPCs.");
-			}
-			
-			try {
-				Equipo equipo = new Equipo(this.listaNombres.getRandomNombres(), true);
-				
-				
-				for (int j = 0; j < tamEquipo; j++) {
-					Personaje p = jugadoresNPCs.get(j);
-					equipo.add(p);
-					jugadoresNPCs.remove(j);
+			}else if(this.listaNombresEquipos.getNombres().size()!=0) {
+				try {
+					Equipo equipo = new Equipo(this.listaNombresEquipos.getRandomNombres(), true);
+					
+					
+					for (int j = 0; j < tamEquipo; j++) {
+						Personaje p = jugadoresNPCs.get(j);
+						equipo.add(p);
+						jugadoresNPCs.remove(j);
+					}
+					
+					equipos.add(equipo);
+					System.out.println(equipo.getNombre() + ": " + equipo.getNombres());
+				}catch (Exception e) {
+					nEquiposNPCs=equipos.size()-nEquiposHumanos;
+					System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos.");
 				}
-				
-				equipos.add(equipo);
-				System.out.println(equipo.getNombre() + ": " + equipo.getNombres());
-			}catch (Exception e) {
-				nEquiposNPCs=equipos.size()-nJugadores;
-				System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos.");
 			}
 		 }
 		 

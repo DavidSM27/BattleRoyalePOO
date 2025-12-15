@@ -9,18 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListaNombres {
+public class ListaNombresEquipos {
 	
 	private static final Scanner sc=new Scanner(System.in);
-	private static String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
+	private static String RUTA_FICHERO="\\files\\Nombres_Equipos.csv";
 	private static final String DIRECTORIO_ACTUAL=System.getProperty("user.dir");
 	
 	
 	private List<String> nombres;
 	
-	public ListaNombres(String nombre) {
-		RUTA_FICHERO="\\files\\"+nombre;
-		
+	public ListaNombresEquipos() {
 		this.nombres=new ArrayList<String>();
 		
 		boolean errorRuta=false;
@@ -69,6 +67,10 @@ public class ListaNombres {
 		
 		bf.close();
 	}
+	
+	public List<String> getNombres() {
+		return nombres;
+	}
 
 	public String getRandomNombres() {
 		// En este caso hay 40 nombres, pero si no fueran 40 tambien funcionaria
@@ -85,11 +87,11 @@ public class ListaNombres {
 	
 	@Override
 	public String toString() {
-		return "ListaNombres [nombres=" + nombres + "]";
+		return "ListaNombresNPC [nombres=" + nombres + "]";
 	}
 
 	public static void main(String[] args) {
-		ListaNombres nombres=new ListaNombres("Nombres_Jugadores.csv");
+		ListaNombresEquipos nombres=new ListaNombresEquipos();
 		
 		System.out.println(nombres);
 	}
