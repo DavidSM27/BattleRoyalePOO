@@ -9,7 +9,7 @@ public class Tienda {
 	private static final Integer COSTO_CURACION_PEQUENA = 50;
 	private static final Integer COSTO_CURACION_GRANDE = 70;
 	private static final Integer CURACION_PEQUENA=30;
-	private static final Integer CURACION_GRANDE = 50;
+	private static final Integer CURACION_GRANDE = 60;
 	private static final Integer MANA=30;
 	private static final Integer COSTO_MANA = 40;
 	private static String LOG;
