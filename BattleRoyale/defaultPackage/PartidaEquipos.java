@@ -5,10 +5,11 @@ import java.util.List;
 
 public class PartidaEquipos extends Partida{
 	
-	private List<Equipo> equipos = new ArrayList<>();
+	private List<Equipo> equipos;
 	private int tamEquipo;
 	private int nEquiposHumanos;
 	private int nEquiposNPCs;
+	private ListaNombres listaNombres;
 	
 	PartidaEquipos(String modoJuego) {
 		super(modoJuego);
@@ -17,6 +18,10 @@ public class PartidaEquipos extends Partida{
 		}else {
 			this.tamEquipo = 4;
 		}
+		
+		this.equipos = new ArrayList<Equipo>();
+		
+		this.listaNombres = new ListaNombres("Nombres_Equipos.csv");
 	}
 	
 	@Override
@@ -27,7 +32,7 @@ public class PartidaEquipos extends Partida{
 		crearEquipos();              
 		mostrarResumenEquipos();  
 		
-		//new Evento(personajesVivos);
+		new EventoEquipos(equipos);
 	}
 	
 	
@@ -129,12 +134,8 @@ public class PartidaEquipos extends Partida{
 		 
 		 System.out.println("EQUIPOS DE NPCs\n");
 		 for (int i = 0; i < nEquiposNPCs; i++) {
-			//String nombreEquipo;
 			
-			//System.out.println("Nombre del equipo: ");
-			//nombreEquipo = sc.nextLine();
-			
-			Equipo equipo = new Equipo("Equipo NPC " + (i + 1), true);
+			Equipo equipo = new Equipo(this.listaNombres.getRandomNombres(), true);
 			
 			
 			int npc = i*tamEquipo;
@@ -171,8 +172,10 @@ public class PartidaEquipos extends Partida{
 	    System.out.println("Equipos humanos: " + nEquiposHumanos);
 	    System.out.println("Equipos NPCs: " + nEquiposNPCs);
 	    System.out.println("Personajes totales: " + (nJugadores + nNPCs));
+	    System.out.println("\n");
 	}
 	
+	 
 }
 
 
