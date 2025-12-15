@@ -25,7 +25,6 @@ public class BatallaEquipo extends Batalla<Equipo>{
         Equipo equipo2Aux=new Equipo(equipo2);
         
         System.out.println(equipo1.getNombre() + " VS " + equipo2.getNombre());
-        System.out.println();
 
         while (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
             LOG += "\t-Turno " + turno + "\n";

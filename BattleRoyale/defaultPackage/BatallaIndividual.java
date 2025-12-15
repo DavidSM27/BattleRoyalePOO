@@ -21,7 +21,6 @@ public class BatallaIndividual extends Batalla<Personaje> {
         iniciar();
 
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
-        System.out.println();
 
         while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
         	LOG += "\t-Turno " + turno + "\n";
