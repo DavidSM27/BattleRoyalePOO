@@ -48,7 +48,7 @@ public class EmpezarPartida {
 		
 		
 		do {
-			System.out.print("¿Quieres escuchar una explicación de las reglas del juego? (SI/NO) ");
+			System.out.print("\n¿Quieres escuchar una explicación de las reglas del juego? (SI/NO) ");
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
 			
@@ -179,6 +179,6 @@ public class EmpezarPartida {
 		Utilidades.sleep(500);
 		Utilidades.imprimirConDelay("Los Skyalandres me han comentado que quieren luchar contra ti, maestro del portal", 20);
 		Utilidades.sleep(500);
-		Utilidades.imprimirConDelay("\nQue me dices, ¿aceptas el desafio?\n", 20);
+		Utilidades.imprimirConDelay("\nQue me dices, ¿aceptas el desafio?", 20);
 	}
 }
