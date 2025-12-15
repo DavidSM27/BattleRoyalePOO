@@ -21,9 +21,6 @@ public class Tienda {
 		
 		Utilidades.imprimirConDelay("\nVendedor: \"¡Bienvenido, viajero! Tengo armas para mejorar\n"
 						+ " y pociones para mantenerte con vida. ¿Qué deseas hoy?\"\n", 20);
-		
-		/*System.out.println("\nVendedor: \"¡Bienvenido, viajero! Tengo armas para mejorar\n"
-						+ " y pociones para mantenerte con vida. ¿Qué deseas hoy?\"\n");*/
         
         System.out.println("Tu oro: " + p.getOro() + " 🪙");
         System.out.println("Tu vida actual: " + p.getVida() + " HP ❤️");
@@ -48,20 +45,20 @@ public class Tienda {
 
             switch (opcion) {
                 case 1:
-                	if(p.getArma().getMejora() < 2.0) {
-                    menuMejorarArma(p);
-                	}else {
-    					System.out.println("Tu arma esta al maximo\n");
-    				}
-                    break;
+	                	if(p.getArma().getMejora() < 2.0) {
+	                    menuMejorarArma(p);
+	                	}else {
+	    					System.out.println("Tu arma esta al maximo\n");
+	    				}
+	                	break;
                 case 2:
                     menuPociones(p); 
                     break;
                 case 3:
-                	menuRecuperarMana(p);
-                	break;
+                		menuRecuperarMana(p);
+                		break;
                 case 0:
-                	Utilidades.imprimirConDelay("Vendedor: \"Vuelve pronto, viajero.\"\n", 20);
+                		Utilidades.imprimirConDelay("Vendedor: \"Vuelve pronto, viajero.\"\n", 20);
                     break;
                 default:
                     System.out.println("Opcion no valida.\n");
@@ -80,9 +77,6 @@ public class Tienda {
 			
 			Utilidades.imprimirConDelay("\nVendedor: \"Ahh… ¿Quieres fortalecer tu acero? Puedo mejorar cualquiera\r\n"
 					+ "de tus armas, por el precio adecuado, claro...\"\n", 20);
-			
-			/*System.out.println("\nVendedor: \"Ahh… ¿Quieres fortalecer tu acero? Puedo mejorar cualquiera\r\n"
-					+ "de tus armas, por el precio adecuado, claro...\"\n");*/
 			
 			System.out.println("===== MEJORAR ARMAS =====");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙\n");
@@ -138,9 +132,6 @@ public class Tienda {
 			
 			Utilidades.imprimirConDelay("\nVendedor: \"Ah, las mejores pociones curativas de la región. \r\n"
 				+ "Siempre conviene tener algunas encima...\"\n", 20);
-			
-			/*System.out.println("\nVendedor: \"Ah, las mejores pociones curativas de la región. \r\n"
-				+ "Siempre conviene tener algunas encima...\"\n");*/
 		
 			System.out.println("===== COMPRAR POCIONES =====");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
@@ -210,7 +201,7 @@ public class Tienda {
 		do {
 			
 			Utilidades.imprimirConDelay("Vendedor: \"Ah… maná puro. Esencia destilada de antiguos cristales.\"\n", 20);
-			//System.out.println("Vendedor: \"Ah… maná puro. Esencia destilada de antiguos cristales.\"\n");
+			
 			System.out.println("===== COMPRAR MANÁ =====");
 			System.out.println("Maná actual: " + p.getEnergia() + "/100");
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
