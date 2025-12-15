@@ -241,7 +241,12 @@ public class EventoEquipos extends ListaArmas {
 			} while (opcion<1 || opcion>this.equipos.get(I).size());
 			opcion--;
 		}else {
-			opcion=(int) Math.round( (Math.random()*equipos.get(I).size())%equipos.get(I).size());
+			for (int i = 0; i < equipos.get(I).size(); i++) {
+				System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre()+equipos.get(I).get(i).getArma());
+				System.out.println("n");
+			}
+			opcion=equipos.get(I).quienTienePeorArma();
+			System.out.println("m");
 		}
 		
 		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(opcion).getNombre()+" a abierto un cofre\n";
@@ -249,6 +254,7 @@ public class EventoEquipos extends ListaArmas {
 		Double suerte=( ((double)equipos.get(I).get(opcion).getSuerte()-1)*5. /100.)+1.;
 		Double random=Math.random();
 		Integer aux=0;
+		System.out.println("a");
 		if(random<0.05*suerte) {
 			aux=0;
 		}else if(random<0.2*suerte) {
@@ -261,15 +267,21 @@ public class EventoEquipos extends ListaArmas {
 			aux=4;
 		}
 		
-		Double mejora=((double)Math.round(Math.random()*10))/10+1;
-		
+		Double mejora=((double)Math.round(Math.random()*10*suerte))/10+1;
+		if(mejora>2.0) {
+			mejora=2.0;
+		}
+		System.out.println("b");
 		Arma arma=new Arma(super.armas.get(aux).getNombre(),
 						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
+		System.out.println("c");
 		EventoEquipos.LOG+=this.equipos.get(I).get(opcion).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
+		System.out.println("d");
 		this.equipos.get(I).get(opcion).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
+		System.out.println("e");
 	}
 	
 	private void tienda() {
@@ -313,12 +325,12 @@ public class EventoEquipos extends ListaArmas {
 	    // EQUIPO 1: TUS HÉROES (Humanos)
 	    // -----------------------------------------------------------
 	    // false indica que NO son NPCs
-	    Equipo equipoHeroes = new Equipo("Los Vengadores", false);
+	    Equipo equipoHeroes = new Equipo("Los Vengadores", true);
 	    
 	    // IMPORTANTE: Instanciamos las clases hijas (Fuego, Agua...) NO Personaje a secas
 	    // Ajusta los parámetros del constructor (Nombre, Nivel/Suerte, esNPC) según tus clases
-	    equipoHeroes.add(new Fuego("Dr. Strange", 5, false));
-	    equipoHeroes.add(new Tierra("Hulk", 5, false));
+	    equipoHeroes.add(new Fuego("Dr. Strange", 5, true));
+	    equipoHeroes.add(new Tierra("Hulk", 5, true));
 	    
 	    listaDeEquiposParticipantes.add(equipoHeroes);
 
