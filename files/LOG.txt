@@ -43,3 +43,247 @@ Ronda 1
 		-Jugador 2 ahora lleva Pistola
 
 
+Ronda 2
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Shuriken
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 mantiene su arma actual: Pistola
+
+
+Ronda 3
+	-Jugador 1 intenta buscar una Batalla
+	-Turno 1
+		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 30.0 de daño
+		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 2
+		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 30.0 de daño
+		-Jugador 2 ha usado su ataque normal a Jugador 1 y le ha hecho 18.0 de daño
+	-Turno 3
+		-Jugador 1 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 4
+		-Jugador 1 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 5
+		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 30.0 de daño
+
+
+
+El ganador es: Jugador 1
+
+Ronda 1
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Arco
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Pistola
+
+
+Ronda 2
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Fusil
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Pistola
+
+
+Ronda 3
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 mantiene su arma actual: Fusil
+
+
+	-Jugador 2 intenta buscar una Batalla
+	-Turno 1
+		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 51.0 de daño
+	-Turno 2
+		-Jugador 2 ha usado su ataque normal a Jugador 1 y le ha hecho 19.0 de daño
+		-Jugador 1 ha usado una habilidad Lluvia Infernal y ha infligido 24 de daño
+	-Turno 3
+		-Jugador 2 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 51.0 de daño
+
+
+
+El ganador es: Jugador 1
+
+Ronda 1
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Arco
+
+
+	-Eruptor intenta buscar un Cofre
+		-Eruptor a abierto un cofre
+		-Eruptor ahora lleva Arco
+
+
+Ronda 2
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Fusil
+
+
+	-Eruptor intenta buscar un Cofre
+		-Eruptor a abierto un cofre
+		-Eruptor ahora lleva Shuriken
+
+
+Ronda 3
+	-1 intenta buscar una Batalla
+	-Turno 1
+		-1 pasa turno para recupera 50 de energía
+		-Eruptor ha usado una habilidad Explotar Sangre y ha infligido 13 de daño
+	-Turno 2
+		-1 pasa turno para recupera 50 de energía
+		-Eruptor ha usado su ataque normal a 1 y le ha hecho 30.0 de daño
+	-Turno 3
+		-1 pasa turno para recupera 50 de energía
+		-Eruptor ha usado una habilidad Apreton de Corazón y ha infligido 11 de daño
+	-Turno 4
+		-1 pasa turno para recupera 50 de energía
+		-Eruptor ha usado una habilidad Apreton de Corazón y ha infligido 11 de daño
+	-Turno 5
+		-1 pasa turno para recupera 50 de energía
+		-Eruptor ha usado una habilidad Explotar Sangre y ha infligido 13 de daño
+	-Turno 6
+		-1 pasa turno para recupera 50 de energía
+		-Eruptor ha usado su ataque normal a 1 y le ha hecho 30.0 de daño
+
+
+
+El ganador es: Eruptor
+
+Ronda 1
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva RPG
+
+
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Fusil
+
+
+Ronda 2
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King mantiene su arma actual: RPG
+
+
+	-1 intenta buscar una Batalla
+	-Turno 1
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 2
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 3
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado su ataque normal a 1 y le ha hecho 72.0 de daño
+	-Turno 4
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Lluvia Infernal y ha infligido 6 de daño
+
+
+
+El ganador es: Krypt King
+
+Ronda 1
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva Shuriken
+
+
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Fusil
+
+
+Ronda 2
+	-Krypt King intenta buscar un Cofre
+		-Krypt King a abierto un cofre
+		-Krypt King ahora lleva Arco
+
+
+	-1 intenta buscar una Batalla
+	-Turno 1
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Congelar Enemigo y ha infligido 14 de daño
+	-Turno 2
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado su ataque normal a 1 y le ha hecho 28.5 de daño
+	-Turno 3
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Lanzar Bola de Fuego y ha infligido 16 de daño
+	-Turno 4
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Congelar Enemigo y ha infligido 14 de daño
+	-Turno 5
+		-1 pasa turno para recupera 0 de energía
+		-Krypt King ha usado una habilidad Lanzar Bola de Fuego y ha infligido 8 de daño
+
+
+
+El ganador es: Krypt King
+
+Ronda 1
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva Shuriken
+
+
+	-Stealth Elf intenta buscar un Cofre
+		-Stealth Elf a abierto un cofre
+		-Stealth Elf ahora lleva Arco
+
+
+Ronda 2
+	-1 intenta buscar un Cofre
+		-1 a abierto un cofre
+		-1 ahora lleva RPG
+
+
+	-Stealth Elf intenta buscar un Cofre
+		-Stealth Elf a abierto un cofre
+		-Stealth Elf mantiene su arma actual: Arco
+
+
+Ronda 3
+	-1 intenta Campear
+
+
+	-Stealth Elf intenta buscar una Batalla
+	-Turno 1
+		-Stealth Elf ha usado su ataque normal a 1 y le ha hecho 16.5 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 2
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+		-1 ha atacado a Stealth Elf con RPG y ha hecho 72.0 de daño
+	-Turno 3
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 4
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 20 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 5
+		-Stealth Elf ha usado una habilidad Soplido de Dios y ha infligido 10 de daño
+		-1 pasa turno para recupera 0 de energía
+	-Turno 6
+		-Stealth Elf ha usado una habilidad Lanzar Torbellino y ha infligido 4 de daño
+
+
+
+El ganador es: Stealth Elf
+

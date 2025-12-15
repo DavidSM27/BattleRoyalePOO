@@ -25,11 +25,6 @@ public class BatallaIndividual extends Batalla<Personaje> {
             LOG += "\t-Turno " + turno + "\n";
             ejecutarTurno(jugador1, jugador2);
             turno++;
-            try{
-				Thread.sleep(3000);
-			}catch (InterruptedException e) {
-				// Por si hay alguna interrupcion
-			}
         }
 
         if (jugador1.isVivo()) {
@@ -51,12 +46,16 @@ public class BatallaIndividual extends Batalla<Personaje> {
             mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador1, jugador2);
         }
-
+        
+        Utilidades.sleep(3000);
+        
         if (jugador2.isVivo() && jugador1.isVivo() && this.enCurso) {
             System.out.println("\n=== Turno de " + jugador2.getNombre() + " ===");
             mostrarEstadoBatalla(jugador1, jugador2);
             ejecutarAccion(jugador2, jugador1);
         }
+        
+        Utilidades.sleep(3000);
     }
 
     private void mostrarEstadoBatalla(Personaje jugador1, Personaje jugador2) {
@@ -115,8 +114,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 usarHabilidad(atacante, objetivo);
                 break;
             case 3:
-                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ENERGIA+" de energía\n";
+            	int energiaAnterior=atacante.getEnergia();
                 recuperarEnergia(atacante);
+                LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ (atacante.getEnergia()-energiaAnterior) +" de energía\n";
                 break;
             case 4:
                 if (intentarHuir(atacante)) {
