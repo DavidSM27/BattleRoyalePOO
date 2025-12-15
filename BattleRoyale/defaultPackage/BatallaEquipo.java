@@ -150,12 +150,12 @@ public class BatallaEquipo extends Batalla<Equipo>{
             if (opcion < 1 || opcion > 4) {
                 System.out.println("Opción no válida. Elige entre 1 y 5.");
             }
-            
-            if (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD) {
+            if (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
                 System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
+                opcion=0;
             }
 
-        } while (opcion < 1 || opcion > 4 || (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD));
+        } while (opcion < 1 || opcion > 4);
 
         switch (opcion) {
             case 1:
@@ -165,7 +165,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
                         atacante.getArma().getAtaque() + " de daño\n";
                 break;
             case 2:
-                usarHabilidad(atacante, objetivo);
+                usarHabilidad(atacante, objetivo, equipoAtacante);
                 break;
             case 3:
                 LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ENERGIA+" de energía\n";
@@ -173,7 +173,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
                 break;
             case 4:
                 if (intentarHuir(equipoAtacante)) {
-                    LOG += "\t\t-El equipo" + equipoAtacante.getNombre() + " ha huido de " + objetivo.getNombre() + "\n";
+                    LOG += "\t\t-El equipo" + equipoAtacante.getNombre() + " ha huido\n";
                     terminarPorHuida(equipoAtacante);
                 } else {
                     LOG += "\t\t-" + equipoAtacante.getNombre() + " intentó huir pero no lo consiguió\n";
@@ -184,31 +184,21 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
-    	int decision = 0;
+int decision = 0;
     	
-    	if(atacante.getEnergia() == Personaje.ENERGIA_MAX) {
-    		decision=(int) (Math.random() * 79);
+    	decision=(int) (Math.random() * 100);
+    	
+    	if(atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
+    		recuperarEnergia(atacante);
+            LOG += "\t\t-" + atacante.getNombre() + " recupera "+ENERGIA+" de energia\n";
     	}else {
-    		decision=(int) (Math.random() * 100);
-    	}
-    	
-        
-
-        if (decision < 40) {
-        	if(atacante.getEnergia() >= Personaje.COSTE_HABILIDAD) {
-        		usarHabilidad(atacante, objetivo);
-        	}else {
-        		ataqueBasico(atacante, objetivo);
+    		if (decision < 50) {
+    			usarHabilidad(atacante, objetivo, null);
+    		}else {
+				ataqueBasico(atacante, objetivo);
                 LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
                         " y le ha hecho " + atacante.getArma().getAtaque() + " de daño\n";
-        	}
-        } else if (decision < 80) {
-            ataqueBasico(atacante, objetivo);
-            LOG += "\t\t-" + atacante.getNombre() + " ha usado su ataque normal a " + objetivo.getNombre() +
-                    " y le ha hecho " + atacante.getArma().getAtaque() + " de daño\n";
-        } else {
-        	recuperarEnergia(atacante);
-            LOG += "\t\t-" + atacante.getNombre() + " recupera "+ENERGIA+" de energia\n";
+			}
         }
     }
 
@@ -220,16 +210,16 @@ public class BatallaEquipo extends Batalla<Equipo>{
         objetivo.recibirDanio(danoFinal);
     }
 
-    private void usarHabilidad(Personaje atacante, Personaje objetivo) {
+    private void usarHabilidad(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
 
         if (!atacante.isNPC()) {
-            mostrarMenuHabilidades(atacante, objetivo);
+            mostrarMenuHabilidades(atacante, objetivo, equipoAtacante);
         } else {
             usarHabilidadAleatoria(atacante, objetivo);
         }
     }
 
-    private void mostrarMenuHabilidades(Personaje atacante, Personaje objetivo) {
+    private void mostrarMenuHabilidades(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
         Elemento elemento = atacante.getElemento();
         int opcion = 0;
 
@@ -266,7 +256,8 @@ public class BatallaEquipo extends Batalla<Equipo>{
 	            System.out.println("2. Explotar Sangre (" + Vida.getDañoHabilidad2() + " de daño)");
 	            System.out.println("3. Curación Médica (" + Vida.getCuracionHabilidad() + " de curacion)");
 	            break;
-    }
+        }
+        System.out.println("4. Volver");
 
         do {
             System.out.print("Introduce una opcion: ");
@@ -277,20 +268,44 @@ public class BatallaEquipo extends Batalla<Equipo>{
             opcion = sc.nextInt();
             sc.nextLine();
 
-            if (opcion < 1 || opcion > 3) {
-                System.out.println("Elige entre 1 y 3.");
+            if (opcion < 1 || opcion > 4) {
+                System.out.println("Elige entre 1 y 4.");
+            }else if(opcion==1 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD1) {
+            	System.out.println("No tienes suficiente energia");
+            	opcion=0;
+            }else if(opcion==2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
+            	System.out.println("No tienes suficiente energia");
+            	opcion=0;
+            }else if(opcion==3 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD3) {
+            	System.out.println("No tienes suficiente energia");
+            	opcion=0;
             }
-        } while (opcion < 1 || opcion > 3);
-
-        ejecutarHabilidadEspecifica(atacante, objetivo, opcion);
+        } while (opcion < 1 || opcion > 4);
+        
+        
+        if(opcion!=4) {
+        	ejecutarHabilidadEspecifica(atacante, objetivo, opcion);
+        }else {
+        	ejecutarAccionJugador(atacante, objetivo, equipoAtacante);
+        }
     }
 
     private void usarHabilidadAleatoria(Personaje atacante, Personaje objetivo) {
-        int habilidad;
+    	int habilidad=0;
         if(atacante.getVida()==atacante.getVidaMax()) {
-        	habilidad = (int) (Math.random() * 2)%2 + 1;
+        	if(atacante.getEnergia() >= Personaje.COSTE_HABILIDAD1) {
+        		habilidad = (int) (Math.random() * 2)%2 + 1;
+        	}else {
+        		habilidad = 2;
+        	}
         }else {
-        	habilidad = (int) (Math.random() * 3)%3 + 1;
+        	if(atacante.getEnergia() >= Personaje.COSTE_HABILIDAD3) {
+        		habilidad=3;
+        	}if(atacante.getEnergia() >= Personaje.COSTE_HABILIDAD1) {
+        		habilidad = (int) (Math.random() * 2)%2 + 1;
+        	}else {
+        		habilidad = 2;
+        	}
         }
         
         ejecutarHabilidadEspecifica(atacante, objetivo, habilidad);
