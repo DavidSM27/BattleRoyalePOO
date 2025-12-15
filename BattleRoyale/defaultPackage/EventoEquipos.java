@@ -111,7 +111,7 @@ public class EventoEquipos extends ListaArmas {
 			}
 			EventoEquipos.LOG+="\t-El equipo"+equipos.get(I).getNombre()+" han intentan "+EventoEquipos.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
-			Utilidades.sleep(1000);
+			Utilidades.sleep(2000);
 			EventoEquipos.LOG+="\n\n";
 			System.out.println("\n");
 		}
@@ -241,15 +241,12 @@ public class EventoEquipos extends ListaArmas {
 			} while (opcion<1 || opcion>this.equipos.get(I).size());
 			opcion--;
 		}else {
-			for (int i = 0; i < equipos.get(I).size(); i++) {
-				System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre()+equipos.get(I).get(i).getArma());
-			}
 			opcion=equipos.get(I).quienTienePeorArma();
-			System.out.println();
+			System.out.println("\t-El NPC "+this.equipos.get(I).get(opcion).getNombre()+" a abierto un cofre");
 		}
-		System.out.println("z"+opcion);
+		
 		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(opcion).getNombre()+" a abierto un cofre\n";
-		System.out.println("m");
+		
 		Double suerte=( ((double)equipos.get(I).get(opcion).getSuerte()-1)*5. /100.)+1.;
 		Double random=Math.random();
 		Integer aux=0;

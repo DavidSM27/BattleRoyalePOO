@@ -21,16 +21,12 @@ public class Equipo {
 	}
 	
 	public int quienTienePeorArma() {
-		int index;
-		for (index = 0; index < miembros.size(); index++) {
-
-			for (int j = index+1; j < miembros.size(); j++) {
-				if(miembros.get(index).getArma().compareTo(miembros.get(j).getArma())==1) {
-					index=j;
-				}
+		int index=0;;
+		for (int j = index+1; j < miembros.size(); j++) {
+			if(miembros.get(index).getArma().compareTo(miembros.get(j).getArma())==1) {
+				index=j;
 			}
 		}
-		
 		return index;
 	}
 	
@@ -43,7 +39,12 @@ public class Equipo {
 	}
 
 	public Personaje get(int i) {
-		return miembros.get(i);
+		if(i<miembros.size()) {
+			return miembros.get(i);
+		}else {
+			System.out.println("Pon un numero del 0 al " + (miembros.size()-1));
+			return null;
+		}
 	}
 
 	public Personaje remove(int i) {

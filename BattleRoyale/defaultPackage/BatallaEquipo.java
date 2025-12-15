@@ -42,8 +42,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
 
     private void ejecutarTurno(Equipo equipo1, Equipo equipo2) {
         System.out.println("\n========== TURNO " + turno + " ==========");
-
-        if (equipo1.areVivos()) {
+        
+        // Es por si acaso
+        if (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
         	for(int i=0; i < equipo1.size(); i++) {
         		if (equipo2.areVivos() && this.enCurso) {
 		            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
@@ -84,6 +85,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
 	        System.out.println("\t"+equipo1.get(i).getNombre() + ": " +
 	        		equipo1.get(i).getVida() + " HP  " +
 	        		equipo1.get(i).getEnergia() + " Energía");
+	        LOG+="\t\t\t-" + equipo1.get(i).getNombre() + ": " +
+	        		equipo1.get(i).getVida() + " HP  " +
+	        		equipo1.get(i).getEnergia() + " Energía\n";
     	}
         
     	System.out.println(equipo2.getNombre()+":");
@@ -91,6 +95,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
 	        System.out.println("\t"+equipo2.get(i).getNombre() + ": " +
 	        		equipo2.get(i).getVida() + " HP  " +
 	        		equipo2.get(i).getEnergia() + " Energía");
+	        LOG+="\t\t\t-" + equipo2.get(i).getNombre() + ": " +
+	        		equipo2.get(i).getVida() + " HP  " +
+	        		equipo2.get(i).getEnergia() + " Energía\n";
     	}
     }
     
@@ -271,9 +278,6 @@ int decision = 0;
             }else if(opcion==1 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD1) {
             	System.out.println("No tienes suficiente energia");
             	opcion=0;
-            }else if(opcion==2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
-            	System.out.println("No tienes suficiente energia");
-            	opcion=0;
             }else if(opcion==3 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD3) {
             	System.out.println("No tienes suficiente energia");
             	opcion=0;
@@ -291,6 +295,7 @@ int decision = 0;
     private void usarHabilidadAleatoria(Personaje atacante, Personaje objetivo) {
     	int habilidad=0;
         if(atacante.getVida()==atacante.getVidaMax()) {
+        	// habilidad1 energia 20
         	if(atacante.getEnergia() >= Personaje.COSTE_HABILIDAD1) {
         		habilidad = (int) (Math.random() * 2)%2 + 1;
         	}else {
