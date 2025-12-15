@@ -91,7 +91,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
 
         do {
             System.out.println("\n¿Qué quieres hacer?");
-            System.out.println("1. Ataque básico (con arma)");
+            System.out.println("1. Ataque básico (" + atacante.getArma().getNombre() + ": "+ atacante.getArma().getAtaque() + "de daño)");
             System.out.println("2. Usar habilidad elemental");
             System.out.println("3. Recuperar 50 de energia");
             System.out.println("4. Huir de la batalla");
@@ -185,34 +185,34 @@ public class BatallaIndividual extends Batalla<Personaje> {
         
         switch (elemento) {
             case FUEGO:
-                System.out.println("1. Lluvia Infernal (" + Fuego.getDañoHabilidad1() + " de daño)");
-                System.out.println("2. Mar de Lava (" + Fuego.getDañoHabilidad2() + " de daño)");
-                System.out.println("3. Curación del Infierno (" + Fuego.getCuracionHabilidad() + " de curacion)");
+                System.out.println("1. Lluvia Infernal (" + Fuego.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
+                System.out.println("2. Mar de Lava (" + Fuego.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
+                System.out.println("3. Curación del Infierno (" + Fuego.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3 + "energia elemental)");
                 break;
             case AGUA:
-                System.out.println("1. Tsunami (" + Agua.getDañoHabilidad1() + " de daño)");
-                System.out.println("2. Vorágine (" + Agua.getDañoHabilidad2() + " de daño)");
-                System.out.println("3. Curación de Poseidón (" + Agua.getCuracionHabilidad() + " de curacion)");
+                System.out.println("1. Tsunami (" + Agua.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
+                System.out.println("2. Vorágine (" + Agua.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
+                System.out.println("3. Curación de Poseidón (" + Agua.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
                 break;
             case TIERRA:
-                System.out.println("1. Crear Grieta (" + Tierra.getDañoHabilidad1() + " de daño)");
-                System.out.println("2. Lanzar Roca (" + Tierra.getDañoHabilidad2() + " de daño)");
-                System.out.println("3. Sanación Rocal (" + Tierra.getCuracionHabilidad() + " de curacion)");
+                System.out.println("1. Crear Grieta (" + Tierra.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
+                System.out.println("2. Lanzar Roca (" + Tierra.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
+                System.out.println("3. Sanación Rocal (" + Tierra.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
                 break;
             case VIENTO:
-                System.out.println("1. Lanzar Torbellino (" + Viento.getDañoHabilidad1() + " de daño)");
-                System.out.println("2. Soplido de Dios (" + Viento.getDañoHabilidad2() + " de daño)");
-                System.out.println("3. Curación de Eolo (" + Viento.getCuracionHabilidad() + " de curacion)");
+                System.out.println("1. Lanzar Torbellino (" + Viento.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
+                System.out.println("2. Soplido de Dios (" + Viento.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
+                System.out.println("3. Curación de Eolo (" + Viento.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
                 break;
             case MAGIA:
-                System.out.println("1. Bola de Fuego (" + Magia.getDañoHabilidad1() + " de curacion)");
-                System.out.println("2. Congelar Enemigo (" + Magia.getDañoHabilidad2() + " de daño)");
-                System.out.println("3. Curación Divina (" + Magia.getCuracionHabilidad() + " de curacion)");
+                System.out.println("1. Bola de Fuego (" + Magia.getDañoHabilidad1() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
+                System.out.println("2. Congelar Enemigo (" + Magia.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
+                System.out.println("3. Curación Divina (" + Magia.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
                 break;
             case VIDA:
-                System.out.println("1. Apretón de Corazón (" + Vida.getDañoHabilidad1() + " de curacion)");
-                System.out.println("2. Explotar Sangre (" + Vida.getDañoHabilidad2() + " de daño)");
-                System.out.println("3. Curación Médica (" + Vida.getCuracionHabilidad() + " de curacion)");
+                System.out.println("1. Apretón de Corazón (" + Vida.getDañoHabilidad1() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
+                System.out.println("2. Explotar Sangre (" + Vida.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
+                System.out.println("3. Curación Médica (" + Vida.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
                 break;
         }
         System.out.println("4. Volver");
@@ -229,10 +229,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
             if (opcion < 1 || opcion > 4) {
                 System.out.println("Elige entre 1 y 4.");
             }else if(opcion==1 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD1) {
-            	System.out.println("No tienes suficiente energia");
+            	System.out.println("No tienes suficiente energia elemental");
             	opcion=0;
             }else if(opcion==3 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD3) {
-            	System.out.println("No tienes suficiente energia");
+            	System.out.println("No tienes suficiente energia elemental");
             	opcion=0;
             }
         } while (opcion < 1 || opcion > 4);
@@ -395,7 +395,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
     }
 
     private void recuperarEnergia(Personaje personaje) {
-        System.out.println(personaje.getNombre() + " pasa su turno y recupera energía.");
+        System.out.println(personaje.getNombre() + " pasa su turno y recupera"  + ENERGIA + "energía elemental.");
         personaje.recuperarEnergia(ENERGIA);
     }
 
@@ -416,6 +416,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
         System.out.println("\n RECOMPENSAS:");
         System.out.println("  +" + oroGanado + " oro ");
         System.out.println("  +" + xpGanado + " XP ");
+        
+        ganador.curarVida(30);
+        ganador.recuperarEnergia(20);
+ 
     }
     
     protected void terminar(Personaje ganador, Personaje perdedor) {

@@ -124,8 +124,6 @@ public class Partida {
         		System.out.println("Numero de Skylanders alcanzado, los Skylanders creados an sido " + nNPCs);
         	}
         }
-        
-        System.out.println("==== " + personajes.size() + " JUGADORES CREADOS ====");
     }
     
 	private Personaje crearJugador(int numero) {

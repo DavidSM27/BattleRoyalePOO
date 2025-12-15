@@ -430,10 +430,10 @@ public class Personaje implements Comparable<Personaje> {
         System.out.println("\n=== ESTABLECER ESTADÍSTICAS ===");
         System.out.println("Tienes " + this.puntosDeNivel + " puntos para distribuir");
         System.out.println("Estadísticas actuales:");
-        System.out.println("  1. Fuerza: " + this.fuerza);
-        System.out.println("  2. Velocidad: " + this.velocidad);
-        System.out.println("  3. Defensa: " + this.defensa);
-        System.out.println("  4. Suerte: " + this.suerte);
+        System.out.println("  (1) Fuerza: " + this.fuerza);
+        System.out.println("  (2) Velocidad: " + this.velocidad);
+        System.out.println("  (3) Defensa: " + this.defensa);
+        System.out.println("  (4) Suerte: " + this.suerte);
         System.out.println();
 
         while (this.puntosDeNivel > 0) {
@@ -441,11 +441,11 @@ public class Personaje implements Comparable<Personaje> {
             // que tiene disponibles en cada iteracion de asignacion de puntos
             System.out.println("Puntos restantes: " + this.puntosDeNivel);
             System.out.println("\n¿Qué estadística deseas mejorar?");
-            System.out.println("1. Fuerza (actual: " + this.fuerza + ")");
-            System.out.println("2. Velocidad (actual: " + this.velocidad + ")");
-            System.out.println("3. Defensa (actual: " + this.defensa + ")");
-            System.out.println("4. Suerte (actual: " + this.suerte + ")");
-            System.out.println("0. Finalizar distribución");
+            System.out.println("(1) Fuerza (actual: " + this.fuerza + ")");
+            System.out.println("(2) Velocidad (actual: " + this.velocidad + ")");
+            System.out.println("(3) Defensa (actual: " + this.defensa + ")");
+            System.out.println("(4) Suerte (actual: " + this.suerte + ")");
+            System.out.println("(0) Finalizar distribución");
 
             int opcion = 0;
             boolean entradaValida = false;
@@ -549,7 +549,7 @@ public class Personaje implements Comparable<Personaje> {
 
         // Imprimimos por pantalla lo que la maquina esta haciendo para la distribucion
         // de puntos de forma automatica
-        System.out.println(this.nombre + " (NPC) distribuye sus " + this.puntosDeNivel + " puntos...");
+        System.out.println(this.nombre + " (Skylander) distribuye sus " + this.puntosDeNivel + " puntos...");
 
         int puntosRestantes = this.puntosDeNivel;
 
@@ -584,7 +584,7 @@ public class Personaje implements Comparable<Personaje> {
     // Metodo para imprimir por pantalla las estadisticas actuales de los personajes
     public void mostrarEstadisticas() {
 
-        System.out.println("\n=== ESTADÍSTICAS FINALES ===");
+        System.out.println("\n=== Estadisticas de " + this.nombre +" ===");
         System.out.println("  Fuerza: " + this.fuerza);
         System.out.println("  Velocidad: " + this.velocidad);
         System.out.println("  Defensa: " + this.defensa);
@@ -602,7 +602,7 @@ public class Personaje implements Comparable<Personaje> {
 
             // Verificar si puede subir de nivel
             if (xp >= SUBIDA_NIVEL) {
-                System.out.println("¡Puedes subir de nivel!");
+                System.out.println("¡Has subido de nivel!");
                 nivel++;
             }
         }
