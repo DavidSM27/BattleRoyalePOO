@@ -122,7 +122,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 	        if(!atacante.isNPC()) {
 	        	System.out.println("¿A quien quieres atacar?");
 	    		for (int i = 0; i < EQUIPO_OBJETIVO_SIZE; i++) {
-	    			System.out.println("\t["+ (i+1) +"] "+equipo.get(i).getNombre());
+	    			System.out.println("\t("+ (i+1) +") "+equipo.get(i).getNombre());
 	    		}
 	    		do{
 	    			while (!sc.hasNextInt()) {
@@ -459,7 +459,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
     
     private void recuperarEnergia(Personaje personaje) {
-        System.out.println(personaje.getNombre() + " pasa su turno y recupera" + ENERGIA + "energía elemental");
+        System.out.println(personaje.getNombre() + " pasa su turno y recupera " + ENERGIA + " energía elemental");
         personaje.recuperarEnergia(ENERGIA);
     }
 
@@ -485,7 +485,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
     	
     	System.out.println("Los que han sobrevivido:");
     	for (int i = 0; i < ganador.size(); i++) {
-    		System.out.println("\t-"+ganador.get(i).getNombre());
+    		System.out.println("\t-------" + ganador.get(i).getNombre() + "-------");
     		ganador.get(i).anadirOro(oro);
         	ganador.get(i).ganarXP(xp);
         	ganador.get(i).curarVida(30);
@@ -516,10 +516,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
         this.enCurso = false;
 
         System.out.println("\n ========== BATALLA TERMINADA ==========");
-        System.out.println(cagon.getNombre()+" huyó de la batalla!");
+        System.out.println(cagon.getNombre()+" huyeron de la batalla!");
         System.out.println("==========================================\n");
         
         LOG+="\n ========== BATALLA TERMINADA ==========\n";
-		LOG+=cagon.getNombre()+" huyó de la batalla!\n\n";
+		LOG+=cagon.getNombre()+" huyeron de la batalla!\n\n";
     }
 }
