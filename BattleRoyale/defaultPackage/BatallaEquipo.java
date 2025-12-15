@@ -442,26 +442,30 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void otorgarRecompensas(Equipo ganador, Equipo perdedor) {
-    	for (int i = 0, j=0; i < ganador.size() || j < perdedor.size(); i++, j++) {
-    		if(i >= ganador.size()) {
-    			i=0;
-    		}
-    		if(j >= perdedor.size()) {
-    			j=0;
-    		}
-    		
-	        int oroGanado = perdedor.get(j).getOro();
-	        int xpGanado = (int) Math
-	                .round((Math.random() * 50. + 100.) * (((double) (ganador.get(i).getSuerte() - 1)) * 5. / 100. + 1));
-	
-	        ganador.get(i).anadirOro(oroGanado);
-	        ganador.get(i).ganarXP(xpGanado);
-	
-	        System.out.println("Felicidades por resultar victorioso en tu batalla: ");
-	        System.out.println("\n RECOMPENSAS:");
-	        System.out.println("  +" + oroGanado + " oro ");
-	        System.out.println("  +" + xpGanado + " XP ");
+    	int boteOro=0;
+    	int boteXP=0;
+    	
+    	for (int i = 0; i < perdedor.size(); i++) {
+    		boteOro += perdedor.get(i).getOro();
+    		boteXP += 
+	        	(int) Math.round((Math.random() * 50. + 100.) * (((double) (ganador.get(i).getSuerte() - 1)) * 5. / 100. + 1));
     	}
+    	
+    	int oro=(int)(boteOro/ganador.size());
+    	int xp=(int)(boteXP/ganador.size());
+    	
+    	
+    	System.out.println("Los que han sobrevivido:");
+    	for (int i = 0; i < ganador.size(); i++) {
+    		System.out.println(ganador.get(i).getNombre());
+    		ganador.get(i).anadirOro(oro);
+        	ganador.get(i).ganarXP(xp);
+    	}
+    	
+        System.out.println("\nFelicidades por resultar victorioso en tu batalla: ");
+        System.out.println("\n RECOMPENSAS:");
+        System.out.println("  +" + oro + " oro a cada uno");
+        System.out.println("  +" + xp + " XP a cada uno");
     }
     
     protected void terminar(Equipo ganador, Equipo perdedor) {

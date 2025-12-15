@@ -39,12 +39,14 @@ public class Equipo {
 	}
 
 	public Personaje get(int i) {
-		if(i<miembros.size()) {
+		if(i<miembros.size() && i<0) {
 			return miembros.get(i);
-		}else {
+		}else if(miembros.size()!=0) {
 			System.out.println("Pon un numero del 0 al " + (miembros.size()-1));
 			return miembros.get(miembros.size()-1);
 		}
+		
+		return null;
 	}
 
 	public void quitarMuertos() {
