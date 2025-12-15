@@ -247,28 +247,5 @@ public class Tienda {
 			
 		}while(!respuesta.equals("S") && !respuesta.equals("N"));
 	}
-	
-	public static void main(String[] args) {
-	
-        // Crear un personaje para probar
-        Personaje jugador = new Personaje("Jugador de prueba");
-        jugador.equiparArma(new Arma("Fusil", 30., 1.9));
-        jugador.setOro(20000); //darle algo de oro para probar mejoras
-        //jugador.getArma().setMejora(1.9);
-        jugador.setEnergia(80);
-        
 
-        // Crear la tienda
-        Tienda tienda = new Tienda();
-
-        // Mostrar menú de tienda
-        tienda.menuTienda(jugador);
-
-        System.out.println("\n=== ESTADO FINAL DEL JUGADOR ===");
-        System.out.println("Arma equipada: " + jugador.getArma().getNombre());
-        System.out.println("Ataque: " + jugador.getArma().getAtaque());
-        System.out.println("Oro restante: " + jugador.getOro());
-    }
-	
-	
 }

@@ -83,19 +83,4 @@ public class Arma implements Modificaciones, Comparable<Arma>{
 		return resultado;
 	}
 	
-	
-	//main de pruebas
-	public static void main(String[] args) {
-		
-		Arma arco = new Arma("Arco", 20.0, 1.2);
-		Arma RPG = new Arma("RPG", 90.3345, 1.33);
-		Arma pico = new Arma();
-		
-		arco.modificacion(1.4);
-		
-		System.out.println(arco.toString());
-		System.out.println(RPG.toString());
-		System.out.println(pico.toString());
-		
-	}
 }
