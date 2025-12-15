@@ -236,36 +236,36 @@ public class BatallaEquipo extends Batalla<Equipo>{
         System.out.println("\nElige una habilidad:");
 
         switch (elemento) {
-            case FUEGO:
-                System.out.println("1. Lluvia Infernal (Daño alto)");
-                System.out.println("2. Mar de Lava (Daño medio)");
-                System.out.println("3. Curación del Infierno");
-                break;
-            case AGUA:
-                System.out.println("1. Tsunami (Daño alto)");
-                System.out.println("2. Vorágine (Daño medio)");
-                System.out.println("3. Curación de Poseidón");
-                break;
-            case TIERRA:
-                System.out.println("1. Crear Grieta (Daño alto)");
-                System.out.println("2. Lanzar Roca (Daño medio)");
-                System.out.println("3. Sanación Rocal");
-                break;
-            case VIENTO:
-                System.out.println("1. Lanzar Torbellino (Daño alto)");
-                System.out.println("2. Soplido de Dios (Daño medio)");
-                System.out.println("3. Curación de Eolo");
-                break;
-            case MAGIA:
-                System.out.println("1. Bola de Fuego (Daño alto)");
-                System.out.println("2. Congelar Enemigo (Daño medio)");
-                System.out.println("3. Curación Divina");
-                break;
-            case VIDA:
-                System.out.println("1. Apretón de Corazón (Daño alto)");
-                System.out.println("2. Explotar Sangre (Daño medio)");
-                System.out.println("3. Curación Médica");
-                break;
+	        case FUEGO:
+	            System.out.println("1. Lluvia Infernal (" + Fuego.DAÑO_HABILIDAD1 + " de daño)");
+	            System.out.println("2. Mar de Lava (" + Fuego.DAÑO_HABILIDAD2 + " de daño)");
+	            System.out.println("3. Curación del Infierno (" + Fuego.CURACION_HABILIDAD + " de curacion)");
+	            break;
+	        case AGUA:
+	            System.out.println("1. Tsunami (" + Agua.DAÑO_HABILIDAD1 + " de daño)");
+	            System.out.println("2. Vorágine (" + Agua.DAÑO_HABILIDAD2 + " de daño)");
+	            System.out.println("3. Curación de Poseidón (" + Agua.CURACION_HABILIDAD + " de curacion)");
+	            break;
+	        case TIERRA:
+	            System.out.println("1. Crear Grieta (" + Tierra.DAÑO_HABILIDAD1 + " de daño)");
+	            System.out.println("2. Lanzar Roca (" + Tierra.DAÑO_HABILIDAD2 + " de daño)");
+	            System.out.println("3. Sanación Rocal (" + Tierra.CURACION_HABILIDAD + " de curacion)");
+	            break;
+	        case VIENTO:
+	            System.out.println("1. Lanzar Torbellino (" + Viento.DAÑO_HABILIDAD1 + " de daño)");
+	            System.out.println("2. Soplido de Dios (" + Viento.DAÑO_HABILIDAD2 + " de daño)");
+	            System.out.println("3. Curación de Eolo (" + Viento.CURACION_HABILIDAD + " de curacion)");
+	            break;
+	        case MAGIA:
+	            System.out.println("1. Bola de Fuego (" + Magia.DAÑO_HABILIDAD1 + " de curacion)");
+	            System.out.println("2. Congelar Enemigo (" + Magia.DAÑO_HABILIDAD2 + " de daño)");
+	            System.out.println("3. Curación Divina (" + Magia.CURACION_HABILIDAD + " de curacion)");
+	            break;
+	        case VIDA:
+	            System.out.println("1. Apretón de Corazón (" + Vida.DAÑO_HABILIDAD1 + " de curacion)");
+	            System.out.println("2. Explotar Sangre (" + Vida.DAÑO_HABILIDAD2 + " de daño)");
+	            System.out.println("3. Curación Médica (" + Vida.CURACION_HABILIDAD + " de curacion)");
+	            break;
         }
 
         do {
