@@ -162,6 +162,8 @@ public class Evento extends ListaArmas {
 				}else if(1-random<(1.-prob_cofre)*0.5) {
 					// Tienda
 					if(!jugadores.get(I).isNPC()) {
+						System.out.println("No has encontrado un cofre, pero...");
+						Utilidades.sleep(1000);
 						System.out.println("¡Has encontrado una tienda!");
 						this.tienda();
 					}else {
@@ -184,6 +186,8 @@ public class Evento extends ListaArmas {
 					System.out.println("¡Has encontrado una tienda!");
 					this.tienda();
 				}else if(1-random<(1.-prob_tienda)*0.5*prob_cofre) {
+					System.out.println("No has encontrado una tienda, pero...");
+					Utilidades.sleep(1000);
 					System.out.println("¡Has encontrado un cofre!");
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.75) {

@@ -61,8 +61,7 @@ public class Arma implements Modificaciones, Comparable<Arma>{
 
 	@Override
 	public String toString() {
-		return "Arma:\n\t  Nombre: " + nombre + "\n\t  Ataque: " + ataque + 
-				"\n\t  AtaqueSinMejora: " + ataqueSinMejora + "\n\t  Mejora: " + mejora;
+		return "Arma:\n\t  Nombre: " + nombre + "\n\t  Ataque: " + ataque + "\n\t  Nivel del arma: " + mejora;
 	}
 	
 	public void modificacion(Double mejora) {
