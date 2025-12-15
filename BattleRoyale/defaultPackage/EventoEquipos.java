@@ -36,8 +36,8 @@ public class EventoEquipos extends ListaArmas {
 		this.imprimirLOG=new ImprimirLOG();
 		this.batallaEquipo=new BatallaEquipo();
 		
-		TAMAÑO_DE_EQUIPO=this.equipos.size()*this.equipos.get(0).size();
-		EventoEquipos.COFRES_TOTALES=TAMAÑO_DE_EQUIPO*4;
+		TAMAÑO_DE_EQUIPO=this.equipos.get(0).size();
+		EventoEquipos.COFRES_TOTALES=this.equipos.size()*TAMAÑO_DE_EQUIPO*4;
 		EventoEquipos.COFRES_RESTANTES=COFRES_TOTALES;
 		EventoEquipos.EQUIPOS_TOTALES=this.equipos.size();
 		
@@ -137,16 +137,16 @@ public class EventoEquipos extends ListaArmas {
 		
 		if(RONDA<TAMAÑO_DE_EQUIPO) {
 			prob_cofre=0.95;
-			prob_batalla=0.4;
+			prob_batalla=0.5;
 		}else if(RONDA==TAMAÑO_DE_EQUIPO){
-			prob_batalla=0.4;
+			prob_batalla=0.5;
 		}
 		
 		if(prob_batalla<0.5) {
 			prob_batalla=0.5;
 		}
-		if(this.equipos.size()<7) {
-			prob_tienda=0.2;
+		if(this.equipos.size()<4) {
+			prob_tienda=0.4;
 		}
 		
 		Double suerte=( ((double)equipos.get(I).getMediaSuerte())*5. /100.)+1.;

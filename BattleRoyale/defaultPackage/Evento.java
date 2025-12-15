@@ -134,16 +134,16 @@ public class Evento extends ListaArmas {
 		
 		if(RONDA==1) {
 			prob_cofre=0.95;
-			prob_batalla=0.4;
+			prob_batalla=0.5;
 		}else if(RONDA==2){
-			prob_batalla=0.4;
+			prob_batalla=0.5;
 		}
 		
 		if(prob_batalla<0.5) {
 			prob_batalla=0.5;
 		}
-		if(this.jugadores.size()<7) {
-			prob_tienda=0.2;
+		if(this.jugadores.size()<4) {
+			prob_tienda=0.4;
 		}
 		
 		Double suerte=( ((double)jugadores.get(I).getSuerte()-1)*5. /100.)+1.;
