@@ -28,7 +28,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 
         while (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
             LOG += "\t-Turno " + turno + "\n";
-            System.out.println("\n\n========== TURNO " + turno++ + " ==========");
+            System.out.println("\n\n========== TURNO " + turno + " ==========");
             
             // Para que mostrarEstadoBatalla imprima los equipos siempre de la mismo orden
             EQUIPO1_AUX=equipo1;
@@ -41,6 +41,8 @@ public class BatallaEquipo extends Batalla<Equipo>{
             
             
             ejecutarTurno(equipo2, equipo1);
+            
+            turno++;
         }
 
         if (equipo1.areVivos()) {
@@ -55,8 +57,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void ejecutarTurno(Equipo equipo1, Equipo equipo2) {
-        
-        
+    	
         if (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
         	EQUIPO1_SIZE=equipo1.size();
         	
