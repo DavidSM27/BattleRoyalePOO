@@ -49,12 +49,12 @@ public class EmpezarPartida {
 		Utilidades.sleep(500);
 		
 		do {
-			System.out.print("¿Quieres saltar la introduccion? (SI/NO) ");
+			System.out.print("¿Quieres saltar la introduccion? (Si/No) ");
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
 			
 			if(!respuesta.equals("S") && !respuesta.equals("N")) {
-				System.out.println("\nPor favor introduce SI o NO\n");
+				System.out.println("\nPor favor introduce Si o No\n");
 			}
 			
 		} while(!respuesta.equals("S") && !respuesta.equals("N"));
@@ -65,12 +65,12 @@ public class EmpezarPartida {
 		
 		
 		do {
-			System.out.print("\n¿Quieres escuchar una explicación de las reglas del juego? (SI/NO) ");
+			System.out.print("\n¿Quieres escuchar una explicación de las reglas del juego? (Si/No) ");
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
 			
 			if(!respuesta.equals("S") && !respuesta.equals("N")) {
-				System.out.println("\nPor favor introduce SI o NO\n");
+				System.out.println("\nPor favor introduce Si o No\n");
 			}
 			
 		} while(!respuesta.equals("S") && !respuesta.equals("N"));
