@@ -28,10 +28,8 @@ public class Agua extends Personaje {
 	}
 
     public void tsunami(Personaje objetivo) {
-        if (intentarGastarEnergia()) {
+        if (intentarGastarEnergia(COSTE_HABILIDAD1)) {
             System.out.println(this.nombre + " lanza un Tsunami a " + objetivo.getNombre() + "!");
-            
-            this.energia-=COSTE_HABILIDAD;
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -39,10 +37,8 @@ public class Agua extends Personaje {
     }
 
     public void voragine(Personaje objetivo) {
-        if (intentarGastarEnergia()) {
+        if (intentarGastarEnergia(COSTE_HABILIDAD2)) {
             System.out.println(this.nombre + " usa una vorgine para hundir a  " + objetivo.getNombre() + "!");
-            
-            this.energia-=COSTE_HABILIDAD;
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -50,9 +46,7 @@ public class Agua extends Personaje {
     }
 
     public void curacionDePoseidon() {
-        if (intentarGastarEnergia()) {
-            
-            this.energia-=COSTE_HABILIDAD;
+        if (intentarGastarEnergia(COSTE_HABILIDAD3)) {
         	
             System.out.println(this.nombre + " se cura por los poderes de poseidon.");
             this.curarVida(CURACION_HABILIDAD);

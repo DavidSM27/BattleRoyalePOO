@@ -28,11 +28,8 @@ public class Vida extends Personaje {
 	}
 
     public void apretonDeCorazon(Personaje objetivo) {
-        if (intentarGastarEnergia()) {
-            System.out.println(this.nombre + " le para el corazon a " + objetivo.getNombre() + "!");
-            
-            this.energia-=COSTE_HABILIDAD;
-            
+        if (intentarGastarEnergia(COSTE_HABILIDAD1)) {
+            System.out.println(this.nombre + " le para el corazon a " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -40,11 +37,8 @@ public class Vida extends Personaje {
     }
 
     public void explotarSangre(Personaje objetivo) {
-        if (intentarGastarEnergia()) {
-            System.out.println(this.nombre + " saca toda la sangre del cuerpo de " + objetivo.getNombre() + "!");
-            
-            this.energia-=COSTE_HABILIDAD;
-            
+        if (intentarGastarEnergia(COSTE_HABILIDAD2)) {
+            System.out.println(this.nombre + " saca toda la sangre del cuerpo de " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -52,9 +46,7 @@ public class Vida extends Personaje {
     }
 
     public void curacionMedica() {
-        if (intentarGastarEnergia()) {
-            
-            this.energia-=COSTE_HABILIDAD;
+        if (intentarGastarEnergia(COSTE_HABILIDAD3)) {
         	
             System.out.println(this.nombre + " es operado del corazon en un quirofano");
             this.curarVida(CURACION_HABILIDAD);
