@@ -51,7 +51,8 @@ public class EventoEquipos extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("El equipo ganador es: "+this.equipos.getFirst().getNombre());
+		System.out.println("El equipo ganador es: " + this.equipos.getFirst().getNombre() + "\n");
+		mensajeDespedida();
 		
 		try{
 			this.guardarLOG.imprimir("El equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
@@ -317,5 +318,13 @@ public class EventoEquipos extends ListaArmas {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	private void mensajeDespedida(){
+		Utilidades.imprimirConDelay("¡Felicidades Maestros del Portal!\n", 20);
+		Utilidades.imprimirConDelay("Habeis llegado lejos en esta aventura y luchado con valentia hasta el final.\n", 20);
+		Utilidades.imprimirConDelay("Gracias a ti las Skylands son mas seguras que nunca y nuestros Skylanders", 20);
+		Utilidades.imprimirConDelay("estan mas que preparados para combatir el mal.", 20);
+		Utilidades.imprimirConDelay("¡Gracias por luchar contra ellos y hasta la proxima aventura!", 20);	
 	}
 }

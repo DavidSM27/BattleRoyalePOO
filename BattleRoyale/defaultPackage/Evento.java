@@ -49,7 +49,8 @@ public class Evento extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("FELICIDADES " + this.jugadores.getFirst().getNombre() + " HAS GANADO");
+		System.out.println("¡" + this.jugadores.getFirst().getNombre() + " ha ganado!\n");
+		mensajeDespedida();
 		
 		try{
 			this.guardarLOG.imprimir("El ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
@@ -293,5 +294,13 @@ public class Evento extends ListaArmas {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	private void mensajeDespedida(){
+		Utilidades.imprimirConDelay("¡Felicidades Maestro del Portal!\n", 20);
+		Utilidades.imprimirConDelay("Has llegado lejos en esta aventura y luchado con valentia hasta el final.\n", 20);
+		Utilidades.imprimirConDelay("Gracias a ti las Skylands son mas seguras que nunca y nuestros Skylanders", 20);
+		Utilidades.imprimirConDelay("estan mas que preparados para combatir el mal.", 20);
+		Utilidades.imprimirConDelay("¡Gracias por luchar contra ellos y hasta la proxima aventura!", 20);	
 	}
 }
