@@ -47,8 +47,12 @@ public class Equipo {
 		}
 	}
 
-	public Personaje remove(int i) {
-		return miembros.remove(i);
+	public void quitarMuertos() {
+		for (int j = 0; j < miembros.size(); j++) {
+        	if (!miembros.get(j).isVivo()) {
+        		miembros.remove((int)j--);
+        	}
+		}
 	}
 
 	public String getNombre() {

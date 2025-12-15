@@ -1,4 +1,9 @@
 Ronda 1
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Dr. Strange a abierto un cofre
+		-Dr. Strange ahora lleva Fusil
+
+
 	-El equipoLos Nigromantes han intentan buscar un Cofre
 		-Hechicero Oscuro a abierto un cofre
 		-Hechicero Oscuro ahora lleva Arco
@@ -6,11 +11,70 @@ Ronda 1
 
 	-El equipoLa Horda han intentan buscar un Cofre
 		-Chamán Orco a abierto un cofre
-		-Chamán Orco ahora lleva Arco
+		-Chamán Orco ahora lleva Shuriken
 
 
+Ronda 2
 	-El equipoLos Vengadores han intentan buscar un Cofre
-		-Dr. Strange a abierto un cofre
-		-Dr. Strange ahora lleva Arco
+		-Hulk a abierto un cofre
+		-Hulk ahora lleva Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Espíritu del Agua a abierto un cofre
+		-Espíritu del Agua ahora lleva Shuriken
+
+
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Jinete de Lobo a abierto un cofre
+		-Jinete de Lobo ahora lleva Fusil
+
+
+Ronda 3
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Hulk a abierto un cofre
+		-Hulk mantiene su arma actual: Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Hechicero Oscuro a abierto un cofre
+		-Hechicero Oscuro ahora lleva Shuriken
+
+
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco mantiene su arma actual: Shuriken
+
+
+Ronda 4
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Hulk a abierto un cofre
+		-Hulk ahora lleva Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Hechicero Oscuro a abierto un cofre
+		-Hechicero Oscuro ahora lleva Fusil
+
+
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco ahora lleva Fusil
+
+
+Ronda 5
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Hulk a abierto un cofre
+		-Hulk ahora lleva Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Espíritu del Agua a abierto un cofre
+		-Espíritu del Agua mantiene su arma actual: Shuriken
+
+
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco mantiene su arma actual: Fusil
 
 
