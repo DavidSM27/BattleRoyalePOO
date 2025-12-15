@@ -11,6 +11,11 @@ public class BatallaEquipo extends Batalla<Equipo>{
     private static Integer EQUIPO_OBJETIVO_SIZE;
     private static Equipo EQUIPO1_AUX;
     private static Equipo EQUIPO2_AUX;
+    private static Integer BOTE_EQUIPO1;
+    private static Integer BOTE_EQUIPO2;
+    private static Integer XP1;
+    private static Integer XP2;
+    
 
     public BatallaEquipo() {
         super();
@@ -21,8 +26,19 @@ public class BatallaEquipo extends Batalla<Equipo>{
         LOG = "";
         iniciar();
         
-        Equipo equipo1Aux=new Equipo(equipo1);
-        Equipo equipo2Aux=new Equipo(equipo2);
+        BOTE_EQUIPO1=0;
+        BOTE_EQUIPO2=0;
+        XP1=0;
+        XP2=0;
+        
+        for(int i=0; i<equipo1.size(); i++) {
+        	BOTE_EQUIPO1+=equipo1.get(i).getOro();
+        	XP1+=(int) Math.round((Math.random() * 50. + 100.) * (((double) (equipo1.get(i).getSuerte() - 1)) * 5. / 100. + 1));
+        }
+        for(int i=0; i<equipo2.size(); i++) {
+        	BOTE_EQUIPO2+=equipo2.get(i).getOro();
+        	XP2+=(int) Math.round((Math.random() * 50. + 100.) * (((double) (equipo2.get(i).getSuerte() - 1)) * 5. / 100. + 1));
+        }
         
         System.out.println(equipo1.getNombre() + " VS " + equipo2.getNombre());
 
@@ -50,10 +66,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
 
         if (equipo1.areVivos()) {
         	terminar(equipo1, equipo2);
-        	otorgarRecompensas(equipo1, equipo2Aux);
+        	otorgarRecompensas(equipo1, equipo2);
         } else if (equipo2.areVivos()){
         	terminar(equipo2, equipo1);
-        	otorgarRecompensas(equipo2, equipo1Aux);
+        	otorgarRecompensas(equipo2, equipo1);
         }
 
         return LOG;
@@ -456,10 +472,12 @@ public class BatallaEquipo extends Batalla<Equipo>{
     	int boteOro=0;
     	int boteXP=0;
     	
-    	for (int i = 0; i < perdedor.size(); i++) {
-    		boteOro += perdedor.get(i).getOro();
-    		boteXP += 
-	        	(int) Math.round((Math.random() * 50. + 100.) * (((double) (ganador.get(i).getSuerte() - 1)) * 5. / 100. + 1));
+    	if(ganador.getNombre().equals(EQUIPO1_AUX.getNombre())) {
+    		boteOro=BOTE_EQUIPO1;
+    		boteXP=XP1;
+    	}else {
+    		boteOro=BOTE_EQUIPO2;
+    		boteXP=XP2;
     	}
     	
     	int oro=(int)(boteOro/ganador.size());
