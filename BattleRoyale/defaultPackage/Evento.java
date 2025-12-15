@@ -245,7 +245,10 @@ public class Evento extends ListaArmas {
 			aux=4;
 		}
 		
-		Double mejora=((double)Math.round(Math.random()*10))/10+1;
+		Double mejora=((double)Math.round(Math.random()*10*suerte))/10+1;
+		if(mejora>2.0) {
+			mejora=2.0;
+		}
 		
 		Arma arma=new Arma(super.armas.get(aux).getNombre(),
 						   super.armas.get(aux).getAtaqueSinMejora(),

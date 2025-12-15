@@ -20,6 +20,20 @@ public class Equipo {
 		this.sonNPCs=equipo.areNPCs();
 	}
 	
+	public int quienTienePeorArma() {
+		int index;
+		for (index = 0; index < miembros.size(); index++) {
+
+			for (int j = index+1; j < miembros.size(); j++) {
+				if(miembros.get(index).getArma().compareTo(miembros.get(j).getArma())==1) {
+					index=j;
+				}
+			}
+		}
+		
+		return index;
+	}
+	
 	public void add(Personaje p) {
 		miembros.add(p);
 	}

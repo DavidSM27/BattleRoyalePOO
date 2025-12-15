@@ -12,9 +12,9 @@ public class Utilidades {
     
     public static void sleep(int delayMs) {
     	try {
-            Thread.sleep(delayMs);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+    		Thread.sleep(delayMs);
+    	} catch (InterruptedException e) {
+        	Thread.currentThread().interrupt();
             System.out.println("\nHilo interrumpido");
         }
     }
