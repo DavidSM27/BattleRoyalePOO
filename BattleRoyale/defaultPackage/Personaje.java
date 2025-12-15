@@ -12,7 +12,7 @@ public class Personaje implements Comparable<Personaje> {
     protected static final int COSTE_HABILIDAD3 = 30;
     protected static final int ORO_INICIAL = 0; // El oro con el que empieza el jugador
     protected static final int VIDA_MAX_DEFECTO = 100; // El max de vida del personaje
-    protected static final int PUNTOS_DE_NIVEL = 16; // Los puntos que tienes para gastarte en las estadisticas de tu
+    protected static final int PUNTOS_DE_NIVEL = 20; // Los puntos que tienes para gastarte en las estadisticas de tu
                                                      // personaje // personaje
     protected static final int NIVEL_ESTADISTICAS_INCIALES = 1; // Todas las estadisticas comienzan en 1
     protected static final int SUBIDA_NIVEL = 100; // La xp necesaria para subir un nivel
