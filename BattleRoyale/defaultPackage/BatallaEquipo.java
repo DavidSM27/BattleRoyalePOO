@@ -108,10 +108,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
     	for (int i = 0; i < equipo1.size(); i++) {
 	        System.out.println("\t"+equipo1.get(i).getNombre() + ": " +
 	        		equipo1.get(i).getVida() + " HP  " +
-	        		equipo1.get(i).getEnergia() + " Energía");
+	        		equipo1.get(i).getEnergia() + " Energía. ["+ equipo1.get(i).getElemento() +"]");
 	        LOG+="\t\t\t-" + equipo1.get(i).getNombre() + ": " +
 	        		equipo1.get(i).getVida() + " HP  " +
-	        		equipo1.get(i).getEnergia() + " Energía\n";
+	        		equipo1.get(i).getEnergia() + " Energía. ["+ equipo1.get(i).getElemento() +"]\n";
     	}
     }
     
