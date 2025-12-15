@@ -32,7 +32,9 @@ public class Vida extends Personaje {
             System.out.println(this.nombre + " le para el corazon a " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
-            objetivo.recibirDanio(dano);
+
+            int comparacion=this.compareTo(objetivo);
+            objetivo.recibirDanio(dano, comparacion);
         }
     }
 
@@ -41,7 +43,9 @@ public class Vida extends Personaje {
             System.out.println(this.nombre + " saca toda la sangre del cuerpo de " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
-            objetivo.recibirDanio(dano);
+
+            int comparacion=this.compareTo(objetivo);
+            objetivo.recibirDanio(dano, comparacion);
         }
     }
 

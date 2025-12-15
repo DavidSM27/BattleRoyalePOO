@@ -32,7 +32,9 @@ public class Agua extends Personaje {
             System.out.println(this.nombre + " lanza un Tsunami a " + objetivo.getNombre() + "!");
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
-            objetivo.recibirDanio(dano);
+            
+            int comparacion=this.compareTo(objetivo);
+            objetivo.recibirDanio(dano, comparacion);
         }
     }
 
@@ -41,7 +43,9 @@ public class Agua extends Personaje {
             System.out.println(this.nombre + " usa una vorgine para hundir a  " + objetivo.getNombre() + "!");
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
-            objetivo.recibirDanio(dano);
+
+            int comparacion=this.compareTo(objetivo);
+            objetivo.recibirDanio(dano, comparacion);
         }
     }
 

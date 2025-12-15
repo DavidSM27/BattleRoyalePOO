@@ -165,7 +165,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
         int danoBase =(int) Math.round(atacante.getArma().getAtaque());
 
         System.out.println(atacante.getNombre() + " ataca con " + atacante.getArma().getNombre() + "!");
-        objetivo.recibirDanio(danoBase);
+        objetivo.recibirDanioArma(danoBase);
     }
 
     private void usarHabilidad(Personaje atacante, Personaje objetivo) {

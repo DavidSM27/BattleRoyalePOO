@@ -32,7 +32,9 @@ public class Magia extends Personaje {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
-            objetivo.recibirDanio(dano);
+
+            int comparacion=this.compareTo(objetivo);
+            objetivo.recibirDanio(dano, comparacion);
         }
     }
 
@@ -42,7 +44,9 @@ public class Magia extends Personaje {
             
 
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
-            objetivo.recibirDanio(dano);
+
+            int comparacion=this.compareTo(objetivo);
+            objetivo.recibirDanio(dano, comparacion);
         }
     }
 

@@ -313,7 +313,43 @@ public class Personaje implements Comparable<Personaje> {
     }
 
     // El personaje recibe dano y lo muestra por pantalla
-    public void recibirDanio(int cantidad) {
+    public void recibirDanio(int cantidad, int comparacion) {
+        if (!estaVivo) {
+            System.out.println(this.nombre + " ya está muerto, déjalo en paz.");
+            return;
+        }
+        
+        this.vida -= cantidad;
+
+        if (this.vida <= 0) {
+            this.vida = 0;
+            this.estaVivo = false;
+            if(comparacion==0) {
+            	System.out.println(this.nombre + " recibe " + cantidad +
+            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            }else if (comparacion==1) {
+            	System.out.println(this.nombre + " recibe un Ataque Crítico " + cantidad +
+            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            }else {
+            	System.out.println(this.nombre + " recibe un Ataque Poco Éficaz " + cantidad +
+            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            }
+            System.out.println(this.nombre + " ha sido DERROTADO.");
+        } else {
+        	if(comparacion==0) {
+            	System.out.println(this.nombre + " recibe " + cantidad +
+            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            }else if (comparacion==1) {
+            	System.out.println(this.nombre + " recibe un Ataque Crítico " + cantidad +
+            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            }else {
+            	System.out.println(this.nombre + " recibe un Ataque Poco Éficaz " + cantidad +
+            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            }
+        }
+    }
+    
+    public void recibirDanioArma(int cantidad) {
         if (!estaVivo) {
             System.out.println(this.nombre + " ya está muerto, déjalo en paz.");
             return;
@@ -325,7 +361,7 @@ public class Personaje implements Comparable<Personaje> {
             this.vida = 0;
             this.estaVivo = false;
             System.out.println(this.nombre + " recibe " + cantidad +
-                    " de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            		" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
             System.out.println(this.nombre + " ha sido DERROTADO.");
         } else {
             System.out.println(this.nombre + " recibe " + cantidad +
