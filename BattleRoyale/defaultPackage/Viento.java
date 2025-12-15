@@ -14,6 +14,18 @@ public class Viento extends Personaje {
     public Viento(Personaje personaje) {
     	super(personaje);
     }
+    
+    public static int getDañoHabilidad1() {
+		return DAÑO_HABILIDAD1;
+	}
+
+	public static int getDañoHabilidad2() {
+		return DAÑO_HABILIDAD2;
+	}
+
+	public static int getCuracionHabilidad() {
+		return CURACION_HABILIDAD;
+	}
 
     public void LanzarTorbellino(Personaje objetivo) {
         if (intentarGastarEnergia()) {

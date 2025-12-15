@@ -14,8 +14,20 @@ public class Fuego extends Personaje {
     public Fuego(Personaje personaje) {
     	super(personaje);
     }
+    
+    public static int getDañoHabilidad1() {
+		return DAÑO_HABILIDAD1;
+	}
 
-    public void lluviaInfernal(Personaje objetivo) {
+	public static int getDañoHabilidad2() {
+		return DAÑO_HABILIDAD2;
+	}
+
+	public static int getCuracionHabilidad() {
+		return CURACION_HABILIDAD;
+	}
+
+	public void lluviaInfernal(Personaje objetivo) {
         if (intentarGastarEnergia()) {
             System.out.println(this.nombre + " lanza una Bola de Fuego a " + objetivo.getNombre() + "!");
             

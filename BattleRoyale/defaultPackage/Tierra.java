@@ -16,6 +16,18 @@ public class Tierra extends Personaje {
         else
             this.nivel = nivel;
     }
+    
+    public static int getDañoHabilidad1() {
+		return DAÑO_HABILIDAD1;
+	}
+
+	public static int getDañoHabilidad2() {
+		return DAÑO_HABILIDAD2;
+	}
+
+	public static int getCuracionHabilidad() {
+		return CURACION_HABILIDAD;
+	}
 
     public Tierra(Personaje personaje) {
         super(personaje);
