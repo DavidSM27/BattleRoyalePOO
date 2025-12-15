@@ -7,7 +7,9 @@ public class Personaje implements Comparable<Personaje> {
 
     // Constantes
     protected static final int ENERGIA_MAX = 100; // Maxima energia del personaje cuando se instancia
-    protected static final int COSTE_HABILIDAD = 20; // Este es el coste por uso de habilidad elemental
+    protected static final int COSTE_HABILIDAD1 = 20;
+    protected static final int COSTE_HABILIDAD2 = 10;
+    protected static final int COSTE_HABILIDAD3 = 30;
     protected static final int ORO_INICIAL = 0; // El oro con el que empieza el jugador
     protected static final int VIDA_MAX_DEFECTO = 100; // El max de vida del personaje
     protected static final int PUNTOS_DE_NIVEL = 20; // Los puntos que tienes para gastarte en las estadisticas de tu
