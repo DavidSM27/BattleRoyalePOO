@@ -8,7 +8,6 @@ public class BatallaIndividual extends Batalla<Personaje> {
     private static Integer turno;
     private static String LOG;
     private static final Integer ENERGIA=50;
-    private static boolean NOMANA;
 
     public BatallaIndividual() {
         super();
