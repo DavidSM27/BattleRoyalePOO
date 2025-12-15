@@ -49,10 +49,10 @@ public class Evento extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("\nFELICIDADES " + this.jugadores.getFirst().getNombre() + " HAS GANADO");
+		System.out.println("FELICIDADES " + this.jugadores.getFirst().getNombre() + " HAS GANADO");
 		
 		try{
-			this.imprimirLOG.imprimir("\nEl ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
+			this.imprimirLOG.imprimir("\n\nEl ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}

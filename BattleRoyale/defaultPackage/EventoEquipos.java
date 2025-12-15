@@ -51,10 +51,10 @@ public class EventoEquipos extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("\nEl equipo ganador es: "+this.equipos.getFirst().getNombre());
+		System.out.println("El equipo ganador es: "+this.equipos.getFirst().getNombre());
 		
 		try{
-			this.imprimirLOG.imprimir("\nEl equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
+			this.imprimirLOG.imprimir("\n\nEl equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
