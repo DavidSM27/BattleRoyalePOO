@@ -49,7 +49,7 @@ public class Evento extends ListaArmas {
 			this.rondas();
 		}
 		
-		System.out.println("\nEl ganador es: "+this.jugadores.getFirst().getNombre());
+		System.out.println("\nFELICIDADES " + this.jugadores.getFirst().getNombre() + " HAS GANADO");
 		
 		try{
 			this.imprimirLOG.imprimir("\nEl ganador es: "+this.jugadores.getFirst().getNombre()+"\n\n");
@@ -80,10 +80,10 @@ public class Evento extends ListaArmas {
 				
 				
 				System.out.println("¿"+jugadores.get(I).getNombre()+" que quieres hacer?");
-	            System.out.println("\t[1] Buscar un Cofre");
-	            System.out.println("\t[2] Buscar una Tienda");
-	            System.out.println("\t[3] Buscar una Batalla");
-	            System.out.println("\t[4] Campear\n");
+	            System.out.println("\t(1) Buscar un Cofre");
+	            System.out.println("\t(2) Buscar una Tienda");
+	            System.out.println("\t(3) Buscar una Batalla");
+	            System.out.println("\t(4) Esconderse\n");
 	            
 	            do {
 	            	System.out.print("Elige una opcion: ");
@@ -107,7 +107,7 @@ public class Evento extends ListaArmas {
 				if (opcion==2) {
 					opcion=3;
 				}
-				System.out.println("El NPC "+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1));
+				System.out.println("El Skylander "+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1));
 			}
 			Evento.LOG+="\t-"+jugadores.get(I).getNombre()+" intenta "+Evento.OPCIONES.get(opcion-1)+"\n";
 			this.opciones(opcion);
@@ -157,11 +157,12 @@ public class Evento extends ListaArmas {
 		switch (opcion) {
 			case 1:
 				if(random<prob_cofre) {
-					// Cofre
+					System.out.println("¡Has encontrado un cofre!");
 					this.cofre();
 				}else if(1-random<(1.-prob_cofre)*0.5) {
 					// Tienda
 					if(!jugadores.get(I).isNPC()) {
+						System.out.println("¡Has encontrado una tienda!");
 						this.tienda();
 					}else {
 						System.out.println("Mala suerte no encontrado nada.");
@@ -180,10 +181,10 @@ public class Evento extends ListaArmas {
 				
 			case 2:
 				if(random<prob_tienda) {
-					// Tienda
+					System.out.println("¡Has encontrado una tienda!");
 					this.tienda();
 				}else if(1-random<(1.-prob_tienda)*0.5*prob_cofre) {
-					// Cofre
+					System.out.println("¡Has encontrado un cofre!");
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.75) {
 					// Battala
@@ -202,11 +203,14 @@ public class Evento extends ListaArmas {
 					// Battala
 					this.batalla();
 				}else if(1-random<(1.-prob_batalla)*0.25*prob_cofre) {
-					// Cofre
+					System.out.println("No has encontrado una batalla, pero...");
+					Utilidades.sleep(1000);
+					System.out.println("¡Has encontrado un cofre!");
 					this.cofre();
 				}else if(1-random<(1.-prob_tienda)*0.5) {
 					// Tienda
 					if(!jugadores.get(I).isNPC()) {
+						System.out.println("¡Has encontrado una tienda!");
 						this.tienda();
 					}else {
 						System.out.println("Mala suerte no encontrado nada.");
@@ -220,7 +224,7 @@ public class Evento extends ListaArmas {
 				if(random<prob_camp) {
 					System.out.println("Nadie te ha encontrado.");
 				}else {
-					// Battala
+					System.out.println("¡Te han encontrado!");
 					this.batalla();
 				}
 				break;

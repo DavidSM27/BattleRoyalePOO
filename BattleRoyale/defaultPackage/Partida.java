@@ -10,8 +10,10 @@ public class Partida {
 	Scanner sc = new Scanner(System.in);
 	
 	protected String modoJuego;
+	protected String diff;
 	protected Integer nJugadores;
 	protected Integer nNPCs;
+	protected Integer dificultad;
 	
 	protected List<Personaje> personajes;
 	protected List<Personaje> personajesVivos;
@@ -42,11 +44,13 @@ public class Partida {
 		
 	    nJugadores = numeroJugadores();
 	    nNPCs = numeroNPCs();
+	    establecerDificultad();
 	    
 	    System.out.println("\n=== CONFIGURACIÓN COMPLETA ===");
         System.out.println("Modo de juego: " + modoJuego);
         System.out.println("Maestros del Portal: " + nJugadores);
         System.out.println("Skyalanders: " + nNPCs);
+        System.out.println("Dificultad: " + diff);
         System.out.println("Jugadores totales: " + (nJugadores + nNPCs));    	
 	}
 	
@@ -182,19 +186,19 @@ public class Partida {
     private Personaje crearPersonajePorElemento(String nombre, int elemento, boolean esNPC) {
         switch(elemento) {
             case 1: // FUEGO
-                return new Fuego(nombre, 1, esNPC);  // hay que
+                return new Fuego(nombre, dificultad, esNPC); 
             case 2: // AGUA
-                return new Agua(nombre, 1, esNPC);
+                return new Agua(nombre, dificultad, esNPC);
             case 3: // TIERRA
-                return new Tierra(nombre, 1, esNPC);
+                return new Tierra(nombre, dificultad, esNPC);
             case 4: // VIENTO
-                return new Viento(nombre, 1, esNPC);
+                return new Viento(nombre, dificultad, esNPC);
             case 5: // MAGIA
-                return new Magia(nombre, 1, esNPC);
+                return new Magia(nombre, dificultad, esNPC);
             case 6: // VIDA
-                return new Vida(nombre, 1, esNPC);
+                return new Vida(nombre, dificultad, esNPC);
             default:
-                return new Fuego(nombre, 1, esNPC);
+                return new Fuego(nombre, dificultad, esNPC);
         }
     }
     
@@ -207,6 +211,45 @@ public class Partida {
             
         }
         System.out.println("\n");
+    }
+    
+    private void establecerDificultad(){
+    	int modo;
+    	
+    	System.out.println("\n¿Dificultad de los Skylanders?");
+	    System.out.println("(1) NORMAL");
+	    System.out.println("(2) DIFICIL");
+	    System.out.println("(3) IMPOSIBLE");
+	    do {
+	    		System.out.print("Dificultad: ");
+	    		while(!sc.hasNextInt()) {
+	                System.out.println("\nPor favor, ingresa un número válido.\n");
+	                System.out.print("Dificultad: ");
+	                sc.next();
+	        }
+	    		modo = sc.nextInt();
+	    		sc.nextLine();
+	    		
+	    		if(modo < 1 || modo > 3) {
+	    			System.out.println("\nPor favor, ingresa un número válido");
+	    			System.out.println("\n(1) NORMAL");
+	    		    System.out.println("(2) DIFICIL");
+	    		    System.out.println("(3) IMPOSIBLE");
+	    		}   		
+	    } while(modo < 1 || modo > 3);
+	    System.out.println();
+	    
+	    
+	    if(modo == 1) {
+	    		diff = "NORMAL";
+	    		dificultad = 1;
+	    } else if(modo == 2) {
+	    		diff = "DIFICIL";
+	    		dificultad = 5;
+	    } else {
+	    		diff = "IMPOSIBLE";
+	    		dificultad = 10;
+	    }
     }
     
 }	
