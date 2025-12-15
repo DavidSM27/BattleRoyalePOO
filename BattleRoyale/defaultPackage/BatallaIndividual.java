@@ -31,6 +31,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
             PERSONAJE2_AUX=jugador1;
             
             ejecutarTurno(jugador1, jugador2);
+            
+            PERSONAJE1_AUX=jugador1;
+            PERSONAJE2_AUX=jugador1;
+            
             ejecutarTurno(jugador2, jugador1);
             
         }

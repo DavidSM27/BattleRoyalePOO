@@ -35,6 +35,11 @@ public class BatallaEquipo extends Batalla<Equipo>{
             EQUIPO2_AUX=equipo2;
             
             ejecutarTurno(equipo1, equipo2);
+            
+            EQUIPO1_AUX=equipo1;
+            EQUIPO2_AUX=equipo2;
+            
+            
             ejecutarTurno(equipo2, equipo1);
         }
 
