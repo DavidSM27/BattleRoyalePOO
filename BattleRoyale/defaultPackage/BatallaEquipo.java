@@ -56,12 +56,12 @@ public class BatallaEquipo extends Batalla<Equipo>{
         if (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
         	EQUIPO1_SIZE=equipo1.size();
         	
-        	System.out.println("\n\n=== Turno de " + equipo1.getNombre() + " ===");
+        	System.out.print("\n=== TURNO DEL EQUIPO " + equipo1.getNombre().toUpperCase() + " ===");
         	
         	for(int i=0; i < EQUIPO1_SIZE; i++) {
             	
         		if (equipo2.areVivos() && this.enCurso) {
-		            System.out.println("\n\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
+		            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
 		            
 		            mostrarEstadoBatalla(EQUIPO1_AUX);
 		            mostrarEstadoBatalla(EQUIPO2_AUX);
