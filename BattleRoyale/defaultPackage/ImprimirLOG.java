@@ -14,6 +14,7 @@ public class ImprimirLOG {
 	private String texto;
 	
 	public ImprimirLOG() {
+		this.texto="";
 		try {
 			this.leerFichero(RUTA_FICHERO);
 			
@@ -30,13 +31,22 @@ public class ImprimirLOG {
 		File archivo=new File(DIRECTORIO_ACTUAL+ruta);
 		
 		BufferedReader bf=new BufferedReader(new FileReader(archivo));
+		String linea="";
 		
-		while((texto+=bf.readLine())!=null);
+		while((linea=bf.readLine())!=null) {
+			Utilidades.sleep(10);
+			texto+=linea+"\n";
+		}
 		
 		bf.close();
 	}
 	
 	public String getTexto() {
 		return texto;
+	}
+	
+	public static void main(String[] args) {
+		ImprimirLOG imprimirLOG= new ImprimirLOG();
+		System.out.println(imprimirLOG.getTexto());
 	}
 }
