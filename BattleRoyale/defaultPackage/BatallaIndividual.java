@@ -8,6 +8,8 @@ public class BatallaIndividual extends Batalla<Personaje> {
     private static Integer turno;
     private static String LOG;
     private static final Integer ENERGIA=50;
+    private static Personaje PERSONAJE1_AUX;
+    private static Personaje PERSONAJE2_AUX;
 
     public BatallaIndividual() {
         super();
@@ -23,16 +25,13 @@ public class BatallaIndividual extends Batalla<Personaje> {
 
         while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
         	LOG += "\t-Turno " + turno + "\n";
-            System.out.println("\n========== TURNO " + turno++ + " ==========");
+            System.out.println("\n\n========== TURNO " + turno++ + " ==========");
             
-            System.out.println();
-            mostrarEstadoBatalla(jugador1);
-            mostrarEstadoBatalla(jugador2);
+            
+            PERSONAJE1_AUX=jugador1;
+            PERSONAJE2_AUX=jugador1;
+            
             ejecutarTurno(jugador1, jugador2);
-            
-        	System.out.println();
-            mostrarEstadoBatalla(jugador1);
-            mostrarEstadoBatalla(jugador2);
             ejecutarTurno(jugador2, jugador1);
             
         }
@@ -52,7 +51,11 @@ public class BatallaIndividual extends Batalla<Personaje> {
         System.out.println("\n\n========== TURNO " + turno  + " ==========");
 
         if (jugador1.isVivo() && this.enCurso) {
-            System.out.println("\n=== Turno de " + jugador1.getNombre() + " ===");
+            System.out.println("\n\n=== Turno de " + jugador1.getNombre() + " ===");
+            
+            mostrarEstadoBatalla(PERSONAJE1_AUX);
+            mostrarEstadoBatalla(PERSONAJE2_AUX);
+            System.out.println();
             ejecutarAccion(jugador1, jugador2);
         }
         
