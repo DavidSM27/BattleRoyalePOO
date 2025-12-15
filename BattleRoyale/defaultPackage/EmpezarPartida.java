@@ -28,16 +28,27 @@ public class EmpezarPartida {
 		String respuesta;
 		
 		System.out.println("¡SALUDOS MAESTRO DEL PORTAL!\n");
-		System.out.println("Soy Eon, tu guía en este mundo. Pero te preguntaras donde estas");
+		Utilidades.sleep(2000);
+		System.out.println("Soy Eon, tu guía en este mundo");
+		Utilidades.sleep(2000);
+		System.out.println("Pero te preguntaras donde estas");
+		Utilidades.sleep(2000);
 		System.out.println("\n¡Esto es Skylands!");
+		Utilidades.sleep(2000);
 		System.out.println("Un antiguo mundo de maravillas y misterios");		
+		Utilidades.sleep(2000);
 		System.out.println("Durantes generaciones los maestros del portal y sus Skylanders han mantenido");
 		System.out.println("la paz y el equilibrio para que las criaturas prosperen.");
+		Utilidades.sleep(4000);
 		System.out.println("¡Aqui la magia fluye a traves de todo!");
-		System.out.println("Cada piedra, cada arbol y cada bestia");
+		Utilidades.sleep(2000);
+		System.out.println("Cada piedra, cada arbol, cada bestia");
+		Utilidades.sleep(2000);
 		System.out.println("\nHoy en día, los Skylanders pasan las horas entrenando entre ellos en una");
 		System.out.println("lucha constante de todos contra todos, ya sea individualmente o por equipos.");
-		System.out.println("Los Skyalandres me han comentado que quieren luchar contra ti maestro del portal");
+		Utilidades.sleep(5000);
+		System.out.println("Los Skyalandres me han comentado que quieren luchar contra ti, maestro del portal");
+		Utilidades.sleep(2000);
 		System.out.println("\nQue me dices, ¿aceptas el desafio?\n");
 		
 		
