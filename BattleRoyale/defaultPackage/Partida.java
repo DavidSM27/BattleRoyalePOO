@@ -125,7 +125,7 @@ public class Partida {
         	}
         }
         
-        System.out.println("✅ " + personajes.size() + " jugadores creados.");
+        System.out.println("==== " + personajes.size() + " JUGADORES CREADOS ====");
     }
     
 	private Personaje crearJugador(int numero) {
@@ -206,8 +206,15 @@ public class Partida {
         System.out.println("\n=== LISTA DE JUGADORES ===");
         for(int i = 0; i < personajes.size(); i++) {
             Personaje p = personajes.get(i);
-            String tipo = jugadoresHumanos.contains(p) ? "[Maestro del Portal]" : "[Skylander]";
-            System.out.println((i+1) + ". " + p.getNombre() + " " + tipo + " " + p.getElemento());
+            
+            String tipo;
+            if(jugadoresHumanos.contains(p)) {
+            	tipo = "(Maestro del Portal)";
+            } else {
+            	tipo = "(Skylander)";
+            }
+            
+            System.out.println((i+1) + ". " + p.getNombre() + " " + tipo + " Elemento: " + p.getElemento());
             
         }
         System.out.println("\n");
