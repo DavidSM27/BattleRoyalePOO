@@ -6,16 +6,15 @@ public class Personaje implements Comparable<Personaje> {
     private static final Scanner sc = new Scanner(System.in);
 
     // Constantes
-    protected static final int ENERGIA_MAX = 100;
-    protected static final int COSTE_HABILIDAD = 20;
-    protected static final int COSTE_HABILIDAD2 = 20;
-    protected static final int COSTE_HABILIDAD3 = 20;
-    protected static final int ORO_INICIAL = 0;
-    protected static final int VIDA_MAX_DEFECTO = 100;
-    protected static final int PUNTOS_DE_NIVEL = 20;
-    protected static final int NIVEL_ESTADISTICAS_INCIALES = 1;
-    protected static final int SUBIDA_NIVEL = 100;
-    private static int contadorPersonajes = 1;
+    protected static final int ENERGIA_MAX = 100; // Maxima energia del personaje cuando se instancia
+    protected static final int COSTE_HABILIDAD = 20; // Este es el coste por uso de habilidad elemental
+    protected static final int ORO_INICIAL = 0; // El oro con el que empieza el jugador
+    protected static final int VIDA_MAX_DEFECTO = 100; // El max de vida del personaje
+    protected static final int PUNTOS_DE_NIVEL = 20; // Los puntos que tienes para gastarte en las estadisticas de tu
+                                                     // personaje
+    protected static final int NIVEL_ESTADISTICAS_INCIALES = 1; // Todas las estadisticas comienzan en 1
+    protected static final int SUBIDA_NIVEL = 100; // La xp necesaria para subir un nivel
+    private static int contadorPersonajes = 1; // Contador de personajes
 
     // Atributos
     protected String nombre;
@@ -24,29 +23,30 @@ public class Personaje implements Comparable<Personaje> {
     protected boolean estaVivo;
     protected int oro;
     protected Arma arma;
-    protected boolean esNPC;
+    protected boolean esNPC; // saber si es npc
+    protected Elemento elemento;
+    protected int xp;
+    protected int nivel;
+    // Atributos de las estadisticas
     protected int fuerza;
     protected int velocidad;
     protected int defensa;
     protected int suerte;
     protected int puntosDeNivel;
-    protected Elemento elemento;
-    protected int xp;
-    protected int nivel;
 
-    // Constructor por defecto
+    // Constructor por defecto sin parametros
     public Personaje() {
         this("Jugador " + contadorPersonajes++, 1, false);
         this.elemento = Elemento.FUEGO;
     }
 
-    // Constructor con nombre propio
+    // Constructor con un parametro , en este caso nombre
     public Personaje(String nombre) {
         this(nombre, 1, false);
         this.elemento = Elemento.FUEGO;
     }
 
-    // Constructor completo
+    // Constructor completo por defecto
     public Personaje(String nombre, int nivel, boolean esNPC) {
         this.nombre = nombre;
         this.vida = VIDA_MAX_DEFECTO;
@@ -63,15 +63,16 @@ public class Personaje implements Comparable<Personaje> {
         this.elemento = Elemento.FUEGO; // Por defecto el personaje es tipo fuego
         this.nivel = nivel;
         this.xp = 0;
-        if (esNPC) {
+        if (esNPC) { // Si es npc tiene estadisticas aleatorias
             distribuirPuntosAleatorio();
-        } else {
+        } else { // Si no es npc le vamos a preguntar en que se quiere gastar sus puntos de
+                 // estadisticas
             establecerEstadisticas();
         }
     }
-    
+
     public Personaje(Personaje jugador) {
-    	this.nombre = jugador.getNombre();
+        this.nombre = jugador.getNombre();
         this.vida = jugador.getVida();
         this.energia = jugador.getEnergia();
         this.estaVivo = jugador.isVivo();
@@ -86,81 +87,88 @@ public class Personaje implements Comparable<Personaje> {
         this.elemento = jugador.getElemento();
         this.nivel = jugador.getNivel();
         this.xp = 0;
-    	
+
     }
-    
+
+    // Hacemos el compareTo con otro personaje para poder compararlos y devolver una
+    // respuesta para los posteriores ataques
+
     public int compareTo(Personaje otro) {
-    	int respuesta=0;
-    	
-    	switch (this.getElemento()) {
-    	case FUEGO:
-    		if(otro.getElemento().equals(Elemento.VIDA)||otro.getElemento().equals(Elemento.VIENTO)) {
-    			respuesta=1;
-    		} else if(otro.getElemento().equals(Elemento.AGUA)||otro.getElemento().equals(Elemento.TIERRA)) {
-    			respuesta=-1;
-    		}else
-    			respuesta=0;
-            break;
-        case AGUA:
-        	if(otro.getElemento().equals(Elemento.TIERRA)||otro.getElemento().equals(Elemento.FUEGO)) {
-    			respuesta=1;
-    		} else if(otro.getElemento().equals(Elemento.VIDA)||otro.getElemento().equals(Elemento.VIENTO)) {
-    			respuesta=-1;
-    		}else
-    			respuesta=0;
-            break;
-        case TIERRA:
-        	if(otro.getElemento().equals(Elemento.VIDA)||otro.getElemento().equals(Elemento.FUEGO)) {
-    			respuesta=1;
-    		} else if(otro.getElemento().equals(Elemento.AGUA)||otro.getElemento().equals(Elemento.VIENTO)) {
-    			respuesta=-1;
-    		}else
-    			respuesta=0;
-            break;
-        case VIENTO:
-        	if(otro.getElemento().equals(Elemento.AGUA)||otro.getElemento().equals(Elemento.TIERRA)) {
-    			respuesta=1;
-    		} else if(otro.getElemento().equals(Elemento.VIENTO)||otro.getElemento().equals(Elemento.VIDA)) {
-    			respuesta=-1;
-    		}else
-    			respuesta=0;
-            break;
-        case MAGIA:
-        	if(otro.getElemento().equals(Elemento.VIENTO)) {
-    			respuesta=1;
-    		} else if(otro.getElemento().equals(Elemento.VIDA)) {
-    			respuesta=-1;
-    		}else
-    			respuesta=0;
-            break;
-        case VIDA:
-        	if(otro.getElemento().equals(Elemento.MAGIA)||otro.getElemento().equals(Elemento.AGUA)) {
-    			respuesta=1;
-    		} else if(otro.getElemento().equals(Elemento.FUEGO)||otro.getElemento().equals(Elemento.TIERRA)) {
-    			respuesta=-1;
-    		}else
-    			respuesta=0;
-            break;
-    	}
-    	
-    	return respuesta;
+        int respuesta = 0;
+
+        switch (this.getElemento()) {
+            case FUEGO:
+                if (otro.getElemento().equals(Elemento.VIDA) || otro.getElemento().equals(Elemento.VIENTO)) {
+                    respuesta = 1;
+                } else if (otro.getElemento().equals(Elemento.AGUA) || otro.getElemento().equals(Elemento.TIERRA)) {
+                    respuesta = -1;
+                } else
+                    respuesta = 0;
+                break;
+            case AGUA:
+                if (otro.getElemento().equals(Elemento.TIERRA) || otro.getElemento().equals(Elemento.FUEGO)) {
+                    respuesta = 1;
+                } else if (otro.getElemento().equals(Elemento.VIDA) || otro.getElemento().equals(Elemento.VIENTO)) {
+                    respuesta = -1;
+                } else
+                    respuesta = 0;
+                break;
+            case TIERRA:
+                if (otro.getElemento().equals(Elemento.VIDA) || otro.getElemento().equals(Elemento.FUEGO)) {
+                    respuesta = 1;
+                } else if (otro.getElemento().equals(Elemento.AGUA) || otro.getElemento().equals(Elemento.VIENTO)) {
+                    respuesta = -1;
+                } else
+                    respuesta = 0;
+                break;
+            case VIENTO:
+                if (otro.getElemento().equals(Elemento.AGUA) || otro.getElemento().equals(Elemento.TIERRA)) {
+                    respuesta = 1;
+                } else if (otro.getElemento().equals(Elemento.VIENTO) || otro.getElemento().equals(Elemento.VIDA)) {
+                    respuesta = -1;
+                } else
+                    respuesta = 0;
+                break;
+            case MAGIA:
+                if (otro.getElemento().equals(Elemento.VIENTO)) {
+                    respuesta = 1;
+                } else if (otro.getElemento().equals(Elemento.VIDA)) {
+                    respuesta = -1;
+                } else
+                    respuesta = 0;
+                break;
+            case VIDA:
+                if (otro.getElemento().equals(Elemento.MAGIA) || otro.getElemento().equals(Elemento.AGUA)) {
+                    respuesta = 1;
+                } else if (otro.getElemento().equals(Elemento.FUEGO) || otro.getElemento().equals(Elemento.TIERRA)) {
+                    respuesta = -1;
+                } else
+                    respuesta = 0;
+                break;
+        }
+
+        return respuesta;
     }
-    
+
+    // Verificamos los elementos de los 2 personajes que se enfrentan para saber si
+    // alguno le hace potenciador a otro
     public double calcularPotenciador(Personaje otro) {
-    	int comparacion=compareTo(otro);
-    	double potenciador=1.;
-    	if(comparacion==1) {
-    		potenciador=1.2;
-    	}else if(comparacion==-1) {
-    		potenciador=0.8;
-    	}
-    	
-    	return potenciador;
+        int comparacion = compareTo(otro);
+        double potenciador = 1.;
+        if (comparacion == 1) {
+            potenciador = 1.2;
+        } else if (comparacion == -1) {
+            potenciador = 0.8;
+        }
+
+        return potenciador;
     }
-    
+
+    // Calculamos el dano que se hace dependiendo el nivel y el multiplicador que se
+    // le aplica
     public int calcularDanoNivel(int danoBase) {
         int danoFinal = 0;
-        danoFinal = danoBase+this.getNivel()-1;
+        danoFinal = danoBase + this.getNivel() - 1;
         return danoFinal;
     }
 
@@ -171,14 +179,14 @@ public class Personaje implements Comparable<Personaje> {
     }
 
     public int getPuntosDeNivel() {
-		return puntosDeNivel;
-	}
+        return puntosDeNivel;
+    }
 
-	public int getNivel() {
-		return nivel;
-	}
+    public int getNivel() {
+        return nivel;
+    }
 
-	public int getVida() {
+    public int getVida() {
         return vida;
     }
 
@@ -229,13 +237,12 @@ public class Personaje implements Comparable<Personaje> {
     public Arma getArma() {
         return arma;
     }
-    
 
     public void setEnergia(int energia) {
-		this.energia = energia;
-	}
+        this.energia = energia;
+    }
 
-	public void setArma(Arma arma) {
+    public void setArma(Arma arma) {
         if (arma != null) {
             this.arma = arma;
         }
@@ -249,7 +256,7 @@ public class Personaje implements Comparable<Personaje> {
         return esNPC;
     }
 
-    // Intenta gastar energia si tiene
+    // Intenta gastar energia si tiene, sino nos devuelve un mensaje de error
     protected boolean intentarGastarEnergia() {
         if (this.energia >= COSTE_HABILIDAD) {
             this.energia -= COSTE_HABILIDAD;
@@ -261,11 +268,12 @@ public class Personaje implements Comparable<Personaje> {
         return false;
     }
 
-    // Recupera energia
+    // Recupera energia cuando se le llame a esta funcion, se recuperara la vida
+    // indicada y se mostrara por pantalla
     public void recuperarEnergia(int cantidad) {
         if (cantidad <= 0)
             return;
-        
+
         int energiaAnterior = this.energia;
         this.energia = Math.min(this.energia + cantidad, ENERGIA_MAX);
         int energiaRecuperada = this.energia - energiaAnterior;
@@ -274,7 +282,7 @@ public class Personaje implements Comparable<Personaje> {
                 " de energía. Total: " + this.energia + "/" + ENERGIA_MAX);
     }
 
-    // El personaje recibe dano
+    // El personaje recibe dano y lo muestra por pantalla
     public void recibirDanio(int cantidad) {
         if (!estaVivo) {
             System.out.println(this.nombre + " ya está muerto, déjalo en paz.");
@@ -296,13 +304,14 @@ public class Personaje implements Comparable<Personaje> {
             System.out.println(this.nombre + " recibe " + cantidad +
                     " de daño! (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
         }
-        
-        if(this.vida<=0) {
-        	this.estaVivo=false;
+
+        if (this.vida <= 0) {
+            this.estaVivo = false;
         }
     }
 
-    //
+    // Con este metodo permitimos que un personaje recupere vida y que se muestre
+    // por pantalla
     public void curarVida(int cantidad) {
         if (!estaVivo) {
             System.out.println(this.nombre + " está muerto y no puede curarse.");
@@ -320,58 +329,59 @@ public class Personaje implements Comparable<Personaje> {
                 " HP. (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
     }
 
-    // Permite equipar armas desde cofres
+    // Permite cambiar nuestras armas actuales por otras nuevas que aparezcan en
+    // cofres
     public String equiparArma(Arma nuevaArma) {
-    	String log="";
-    	
+        String log = "";
+
         if (nuevaArma == null) {
             System.out.println("Error: El arma no es válida.");
-            log="\t\t-Ha habido un error.";
+            log = "\t\t-Ha habido un error.";
         }
-        
+
         else if (esNPC) {
-        	if(this.arma.compareTo(nuevaArma)==-1) {
-	            this.arma = nuevaArma;
-	            System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-	            log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();
-        	} else {
-        		log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
-        	}
+            if (this.arma.compareTo(nuevaArma) == -1) {
+                this.arma = nuevaArma;
+                System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+                log = "\t\t-" + this.nombre + " ahora lleva " + nuevaArma.getNombre();
+            } else {
+                log = "\t\t-" + this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
+            }
         }
-        
+
         else {
-	
-	        // Preguntar a los jugadores si quieren cambiar el arma
-	        String respuesta;
-	        do {
-	            System.out.println("\nTe ha tocado esta "+nuevaArma.toString());
-	            System.out.println("\nTu actual "+this.arma.toString());
-	            
-	            System.out.print("\n¿Quieres cambiar tu arma? (Si/No): ");
-	            
-	            respuesta = sc.next().toUpperCase().substring(0, 1);
-	            sc.nextLine();
-	
-	            switch (respuesta) {
-	                case "S":
-	                    this.arma = nuevaArma;
-	                    System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
-	                    log="\t\t-"+this.nombre + " ahora lleva " + nuevaArma.getNombre();
-	                    break;
-	                case "N":
-	                    System.out.println(this.nombre + " mantiene su arma actual: " + this.arma.getNombre());
-	                    log="\t\t-"+this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
-	                    break;
-	                default:
-	                    System.out.println("Respuesta no válida. Escribe Si o No.");
-	            }
-	        } while (!respuesta.equals("S") && !respuesta.equals("N"));
+
+            // Preguntar a los jugadores si quieren cambiar el arma
+            String respuesta;
+            do {
+                System.out.println("\nTe ha tocado esta " + nuevaArma.toString());
+                System.out.println("\nTu actual " + this.arma.toString());
+
+                System.out.print("\n¿Quieres cambiar tu arma? (Si/No): ");
+
+                respuesta = sc.next().toUpperCase().substring(0, 1);
+                sc.nextLine();
+
+                switch (respuesta) {
+                    case "S":
+                        this.arma = nuevaArma;
+                        System.out.println(this.nombre + " ahora lleva " + nuevaArma.getNombre());
+                        log = "\t\t-" + this.nombre + " ahora lleva " + nuevaArma.getNombre();
+                        break;
+                    case "N":
+                        System.out.println(this.nombre + " mantiene su arma actual: " + this.arma.getNombre());
+                        log = "\t\t-" + this.nombre + " mantiene su arma actual: " + this.arma.getNombre();
+                        break;
+                    default:
+                        System.out.println("Respuesta no válida. Escribe Si o No.");
+                }
+            } while (!respuesta.equals("S") && !respuesta.equals("N"));
         }
-        
-        return log+"\n";
+
+        return log + "\n";
     }
 
-    // Agrega oro a el inventario del jugador
+    // Agregamos el oro indicado a el inventario de nuestro jugador
     public void anadirOro(int cantidad) {
         if (cantidad > 0) {
             this.oro += cantidad;
@@ -380,6 +390,7 @@ public class Personaje implements Comparable<Personaje> {
         }
     }
 
+    // Hacemos el metodo toString personalizado
     @Override
     public String toString() {
 
@@ -416,7 +427,10 @@ public class Personaje implements Comparable<Personaje> {
                 textoTipo);
     }
 
+    // Todo el metodo para establecer las estadisticas de un humano
     public void establecerEstadisticas() {
+        // Mostramos las opciones que tiene actualmente y los puntos
+        // que tiene disponibles de asignacion de puntos para las estadisticas
 
         System.out.println("\n=== ESTABLECER ESTADÍSTICAS ===");
         System.out.println("Tienes " + this.puntosDeNivel + " puntos para distribuir");
@@ -428,6 +442,8 @@ public class Personaje implements Comparable<Personaje> {
         System.out.println();
 
         while (this.puntosDeNivel > 0) {
+            // Mostramos las opciones que tiene para mejorar y los puntos
+            // que tiene disponibles en cada iteracion de asignacion de puntos
             System.out.println("Puntos restantes: " + this.puntosDeNivel);
             System.out.println("\n¿Qué estadística deseas mejorar?");
             System.out.println("1. Fuerza (actual: " + this.fuerza + ")");
@@ -440,21 +456,24 @@ public class Personaje implements Comparable<Personaje> {
             boolean entradaValida = false;
 
             while (!entradaValida) {
-                System.out.print("Elige una opción: ");
+                System.out.print("Elige una opción: "); // Pedimos la opcion
                 if (sc.hasNextInt()) {
                     opcion = sc.nextInt();
                     sc.nextLine();
-                    if (opcion >= 0 && opcion <= 4) {
+                    if (opcion >= 0 && opcion <= 4) {// Vemos si es valida
                         entradaValida = true;
                     } else {
-                        System.out.println("Opción no válida. Elige entre 0 y 4.");
+                        System.out.println("Opción no válida. Elige entre 0 y 4."); // Si no es valida imprimimos
                     }
                 } else {
-                    System.out.println("Por favor, introduce un número.");
+                    System.out.println("Por favor, introduce un número."); // Si no es un numero
                     sc.nextLine();
                 }
             }
 
+            // Confirmacion de que se quiere marchar del menu sin haber gastado todos, los
+            // puntos
+            // Si por el contrario ya los ha gastado todos directamente sale
             if (opcion == 0) {
                 if (this.puntosDeNivel > 0) {
                     System.out.println();
@@ -521,14 +540,20 @@ public class Personaje implements Comparable<Personaje> {
             }
         }
 
-        mostrarEstadisticas();
+        mostrarEstadisticas(); // Llamamos al metodo que nos muestra las estadisticas asociadas a nuestro
+                               // personaje
     }
 
+    // Este metodo esta dedicado a la distribucion aleatoria de los puntos de las
+    // estadisticas para los bots
     public void distribuirPuntosAleatorio() {
+        // Si los puntos son menos de 0 directamente nos saca
         if (this.puntosDeNivel <= 0) {
             return;
         }
 
+        // Imprimimos por pantalla lo que la maquina esta haciendo para la distribucion
+        // de puntos de forma automatica
         System.out.println(this.nombre + " (NPC) distribuye sus " + this.puntosDeNivel + " puntos...");
 
         int puntosRestantes = this.puntosDeNivel;
@@ -558,9 +583,10 @@ public class Personaje implements Comparable<Personaje> {
         // Resetear puntos de nivel
         this.puntosDeNivel = 0;
 
-        mostrarEstadisticas();
+        mostrarEstadisticas(); // LLamamos a el metodo que nos muestra las estadisticas de nuestros bots
     }
 
+    // Metodo para imprimir por pantalla las estadisticas actuales de los personajes
     public void mostrarEstadisticas() {
 
         System.out.println("\n=== ESTADÍSTICAS FINALES ===");
@@ -572,6 +598,8 @@ public class Personaje implements Comparable<Personaje> {
         System.out.println("============================\n");
     }
 
+    // Metodo para poder ganar experiencia y para imprimir por pantalla esta subida
+    // de xp
     public void ganarXP(int cantidad) {
         if (cantidad > 0) {
             xp += cantidad;
