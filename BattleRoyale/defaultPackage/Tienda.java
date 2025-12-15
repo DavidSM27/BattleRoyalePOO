@@ -137,8 +137,8 @@ public class Tienda {
 			System.out.println("Tu oro: " + p.getOro() + " 🪙");
 			System.out.println("Tu vida actual: " + p.getVida() + " HP ❤️\n");
 			
-			System.out.println("[1] Pocion de curacion pequeña ( +" + CURACION_PEQUENA + " HP) 🧪 --> " + COSTO_CURACION_PEQUENA + " oro");
-			System.out.println("[2] Pocion de curacion grande ( +" + CURACION_GRANDE + " HP) ⚗️ --> " + COSTO_CURACION_GRANDE + " oro");
+			System.out.println("[1] Pocion de curacion grande ( +" + CURACION_GRANDE + " HP) ⚗️ --> " + COSTO_CURACION_GRANDE + " oro");
+			System.out.println("[2] Pocion de curacion pequeña ( +" + CURACION_PEQUENA + " HP) 🧪 --> " + COSTO_CURACION_PEQUENA + " oro");
 			System.out.println("[0] Volver");
 			System.out.println("============================\n");
 			System.out.println("¿Cual desea comprar?\n");
