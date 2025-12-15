@@ -54,11 +54,11 @@ public class Partida {
 	protected int numeroJugadores() {
         int jugadores = 0;
         
-        System.out.println("¿Cuantos personas van a jugar?");
+        System.out.println("¿Cuantos maestros del portal van a jugar?");
         do {
-    			System.out.print("Jugadores: ");
+    			System.out.print("Maestros del portal: ");
     			while(!sc.hasNextInt()) {
-    				System.out.println("Por favor, ingresa un número válido.");
+    				System.out.println("\nPor favor, ingresa un número válido.\n");
     				System.out.print("Jugadores: ");
     				sc.next();
     			}
@@ -66,7 +66,7 @@ public class Partida {
     			jugadores = sc.nextInt();
         		sc.nextLine();
         		if(jugadores < 1) {
-        			System.out.println("Debe haber al menos 1 jugador");
+        			System.out.println("\nDebe haber al menos 1 Maestros del portal\n");
         		}
         } while(jugadores < 1);
     		System.out.println();
@@ -77,12 +77,12 @@ public class Partida {
 	protected int numeroNPCs() {
         int npcs = 0;
         
-        System.out.println("¿Cuantos bots van a jugar?");
+        System.out.println("¿Cuantos Skylanders van a jugar?");
         do {
-    			System.out.print("Bots: ");
+    			System.out.print("Skylanders: ");
     			while(!sc.hasNextInt()) {
     				System.out.println("Por favor, ingresa un número válido.");
-    				System.out.print("Bots: ");
+    				System.out.print("Skylanders: ");
     				sc.next();
     			}
     			
@@ -90,7 +90,7 @@ public class Partida {
         		sc.nextLine();
         		
         		if(npcs < 1) {
-        			System.out.println("Debe haber al menos 1 bot");
+        			System.out.println("Debe haber al menos 1 Skylanders");
         		}
         } while(npcs < 1);
     		System.out.println();
