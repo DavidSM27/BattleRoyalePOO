@@ -25,9 +25,12 @@ public class BatallaIndividual extends Batalla<Personaje> {
         	LOG += "\t-Turno " + turno + "\n";
             System.out.println("\n========== TURNO " + turno++ + " ==========");
             
+            System.out.println();
             mostrarEstadoBatalla(jugador1);
             mostrarEstadoBatalla(jugador2);
             ejecutarTurno(jugador1, jugador2);
+            
+        	System.out.println();
             mostrarEstadoBatalla(jugador1);
             mostrarEstadoBatalla(jugador2);
             ejecutarTurno(jugador2, jugador1);
@@ -46,7 +49,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
     }
 
     private void ejecutarTurno(Personaje jugador1, Personaje jugador2) {
-        System.out.println("\n========== TURNO " + turno  + " ==========");
+        System.out.println("\n\n========== TURNO " + turno  + " ==========");
 
         if (jugador1.isVivo() && this.enCurso) {
             System.out.println("\n=== Turno de " + jugador1.getNombre() + " ===");

@@ -57,10 +57,14 @@ public class BatallaEquipo extends Batalla<Equipo>{
         if (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
         	EQUIPO1_SIZE=equipo1.size();
         	
+        	System.out.println("\n\n=== Turno de " + equipo1.getNombre() + " ===");
+        	
         	for(int i=0; i < EQUIPO1_SIZE; i++) {
-        		
+            	
         		if (equipo2.areVivos() && this.enCurso) {
-		            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
+		            if(EQUIPO1_SIZE!=1) {
+		            	System.out.println("\n\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
+		            }
 		            
 		            if(EQUIPO1_SIZE!=1 || equipo2.size()!=1) {
 		            	// Si los un equipo tiene >1 miembros o los dos equipos tienen >1 miembros
@@ -78,7 +82,6 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void mostrarEstadoBatalla(Equipo equipo1) {
-    	
     	System.out.println(equipo1.getNombre()+":");
     	for (int i = 0; i < equipo1.size(); i++) {
 	        System.out.println("\t"+equipo1.get(i).getNombre() + ": " +
@@ -136,6 +139,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void ejecutarAccion(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
+    	// para que haga un enter
+    	System.out.println();
+    	
         if (atacante.isNPC()) {
             ejecutarAccionNPC(atacante, objetivo);
         } else {

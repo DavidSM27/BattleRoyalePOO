@@ -43,7 +43,7 @@ public class Equipo {
 			return miembros.get(i);
 		}else {
 			System.out.println("Pon un numero del 0 al " + (miembros.size()-1));
-			return null;
+			return miembros.get(miembros.size()-1);
 		}
 	}
 
