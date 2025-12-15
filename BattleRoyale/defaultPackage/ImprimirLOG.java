@@ -1,64 +1,48 @@
 package defaultPackage;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ImprimirLOG {
 	
-	private static final Scanner sc=new Scanner(System.in);
-	private static final String RUTA_FICHERO="\\files\\LOG.txt";
+	private String RUTA_FICHERO=GuardarLOG.getRutaFichero();
 	private static final String DIRECTORIO_ACTUAL=System.getProperty("user.dir");
 	
-	private File fichero;
+	private String texto;
 	
 	public ImprimirLOG() {
 		try {
-			this.fichero=new File(DIRECTORIO_ACTUAL+RUTA_FICHERO);
-			boolean existe=this.fichero.exists();
-			if(existe) {
-				System.out.print("¿Quieres sobreescribir el fichero \"" + this.fichero.getName() + "? (Si/No) ");
-				
-				if(sc.next().toUpperCase().substring(0, 1).equals("S")) {
-					new FileWriter(this.fichero, !existe).close();
-				}
-				sc.nextLine();
-			}else {
-				new FileWriter(this.fichero, existe).close();
-			}
+			this.leerFichero(RUTA_FICHERO);
 			
-		}catch (IOException e) {
-			
+		} catch (FileNotFoundException e) {
+			System.out.println("\tError, fichero \""+RUTA_FICHERO+"\"no encontrado.");
+			System.out.println("\t"+e.getMessage());
+		} catch (IOException e) {
+			System.out.println("\tError, con los permisos del fichero o algo relacionado con el fichero.");
+			System.out.println("\t"+e.getMessage()+"\n");
 		}
 	}
 	
-	@SuppressWarnings("resource")
-	public void imprimir(String log) throws ErrorEscrituraException {
-		try {
-			FileWriter fileWriter=new FileWriter(this.fichero, true);
-			PrintWriter impresora=new PrintWriter(fileWriter);
-			
-			impresora.append(log);
-			
-			impresora.close();
-		}catch (IOException e) {
-			throw new ErrorEscrituraException("Fallo al intentar guardar la partina en disco");
-		}
+	private void leerFichero(String ruta) throws IOException {
+		File archivo=new File(DIRECTORIO_ACTUAL+ruta);
+		String linea;
+		
+		BufferedReader bf=new BufferedReader(new FileReader(archivo));
+		
+		while((texto+=bf.readLine())!=null);
+		
+		bf.close();
 	}
 	
-	public static void main(String[] args) {
-		try {
-			ImprimirLOG imprimirLOG=new ImprimirLOG();
-			imprimirLOG.imprimir("asdasdjgnilwhjefj\n");
-		}catch (ErrorEscrituraException e) {
-			
-			System.out.println(e.getMessage());
-			
-			if(e.getCause()!=null) {
-				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
-			}
-		}
+	public String getTexto() {
+		return texto;
 	}
 }

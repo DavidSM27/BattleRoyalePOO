@@ -1,6 +1,5 @@
 package defaultPackage;
 
-import java.util.Collections;
 import java.util.Scanner;
 
 public class BatallaEquipo extends Batalla<Equipo>{
@@ -28,7 +27,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
         System.out.println(equipo1.getNombre() + " VS " + equipo2.getNombre());
 
         while (equipo1.areVivos() && equipo2.areVivos() && this.enCurso) {
-            LOG += "\t-Turno " + turno + "\n";
+            LOG += "\n\t-Turno " + turno + "\n";
             System.out.println("\n\n========== TURNO " + turno + " ==========");
             
             // Para que mostrarEstadoBatalla imprima los equipos siempre de la mismo orden
@@ -66,16 +65,19 @@ public class BatallaEquipo extends Batalla<Equipo>{
         	EQUIPO1_SIZE=equipo1.size();
         	
         	System.out.print("\n=== TURNO DEL EQUIPO " + equipo1.getNombre().toUpperCase() + " ===");
+        	LOG+="\n\t\t=== TURNO DEL EQUIPO " + equipo1.getNombre().toUpperCase() + " ===";
         	
         	for(int i=0; i < EQUIPO1_SIZE; i++) {
             	
         		if (equipo2.areVivos() && this.enCurso) {
 		            System.out.println("\n=== Turno de " + equipo1.get(i).getNombre() + " ===");
-		            
+		            LOG+="\n\t\t=== Turno de " + equipo1.get(i).getNombre() + "===\n";
 		            mostrarEstadoBatalla(EQUIPO1_AUX);
 		            mostrarEstadoBatalla(EQUIPO2_AUX);
+		            LOG+="\n";
 		            System.out.println();
 		            elegirOponente(equipo1.get(i), equipo2, equipo1);
+		            LOG+="\n";
 		            
 		            equipo2.quitarMuertos();
 		            
@@ -213,11 +215,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void ataqueBasico(Personaje atacante, Personaje objetivo) {
-        int danoBase = (int) (atacante.getArma().getAtaque() + (atacante.getFuerza() * 2));
-        int danoFinal = Math.max(1, danoBase - (objetivo.getDefensa() / 2));
+        int danoBase =(int) Math.round(atacante.getArma().getAtaque());
 
         System.out.println(atacante.getNombre() + " ataca con " + atacante.getArma().getNombre() + "!");
-        objetivo.recibirDanio(danoFinal);
+        objetivo.recibirDanio(danoBase);
     }
 
     private void usarHabilidad(Personaje atacante, Personaje objetivo, Equipo equipoAtacante) {
@@ -484,6 +485,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
         System.out.println("Ganador: " + ganador.getNombre());
         System.out.println("Perdedor: " + perdedor.getNombre());
         System.out.println("==========================================\n");
+        
+        LOG+="\n ========== BATALLA TERMINADA ==========\n";
+		LOG+="Ganador: " + ganador.getNombre()+"\n";
+		LOG+="Perdedor: " + perdedor.getNombre()+"\n\n";
     }
     
     protected void terminarPorHuida(Equipo cagon) {
@@ -492,5 +497,8 @@ public class BatallaEquipo extends Batalla<Equipo>{
         System.out.println("\n ========== BATALLA TERMINADA ==========");
         System.out.println(cagon.getNombre()+" huyó de la batalla!");
         System.out.println("==========================================\n");
+        
+        LOG+="\n ========== BATALLA TERMINADA ==========\n";
+		LOG+=cagon.getNombre()+" huyó de la batalla!\n\n";
     }
 }

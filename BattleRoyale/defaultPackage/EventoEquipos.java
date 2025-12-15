@@ -24,7 +24,7 @@ public class EventoEquipos extends ListaArmas {
 	
 	private List<Equipo> equipos;
 	private Tienda tienda;
-	private ImprimirLOG imprimirLOG;
+	private GuardarLOG guardarLOG;
 	private BatallaEquipo batallaEquipo;
 	
 	public EventoEquipos(List<Equipo> equipos){
@@ -33,7 +33,7 @@ public class EventoEquipos extends ListaArmas {
 		Collections.shuffle(this.equipos);
 		
 		this.tienda=new Tienda();
-		this.imprimirLOG=new ImprimirLOG();
+		this.guardarLOG=new GuardarLOG();
 		this.batallaEquipo=new BatallaEquipo();
 		
 		TAMAÑO_DE_EQUIPO=this.equipos.get(0).size();
@@ -54,7 +54,7 @@ public class EventoEquipos extends ListaArmas {
 		System.out.println("El equipo ganador es: "+this.equipos.getFirst().getNombre());
 		
 		try{
-			this.imprimirLOG.imprimir("\n\nEl equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
+			this.guardarLOG.imprimir("\n\nEl equipo ganador es: "+this.equipos.getFirst().getNombre()+"\n\n");
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}
@@ -118,7 +118,7 @@ public class EventoEquipos extends ListaArmas {
 			System.out.println("\n");
 		}
 		try{
-			this.imprimirLOG.imprimir(LOG);
+			this.guardarLOG.imprimir(LOG);
 		}catch (ErrorEscrituraException e) {
 			System.out.println(e.getMessage());
 		}

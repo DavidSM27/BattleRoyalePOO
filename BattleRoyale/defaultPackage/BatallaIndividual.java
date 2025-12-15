@@ -23,7 +23,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
         System.out.println(jugador1.getNombre() + " VS " + jugador2.getNombre());
 
         while (jugador1.isVivo() && jugador2.isVivo() && this.enCurso) {
-        	LOG += "\t-Turno " + turno + "\n";
+        	LOG += "\n\t-Turno " + turno + "\n";
             System.out.println("\n\n========== TURNO " + turno + " ==========");
             
             
@@ -49,7 +49,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
             terminar(jugador2, jugador1);
             otorgarRecompensas(jugador2, jugador1);
         }
-
+        
         return LOG;
     }
 
@@ -60,8 +60,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
             
             mostrarEstadoBatalla(PERSONAJE1_AUX);
             mostrarEstadoBatalla(PERSONAJE2_AUX);
+            LOG+="\n";
             System.out.println();
             ejecutarAccion(jugador1, jugador2);
+            LOG+="\n";
         }
         
         Utilidades.sleep(3000);
@@ -160,11 +162,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
     }
 
     private void ataqueBasico(Personaje atacante, Personaje objetivo) {
-        int danoBase = (int) (atacante.getArma().getAtaque() + (atacante.getFuerza() * 2));
-        int danoFinal = Math.max(1, danoBase - (objetivo.getDefensa() / 2));
+        int danoBase =(int) Math.round(atacante.getArma().getAtaque());
 
         System.out.println(atacante.getNombre() + " ataca con " + atacante.getArma().getNombre() + "!");
-        objetivo.recibirDanio(danoFinal);
+        objetivo.recibirDanio(danoBase);
     }
 
     private void usarHabilidad(Personaje atacante, Personaje objetivo) {
@@ -424,6 +425,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
 		System.out.println("Ganador: " + ganador.getNombre());
 		System.out.println("Perdedor: " + perdedor.getNombre());
 		System.out.println("==========================================\n");
+		
+		LOG+="\n ========== BATALLA TERMINADA ==========\n";
+		LOG+="Ganador: " + ganador.getNombre()+"\n";
+		LOG+="Perdedor: " + perdedor.getNombre()+"\n\n";
 	}
     
     protected void terminarPorHuida(Personaje cagon) {
@@ -432,6 +437,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
 		System.out.println("\n ========== BATALLA TERMINADA ==========");
 		System.out.println(cagon.getNombre()+" huyó de la batalla!");
 		System.out.println("==========================================\n");
+		
+		LOG+="\n ========== BATALLA TERMINADA ==========\n";
+		LOG+=cagon.getNombre()+" huyó de la batalla!\n\n";
 	}
     
 }

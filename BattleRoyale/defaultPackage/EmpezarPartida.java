@@ -15,6 +15,23 @@ public class EmpezarPartida {
 	
 	public EmpezarPartida() {
 		establecerModo();
+		
+		String respuesta;
+		do {
+			System.out.print("¿Quieres imprimir el LOG? (SI/NO) ");
+			respuesta = sc.next().toUpperCase().substring(0, 1);
+			sc.nextLine();
+			
+			if(!respuesta.equals("S") && !respuesta.equals("N")) {
+				System.out.println("\nPor favor introduce SI o NO\n");
+			}
+			
+		} while(!respuesta.equals("S") && !respuesta.equals("N"));
+		
+		if(respuesta.equals("S")) {
+			ImprimirLOG log=new ImprimirLOG();
+			System.out.println(log.getTexto());
+		}
 	}
 
 	private void establecerModo() {
