@@ -89,10 +89,4 @@ public class ListaNombresEquipos {
 	public String toString() {
 		return "ListaNombresNPC [nombres=" + nombres + "]";
 	}
-
-	public static void main(String[] args) {
-		ListaNombresEquipos nombres=new ListaNombresEquipos();
-		
-		System.out.println(nombres);
-	}
 }

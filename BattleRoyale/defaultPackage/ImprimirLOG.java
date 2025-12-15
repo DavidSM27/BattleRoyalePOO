@@ -44,9 +44,4 @@ public class ImprimirLOG {
 	public String getTexto() {
 		return texto;
 	}
-	
-	public static void main(String[] args) {
-		ImprimirLOG imprimirLOG= new ImprimirLOG();
-		System.out.println(imprimirLOG.getTexto());
-	}
 }

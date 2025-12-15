@@ -50,18 +50,4 @@ public class GuardarLOG {
 			throw new ErrorEscrituraException("Fallo al intentar guardar la partina en disco");
 		}
 	}
-	
-	public static void main(String[] args) {
-		try {
-			GuardarLOG imprimirLOG=new GuardarLOG();
-			imprimirLOG.imprimir("asdasdjgnilwhjefj\n");
-		}catch (ErrorEscrituraException e) {
-			
-			System.out.println(e.getMessage());
-			
-			if(e.getCause()!=null) {
-				System.out.println("Causa Tecnica: "+e.getCause().getMessage());
-			}
-		}
-	}
 }

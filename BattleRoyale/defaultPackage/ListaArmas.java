@@ -88,10 +88,4 @@ public class ListaArmas {
 		}
 		return "";
 	}
-
-	public static void main(String[] args) {
-		ListaArmas armas=new ListaArmas();
-		
-		System.out.println(armas);
-	}
 }
