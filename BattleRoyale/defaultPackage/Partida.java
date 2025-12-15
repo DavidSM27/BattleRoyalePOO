@@ -44,29 +44,28 @@ public class Partida {
 	    nNPCs = numeroNPCs();
 	    
 	    System.out.println("\n=== CONFIGURACIÓN COMPLETA ===");
-        System.out.println("Modo: " + modoJuego);
-        System.out.println("Jugadores reales: " + nJugadores);
-        System.out.println("NPCs: " + nNPCs);
-        System.out.println("Total de jugadores: " + (nJugadores + nNPCs));    	
+        System.out.println("Modo de juego: " + modoJuego);
+        System.out.println("Maestros del Portal: " + nJugadores);
+        System.out.println("Skyalanders: " + nNPCs);
+        System.out.println("Jugadores totales: " + (nJugadores + nNPCs));    	
 	}
-	
 	
 	protected int numeroJugadores() {
         int jugadores = 0;
         
-        System.out.println("¿Cuantos maestros del portal van a jugar?");
+        System.out.println("¿Cuantos Maestros de Portal van a jugar?");
         do {
     			System.out.print("Maestros del portal: ");
     			while(!sc.hasNextInt()) {
     				System.out.println("\nPor favor, ingresa un número válido.\n");
-    				System.out.print("Jugadores: ");
+    				System.out.print("Maestros de Portal: ");
     				sc.next();
     			}
     			
     			jugadores = sc.nextInt();
         		sc.nextLine();
         		if(jugadores < 1) {
-        			System.out.println("\nDebe haber al menos 1 Maestros del portal\n");
+        			System.out.println("\nDebe haber al menos 1 Maestros del Portal\n");
         		}
         } while(jugadores < 1);
     		System.out.println();
@@ -118,18 +117,18 @@ public class Partida {
         		personajesVivos.add(npc);
         	} catch (Exception e) {
         		this.nNPCs = this.jugadoresNPCs.size();
-        		System.out.println("Numero de NPCs alcanzado, los NPCs creados an sido " + nNPCs);
+        		System.out.println("Numero de Skylanders alcanzado, los Skylanders creados an sido " + nNPCs);
         	}
         }
         
-        System.out.println("✅ " + personajes.size() + " personajes creados.");
+        System.out.println("✅ " + personajes.size() + " jugadores creados.");
     }
     
 	private Personaje crearJugador(int numero) {
         int elemento;
         boolean esNpc = false;
     		
-    	System.out.println("\n--- Jugador " + numero + " ---");
+    	System.out.println("\n--- Maestro del Portal " + numero + " ---");
         
         // 1. PEDIR NOMBRE
         System.out.print("Nombre: ");
@@ -200,10 +199,10 @@ public class Partida {
     }
     
     private void mostrarResumenPersonajes() {
-        System.out.println("\n=== LISTA DE PERSONAJES ===");
+        System.out.println("\n=== LISTA DE JUGADORES ===");
         for(int i = 0; i < personajes.size(); i++) {
             Personaje p = personajes.get(i);
-            String tipo = jugadoresHumanos.contains(p) ? "[Humano]" : "[NPC]";
+            String tipo = jugadoresHumanos.contains(p) ? "[Maestro del Portal]" : "[Skylander]";
             System.out.println((i+1) + ". " + p.getNombre() + " " + tipo + " " + p.getElemento());
             
         }

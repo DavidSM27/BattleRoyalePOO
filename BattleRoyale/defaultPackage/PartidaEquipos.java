@@ -41,27 +41,27 @@ public class PartidaEquipos extends Partida{
 		nEquiposNPCs = numeroEquiposNPCs();
 		
 		System.out.println("\n✅ Configuración:");
-        System.out.println("   Equipos humanos: " + nEquiposHumanos);
-        System.out.println("   Equipos NPCs: " + nEquiposNPCs);
+        System.out.println("   Equipos Maestros del Portal: " + nEquiposHumanos);
+        System.out.println("   Equipos Skylanders: " + nEquiposNPCs);
         System.out.println("   Tamaño equipo: " + tamEquipo + " jugadores");
 	}
 	
 	private int numeroEquiposJugadores() {
 		int equiposJugadores = 0;
         
-        System.out.println("¿Cuantos equipos de jugadores van a haber?");
+        System.out.println("¿Cuantos equipos de Maestros de Portal van a haber?");
         do {
-    			System.out.print("Equipos de jugadores: ");
+    			System.out.print("Equipos de Maestros de Portal: ");
     			while(!sc.hasNextInt()) {
     				System.out.println("Por favor, ingresa un número válido.");
-    				System.out.print("Equipos de jugadores: ");
+    				System.out.print("Equipos de Maestros de Portal: ");
     				sc.next();
     			}
     			
     			equiposJugadores = sc.nextInt();
         		sc.nextLine();
         		if(equiposJugadores < 1) {
-        			System.out.println("Debe haber al menos 1 equipo de jugadores");
+        			System.out.println("Debe haber al menos 1 equipo de Maestros de Portal");
         		}
         } while(equiposJugadores < 1);
     		System.out.println();
@@ -72,19 +72,19 @@ public class PartidaEquipos extends Partida{
 	private int numeroEquiposNPCs() {
 		int equiposNPCs = 0;
         
-        System.out.println("¿Cuantos equipos de NPCs van a haber?");
+        System.out.println("¿Cuantos equipos de Skylanders van a haber?");
         do {
-    			System.out.print("Equipos de NPCs: ");
+    			System.out.print("Equipos de Skylanders: ");
     			while(!sc.hasNextInt()) {
     				System.out.println("Por favor, ingresa un número válido.");
-    				System.out.print("Equipos de NPCs: ");
+    				System.out.print("Equipos de Skylanders: ");
     				sc.next();
     			}
     			
     			equiposNPCs = sc.nextInt();
         		sc.nextLine();
         		if(equiposNPCs < 1) {
-        			System.out.println("Debe haber al menos 1 equipo de NPCs");
+        			System.out.println("Debe haber al menos 1 equipo de Skylanders");
         		}
         } while(equiposNPCs < 1);
     		System.out.println();
@@ -95,7 +95,7 @@ public class PartidaEquipos extends Partida{
 	@Override
 	protected int numeroJugadores() {
 	    nJugadores = nEquiposHumanos * tamEquipo;
-	    System.out.println("\nSe crearán " + nJugadores + " jugadores humanos");
+	    System.out.println("\nSe crearán " + nJugadores + " Maestros de Portal");
 	    
 	    return nJugadores;
 	}
@@ -103,7 +103,7 @@ public class PartidaEquipos extends Partida{
 	@Override
 	protected int numeroNPCs() {
 	    nNPCs = nEquiposNPCs * tamEquipo;
-	    System.out.println("Se crearán " + nNPCs + " NPCs");
+	    System.out.println("Se crearán " + nNPCs + " Skylanders");
 	    
 	    return nNPCs;
 	}
@@ -132,11 +132,11 @@ public class PartidaEquipos extends Partida{
 			System.out.println(equipo.getNombre() + ": " + equipo.getNombres());
 		 }
 		 
-		 System.out.println("EQUIPOS DE NPCs\n");
+		 System.out.println("EQUIPOS DE Skylanders\n");
 		 for (int i = 0; i < nEquiposNPCs; i++) {
 			if(jugadoresNPCs.size()<tamEquipo) {
 				nEquiposNPCs=equipos.size()-nEquiposHumanos;
-				System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de jugadores NPCs.");
+				System.out.println("El numero de equipos de Skylanders creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos de Skylanders.");
 			}else if(this.listaNombresEquipos.getNombres().size()!=0) {
 				try {
 					Equipo equipo = new Equipo(this.listaNombresEquipos.getRandomNombres(), true);
@@ -153,7 +153,7 @@ public class PartidaEquipos extends Partida{
 					System.out.println(e.getMessage());
 					e.printStackTrace();
 					nEquiposNPCs=equipos.size()-nEquiposHumanos;
-					System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos.");
+					System.out.println("El numero de equipos de Skylanders creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos de Skylanders.");
 				}
 			}
 		 }
@@ -178,9 +178,9 @@ public class PartidaEquipos extends Partida{
 	    
 	    System.out.println("\n\n=== TOTALES ===");
 	    System.out.println("Equipos: " + equipos.size());
-	    System.out.println("Equipos humanos: " + nEquiposHumanos);
-	    System.out.println("Equipos NPCs: " + nEquiposNPCs);
-	    System.out.println("Personajes totales: " + (nJugadores + nNPCs));
+	    System.out.println("Equipos Maestros de Portal: " + nEquiposHumanos);
+	    System.out.println("Equipos Skylanders: " + nEquiposNPCs);
+	    System.out.println("Jugadores totales: " + (nJugadores + nNPCs));
 	    System.out.println("\n");
 	}
 	
