@@ -125,7 +125,7 @@ public class Evento extends ListaArmas {
 			System.out.print("La Ronda "+RONDA+" ha terminado. Pulsa ENTER para continuar.");
 			sc.nextLine();
 		}
-		System.out.println("\n");
+		System.out.print("\n");
 	}
 	
 	private void opciones(Integer opcion) {
