@@ -454,10 +454,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
     	int oro=(int)(boteOro/ganador.size());
     	int xp=(int)(boteXP/ganador.size());
     	
-    	
     	System.out.println("Los que han sobrevivido:");
     	for (int i = 0; i < ganador.size(); i++) {
-    		System.out.println(ganador.get(i).getNombre());
+    		System.out.println("\t-"+ganador.get(i).getNombre());
     		ganador.get(i).anadirOro(oro);
         	ganador.get(i).ganarXP(xp);
     	}
