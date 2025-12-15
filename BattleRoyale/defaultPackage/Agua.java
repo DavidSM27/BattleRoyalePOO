@@ -2,9 +2,9 @@ package defaultPackage;
 
 public class Agua extends Personaje {
 	
-	 private static final int DAÑO_HABILIDAD1=22;
-	 private static final int DAÑO_HABILIDAD2=8;
-	 private static final int CURACION_HABILIDAD = 25;
+	 private static final int DAÑO_HABILIDAD1=32;
+	 private static final int DAÑO_HABILIDAD2=20;
+	 private static final int CURACION_HABILIDAD = 26;
 	 
     public Agua(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);

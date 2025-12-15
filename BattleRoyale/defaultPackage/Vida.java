@@ -2,8 +2,8 @@ package defaultPackage;
 
 public class Vida extends Personaje {
 
-	private static final int DAÑO_HABILIDAD1=14;
-	private static final int DAÑO_HABILIDAD2=16;
+	private static final int DAÑO_HABILIDAD1=20;
+	private static final int DAÑO_HABILIDAD2=13;
 	private static final int CURACION_HABILIDAD = 50;
 
     public Vida(String nombre, int nivel, boolean esNPC) {
