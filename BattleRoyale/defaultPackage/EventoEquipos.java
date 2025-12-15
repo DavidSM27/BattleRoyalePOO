@@ -227,7 +227,7 @@ public class EventoEquipos extends ListaArmas {
 		if(!equipos.get(I).areNPCs()) {
 			System.out.println("¿Quien quiere abrir el cofre?");
 			for (int i = 0; i < equipos.get(I).size(); i++) {
-				System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre());
+				System.out.println("\t["+ (i+1) +"] "+equipos.get(I).get(i).getNombre());
 			}
 			do {
 	        	System.out.print("Elegir a alguien: ");
@@ -243,18 +243,17 @@ public class EventoEquipos extends ListaArmas {
 		}else {
 			for (int i = 0; i < equipos.get(I).size(); i++) {
 				System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre()+equipos.get(I).get(i).getArma());
-				System.out.println("n");
 			}
 			opcion=equipos.get(I).quienTienePeorArma();
-			System.out.println("m");
+			System.out.println();
 		}
-		
+		System.out.println("z"+opcion);
 		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(opcion).getNombre()+" a abierto un cofre\n";
-		
+		System.out.println("m");
 		Double suerte=( ((double)equipos.get(I).get(opcion).getSuerte()-1)*5. /100.)+1.;
 		Double random=Math.random();
 		Integer aux=0;
-		System.out.println("a");
+		
 		if(random<0.05*suerte) {
 			aux=0;
 		}else if(random<0.2*suerte) {
@@ -271,17 +270,17 @@ public class EventoEquipos extends ListaArmas {
 		if(mejora>2.0) {
 			mejora=2.0;
 		}
-		System.out.println("b");
+		
 		Arma arma=new Arma(super.armas.get(aux).getNombre(),
 						   super.armas.get(aux).getAtaqueSinMejora(),
 						   mejora);
 		
-		System.out.println("c");
+		
 		EventoEquipos.LOG+=this.equipos.get(I).get(opcion).equiparArma(arma);
 		// A menor mejora más oro y a mayor menor oro
-		System.out.println("d");
+		
 		this.equipos.get(I).get(opcion).setOro((int) (ORO_TOTAL_COFRE*(3-mejora)) );
-		System.out.println("e");
+		
 	}
 	
 	private void tienda() {

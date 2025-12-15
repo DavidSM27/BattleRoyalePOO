@@ -99,7 +99,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
         if(!atacante.isNPC()) {
         	System.out.println("¿A quien quieres atacar?");
     		for (int i = 0; i < equipo.size(); i++) {
-    			System.out.println("["+ (i+1) +"] "+equipo.get(i).getNombre());
+    			System.out.println("\t["+ (i+1) +"] "+equipo.get(i).getNombre());
     		}
     		do{
     			while (!sc.hasNextInt()) {
