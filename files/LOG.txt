@@ -35,3 +35,48 @@ Ronda 3
 		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 16 de daño
 
 
+Ronda 1
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Pistola
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Arco
+
+
+Ronda 2
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Shuriken
+
+
+	-Jugador 2 intenta buscar un Cofre
+		-Jugador 2 a abierto un cofre
+		-Jugador 2 ahora lleva Arco
+
+
+Ronda 3
+	-Jugador 1 intenta buscar un Cofre
+		-Jugador 1 a abierto un cofre
+		-Jugador 1 ahora lleva Fusil
+
+
+	-Jugador 2 intenta buscar una Batalla
+	-Turno 1
+		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 24 de daño
+		-Jugador 1 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 2
+		-Jugador 2 ha usado su ataque normal a Jugador 1 y le ha hecho 24.0 de daño
+		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 54.0 de daño
+	-Turno 3
+		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 24 de daño
+		-Jugador 1 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
+	-Turno 4
+		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 20 de daño
+
+
+
+El ganador es: Jugador 2
+
