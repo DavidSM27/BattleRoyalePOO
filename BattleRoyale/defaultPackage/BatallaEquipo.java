@@ -125,6 +125,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 	    			System.out.println("\t("+ (i+1) +") "+equipo.get(i).getNombre());
 	    		}
 	    		do{
+	    			System.out.print("Elige a alguien: ");
 	    			while (!sc.hasNextInt()) {
 		                System.out.println("Opción no válida.");
 		                sc.next();
