@@ -179,7 +179,7 @@ public class Personaje implements Comparable<Personaje> {
     	System.out.println("\t-Debil contra el Fuago y la Tierra.");
     	Utilidades.sleep(1000);
     }
-    
+   
     // Verificamos los elementos de los 2 personajes que se enfrentan para saber si
     // alguno le hace potenciador a otro
     public double calcularPotenciador(Personaje otro) {
