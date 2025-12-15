@@ -34,8 +34,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
 
         if (jugador1.isVivo()) {
             terminar(jugador1, jugador2);
+            otorgarRecompensas(jugador1, jugador2);
         } else if (jugador2.isVivo()){
             terminar(jugador2, jugador1);
+            otorgarRecompensas(jugador1, jugador2);
         }
 
         return LOG;

@@ -17,7 +17,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
         turno = 1;
         LOG = "";
         iniciar();
-
+        
+        Equipo equipo1Aux=new Equipo(equipo1);
+        Equipo equipo2Aux=new Equipo(equipo2);
+        
         System.out.println(equipo1.getNombre() + " VS " + equipo2.getNombre());
         System.out.println();
 
@@ -34,8 +37,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
 
         if (equipo1.areVivos()) {
         	terminar(equipo1, equipo2);
+        	otorgarRecompensas(equipo1, equipo2Aux);
         } else if (equipo2.areVivos()){
         	terminar(equipo2, equipo1);
+        	otorgarRecompensas(equipo2, equipo1Aux);
         }
 
         return LOG;
@@ -407,18 +412,27 @@ public class BatallaEquipo extends Batalla<Equipo>{
         return Math.random() < probabilidad;
     }
 
-    private void otorgarRecompensas(Personaje ganador, Personaje perdedor) {
-        int oroGanado = perdedor.getOro();
-        int xpGanado = (int) Math
-                .round((Math.random() * 50. + 100.) * (((double) (ganador.getSuerte() - 1)) * 5. / 100. + 1));
-
-        ganador.anadirOro(oroGanado);
-        ganador.ganarXP(xpGanado);
-
-        System.out.println("Felicidades por resultar victorioso en tu batalla: ");
-        System.out.println("\n RECOMPENSAS:");
-        System.out.println("  +" + oroGanado + " oro ");
-        System.out.println("  +" + xpGanado + " XP ");
+    private void otorgarRecompensas(Equipo ganador, Equipo perdedor) {
+    	for (int i = 0, j=0; i < ganador.size() || j < perdedor.size(); i++, j++) {
+    		if(i >= ganador.size()) {
+    			i=0;
+    		}
+    		if(j >= perdedor.size()) {
+    			j=0;
+    		}
+    		
+	        int oroGanado = perdedor.get(j).getOro();
+	        int xpGanado = (int) Math
+	                .round((Math.random() * 50. + 100.) * (((double) (ganador.get(i).getSuerte() - 1)) * 5. / 100. + 1));
+	
+	        ganador.get(i).anadirOro(oroGanado);
+	        ganador.get(i).ganarXP(xpGanado);
+	
+	        System.out.println("Felicidades por resultar victorioso en tu batalla: ");
+	        System.out.println("\n RECOMPENSAS:");
+	        System.out.println("  +" + oroGanado + " oro ");
+	        System.out.println("  +" + xpGanado + " XP ");
+    	}
     }
     
     protected void terminar(Equipo ganador, Equipo perdedor) {

@@ -14,6 +14,12 @@ public class Equipo {
 		this.sonNPCs=sonNPCs;
 	}
 	
+	public Equipo(Equipo equipo) {
+		this.nombre = equipo.getNombre();
+		this.miembros = equipo.miembros;
+		this.sonNPCs=equipo.areNPCs();
+	}
+	
 	public void add(Personaje p) {
 		miembros.add(p);
 	}
