@@ -13,15 +13,20 @@ public class Partida {
 	protected Integer nJugadores;
 	protected Integer nNPCs;
 	
-	protected List<Personaje> personajes = new ArrayList<>();
-	protected List<Personaje> personajesVivos = new ArrayList<>();
-	protected List<Personaje> jugadoresHumanos = new ArrayList<>();
-	protected List<Personaje> jugadoresNPCs = new ArrayList<>();
+	protected List<Personaje> personajes;
+	protected List<Personaje> personajesVivos;
+	protected List<Personaje> jugadoresHumanos;
+	protected List<Personaje> jugadoresNPCs;
 	
 	private ListaNombres nombreNPC;
 	
 	public Partida(String modoJuego){
 		this.modoJuego = modoJuego;
+		
+		this.personajes = new ArrayList<Personaje>();
+		this.personajesVivos = new ArrayList<Personaje>();
+		this.jugadoresHumanos = new ArrayList<Personaje>();
+		this.jugadoresNPCs = new ArrayList<Personaje>();
 		
 		this.nombreNPC = new ListaNombres("Nombres_Jugadores.csv");
 	}	
