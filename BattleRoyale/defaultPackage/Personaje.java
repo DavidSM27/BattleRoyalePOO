@@ -290,10 +290,7 @@ public class Personaje implements Comparable<Personaje> {
             System.out.println(this.nombre + " ya está muerto, déjalo en paz.");
             return;
         }
-
-        if (cantidad <= 0)
-            return;
-
+        
         this.vida -= cantidad;
 
         if (this.vida <= 0) {
@@ -305,10 +302,6 @@ public class Personaje implements Comparable<Personaje> {
         } else {
             System.out.println(this.nombre + " recibe " + cantidad +
                     " de daño! (Vida: " + this.vida + "/" + VIDA_MAX_DEFECTO + ")");
-        }
-
-        if (this.vida <= 0) {
-            this.estaVivo = false;
         }
     }
 

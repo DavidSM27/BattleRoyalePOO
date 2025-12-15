@@ -78,3 +78,137 @@ Ronda 5
 		-Chamán Orco mantiene su arma actual: Fusil
 
 
+Ronda 1
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco ahora lleva Shuriken
+
+
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Dr. Strange a abierto un cofre
+		-Dr. Strange ahora lleva Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Hechicero Oscuro a abierto un cofre
+		-Hechicero Oscuro ahora lleva Arco
+
+
+Ronda 2
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Jinete de Lobo a abierto un cofre
+		-Jinete de Lobo ahora lleva RPG
+
+
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Hulk a abierto un cofre
+		-Hulk ahora lleva Shuriken
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Espíritu del Agua a abierto un cofre
+		-Espíritu del Agua ahora lleva Shuriken
+
+
+Ronda 3
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco ahora lleva Fusil
+
+
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Dr. Strange a abierto un cofre
+		-Dr. Strange ahora lleva Pistola
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Hechicero Oscuro a abierto un cofre
+		-Hechicero Oscuro ahora lleva Shuriken
+
+
+Ronda 4
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco mantiene su arma actual: Fusil
+
+
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Dr. Strange a abierto un cofre
+		-Dr. Strange ahora lleva Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Espíritu del Agua a abierto un cofre
+		-Espíritu del Agua ahora lleva Fusil
+
+
+Ronda 5
+	-El equipoLa Horda han intentan buscar un Cofre
+		-Chamán Orco a abierto un cofre
+		-Chamán Orco mantiene su arma actual: Fusil
+
+
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Dr. Strange a abierto un cofre
+		-Dr. Strange mantiene su arma actual: Arco
+
+
+	-El equipoLos Nigromantes han intentan buscar un Cofre
+		-Hechicero Oscuro a abierto un cofre
+		-Hechicero Oscuro mantiene su arma actual: Shuriken
+
+
+Ronda 6
+	-El equipoLa Horda han intentan buscar una Batalla
+	-Turno 1
+			-Chamán Orco: 100 HP  100 Energía
+			-Jinete de Lobo: 100 HP  100 Energía
+			-Hechicero Oscuro: 100 HP  100 Energía
+			-Espíritu del Agua: 100 HP  100 Energía
+		-Chamán Orco ha usado una habilidad Apreton de Corazón y ha infligido 19 de daño
+			-Chamán Orco: 100 HP  80 Energía
+			-Jinete de Lobo: 100 HP  100 Energía
+			-Hechicero Oscuro: 100 HP  100 Energía
+			-Espíritu del Agua: 81 HP  100 Energía
+		-Jinete de Lobo ha usado su ataque normal a Espíritu del Agua y le ha hecho 68.0 de daño
+			-Chamán Orco: 100 HP  80 Energía
+			-Jinete de Lobo: 100 HP  100 Energía
+			-Hechicero Oscuro: 100 HP  100 Energía
+			-Espíritu del Agua: 9 HP  100 Energía
+		-Hechicero Oscuro ha usado una habilidad Lanzar Bola de Fuego y ha infligido 15 de daño
+			-Chamán Orco: 85 HP  80 Energía
+			-Jinete de Lobo: 100 HP  100 Energía
+			-Hechicero Oscuro: 100 HP  80 Energía
+			-Espíritu del Agua: 9 HP  100 Energía
+		-Espíritu del Agua ha usado su ataque normal a Jinete de Lobo y le ha hecho 51.0 de daño
+	-Turno 2
+			-Chamán Orco: 85 HP  80 Energía
+			-Jinete de Lobo: 32 HP  100 Energía
+			-Hechicero Oscuro: 100 HP  80 Energía
+			-Espíritu del Agua: 9 HP  100 Energía
+		-Chamán Orco ha usado su ataque normal a Espíritu del Agua y le ha hecho 60.0 de daño
+			-Chamán Orco: 85 HP  80 Energía
+			-Jinete de Lobo: 32 HP  100 Energía
+			-Hechicero Oscuro: 100 HP  80 Energía
+		-Jinete de Lobo ha usado una habilidad Lanzar Torbellino y ha infligido 22 de daño
+	-Turno 1
+			-Hechicero Oscuro: 78 HP  80 Energía
+			-Chamán Orco: 85 HP  80 Energía
+		-Hechicero Oscuro ha usado su ataque normal a Chamán Orco y le ha hecho 40.0 de daño
+			-Hechicero Oscuro: 78 HP  80 Energía
+			-Chamán Orco: 35 HP  80 Energía
+		-Chamán Orco ha usado una habilidad Explotar Sangre y ha infligido 22 de daño
+	-Turno 2
+			-Hechicero Oscuro: 56 HP  80 Energía
+			-Chamán Orco: 35 HP  70 Energía
+		-Hechicero Oscuro ha usado una habilidad Lanzar Bola de Fuego y ha infligido 15 de daño
+			-Hechicero Oscuro: 56 HP  60 Energía
+			-Chamán Orco: 20 HP  70 Energía
+		-Chamán Orco ha usado su ataque normal a Hechicero Oscuro y le ha hecho 60.0 de daño
+
+
+	-El equipoLos Vengadores han intentan buscar un Cofre
+		-Dr. Strange a abierto un cofre
+		-Dr. Strange mantiene su arma actual: Arco
+
+
