@@ -137,6 +137,8 @@ public class Partida {
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
         
+        
+        System.out.println();
         Personaje.imprimirDebilidades();
         
         // 2. ELEGIR ELEMENTO

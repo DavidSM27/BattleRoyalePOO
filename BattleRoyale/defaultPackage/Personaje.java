@@ -156,19 +156,19 @@ public class Personaje implements Comparable<Personaje> {
     	
     	System.out.println("Fuego:");
     	System.out.println("\t-Fuerte contra la Vida y el Viento.");
-    	System.out.println("\t-Debil contra el Agua y la Tierra.\n");
+    	System.out.println("\t-Debil contra el Agua y la Tierra.");
     	Utilidades.sleep(1000);
     	System.out.println("Agua:");
     	System.out.println("\t-Fuerte contra la Tierra y el Fuego.");
-    	System.out.println("\t-Debil contra la Vida y el Viento.\n");
+    	System.out.println("\t-Debil contra la Vida y el Viento.");
     	Utilidades.sleep(1000);
     	System.out.println("Tierra:");
     	System.out.println("\t-Fuerte contra la Vida y el Fuego.");
-    	System.out.println("\t-Debil contra el Agua y el Viento.\n");
+    	System.out.println("\t-Debil contra el Agua y el Viento.");
     	Utilidades.sleep(1000);
     	System.out.println("Viento:");
     	System.out.println("\t-Fuerte contra el Agua y la Tierra.");
-    	System.out.println("\t-Debil contra la Magia y el Fuego.\n");
+    	System.out.println("\t-Debil contra la Magia y el Fuego.");
     	Utilidades.sleep(1000);
     	System.out.println("Magia:");
     	System.out.println("\t-Fuerte contra el Viento.");
@@ -176,7 +176,7 @@ public class Personaje implements Comparable<Personaje> {
     	Utilidades.sleep(1000);
     	System.out.println("Vida:");
     	System.out.println("\t-Fuerte contra la Magia y el Agua.");
-    	System.out.println("\t-Debil contra el Fuago y la Tierra.\n");
+    	System.out.println("\t-Debil contra el Fuago y la Tierra.");
     	Utilidades.sleep(1000);
     }
     
