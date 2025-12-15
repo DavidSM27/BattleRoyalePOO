@@ -34,6 +34,10 @@ public class Equipo {
 		miembros.add(p);
 	}
 	
+	public void shuffle() {
+		Collections.shuffle(miembros);
+	}
+	
 	public int size() {
 		return miembros.size();
 	}

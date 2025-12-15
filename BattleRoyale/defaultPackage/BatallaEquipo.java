@@ -43,6 +43,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
             
             ejecutarTurno(equipo2, equipo1);
             
+            equipo1.shuffle();
+            equipo2.shuffle();
+            
             turno++;
         }
 
