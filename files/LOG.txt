@@ -1,94 +1,76 @@
 Ronda 1
-	-El equipoLos Nigromantes han intentan buscar un Cofre
-		-Hechicero Oscuro a abierto un cofre
-		-Hechicero Oscuro ahora lleva Fusil
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman ahora lleva Shuriken
 
 
-	-El equipoLos Vengadores han intentan buscar un Cofre
-		-Dr. Strange a abierto un cofre
-		-Dr. Strange ahora lleva Fusil
-
-
-	-El equipoLa Horda han intentan buscar un Cofre
-		-Chamán Orco a abierto un cofre
-		-Chamán Orco ahora lleva Arco
+	-Eye Brawl intenta buscar un Cofre
+		-Eye Brawl a abierto un cofre
+		-Eye Brawl ahora lleva Shuriken
 
 
 Ronda 2
-	-El equipoLos Nigromantes han intentan buscar un Cofre
-		-Espíritu del Agua a abierto un cofre
-		-Espíritu del Agua ahora lleva Arco
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman ahora lleva Shuriken
 
 
-	-El equipoLos Vengadores han intentan buscar un Cofre
-		-Hulk a abierto un cofre
-		-Hulk ahora lleva Fusil
-
-
-	-El equipoLa Horda han intentan buscar un Cofre
-		-Jinete de Lobo a abierto un cofre
-		-Jinete de Lobo ahora lleva Arco
+	-Eye Brawl intenta buscar un Cofre
+		-Eye Brawl a abierto un cofre
+		-Eye Brawl ahora lleva Arco
 
 
 Ronda 3
-	-El equipoLos Nigromantes han intentan buscar un Cofre
-		-Espíritu del Agua a abierto un cofre
-		-Espíritu del Agua ahora lleva Fusil
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman mantiene su arma actual: Shuriken
 
 
-	-El equipoLos Vengadores han intentan buscar una Batalla
+	-Eye Brawl intenta buscar una Batalla
+
 	-Turno 1
-			-Dr. Strange: 100 HP  100 Energía
-			-Hulk: 100 HP  100 Energía
-			-Chamán Orco: 100 HP  100 Energía
-			-Jinete de Lobo: 100 HP  100 Energía
-		-Dr. Strange ha usado su ataque normal a Jinete de Lobo y le ha hecho 51.0 de daño
-			-Dr. Strange: 100 HP  100 Energía
-			-Hulk: 100 HP  100 Energía
-			-Chamán Orco: 100 HP  100 Energía
-			-Jinete de Lobo: 46 HP  100 Energía
-		-Hulk ha usado una habilidad Terremoto y ha infligido 18 de daño
-			-Dr. Strange: 100 HP  100 Energía
-			-Hulk: 100 HP  80 Energía
-			-Chamán Orco: 100 HP  100 Energía
-			-Jinete de Lobo: 28 HP  100 Energía
-		-Chamán Orco ha usado una habilidad Apreton de Corazón y ha infligido 13 de daño
-			-Dr. Strange: 87 HP  100 Energía
-			-Hulk: 100 HP  80 Energía
-			-Chamán Orco: 100 HP  80 Energía
-			-Jinete de Lobo: 28 HP  100 Energía
-		-Jinete de Lobo ha usado una habilidad Lanzar Torbellino y ha infligido 22 de daño
-	-Turno 2
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 100 HP  80 Energía
-			-Chamán Orco: 100 HP  80 Energía
-			-Jinete de Lobo: 28 HP  80 Energía
-		-Dr. Strange ha usado su ataque normal a Jinete de Lobo y le ha hecho 51.0 de daño
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 100 HP  80 Energía
-			-Chamán Orco: 100 HP  80 Energía
-		-Hulk ha usado una habilidad Terremoto y ha infligido 26 de daño
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 100 HP  60 Energía
-			-Chamán Orco: 74 HP  80 Energía
-		-Chamán Orco ha usado su ataque normal a Hulk y le ha hecho 30.0 de daño
-	-Turno 3
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 66 HP  60 Energía
-			-Chamán Orco: 74 HP  80 Energía
-		-Dr. Strange ha usado su ataque normal a Chamán Orco y le ha hecho 51.0 de daño
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 66 HP  60 Energía
-			-Chamán Orco: 21 HP  80 Energía
-		-Hulk ha usado una habilidad Lanzar Roca y ha infligido 19 de daño
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 66 HP  50 Energía
-			-Chamán Orco: 2 HP  80 Energía
-		-Chamán Orco ha usado una habilidad Explotar Sangre y ha infligido 14 de daño
-	-Turno 4
-			-Dr. Strange: 65 HP  100 Energía
-			-Hulk: 52 HP  50 Energía
-			-Chamán Orco: 2 HP  70 Energía
-		-Dr. Strange ha usado una habilidad Mar de Lava y ha infligido 2 de daño
+			-Eye Brawl: 100 HP  100 Energía
+			-Kerman: 100 HP  100 Energía
 
+		-Eye Brawl ha usado una habilidad Congelar Enemigo y ha infligido 18 de daño
+
+			-Eye Brawl: 100 HP  90 Energía
+			-Kerman: 82 HP  100 Energía
+
+		-Kerman ha atacado a Eye Brawl con Shuriken y ha hecho 40.0 de daño
+
+
+	-Turno 2
+			-Eye Brawl: 60 HP  90 Energía
+			-Kerman: 82 HP  100 Energía
+
+		-Eye Brawl ha usado una habilidad Congelar Enemigo y ha infligido 18 de daño
+
+			-Eye Brawl: 60 HP  80 Energía
+			-Kerman: 64 HP  100 Energía
+
+		-Kerman ha atacado a Eye Brawl con Shuriken y ha hecho 40.0 de daño
+
+
+	-Turno 3
+			-Eye Brawl: 20 HP  80 Energía
+			-Kerman: 64 HP  100 Energía
+
+		-Eye Brawl ha usado una habilidad Lanzar Bola de Fuego y ha infligido 20 de daño
+
+			-Eye Brawl: 20 HP  60 Energía
+			-Kerman: 44 HP  100 Energía
+
+		-Kerman ha atacado a Eye Brawl con Shuriken y ha hecho 40.0 de daño
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: Kerman
+Perdedor: Eye Brawl
+
+
+
+
+
+El ganador es: Kerman
 

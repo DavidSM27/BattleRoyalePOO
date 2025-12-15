@@ -108,10 +108,10 @@ public class BatallaEquipo extends Batalla<Equipo>{
     	for (int i = 0; i < equipo1.size(); i++) {
 	        System.out.println("\t"+equipo1.get(i).getNombre() + ": " +
 	        		equipo1.get(i).getVida() + " HP  " +
-	        		equipo1.get(i).getEnergia() + " Energía");
+	        		equipo1.get(i).getEnergia() + " Energía. ["+ equipo1.get(i).getElemento() +"]");
 	        LOG+="\t\t\t-" + equipo1.get(i).getNombre() + ": " +
 	        		equipo1.get(i).getVida() + " HP  " +
-	        		equipo1.get(i).getEnergia() + " Energía\n";
+	        		equipo1.get(i).getEnergia() + " Energía. ["+ equipo1.get(i).getElemento() +"]\n";
     	}
     }
     
@@ -174,7 +174,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
             sc.nextLine();
 
             if (opcion < 1 || opcion > 4) {
-                System.out.println("Opción no válida. Elige entre 1 y 5.");
+                System.out.println("Opción no válida. Elige entre 1 y 4.");
             }
             if (opcion == 2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
                 System.out.println(atacante.getNombre() + " no tiene suficiente energía para usar habilidades!");
