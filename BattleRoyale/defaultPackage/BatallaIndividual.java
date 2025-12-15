@@ -37,7 +37,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
             otorgarRecompensas(jugador1, jugador2);
         } else if (jugador2.isVivo()){
             terminar(jugador2, jugador1);
-            otorgarRecompensas(jugador1, jugador2);
+            otorgarRecompensas(jugador2, jugador1);
         }
 
         return LOG;
@@ -280,6 +280,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 }
                 
                 atacante.setEnergia(fuego.getEnergia());
+                atacante.setVida(fuego.getVida());
                 
                 break;
             case AGUA:
@@ -299,6 +300,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 }
                 
                 atacante.setEnergia(agua.getEnergia());
+                atacante.setVida(agua.getVida());
                 
                 break;
             case TIERRA:
@@ -318,6 +320,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 }
                 
                 atacante.setEnergia(tierra.getEnergia());
+                atacante.setVida(tierra.getVida());
                 
                 break;
             case VIENTO:
@@ -337,6 +340,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 }
                 
                 atacante.setEnergia(viento.getEnergia());
+                atacante.setVida(viento.getVida());
                 
                 break;
             case MAGIA:
@@ -356,6 +360,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 }
                 
                 atacante.setEnergia(magia.getEnergia());
+                atacante.setVida(magia.getVida());
                 
                 break;
             case VIDA:
@@ -375,6 +380,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 }
                 
                 atacante.setEnergia(vida.getEnergia());
+                atacante.setVida(vida.getVida());
                 
                 break;
         }
@@ -402,10 +408,6 @@ public class BatallaIndividual extends Batalla<Personaje> {
         System.out.println("\n RECOMPENSAS:");
         System.out.println("  +" + oroGanado + " oro ");
         System.out.println("  +" + xpGanado + " XP ");
-    }
-
-    public String getLOG() {
-        return LOG;
     }
     
     protected void terminar(Personaje ganador, Personaje perdedor) {

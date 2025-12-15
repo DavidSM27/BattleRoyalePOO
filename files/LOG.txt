@@ -1,52 +1,38 @@
 Ronda 1
-	-Jugador 2 intenta buscar un Cofre
-		-Jugador 2 a abierto un cofre
-		-Jugador 2 ahora lleva Shuriken
+	-Warnado intenta buscar un Cofre
+		-Warnado a abierto un cofre
+		-Warnado ahora lleva Pistola
 
 
-	-Jugador 1 intenta buscar un Cofre
-		-Jugador 1 a abierto un cofre
-		-Jugador 1 ahora lleva Fusil
+	-fsdf intenta buscar un Cofre
+		-fsdf a abierto un cofre
+		-fsdf ahora lleva Fusil
 
 
 Ronda 2
-	-Jugador 2 intenta buscar un Cofre
-		-Jugador 2 a abierto un cofre
-		-Jugador 2 ahora lleva RPG
+	-Warnado intenta buscar un Cofre
+		-Warnado a abierto un cofre
+		-Warnado ahora lleva Arco
 
 
-	-Jugador 1 intenta buscar un Cofre
-		-Jugador 1 a abierto un cofre
-		-Jugador 1 mantiene su arma actual: Fusil
-
-
-Ronda 3
-	-Jugador 2 intenta buscar una Batalla
-	-Turno 1
-		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 20 de daño
-		-Jugador 1 ha usado una habilidad Lluvia Infernal y ha infligido 20 de daño
-	-Turno 2
-		-Jugador 2 se defiende y recupera energía
-		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 36.0 de daño
-	-Turno 3
-		-Jugador 2 ha usado su ataque normal a Jugador 1 y le ha hecho 52.0 de daño
-		-Jugador 1 ha usado una habilidad Lluvia Infernal y ha infligido 20 de daño
-	-Turno 4
-		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 16 de daño
+	-fsdf intenta buscar una Tienda
+		-fsdf a encontrado una tienda		-fsdf ha mejorado su Fusil: Mejora=1.6
+		-fsdf ha mejorado su Fusil: Mejora=1.7000000000000002
+		-fsdf ha mejorado su Fusil: Mejora=1.8000000000000003
 
 
 Ronda 1
-	-Jugador 1 intenta buscar un Cofre
-		-Jugador 1 a abierto un cofre
-		-Jugador 1 ahora lleva Pistola
+	-dsf intenta buscar un Cofre
+		-dsf a abierto un cofre
+		-dsf ahora lleva Fusil
 
 
-	-Jugador 2 intenta buscar un Cofre
-		-Jugador 2 a abierto un cofre
-		-Jugador 2 ahora lleva Arco
+	-Blast Zone intenta buscar un Cofre
+		-Blast Zone a abierto un cofre
+		-Blast Zone ahora lleva Arco
 
 
-Ronda 2
+Ronda 1
 	-Jugador 1 intenta buscar un Cofre
 		-Jugador 1 a abierto un cofre
 		-Jugador 1 ahora lleva Shuriken
@@ -54,29 +40,6 @@ Ronda 2
 
 	-Jugador 2 intenta buscar un Cofre
 		-Jugador 2 a abierto un cofre
-		-Jugador 2 ahora lleva Arco
+		-Jugador 2 ahora lleva Pistola
 
-
-Ronda 3
-	-Jugador 1 intenta buscar un Cofre
-		-Jugador 1 a abierto un cofre
-		-Jugador 1 ahora lleva Fusil
-
-
-	-Jugador 2 intenta buscar una Batalla
-	-Turno 1
-		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 24 de daño
-		-Jugador 1 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
-	-Turno 2
-		-Jugador 2 ha usado su ataque normal a Jugador 1 y le ha hecho 24.0 de daño
-		-Jugador 1 ha usado su ataque normal a Jugador 2 y le ha hecho 54.0 de daño
-	-Turno 3
-		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 24 de daño
-		-Jugador 1 ha usado una habilidad Mar de Lava y ha infligido 6 de daño
-	-Turno 4
-		-Jugador 2 ha usado una habilidad Lluvia Infernal y ha infligido 20 de daño
-
-
-
-El ganador es: Jugador 2
 

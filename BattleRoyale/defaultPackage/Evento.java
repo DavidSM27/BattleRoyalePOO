@@ -274,10 +274,17 @@ public class Evento extends ListaArmas {
 		
 		Evento.LOG+=batallaIndividual.iniciarBatalla(this.jugadores.get(I), this.jugadores.get(random));
 		
-		if(!this.jugadores.get(I).isVivo()) {
-			this.jugadores.remove((int)I);
-		}if (!this.jugadores.get(random).isVivo()) {
-			this.jugadores.remove((int)random);
+		try {
+			if(!this.jugadores.get(I).isVivo()) {
+				this.jugadores.remove((int)I);
+			}if (!this.jugadores.get(random).isVivo()) {
+				this.jugadores.remove((int)random);
+				if(random<I) {
+					I--;
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	
