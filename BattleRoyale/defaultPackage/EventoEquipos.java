@@ -317,10 +317,6 @@ public class EventoEquipos extends ListaArmas {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		if(equipos.size()!=1 && (!this.equipos.get(I).areVivos() || !this.equipos.get(random).areVivos())) {
-			System.out.println("Quedan "+ equipos.size() +" equipos con vivos.\n");
-		}
 	}
 	
 	public static void main(String[] args) {

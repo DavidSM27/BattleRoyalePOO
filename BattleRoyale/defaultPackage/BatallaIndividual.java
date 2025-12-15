@@ -131,8 +131,8 @@ public class BatallaIndividual extends Batalla<Personaje> {
                 if (intentarHuir(atacante)) {
                     LOG += "\t\t-" + atacante.getNombre() + " ha huido\n";
                     terminarPorHuida(atacante);
-                    terminar(atacante, objetivo);
-                    otorgarRecompensas(atacante, objetivo);
+                    terminar(objetivo, atacante);
+                    otorgarRecompensas(objetivo, atacante);
                 } else {
                     LOG += "\t\t-" + atacante.getNombre() + " intentó huir pero no lo consiguió\n";
                     System.out.println(atacante.getNombre() + " no pudo escapar!");

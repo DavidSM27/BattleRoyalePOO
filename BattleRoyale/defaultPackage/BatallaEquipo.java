@@ -203,11 +203,11 @@ public class BatallaEquipo extends Batalla<Equipo>{
                     LOG += "\t\t-El equipo" + equipoAtacante.getNombre() + " ha huido\n";
                     terminarPorHuida(equipoAtacante);
                     if(equipoAtacante.getNombre().equals(EQUIPO1_AUX.getNombre())) {
-                    	terminar(equipoAtacante, EQUIPO2_AUX);
-                    	otorgarRecompensas(equipoAtacante, EQUIPO2_AUX);
+                    	terminar(EQUIPO2_AUX, equipoAtacante);
+                    	otorgarRecompensas(EQUIPO2_AUX, equipoAtacante);
                     }else {
-                    	terminar(equipoAtacante, EQUIPO1_AUX);
-                    	otorgarRecompensas(equipoAtacante, EQUIPO1_AUX);
+                    	terminar(EQUIPO1_AUX, equipoAtacante);
+                    	otorgarRecompensas(EQUIPO1_AUX, equipoAtacante);
 					}
                 } else {
                     LOG += "\t\t-" + equipoAtacante.getNombre() + " intentó huir pero no lo consiguió\n";
