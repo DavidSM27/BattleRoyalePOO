@@ -258,13 +258,13 @@ public class EventoEquipos extends ListaArmas {
 		Double random=Math.random();
 		Integer aux=0;
 		
-		if(random<0.05*suerte) {
+		if(random<0.01*suerte) {
 			aux=0;
-		}else if(random<0.2*suerte) {
+		}else if(random<0.16*suerte) {
 			aux=1;
-		}else if(random<0.4*suerte) {
+		}else if(random<0.40*suerte) {
 			aux=2;
-		}else if(random<0.65*suerte) {
+		}else if(random<0.70*suerte) {
 			aux=3;
 		}else {
 			aux=4;
