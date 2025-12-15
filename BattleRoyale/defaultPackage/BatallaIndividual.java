@@ -72,10 +72,10 @@ public class BatallaIndividual extends Batalla<Personaje> {
     private void mostrarEstadoBatalla(Personaje jugador1) {
         System.out.println(jugador1.getNombre() + ": " +
                 jugador1.getVida() + " HP  " +
-                jugador1.getEnergia() + " Energía");
+                jugador1.getEnergia() + " Energía. ["+ jugador1.getElemento() +"]");
         LOG+="\t\t\t-" + jugador1.getNombre() + ": " +
         		jugador1.getVida() + " HP  " +
-        		jugador1.getEnergia() + " Energía\n";
+        		jugador1.getEnergia() + " Energía. ["+ jugador1.getElemento() +"]\n";
     }
 
     private void ejecutarAccion(Personaje atacante, Personaje objetivo) {
