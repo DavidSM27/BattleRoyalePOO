@@ -13,6 +13,7 @@ public class EventoEquipos extends ListaArmas {
 	private static Integer ORO_TOTAL_COFRE=100;
 	private static Integer COFRES_TOTALES=0;
 	private static Integer COFRES_RESTANTES=0;
+	private static Integer TAMAÑO_DE_EQUIPO=0;
 	private static final Double PROBABILIDAD_MAX_COFRES=0.9;
 	private static Integer EQUIPOS_TOTALES=0;
 	private static final Double PROBABILIDAD_BATALLA=0.9;
@@ -35,7 +36,8 @@ public class EventoEquipos extends ListaArmas {
 		this.imprimirLOG=new ImprimirLOG();
 		this.batallaEquipo=new BatallaEquipo();
 		
-		EventoEquipos.COFRES_TOTALES=this.equipos.size()*this.equipos.get(0).size()*4;
+		TAMAÑO_DE_EQUIPO=this.equipos.size()*this.equipos.get(0).size();
+		EventoEquipos.COFRES_TOTALES=TAMAÑO_DE_EQUIPO*4;
 		EventoEquipos.COFRES_RESTANTES=COFRES_TOTALES;
 		EventoEquipos.EQUIPOS_TOTALES=this.equipos.size();
 		
@@ -98,7 +100,7 @@ public class EventoEquipos extends ListaArmas {
 	            
 			}else {
 				// El NPC nunca campea, ni busca una tienda
-				if(RONDA>5) {
+				if(RONDA>TAMAÑO_DE_EQUIPO) {
 					opcion=(int)Math.round(Math.random()*2)%2;
 				}else {
 					opcion=0;
@@ -133,10 +135,10 @@ public class EventoEquipos extends ListaArmas {
 		Double prob_batalla=((double)this.equipos.size())*PROBABILIDAD_BATALLA/((double)EQUIPOS_TOTALES);
 		Double prob_tienda=0.6, prob_camp=0.9, random;
 		
-		if(RONDA<5) {
+		if(RONDA<TAMAÑO_DE_EQUIPO) {
 			prob_cofre=0.95;
 			prob_batalla=0.4;
-		}else if(RONDA==5){
+		}else if(RONDA==TAMAÑO_DE_EQUIPO){
 			prob_batalla=0.4;
 		}
 		

@@ -107,8 +107,9 @@ public class BatallaEquipo extends Batalla<Equipo>{
 		            sc.nextLine();
 	    		}while(opcion<1 || opcion>EQUIPO_OBJETIVO_SIZE);
 	    		opcion--;
+	    		
 	        }else {
-	        	opcion=(int)Math.round((Math.random()*EQUIPO_OBJETIVO_SIZE)%EQUIPO_OBJETIVO_SIZE);
+	        	opcion=(int)Math.round(((Math.random()*EQUIPO_OBJETIVO_SIZE)%EQUIPO_OBJETIVO_SIZE));
 	        }
 	        
     	}else {
