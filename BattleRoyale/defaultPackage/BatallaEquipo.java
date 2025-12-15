@@ -189,13 +189,14 @@ public class BatallaEquipo extends Batalla<Equipo>{
     }
 
     private void ejecutarAccionNPC(Personaje atacante, Personaje objetivo) {
-int decision = 0;
+    	int decision = 0;
     	
     	decision=(int) (Math.random() * 100);
     	
     	if(atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
-    		recuperarEnergia(atacante);
-            LOG += "\t\t-" + atacante.getNombre() + " recupera "+ENERGIA+" de energia\n";
+    		int energiaAnterior=atacante.getEnergia();
+            recuperarEnergia(atacante);
+            LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ (atacante.getEnergia()-energiaAnterior) +" de energía\n";
     	}else {
     		if (decision < 50) {
     			usarHabilidad(atacante, objetivo, null);
