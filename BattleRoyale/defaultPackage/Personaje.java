@@ -126,7 +126,7 @@ public class Personaje implements Comparable<Personaje> {
             case VIENTO:
                 if (otro.getElemento().equals(Elemento.AGUA) || otro.getElemento().equals(Elemento.TIERRA)) {
                     respuesta = 1;
-                } else if (otro.getElemento().equals(Elemento.VIENTO) || otro.getElemento().equals(Elemento.VIDA)) {
+                } else if (otro.getElemento().equals(Elemento.MAGIA) || otro.getElemento().equals(Elemento.FUEGO)) {
                     respuesta = -1;
                 } else
                     respuesta = 0;
@@ -151,7 +151,34 @@ public class Personaje implements Comparable<Personaje> {
 
         return respuesta;
     }
-
+    
+    public void imprimirDebilidades() {
+    	
+    	System.out.println("Fuego:");
+    	System.out.println("\t-Fuerte contra la Vida y el Viento.");
+    	System.out.println("\t-Debil contra el Agua y la Tierra.\n");
+    	
+    	System.out.println("Agua:");
+    	System.out.println("\t-Fuerte contra la Tierra y el Fuego.");
+    	System.out.println("\t-Debil contra la Vida y el Viento.\n");
+    	
+    	System.out.println("Tierra:");
+    	System.out.println("\t-Fuerte contra la Vida y el Fuego.");
+    	System.out.println("\t-Debil contra el Agua y el Viento.\n");
+    	
+    	System.out.println("Viento:");
+    	System.out.println("\t-Fuerte contra el Agua y la Tierra.");
+    	System.out.println("\t-Debil contra la Magia y el Fuego.\n");
+    	
+    	System.out.println("Magia:");
+    	System.out.println("\t-Fuerte contra el Viento.");
+    	System.out.println("\t-Debil contra la Vida.\n");
+    	
+    	System.out.println("Vida:");
+    	System.out.println("\t-Fuerte contra la Magia y el Agua.");
+    	System.out.println("\t-Debil contra el Fuago y la Tierra.\n");
+    }
+    
     // Verificamos los elementos de los 2 personajes que se enfrentan para saber si
     // alguno le hace potenciador a otro
     public double calcularPotenciador(Personaje otro) {
@@ -257,7 +284,7 @@ public class Personaje implements Comparable<Personaje> {
     public boolean isNPC() {
         return esNPC;
     }
-
+    
     // Intenta gastar energia si tiene, sino nos devuelve un mensaje de error
     protected boolean intentarGastarEnergia(int coste) {
         if (this.energia >= coste) {

@@ -32,8 +32,6 @@ public class BatallaIndividual extends Batalla<Personaje> {
             
             ejecutarTurno(jugador1, jugador2);
             
-            Utilidades.sleep(1000);
-            
             PERSONAJE1_AUX=jugador1;
             PERSONAJE2_AUX=jugador2;
             
@@ -66,7 +64,7 @@ public class BatallaIndividual extends Batalla<Personaje> {
             LOG+="\n";
         }
         
-        Utilidades.sleep(3000);
+        Utilidades.sleep(1500);
     }
 
     private void mostrarEstadoBatalla(Personaje jugador1) {
