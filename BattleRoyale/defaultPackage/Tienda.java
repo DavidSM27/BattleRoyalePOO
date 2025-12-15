@@ -45,20 +45,20 @@ public class Tienda {
 
             switch (opcion) {
                 case 1:
-	                	if(p.getArma().getMejora() < 2.0) {
-	                    menuMejorarArma(p);
-	                	}else {
-	    					System.out.println("Tu arma esta al maximo\n");
-	    				}
-	                	break;
+                	if(p.getArma().getMejora() < 2.0) {
+                    menuMejorarArma(p);
+                	}else {
+    					System.out.println("Tu arma esta al maximo\n");
+    				}
+                	break;
                 case 2:
                     menuPociones(p); 
                     break;
                 case 3:
-                		menuRecuperarMana(p);
-                		break;
+            		menuRecuperarMana(p);
+            		break;
                 case 0:
-                		Utilidades.imprimirConDelay("Vendedor: \"Vuelve pronto, viajero.\"\n", 20);
+            		Utilidades.imprimirConDelay("Vendedor: \"Vuelve pronto, viajero.\"\n", 20);
                     break;
                 default:
                     System.out.println("Opcion no valida.\n");
