@@ -143,9 +143,8 @@ public class PartidaEquipos extends Partida{
 					
 					
 					for (int j = 0; j < tamEquipo; j++) {
-						Personaje p = jugadoresNPCs.get(j);
+						Personaje p = new Personaje(this.getRandomPersonajeNPC());
 						equipo.add(p);
-						jugadoresNPCs.remove(j);
 					}
 					
 					equipos.add(equipo);

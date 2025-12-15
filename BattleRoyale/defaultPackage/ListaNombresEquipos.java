@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ListaNombresEquipos {
 	
 	private static final Scanner sc=new Scanner(System.in);
-	private static String RUTA_FICHERO="\\files\\Nombres_Jugadores.csv";
+	private static String RUTA_FICHERO="\\files\\Nombres_Equipos.csv";
 	private static final String DIRECTORIO_ACTUAL=System.getProperty("user.dir");
 	
 	

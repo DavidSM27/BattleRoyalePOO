@@ -228,21 +228,25 @@ public class EventoEquipos extends ListaArmas {
 	private void cofre() {
 		Integer opcion=0;
 		
-		System.out.println("¿Quien quiere abrir el cofre?");
-		for (int i = 0; i < equipos.get(I).size(); i++) {
-			System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre());
+		if(!equipos.get(I).areNPCs()) {
+			System.out.println("¿Quien quiere abrir el cofre?");
+			for (int i = 0; i < equipos.get(I).size(); i++) {
+				System.out.println("["+ (i+1) +"] "+equipos.get(I).get(i).getNombre());
+			}
+			do {
+	        	System.out.print("Elegir a alguien: ");
+	        	try{
+	        		opcion=sc.nextInt();
+	        	}catch(InputMismatchException e) {
+	        		System.out.println("\tError, escribe un número válido.");
+	        		opcion=0;
+	        	}
+	        	sc.nextLine();
+			} while (opcion<1 || opcion>this.equipos.get(I).size());
+			opcion--;
+		}else {
+			opcion=(int) Math.round( (Math.random()*equipos.get(I).size())%equipos.get(I).size());
 		}
-		do {
-        	System.out.print("Elegir a alguien: ");
-        	try{
-        		opcion=sc.nextInt();
-        	}catch(InputMismatchException e) {
-        		System.out.println("\tError, escribe un número válido.");
-        		opcion=0;
-        	}
-        	sc.nextLine();
-		} while (opcion<1 || opcion>this.equipos.get(I).size());
-		opcion-=1;
 		
 		EventoEquipos.LOG+="\t\t-"+this.equipos.get(I).get(opcion).getNombre()+" a abierto un cofre\n";
 		
