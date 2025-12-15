@@ -2,7 +2,9 @@ package defaultPackage;
 
 public class Tierra extends Personaje {
 
-    private int nivel;
+	private static final int DAÑO_HABILIDAD1=18;
+	private static final int DAÑO_HABILIDAD2=12;
+	private static final int CURACION_HABILIDAD = 35;
 
     public Tierra(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);
@@ -14,6 +16,18 @@ public class Tierra extends Personaje {
         else
             this.nivel = nivel;
     }
+    
+    public static int getDañoHabilidad1() {
+		return DAÑO_HABILIDAD1;
+	}
+
+	public static int getDañoHabilidad2() {
+		return DAÑO_HABILIDAD2;
+	}
+
+	public static int getCuracionHabilidad() {
+		return CURACION_HABILIDAD;
+	}
 
     public Tierra(Personaje personaje) {
         super(personaje);

@@ -1,25 +1,31 @@
 package defaultPackage;
 
 public class Viento extends Personaje {
-
-    private int nivel;
+	
+	private static final int DAÑO_HABILIDAD1=16;
+	private static final int DAÑO_HABILIDAD2=14;
+	private static final int CURACION_HABILIDAD = 40;
 
     public Viento(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);
         this.setElemento(Elemento.VIENTO);
-
-        if (nivel < 1) {
-            this.nivel = 1;
-        } else if (nivel > 5) {
-            this.nivel = 5;
-        } else {
-            this.nivel = nivel;
-        }
     }
     
     public Viento(Personaje personaje) {
     	super(personaje);
     }
+    
+    public static int getDañoHabilidad1() {
+		return DAÑO_HABILIDAD1;
+	}
+
+	public static int getDañoHabilidad2() {
+		return DAÑO_HABILIDAD2;
+	}
+
+	public static int getCuracionHabilidad() {
+		return CURACION_HABILIDAD;
+	}
 
     public void LanzarTorbellino(Personaje objetivo) {
         if (intentarGastarEnergia()) {

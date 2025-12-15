@@ -2,23 +2,30 @@ package defaultPackage;
 
 public class Vida extends Personaje {
 
-    private int nivel;
+	private static final int DAÑO_HABILIDAD1=14;
+	private static final int DAÑO_HABILIDAD2=16;
+	private static final int CURACION_HABILIDAD = 50;
 
     public Vida(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);
         this.setElemento(Elemento.VIDA);
-        if (nivel < 1) {
-            this.nivel = 1;
-        } else if (nivel > 5) {
-            this.nivel = 5;
-        } else {
-            this.nivel = nivel;
-        }
     }
     
     public Vida(Personaje personaje) {
     	super(personaje);
     }
+    
+    public static int getDañoHabilidad1() {
+		return DAÑO_HABILIDAD1;
+	}
+
+	public static int getDañoHabilidad2() {
+		return DAÑO_HABILIDAD2;
+	}
+
+	public static int getCuracionHabilidad() {
+		return CURACION_HABILIDAD;
+	}
 
     public void apretonDeCorazon(Personaje objetivo) {
         if (intentarGastarEnergia()) {
