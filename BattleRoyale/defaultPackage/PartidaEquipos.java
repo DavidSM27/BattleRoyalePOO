@@ -134,19 +134,27 @@ public class PartidaEquipos extends Partida{
 		 
 		 System.out.println("EQUIPOS DE NPCs\n");
 		 for (int i = 0; i < nEquiposNPCs; i++) {
-			
-			Equipo equipo = new Equipo(this.listaNombres.getRandomNombres(), true);
-			
-			
-			int npc = i*tamEquipo;
-			
-			for (int j = 0; j < tamEquipo; j++) {
-				Personaje p = jugadoresNPCs.get(npc + j);
-				equipo.add(p);
+			if(jugadoresNPCs.size()<tamEquipo) {
+				nEquiposNPCs=equipos.size()-nJugadores;
+				System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de jugadores NPCs.");
 			}
 			
-			equipos.add(equipo);	
-			System.out.println(equipo.getNombre() + ": " + equipo.getNombres());
+			try {
+				Equipo equipo = new Equipo(this.listaNombres.getRandomNombres(), true);
+				
+				
+				for (int j = 0; j < tamEquipo; j++) {
+					Personaje p = jugadoresNPCs.get(j);
+					equipo.add(p);
+					jugadoresNPCs.remove(j);
+				}
+				
+				equipos.add(equipo);
+				System.out.println(equipo.getNombre() + ": " + equipo.getNombres());
+			}catch (Exception e) {
+				nEquiposNPCs=equipos.size()-nJugadores;
+				System.out.println("El numero de equipos creados van a se "+nEquiposNPCs+", porque no hay mas nombres de equipos.");
+			}
 		 }
 		 
 		 System.out.println("\n✅ " + equipos.size() + " equipos creados");
