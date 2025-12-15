@@ -119,6 +119,7 @@ public class Partida {
         		jugadoresNPCs.add(npc);
         		personajes.add(npc);
         		personajesVivos.add(npc);
+        		Utilidades.sleep(1000);
         	} catch (Exception e) {
         		this.nNPCs = this.jugadoresNPCs.size();
         		System.out.println("Numero de Skylanders alcanzado, los Skylanders creados an sido " + nNPCs);

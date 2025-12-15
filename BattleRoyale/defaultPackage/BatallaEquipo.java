@@ -160,7 +160,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
 
         do {
             System.out.println("\n¿Qué quieres hacer?");
-            System.out.println("1. Ataque básico (con arma)");
+            System.out.println("1. Ataque básico (" + atacante.getArma().getNombre() + ": "+ atacante.getArma().getAtaque() + " de daño)");
             System.out.println("2. Usar habilidad elemental");
             System.out.println("3. Recuperar 50 de energia");
             System.out.println("4. Huir de la batalla");
@@ -255,33 +255,33 @@ public class BatallaEquipo extends Batalla<Equipo>{
         switch (elemento) {
 	        case FUEGO:
 	            System.out.println("1. Lluvia Infernal (" + Fuego.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
-	            System.out.println("2. Mar de Lava (" + Fuego.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
-	            System.out.println("3. Curación del Infierno (" + Fuego.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3 + "energia elemental)");
+	            System.out.println("2. Mar de Lava (" + Fuego.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ " energia elemental)");
+	            System.out.println("3. Curación del Infierno (" + Fuego.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3 + " energia elemental)");
 	            break;
 	        case AGUA:
-	            System.out.println("1. Tsunami (" + Agua.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
-	            System.out.println("2. Vorágine (" + Agua.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
-	            System.out.println("3. Curación de Poseidón (" + Agua.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
+	            System.out.println("1. Tsunami (" + Agua.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
+	            System.out.println("2. Vorágine (" + Agua.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ " energia elemental)");
+	            System.out.println("3. Curación de Poseidón (" + Agua.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ " energia elemental)");
 	            break;
 	        case TIERRA:
-	            System.out.println("1. Crear Grieta (" + Tierra.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
-	            System.out.println("2. Lanzar Roca (" + Tierra.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
-	            System.out.println("3. Sanación Rocal (" + Tierra.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
+	            System.out.println("1. Crear Grieta (" + Tierra.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
+	            System.out.println("2. Lanzar Roca (" + Tierra.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ " energia elemental)");
+	            System.out.println("3. Sanación Rocal (" + Tierra.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ " energia elemental)");
 	            break;
 	        case VIENTO:
-	            System.out.println("1. Lanzar Torbellino (" + Viento.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
-	            System.out.println("2. Soplido de Dios (" + Viento.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
-	            System.out.println("3. Curación de Eolo (" + Viento.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
+	            System.out.println("1. Lanzar Torbellino (" + Viento.getDañoHabilidad1() + " de daño, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
+	            System.out.println("2. Soplido de Dios (" + Viento.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ " energia elemental)");
+	            System.out.println("3. Curación de Eolo (" + Viento.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ " energia elemental)");
 	            break;
 	        case MAGIA:
-	            System.out.println("1. Bola de Fuego (" + Magia.getDañoHabilidad1() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
-	            System.out.println("2. Congelar Enemigo (" + Magia.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
-	            System.out.println("3. Curación Divina (" + Magia.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
+	            System.out.println("1. Bola de Fuego (" + Magia.getDañoHabilidad1() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
+	            System.out.println("2. Congelar Enemigo (" + Magia.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ " energia elemental)");
+	            System.out.println("3. Curación Divina (" + Magia.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ " energia elemental)");
 	            break;
 	        case VIDA:
-	            System.out.println("1. Apretón de Corazón (" + Vida.getDañoHabilidad1() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD1+ "energia elemental)");
-	            System.out.println("2. Explotar Sangre (" + Vida.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ "energia elemental)");
-	            System.out.println("3. Curación Médica (" + Vida.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ "energia elemental)");
+	            System.out.println("1. Apretón de Corazón (" + Vida.getDañoHabilidad1() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD1+ " energia elemental)");
+	            System.out.println("2. Explotar Sangre (" + Vida.getDañoHabilidad2() + " de daño, coste: " + Personaje.COSTE_HABILIDAD2+ " energia elemental)");
+	            System.out.println("3. Curación Médica (" + Vida.getCuracionHabilidad() + " de curacion, coste: " + Personaje.COSTE_HABILIDAD3+ " energia elemental)");
 	            break;
 	    }
         System.out.println("4. Volver");
