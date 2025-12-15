@@ -157,12 +157,10 @@ public class PartidaEquipos extends Partida{
 				}
 			}
 		 }
-		 
-		 System.out.println("\n==== " + equipos.size() + " EQUIPOS CREADOS ====");
 	 }
 	 
 	 private void mostrarResumenEquipos() {
-	    System.out.println("\n=== RESUMEN EQUIPOS ===");
+	    System.out.println("\n=== EQUIPOS ===");
 	    
 	    for (Equipo equipo : equipos) {
 	        System.out.println("\n" + equipo.getNombre());
@@ -175,17 +173,17 @@ public class PartidaEquipos extends Partida{
 	             } else {
 	             	tipo = "(Skylander)";
 	             }
-	            System.out.print(equipo.get(i).getNombre() + " " + tipo + " Elemento: " + equipo.get(i).getElemento());
+	            System.out.print("\n\t" + equipo.get(i).getNombre() + " " + tipo + " Elemento: " + equipo.get(i).getElemento());
 	            if (i < equipo.size() - 1) {
 	                System.out.print(", ");
 	            }
 	        }
 	    }
 	    
-	    System.out.println("\n\n=== TOTALES ===");
+	    System.out.println("\n\n=== RESUMEN ===");
 	    System.out.println("Equipos: " + equipos.size());
-	    System.out.println("Equipos Maestros de Portal: " + nEquiposHumanos);
-	    System.out.println("Equipos Skylanders: " + nEquiposNPCs);
+	    System.out.println("Equipos de Maestros de Portal: " + nEquiposHumanos);
+	    System.out.println("Equipos de Skylanders: " + nEquiposNPCs);
 	    System.out.println("Jugadores totales: " + (nJugadores + nNPCs));
 	    System.out.println("\n");
 	}
