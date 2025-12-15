@@ -152,7 +152,7 @@ public class Personaje implements Comparable<Personaje> {
         return respuesta;
     }
     
-    public void imprimirDebilidades() {
+    public static void imprimirDebilidades() {
     	
     	System.out.println("Fuego:");
     	System.out.println("\t-Fuerte contra la Vida y el Viento.");

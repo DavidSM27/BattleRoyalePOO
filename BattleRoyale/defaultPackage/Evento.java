@@ -293,6 +293,10 @@ public class Evento extends ListaArmas {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		if(jugadores.size()!=1 && (!this.jugadores.get(I).isVivo() || !this.jugadores.get(random).isVivo())) {
+			System.out.println("Quedan "+ jugadores.size() +" jugadores vivos.\n");
+		}
 	}
 	
 	public static void main(String[] args) {
