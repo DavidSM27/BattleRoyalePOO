@@ -173,6 +173,13 @@ public class Partida {
         return npc;
     }
     
+    protected Personaje getRandomPersonajeNPC() {
+		Integer random=(int) (Math.round(Math.random()*this.jugadoresNPCs.size()) %this.jugadoresNPCs.size());
+		Personaje nombre=this.jugadoresNPCs.get(random);
+		this.jugadoresNPCs.remove((int)random);
+		return nombre;
+	}
+    
     private Personaje crearPersonajePorElemento(String nombre, int elemento, boolean esNPC) {
         switch(elemento) {
             case 1: // FUEGO
