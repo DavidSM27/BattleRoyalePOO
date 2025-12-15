@@ -23,7 +23,7 @@ public class Arma implements Modificaciones, Comparable<Arma>{
 	public Arma(String nombre, Double ataque) {
 		this(nombre, ataque, MEJORA_DEFAULT);
 	}
-	//Constructor con 3 parametros (no se si hara falta)
+	//Constructor con 3 parametros
 	public Arma(String nombre, Double ataque, Double mejora) {
 		if(mejora>2 || mejora<1) {
 			mejora=MEJORA_DEFAULT;
