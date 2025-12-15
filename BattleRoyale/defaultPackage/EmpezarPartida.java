@@ -18,7 +18,7 @@ public class EmpezarPartida {
 		
 		String respuesta;
 		do {
-			System.out.print("¿Quieres imprimir el LOG? (SI/NO) ");
+			System.out.print("\n\n¿Quieres imprimir el LOG? (SI/NO) ");
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
 			

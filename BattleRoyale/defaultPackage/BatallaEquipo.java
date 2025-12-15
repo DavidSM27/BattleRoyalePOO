@@ -489,6 +489,7 @@ public class BatallaEquipo extends Batalla<Equipo>{
     		ganador.get(i).anadirOro(oro);
         	ganador.get(i).ganarXP(xp);
     	}
+    	System.out.println();
     	
         System.out.println("\nFelicidades por resultar victorioso en tu batalla: ");
         System.out.println("\n RECOMPENSAS:");
