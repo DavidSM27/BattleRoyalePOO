@@ -338,13 +338,13 @@ public class Personaje implements Comparable<Personaje> {
         } else {
         	if(comparacion==0) {
             	System.out.println(this.nombre + " recibe " + cantidad +
-            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            			" de daño! (Vida: "+ cantidad +"/" + VIDA_MAX_DEFECTO + ")");
             }else if (comparacion==1) {
             	System.out.println(this.nombre + " recibe un Ataque Crítico " + cantidad +
-            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            			" de daño! (Vida: "+ cantidad +"/" + VIDA_MAX_DEFECTO + ")");
             }else {
             	System.out.println(this.nombre + " recibe un Ataque Poco Éficaz " + cantidad +
-            			" de daño! (Vida: 0/" + VIDA_MAX_DEFECTO + ")");
+            			" de daño! (Vida: "+ cantidad +"/" + VIDA_MAX_DEFECTO + ")");
             }
         }
     }
