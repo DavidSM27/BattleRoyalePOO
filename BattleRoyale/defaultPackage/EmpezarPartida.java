@@ -27,10 +27,29 @@ public class EmpezarPartida {
 	private void preguntarReglas() {
 		String respuesta;
 		
+		System.out.println("¡SALUDOS MAESTRO DEL PORTAL!\n");
+		System.out.println("Soy Eon, tu guía en este mundo. Pero te preguntaras donde estas");
+		System.out.println("\n¡Esto es Skylands!");
+		System.out.println("Un antiguo mundo de maravillas y misterios");		
+		System.out.println("Durantes generaciones los maestros del portal y sus Skylanders han mantenido");
+		System.out.println("la paz y el equilibrio para que las criaturas prosperen.");
+		System.out.println("¡Aqui la magia fluye a traves de todo!");
+		System.out.println("Cada piedra, cada arbol y cada bestia");
+		System.out.println("\nHoy en día, los Skylanders pasan las horas entrenando entre ellos en una");
+		System.out.println("lucha constante de todos contra todos, ya sea individualmente o por equipos.");
+		System.out.println("Los Skyalandres me han comentado que quieren luchar contra ti maestro del portal");
+		System.out.println("\nQue me dices, ¿aceptas el desafio?\n");
+		
+		
 		do {
-			System.out.print("¿Quieres escuchar una explicación de las reglas del juego? (Si/No) ");
+			System.out.print("¿Quieres escuchar una explicación de las reglas del juego? (SI/NO) ");
 			respuesta = sc.next().toUpperCase().substring(0, 1);
 			sc.nextLine();
+			
+			if(!respuesta.equals("S") && !respuesta.equals("N")) {
+				System.out.println("\nPor favor introduce SI o NO\n");
+			}
+			
 		} while(!respuesta.equals("S") && !respuesta.equals("N"));
 		
 		if(respuesta.equals("S")) {
@@ -39,7 +58,7 @@ public class EmpezarPartida {
 	}
 	
 	private void mostrarReglas() {
-	    System.out.println("\n=== REGLAS DEL BATTLE ROYALE ELEMENTAL ===\n");
+	    System.out.println("\n=== REGLAS DEL BATTLE ROYALE SKYLANDER ===\n");
 	    
 	    System.out.println("🎮 OBJETIVO:");
 	    System.out.println("   • Ser el último jugador o equipo en pie");
@@ -86,18 +105,18 @@ public class EmpezarPartida {
 	    System.out.println("   • Opción de guardar partida completa en archivo");
 	    System.out.println("   • Si no quedan jugadores reales, gana NPC/equipo aleatorio\n");
 	    
-	    System.out.println("==============================================\n");
+	    System.out.println("==============================================");
 	}
 	
 	private void seleccionarModo() {
-		System.out.println("¿A que modo de juego quieres jugar?");
+		System.out.println("\n¿A que modo de juego quieres jugar?");
 	    System.out.println("(1) SOLITARIO");
 	    System.out.println("(2) DUOS");
 	    System.out.println("(3) ESCUADRONES");
 	    do {
 	    		System.out.print("Modo: ");
 	    		while(!sc.hasNextInt()) {
-	                System.out.println("Por favor, ingresa un número válido.");
+	                System.out.println("\nPor favor, ingresa un número válido.\n");
 	                System.out.print("Modo: ");
 	                sc.next();
 	        }
@@ -105,7 +124,7 @@ public class EmpezarPartida {
 	    		sc.nextLine();
 	    		
 	    		if(modo < 1 || modo > 3) {
-	    			System.out.println("Por favor, ingresa un número válido");
+	    			System.out.println("\nPor favor, ingresa un número válido");
 	    			System.out.println("\n(1) SOLITARIO");
 	    		    System.out.println("(2) DUOS");
 	    		    System.out.println("(3) ESCUADRONES");
