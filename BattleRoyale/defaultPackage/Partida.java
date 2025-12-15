@@ -252,10 +252,10 @@ public class Partida {
 	    		dificultad = 1;
 	    } else if(modo == 2) {
 	    		diff = "DIFICIL";
-	    		dificultad = 5;
+	    		dificultad = 10;
 	    } else {
 	    		diff = "IMPOSIBLE";
-	    		dificultad = 10;
+	    		dificultad = 20;
 	    }
     }
     

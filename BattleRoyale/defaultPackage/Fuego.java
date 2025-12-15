@@ -2,9 +2,9 @@ package defaultPackage;
 
 public class Fuego extends Personaje {
 	
-	private static final int DAÑO_HABILIDAD1=24;
-	private static final int DAÑO_HABILIDAD2=6;
-	private static final int CURACION_HABILIDAD = 20;
+	private static final int DAÑO_HABILIDAD1=38;
+	private static final int DAÑO_HABILIDAD2=16;
+	private static final int CURACION_HABILIDAD = 23;
 
     public Fuego(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);

@@ -2,9 +2,9 @@ package defaultPackage;
 
 public class Viento extends Personaje {
 	
-	private static final int DAÑO_HABILIDAD1=16;
-	private static final int DAÑO_HABILIDAD2=14;
-	private static final int CURACION_HABILIDAD = 40;
+	private static final int DAÑO_HABILIDAD1=30;
+	private static final int DAÑO_HABILIDAD2=19;
+	private static final int CURACION_HABILIDAD = 28;
 
     public Viento(String nombre, int nivel, boolean esNPC) {
         super(nombre, nivel, esNPC);
