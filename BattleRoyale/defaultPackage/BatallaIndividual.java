@@ -142,8 +142,9 @@ public class BatallaIndividual extends Batalla<Personaje> {
     	decision=(int) (Math.random() * 100);
     	
     	if(atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
-    		recuperarEnergia(atacante);
-            LOG += "\t\t-" + atacante.getNombre() + " recupera "+ENERGIA+" de energia\n";
+    		int energiaAnterior=atacante.getEnergia();
+            recuperarEnergia(atacante);
+            LOG += "\t\t-" + atacante.getNombre() + " pasa turno para recupera "+ (atacante.getEnergia()-energiaAnterior) +" de energía\n";
     	}else {
     		if (decision < 50) {
     			usarHabilidad(atacante, objetivo);
@@ -224,9 +225,6 @@ public class BatallaIndividual extends Batalla<Personaje> {
             if (opcion < 1 || opcion > 4) {
                 System.out.println("Elige entre 1 y 4.");
             }else if(opcion==1 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD1) {
-            	System.out.println("No tienes suficiente energia");
-            	opcion=0;
-            }else if(opcion==2 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD2) {
             	System.out.println("No tienes suficiente energia");
             	opcion=0;
             }else if(opcion==3 && atacante.getEnergia() < Personaje.COSTE_HABILIDAD3) {
