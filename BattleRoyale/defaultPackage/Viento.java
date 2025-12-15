@@ -28,11 +28,8 @@ public class Viento extends Personaje {
 	}
 
     public void LanzarTorbellino(Personaje objetivo) {
-        if (intentarGastarEnergia()) {
-            System.out.println(this.nombre + " mete en un torbellino a " + objetivo.getNombre() + "!");
-            
-            this.energia-=COSTE_HABILIDAD;
-            
+        if (intentarGastarEnergia(COSTE_HABILIDAD1)) {
+            System.out.println(this.nombre + " mete en un torbellino a " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -40,11 +37,8 @@ public class Viento extends Personaje {
     }
 
     public void SoplidoDeDios(Personaje objetivo) {
-        if (intentarGastarEnergia()) {
-            System.out.println(this.nombre + " manda volando a " + objetivo.getNombre() + "!");
-            
-            this.energia-=COSTE_HABILIDAD;
-            
+        if (intentarGastarEnergia(COSTE_HABILIDAD2)) {
+            System.out.println(this.nombre + " manda volando a " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
             objetivo.recibirDanio(dano);
@@ -52,10 +46,8 @@ public class Viento extends Personaje {
     }
 
     public void CuracionDeEolo() {
-        if (intentarGastarEnergia()) {
-            
-            this.energia-=COSTE_HABILIDAD;
-        	
+        if (intentarGastarEnergia(COSTE_HABILIDAD3)) {
+
             System.out.println(this.nombre + " usa curacion de Eolo.");
             this.curarVida(CURACION_HABILIDAD);
         }
