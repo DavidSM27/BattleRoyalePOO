@@ -7,7 +7,7 @@ public class Personaje implements Comparable<Personaje> {
 
     // Constantes
     protected static final int ENERGIA_MAX = 100; // Maxima energia del personaje cuando se instancia
-    protected static final int COSTE_HABILIDAD1 = 55;
+    protected static final int COSTE_HABILIDAD1 = 40;
     protected static final int COSTE_HABILIDAD2 = 30;
     protected static final int COSTE_HABILIDAD3 = 35;
     protected static final int ORO_INICIAL = 0; // El oro con el que empieza el jugador
