@@ -183,7 +183,7 @@ public class EmpezarPartida {
 		Utilidades.imprimirConDelay("\nQue me dices, ¿aceptas el desafio?", 20);
 	}
 	
-	public void imprimirLOG(){
+	private void imprimirLOG(){
 		String respuesta;
 		do {
 			System.out.print("\n\n¿Quieres imprimir el LOG? (SI/NO) ");
