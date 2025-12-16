@@ -481,11 +481,11 @@ public class BatallaEquipo extends Batalla<Equipo>{
     	int boteXP=0;
     	
     	if(ganador.getNombre().equals(EQUIPO1_AUX.getNombre())) {
-    		boteOro=BOTE_EQUIPO1;
-    		boteXP=XP1;
-    	}else {
     		boteOro=BOTE_EQUIPO2;
     		boteXP=XP2;
+    	}else {
+    		boteOro=BOTE_EQUIPO1;
+    		boteXP=XP1;
     	}
     	
     	int oro=(int)(boteOro/ganador.size());

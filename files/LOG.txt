@@ -253,3 +253,91 @@ Perdedor: Flameslinger
 
 El ganador es: Kerman
 
+Ronda 1
+	-a intenta buscar una Batalla
+
+	-Turno 1
+			-a: 100 HP  100 Energía. [FUEGO]
+			-Thumpback: 100 HP  100 Energía. [VIDA]
+
+		-a ha usado una habilidad Lluvia Infernal y ha infligido 46 de daño
+
+			-a: 100 HP  45 Energía. [FUEGO]
+			-Thumpback: 54 HP  100 Energía. [VIDA]
+
+		-Thumpback ha usado una habilidad Explotar Sangre y ha infligido 10 de daño
+
+
+	-Turno 2
+			-a: 90 HP  45 Energía. [FUEGO]
+			-Thumpback: 54 HP  70 Energía. [VIDA]
+
+		-a ha usado una habilidad Mar de Lava y ha infligido 19 de daño
+
+			-a: 90 HP  15 Energía. [FUEGO]
+			-Thumpback: 35 HP  70 Energía. [VIDA]
+
+		-Thumpback ha usado una habilidad Apreton de Corazón y ha infligido 16 de daño
+
+
+	-Turno 3
+			-a: 74 HP  15 Energía. [FUEGO]
+			-Thumpback: 35 HP  15 Energía. [VIDA]
+
+		-a ha atacado a Thumpback con Pico y ha hecho 5.0 de daño
+
+			-a: 74 HP  15 Energía. [FUEGO]
+			-Thumpback: 30 HP  15 Energía. [VIDA]
+
+		-Thumpback pasa turno para recupera 50 de energía
+
+
+	-Turno 4
+			-a: 74 HP  15 Energía. [FUEGO]
+			-Thumpback: 30 HP  65 Energía. [VIDA]
+
+		-a pasa turno para recupera 50 de energía
+
+			-a: 74 HP  65 Energía. [FUEGO]
+			-Thumpback: 30 HP  65 Energía. [VIDA]
+
+		-Thumpback ha usado una habilidad Explotar Sangre y ha infligido 10 de daño
+
+
+	-Turno 5
+			-a: 64 HP  65 Energía. [FUEGO]
+			-Thumpback: 30 HP  35 Energía. [VIDA]
+
+		-a ha usado una habilidad Lluvia Infernal y ha infligido 30 de daño
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: a
+Perdedor: Thumpback
+
+
+
+	-s intenta buscar una Batalla
+
+	-Turno 1
+			-s: 100 HP  100 Energía. [FUEGO]
+			-a: 94 HP  30 Energía. [FUEGO]
+
+		-s ha atacado a a con Pico y ha hecho 5.0 de daño
+
+			-s: 100 HP  100 Energía. [FUEGO]
+			-a: 89 HP  30 Energía. [FUEGO]
+
+		-a ha huido
+
+ ========== BATALLA TERMINADA ==========
+a huyó de la batalla!
+
+
+ ========== BATALLA TERMINADA ==========
+Ganador: s
+Perdedor: a
+
+
+
+
