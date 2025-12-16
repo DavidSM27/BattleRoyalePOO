@@ -16,22 +16,7 @@ public class EmpezarPartida {
 	public EmpezarPartida() {
 		establecerModo();
 		
-		String respuesta;
-		do {
-			System.out.print("\n\n¿Quieres imprimir el LOG? (SI/NO) ");
-			respuesta = sc.next().toUpperCase().substring(0, 1);
-			sc.nextLine();
-			
-			if(!respuesta.equals("S") && !respuesta.equals("N")) {
-				System.out.println("\nPor favor introduce SI o NO\n");
-			}
-			
-		} while(!respuesta.equals("S") && !respuesta.equals("N"));
-		
-		if(respuesta.equals("S")) {
-			ImprimirLOG log=new ImprimirLOG();
-			System.out.println(log.getTexto());
-		}
+		imprimirLOG();
 	}
 
 	private void establecerModo() {
@@ -196,5 +181,24 @@ public class EmpezarPartida {
 		Utilidades.imprimirConDelay("Los Skyalanders me han comentado que quieren luchar contra ti, maestro del portal.", 20);
 		Utilidades.sleep(500);
 		Utilidades.imprimirConDelay("\nQue me dices, ¿aceptas el desafio?", 20);
+	}
+	
+	public void imprimirLOG(){
+		String respuesta;
+		do {
+			System.out.print("\n\n¿Quieres imprimir el LOG? (SI/NO) ");
+			respuesta = sc.next().toUpperCase().substring(0, 1);
+			sc.nextLine();
+			
+			if(!respuesta.equals("S") && !respuesta.equals("N")) {
+				System.out.println("\nPor favor introduce SI o NO\n");
+			}
+			
+		} while(!respuesta.equals("S") && !respuesta.equals("N"));
+		
+		if(respuesta.equals("S")) {
+			ImprimirLOG log=new ImprimirLOG();
+			System.out.println(log.getTexto());
+		}
 	}
 }
