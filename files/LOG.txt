@@ -1,0 +1,11 @@
+Ronda 1
+	-Kerman intenta buscar un Cofre
+		-Kerman a abierto un cofre
+		-Kerman ahora lleva Pistola
+
+
+	-Sprocket intenta buscar un Cofre
+		-Sprocket a abierto un cofre
+		-Sprocket ahora lleva Escopeta
+
+

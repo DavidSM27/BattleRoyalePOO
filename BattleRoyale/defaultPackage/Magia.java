@@ -33,6 +33,8 @@ public class Magia extends Personaje {
             
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD1))*this.calcularPotenciador(objetivo));
 
+            dano*=(1+(this.fuerza-objetivo.defensa-2)*5/200);
+
             int comparacion=this.compareTo(objetivo);
             objetivo.recibirDanio(dano, comparacion);
         }
@@ -44,6 +46,8 @@ public class Magia extends Personaje {
             
 
             int dano = (int)Math.round(((double)calcularDanoNivel(DAÑO_HABILIDAD2))*this.calcularPotenciador(objetivo));
+
+            dano*=(1+(this.fuerza-objetivo.defensa-2)*5/200);
 
             int comparacion=this.compareTo(objetivo);
             objetivo.recibirDanio(dano, comparacion);

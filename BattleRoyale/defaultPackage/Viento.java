@@ -33,6 +33,8 @@ public class Viento extends Personaje {
             
             int dano = (int)Math.round(((double)calcularDanoNivel(20))*this.calcularPotenciador(objetivo));
 
+            dano*=(1+(this.fuerza-objetivo.defensa-2)*5/200);
+
             int comparacion=this.compareTo(objetivo);
             objetivo.recibirDanio(dano, comparacion);
         }
@@ -43,6 +45,8 @@ public class Viento extends Personaje {
             System.out.println(this.nombre + " manda volando a " + objetivo.getNombre() + "!");            
             
             int dano = (int)Math.round(((double)calcularDanoNivel(10))*this.calcularPotenciador(objetivo));
+
+            dano*=(1+(this.fuerza-objetivo.defensa-2)*5/200);
 
             int comparacion=this.compareTo(objetivo);
             objetivo.recibirDanio(dano, comparacion);
